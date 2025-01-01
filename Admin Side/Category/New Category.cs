@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,13 +26,23 @@ namespace sims.Admin_Side.Category
             this.flow = flow;
         }
 
-        public class ItemDetails
+        public class Categories
         {
+            public int CategoryID { get; set; }
             public string Category { get; set; }
         }
+
         private void New_Category_Load(object sender, EventArgs e)
         {
             LoadItemsPanel();
+            GenerateRandomItemID();
+        }
+
+        private void GenerateRandomItemID()
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(10000000, 99999999);
+            categoryIDTxt.Text = randomNumber.ToString();
         }
 
         private void Populate()
@@ -43,7 +54,7 @@ namespace sims.Admin_Side.Category
                 try
                 {
                     conn.Open();
-                    string queryCategories = "SELECT Category_Name FROM categories";
+                    string queryCategories = "SELECT Category_ID, Category_Name FROM categories";
                     using (MySqlCommand commandCategories = new MySqlCommand(queryCategories, conn))
                     using (MySqlDataAdapter adapterCategories = new MySqlDataAdapter(commandCategories))
                     {
@@ -67,14 +78,17 @@ namespace sims.Admin_Side.Category
         private void addCategory()
         {
             dbModule db = new dbModule();
+
+            string categoryID = categoryIDTxt.Text.Trim();
             string categoryName = categoryNameTxt.Text.Trim();
 
             if (string.IsNullOrEmpty(categoryName))
             {
-                MessageBox.Show("Category name are required!",
-                                "Information Required",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
+                //MessageBox.Show("Category name are required!",
+                //                "Information Required",
+                //                MessageBoxButtons.OK,
+                //                MessageBoxIcon.Warning);
+                new Messages_Boxes.Field_Required().Show();
                 return;
             }
 
@@ -83,9 +97,10 @@ namespace sims.Admin_Side.Category
                 try
                 {
                     conn.Open();
-                    string query = "INSERT INTO categories (Category_Name) VALUES (@Category_Name)";
+                    string query = "INSERT INTO categories (Category_ID, Category_Name) VALUES (@Category_ID, @Category_Name)";
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
+                        command.Parameters.AddWithValue("@Category_ID", categoryID);
                         command.Parameters.AddWithValue("@Category_Name", categoryName);
                         command.ExecuteNonQuery();
                         MessageBox.Show("Category added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -107,96 +122,6 @@ namespace sims.Admin_Side.Category
             this.Hide();
         }
 
-        private void greenBtn_Click(object sender, EventArgs e)
-        {
-            GunaButton clickedButton = sender as GunaButton;
-            if (clickedButton == null) return;
-
-            if (clickedButton.Tag != null && clickedButton.Tag.ToString() == "Checked")
-            {
-                clickedButton.Text = "";
-                clickedButton.Tag = "Unchecked";
-            }
-            else
-            {
-                ResetAllButtons();
-                clickedButton.Text = "✔";
-                clickedButton.Tag = "Checked";
-                clickedButton.Font = new Font("Arial", 20, FontStyle.Bold);
-                clickedButton.TextAlign = HorizontalAlignment.Center;
-            }
-        }
-
-        private void blueBtn_Click(object sender, EventArgs e)
-        {
-            GunaButton clickedButton = sender as GunaButton;
-            if (clickedButton == null) return;
-
-            if (clickedButton.Tag != null && clickedButton.Tag.ToString() == "Checked")
-            {
-                clickedButton.Text = "";
-                clickedButton.Tag = "Unchecked";
-            }
-            else
-            {
-                ResetAllButtons();
-                clickedButton.Text = "✔";
-                clickedButton.Tag = "Checked";
-                clickedButton.Font = new Font("Arial", 20, FontStyle.Bold);
-                clickedButton.TextAlign = HorizontalAlignment.Center;
-            }
-        }
-
-        private void redBtn_Click(object sender, EventArgs e)
-        {
-            GunaButton clickedButton = sender as GunaButton;
-            if (clickedButton == null) return;
-
-            if (clickedButton.Tag != null && clickedButton.Tag.ToString() == "Checked")
-            {
-                clickedButton.Text = "";
-                clickedButton.Tag = "Unchecked";
-            }
-            else
-            {
-                ResetAllButtons();
-                clickedButton.Text = "✔";
-                clickedButton.Tag = "Checked";
-                clickedButton.Font = new Font("Arial", 20, FontStyle.Bold);
-                clickedButton.TextAlign = HorizontalAlignment.Center;
-            }
-        }
-        private void yellowBtn_Click(object sender, EventArgs e)
-        {
-            GunaButton clickedButton = sender as GunaButton;
-            if (clickedButton == null) return;
-
-            if (clickedButton.Tag != null && clickedButton.Tag.ToString() == "Checked")
-            {
-                clickedButton.Text = "";
-                clickedButton.Tag = "Unchecked";
-            }
-            else
-            {
-                ResetAllButtons();
-                clickedButton.Text = "✔";
-                clickedButton.Tag = "Checked";
-                clickedButton.Font = new Font("Arial", 20, FontStyle.Bold);
-                clickedButton.TextAlign = HorizontalAlignment.Center;
-            }
-        }
-
-        private void ResetAllButtons()
-        {
-            foreach (Control control in gunaElipsePanel1.Controls)
-            {
-                if (control is GunaButton button)
-                {
-                    button.Text = "";
-                    button.Tag = "Unchecked";
-                }
-            }
-        }
         private void LoadItemsPanel()
         {
             dbModule db = new dbModule();
@@ -210,7 +135,6 @@ namespace sims.Admin_Side.Category
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        // Clear existing controls in the panel
                         flow.CategoriesPanel.Controls.Clear();
 
                         while (reader.Read())
@@ -226,23 +150,20 @@ namespace sims.Admin_Side.Category
                 }
             }
         }
-
         private void AddItemPanel(string category)
         {
-            // Create the main panel
             GunaElipsePanel productPanel = new GunaElipsePanel
             {
                 Width = 395,
                 Height = 100,
                 Radius = 8,
                 BackColor = Color.FromArgb(222, 196, 125),
-                Tag = new ItemDetails
+                Tag = new Categories
                 {
                     Category = category
                 }
             };
 
-            // Create and center the label
             Label categoryLabel = new Label
             {
                 Text = category,
@@ -252,14 +173,8 @@ namespace sims.Admin_Side.Category
                 AutoSize = false
             };
 
-            productPanel.Click += PanelButton_Click;
             productPanel.Controls.Add(categoryLabel);
             flow.CategoriesPanel.Controls.Add(productPanel);
-        }
-
-        private void PanelButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manage_Category));
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label4 = new System.Windows.Forms.Label();
             this.newCategoryBtn = new Guna.UI.WinForms.GunaButton();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.searchCategoryTxt = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.categoriesPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.recentlyAddedDgv = new Guna.UI.WinForms.GunaDataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.categoriesPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.searchCategoryTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.panel2.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recentlyAddedDgv)).BeginInit();
             this.gunaGroupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recentlyAddedDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -145,6 +145,80 @@
             this.panel1.Size = new System.Drawing.Size(727, 457);
             this.panel1.TabIndex = 28;
             // 
+            // recentlyAddedDgv
+            // 
+            this.recentlyAddedDgv.AllowUserToAddRows = false;
+            this.recentlyAddedDgv.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.recentlyAddedDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.recentlyAddedDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.recentlyAddedDgv.BackgroundColor = System.Drawing.Color.White;
+            this.recentlyAddedDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.recentlyAddedDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.recentlyAddedDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(157)))), ((int)(((byte)(49)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.recentlyAddedDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.recentlyAddedDgv.ColumnHeadersHeight = 28;
+            this.recentlyAddedDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.recentlyAddedDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.recentlyAddedDgv.DefaultCellStyle = dataGridViewCellStyle3;
+            this.recentlyAddedDgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recentlyAddedDgv.EnableHeadersVisualStyles = false;
+            this.recentlyAddedDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.recentlyAddedDgv.Location = new System.Drawing.Point(0, 0);
+            this.recentlyAddedDgv.Name = "recentlyAddedDgv";
+            this.recentlyAddedDgv.ReadOnly = true;
+            this.recentlyAddedDgv.RowHeadersVisible = false;
+            this.recentlyAddedDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.recentlyAddedDgv.RowTemplate.Height = 35;
+            this.recentlyAddedDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.recentlyAddedDgv.Size = new System.Drawing.Size(725, 455);
+            this.recentlyAddedDgv.TabIndex = 30;
+            this.recentlyAddedDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
+            this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.recentlyAddedDgv.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.recentlyAddedDgv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.Height = 28;
+            this.recentlyAddedDgv.ThemeStyle.ReadOnly = true;
+            this.recentlyAddedDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.recentlyAddedDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.recentlyAddedDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recentlyAddedDgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.recentlyAddedDgv.ThemeStyle.RowsStyle.Height = 35;
+            this.recentlyAddedDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.recentlyAddedDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.recentlyAddedDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.recentlyAddedDgv_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Category_Name";
+            this.Column1.HeaderText = "Category Name";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // gunaGroupBox1
             // 
             this.gunaGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -175,6 +249,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(418, 457);
             this.panel3.TabIndex = 31;
+            // 
+            // categoriesPanel
+            // 
+            this.categoriesPanel.AutoScroll = true;
+            this.categoriesPanel.BackColor = System.Drawing.Color.White;
+            this.categoriesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.categoriesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.categoriesPanel.Location = new System.Drawing.Point(0, 0);
+            this.categoriesPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.categoriesPanel.Name = "categoriesPanel";
+            this.categoriesPanel.Size = new System.Drawing.Size(418, 457);
+            this.categoriesPanel.TabIndex = 39;
             // 
             // searchCategoryTxt
             // 
@@ -253,92 +339,6 @@
             this.searchCategoryTxt.WordWrap = true;
             this.searchCategoryTxt.TextChanged += new System.EventHandler(this.searchCategoryTxt_TextChanged);
             // 
-            // categoriesPanel
-            // 
-            this.categoriesPanel.AutoScroll = true;
-            this.categoriesPanel.BackColor = System.Drawing.Color.White;
-            this.categoriesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.categoriesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.categoriesPanel.Location = new System.Drawing.Point(0, 0);
-            this.categoriesPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.categoriesPanel.Name = "categoriesPanel";
-            this.categoriesPanel.Size = new System.Drawing.Size(418, 457);
-            this.categoriesPanel.TabIndex = 39;
-            // 
-            // recentlyAddedDgv
-            // 
-            this.recentlyAddedDgv.AllowUserToAddRows = false;
-            this.recentlyAddedDgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.recentlyAddedDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.recentlyAddedDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.recentlyAddedDgv.BackgroundColor = System.Drawing.Color.White;
-            this.recentlyAddedDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.recentlyAddedDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.recentlyAddedDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(157)))), ((int)(((byte)(49)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.recentlyAddedDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.recentlyAddedDgv.ColumnHeadersHeight = 28;
-            this.recentlyAddedDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.recentlyAddedDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.recentlyAddedDgv.DefaultCellStyle = dataGridViewCellStyle3;
-            this.recentlyAddedDgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recentlyAddedDgv.EnableHeadersVisualStyles = false;
-            this.recentlyAddedDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.recentlyAddedDgv.Location = new System.Drawing.Point(0, 0);
-            this.recentlyAddedDgv.Name = "recentlyAddedDgv";
-            this.recentlyAddedDgv.ReadOnly = true;
-            this.recentlyAddedDgv.RowHeadersVisible = false;
-            this.recentlyAddedDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.recentlyAddedDgv.RowTemplate.Height = 30;
-            this.recentlyAddedDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.recentlyAddedDgv.Size = new System.Drawing.Size(725, 455);
-            this.recentlyAddedDgv.TabIndex = 30;
-            this.recentlyAddedDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
-            this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.recentlyAddedDgv.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.recentlyAddedDgv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.Height = 28;
-            this.recentlyAddedDgv.ThemeStyle.ReadOnly = true;
-            this.recentlyAddedDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.recentlyAddedDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.recentlyAddedDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.recentlyAddedDgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.recentlyAddedDgv.ThemeStyle.RowsStyle.Height = 30;
-            this.recentlyAddedDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.recentlyAddedDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.recentlyAddedDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.recentlyAddedDgv_CellClick);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Category_Name";
-            this.Column1.HeaderText = "Category Name";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
             // Manage_Category
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,10 +353,10 @@
             this.gunaElipsePanel2.ResumeLayout(false);
             this.gunaElipsePanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.recentlyAddedDgv)).EndInit();
             this.gunaGroupBox1.ResumeLayout(false);
             this.gunaGroupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.recentlyAddedDgv)).EndInit();
             this.ResumeLayout(false);
 
         }

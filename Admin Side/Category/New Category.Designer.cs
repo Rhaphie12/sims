@@ -30,27 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(New_Category));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.gunaElipsePanel3 = new Guna.UI.WinForms.GunaElipsePanel();
-            this.gunaElipsePanel1 = new Guna.UI.WinForms.GunaElipsePanel();
-            this.yellowBtn = new Guna.UI.WinForms.GunaButton();
-            this.redBtn = new Guna.UI.WinForms.GunaButton();
-            this.blueBtn = new Guna.UI.WinForms.GunaButton();
-            this.greenBtn = new Guna.UI.WinForms.GunaButton();
             this.addCategoryBtn = new Guna.UI.WinForms.GunaButton();
             this.backNewCatBtn = new Guna.UI.WinForms.GunaButton();
             this.categoryNameTxt = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.categoryIDTxt = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label4 = new System.Windows.Forms.Label();
             this.gunaElipsePanel3.SuspendLayout();
-            this.gunaElipsePanel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,124 +62,18 @@
             // 
             this.gunaElipsePanel3.BackColor = System.Drawing.Color.Transparent;
             this.gunaElipsePanel3.BaseColor = System.Drawing.Color.White;
-            this.gunaElipsePanel3.Controls.Add(this.gunaElipsePanel1);
             this.gunaElipsePanel3.Controls.Add(this.addCategoryBtn);
             this.gunaElipsePanel3.Controls.Add(this.backNewCatBtn);
             this.gunaElipsePanel3.Controls.Add(this.categoryNameTxt);
-            this.gunaElipsePanel3.Controls.Add(this.label1);
+            this.gunaElipsePanel3.Controls.Add(this.categoryIDTxt);
+            this.gunaElipsePanel3.Controls.Add(this.label2);
             this.gunaElipsePanel3.Controls.Add(this.label6);
             this.gunaElipsePanel3.Controls.Add(this.label5);
             this.gunaElipsePanel3.Location = new System.Drawing.Point(12, 70);
             this.gunaElipsePanel3.Name = "gunaElipsePanel3";
             this.gunaElipsePanel3.Radius = 9;
-            this.gunaElipsePanel3.Size = new System.Drawing.Size(631, 353);
+            this.gunaElipsePanel3.Size = new System.Drawing.Size(603, 353);
             this.gunaElipsePanel3.TabIndex = 34;
-            // 
-            // gunaElipsePanel1
-            // 
-            this.gunaElipsePanel1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaElipsePanel1.BaseColor = System.Drawing.Color.White;
-            this.gunaElipsePanel1.Controls.Add(this.yellowBtn);
-            this.gunaElipsePanel1.Controls.Add(this.redBtn);
-            this.gunaElipsePanel1.Controls.Add(this.blueBtn);
-            this.gunaElipsePanel1.Controls.Add(this.greenBtn);
-            this.gunaElipsePanel1.Location = new System.Drawing.Point(378, 80);
-            this.gunaElipsePanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.gunaElipsePanel1.Name = "gunaElipsePanel1";
-            this.gunaElipsePanel1.Size = new System.Drawing.Size(223, 209);
-            this.gunaElipsePanel1.TabIndex = 22;
-            // 
-            // yellowBtn
-            // 
-            this.yellowBtn.AnimationHoverSpeed = 0.07F;
-            this.yellowBtn.AnimationSpeed = 0.03F;
-            this.yellowBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
-            this.yellowBtn.BorderColor = System.Drawing.Color.Black;
-            this.yellowBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.yellowBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.yellowBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.yellowBtn.ForeColor = System.Drawing.Color.White;
-            this.yellowBtn.Image = null;
-            this.yellowBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.yellowBtn.Location = new System.Drawing.Point(115, 106);
-            this.yellowBtn.Name = "yellowBtn";
-            this.yellowBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
-            this.yellowBtn.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.yellowBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.yellowBtn.OnHoverImage = null;
-            this.yellowBtn.OnPressedColor = System.Drawing.Color.Black;
-            this.yellowBtn.Size = new System.Drawing.Size(89, 76);
-            this.yellowBtn.TabIndex = 10;
-            this.yellowBtn.Click += new System.EventHandler(this.yellowBtn_Click);
-            // 
-            // redBtn
-            // 
-            this.redBtn.AnimationHoverSpeed = 0.07F;
-            this.redBtn.AnimationSpeed = 0.03F;
-            this.redBtn.BaseColor = System.Drawing.Color.Red;
-            this.redBtn.BorderColor = System.Drawing.Color.Black;
-            this.redBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.redBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.redBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.redBtn.ForeColor = System.Drawing.Color.White;
-            this.redBtn.Image = null;
-            this.redBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.redBtn.Location = new System.Drawing.Point(20, 24);
-            this.redBtn.Name = "redBtn";
-            this.redBtn.OnHoverBaseColor = System.Drawing.Color.Red;
-            this.redBtn.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.redBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.redBtn.OnHoverImage = null;
-            this.redBtn.OnPressedColor = System.Drawing.Color.Black;
-            this.redBtn.Size = new System.Drawing.Size(89, 76);
-            this.redBtn.TabIndex = 9;
-            this.redBtn.Click += new System.EventHandler(this.redBtn_Click);
-            // 
-            // blueBtn
-            // 
-            this.blueBtn.AnimationHoverSpeed = 0.07F;
-            this.blueBtn.AnimationSpeed = 0.03F;
-            this.blueBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(93)))), ((int)(((byte)(212)))));
-            this.blueBtn.BorderColor = System.Drawing.Color.Black;
-            this.blueBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.blueBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.blueBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.blueBtn.ForeColor = System.Drawing.Color.White;
-            this.blueBtn.Image = null;
-            this.blueBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.blueBtn.Location = new System.Drawing.Point(20, 106);
-            this.blueBtn.Name = "blueBtn";
-            this.blueBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(93)))), ((int)(((byte)(212)))));
-            this.blueBtn.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.blueBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.blueBtn.OnHoverImage = null;
-            this.blueBtn.OnPressedColor = System.Drawing.Color.Black;
-            this.blueBtn.Size = new System.Drawing.Size(89, 76);
-            this.blueBtn.TabIndex = 9;
-            this.blueBtn.Click += new System.EventHandler(this.blueBtn_Click);
-            // 
-            // greenBtn
-            // 
-            this.greenBtn.AnimationHoverSpeed = 0.07F;
-            this.greenBtn.AnimationSpeed = 0.03F;
-            this.greenBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
-            this.greenBtn.BorderColor = System.Drawing.Color.Black;
-            this.greenBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.greenBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.greenBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.greenBtn.ForeColor = System.Drawing.Color.White;
-            this.greenBtn.Image = null;
-            this.greenBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.greenBtn.Location = new System.Drawing.Point(115, 24);
-            this.greenBtn.Name = "greenBtn";
-            this.greenBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(151)))), ((int)(((byte)(121)))));
-            this.greenBtn.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.greenBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.greenBtn.OnHoverImage = null;
-            this.greenBtn.OnPressedColor = System.Drawing.Color.Black;
-            this.greenBtn.Size = new System.Drawing.Size(89, 76);
-            this.greenBtn.TabIndex = 9;
-            this.greenBtn.Click += new System.EventHandler(this.greenBtn_Click);
             // 
             // addCategoryBtn
             // 
@@ -196,7 +89,7 @@
             this.addCategoryBtn.ForeColor = System.Drawing.Color.White;
             this.addCategoryBtn.Image = null;
             this.addCategoryBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.addCategoryBtn.Location = new System.Drawing.Point(24, 209);
+            this.addCategoryBtn.Location = new System.Drawing.Point(147, 258);
             this.addCategoryBtn.Name = "addCategoryBtn";
             this.addCategoryBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
             this.addCategoryBtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -226,7 +119,7 @@
             this.backNewCatBtn.ForeColor = System.Drawing.Color.Black;
             this.backNewCatBtn.Image = null;
             this.backNewCatBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.backNewCatBtn.Location = new System.Drawing.Point(181, 209);
+            this.backNewCatBtn.Location = new System.Drawing.Point(304, 258);
             this.backNewCatBtn.Name = "backNewCatBtn";
             this.backNewCatBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
             this.backNewCatBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
@@ -268,32 +161,32 @@
             this.categoryNameTxt.IconRight = null;
             this.categoryNameTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.categoryNameTxt.Lines = new string[0];
-            this.categoryNameTxt.Location = new System.Drawing.Point(24, 123);
+            this.categoryNameTxt.Location = new System.Drawing.Point(111, 185);
             this.categoryNameTxt.MaxLength = 32767;
             this.categoryNameTxt.MinimumSize = new System.Drawing.Size(1, 1);
             this.categoryNameTxt.Modified = false;
             this.categoryNameTxt.Multiline = false;
             this.categoryNameTxt.Name = "categoryNameTxt";
-            stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties9.FillColor = System.Drawing.Color.Empty;
-            stateProperties9.ForeColor = System.Drawing.Color.Empty;
-            stateProperties9.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.categoryNameTxt.OnActiveState = stateProperties9;
-            stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties10.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.categoryNameTxt.OnDisabledState = stateProperties10;
-            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties11.FillColor = System.Drawing.Color.Empty;
-            stateProperties11.ForeColor = System.Drawing.Color.Empty;
-            stateProperties11.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.categoryNameTxt.OnHoverState = stateProperties11;
-            stateProperties12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties12.FillColor = System.Drawing.Color.White;
-            stateProperties12.ForeColor = System.Drawing.Color.Empty;
-            stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.categoryNameTxt.OnIdleState = stateProperties12;
+            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.categoryNameTxt.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.categoryNameTxt.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.categoryNameTxt.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.categoryNameTxt.OnIdleState = stateProperties4;
             this.categoryNameTxt.Padding = new System.Windows.Forms.Padding(3);
             this.categoryNameTxt.PasswordChar = '\0';
             this.categoryNameTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -304,7 +197,7 @@
             this.categoryNameTxt.SelectionLength = 0;
             this.categoryNameTxt.SelectionStart = 0;
             this.categoryNameTxt.ShortcutsEnabled = true;
-            this.categoryNameTxt.Size = new System.Drawing.Size(308, 44);
+            this.categoryNameTxt.Size = new System.Drawing.Size(376, 44);
             this.categoryNameTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.categoryNameTxt.TabIndex = 1;
             this.categoryNameTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -315,34 +208,108 @@
             this.categoryNameTxt.UseSystemPasswordChar = false;
             this.categoryNameTxt.WordWrap = true;
             // 
-            // label1
+            // categoryIDTxt
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(373, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 28);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Category Color";
+            this.categoryIDTxt.AcceptsReturn = false;
+            this.categoryIDTxt.AcceptsTab = false;
+            this.categoryIDTxt.AnimationSpeed = 200;
+            this.categoryIDTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.categoryIDTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.categoryIDTxt.BackColor = System.Drawing.Color.Transparent;
+            this.categoryIDTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("categoryIDTxt.BackgroundImage")));
+            this.categoryIDTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.categoryIDTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.categoryIDTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.categoryIDTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.categoryIDTxt.BorderRadius = 6;
+            this.categoryIDTxt.BorderThickness = 2;
+            this.categoryIDTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.categoryIDTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.categoryIDTxt.DefaultFont = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryIDTxt.DefaultText = "";
+            this.categoryIDTxt.FillColor = System.Drawing.Color.White;
+            this.categoryIDTxt.HideSelection = true;
+            this.categoryIDTxt.IconLeft = null;
+            this.categoryIDTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.categoryIDTxt.IconPadding = 10;
+            this.categoryIDTxt.IconRight = null;
+            this.categoryIDTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.categoryIDTxt.Lines = new string[0];
+            this.categoryIDTxt.Location = new System.Drawing.Point(111, 98);
+            this.categoryIDTxt.MaxLength = 32767;
+            this.categoryIDTxt.MinimumSize = new System.Drawing.Size(1, 1);
+            this.categoryIDTxt.Modified = false;
+            this.categoryIDTxt.Multiline = false;
+            this.categoryIDTxt.Name = "categoryIDTxt";
+            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties5.FillColor = System.Drawing.Color.Empty;
+            stateProperties5.ForeColor = System.Drawing.Color.Empty;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.categoryIDTxt.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.categoryIDTxt.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.categoryIDTxt.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties8.FillColor = System.Drawing.Color.White;
+            stateProperties8.ForeColor = System.Drawing.Color.Empty;
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.categoryIDTxt.OnIdleState = stateProperties8;
+            this.categoryIDTxt.Padding = new System.Windows.Forms.Padding(3);
+            this.categoryIDTxt.PasswordChar = '\0';
+            this.categoryIDTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.categoryIDTxt.PlaceholderText = "Auto Generated";
+            this.categoryIDTxt.ReadOnly = true;
+            this.categoryIDTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.categoryIDTxt.SelectedText = "";
+            this.categoryIDTxt.SelectionLength = 0;
+            this.categoryIDTxt.SelectionStart = 0;
+            this.categoryIDTxt.ShortcutsEnabled = true;
+            this.categoryIDTxt.Size = new System.Drawing.Size(376, 44);
+            this.categoryIDTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.categoryIDTxt.TabIndex = 1;
+            this.categoryIDTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.categoryIDTxt.TextMarginBottom = 0;
+            this.categoryIDTxt.TextMarginLeft = 3;
+            this.categoryIDTxt.TextMarginTop = 0;
+            this.categoryIDTxt.TextPlaceholder = "Auto Generated";
+            this.categoryIDTxt.UseSystemPasswordChar = false;
+            this.categoryIDTxt.WordWrap = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(106, 154);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(139, 28);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Category Name";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(19, 92);
+            this.label6.Location = new System.Drawing.Point(106, 67);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(139, 28);
+            this.label6.Size = new System.Drawing.Size(106, 28);
             this.label6.TabIndex = 21;
-            this.label6.Text = "Category Name";
+            this.label6.Text = "Category ID";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(8, 13);
+            this.label5.Location = new System.Drawing.Point(8, 11);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(165, 34);
             this.label5.TabIndex = 21;
@@ -356,7 +323,7 @@
             this.gunaElipsePanel2.Location = new System.Drawing.Point(12, 12);
             this.gunaElipsePanel2.Name = "gunaElipsePanel2";
             this.gunaElipsePanel2.Radius = 7;
-            this.gunaElipsePanel2.Size = new System.Drawing.Size(631, 52);
+            this.gunaElipsePanel2.Size = new System.Drawing.Size(603, 52);
             this.gunaElipsePanel2.TabIndex = 33;
             // 
             // label4
@@ -375,7 +342,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.ClientSize = new System.Drawing.Size(661, 440);
+            this.ClientSize = new System.Drawing.Size(627, 435);
             this.Controls.Add(this.gunaElipsePanel3);
             this.Controls.Add(this.gunaElipsePanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -385,7 +352,6 @@
             this.Load += new System.EventHandler(this.New_Category_Load);
             this.gunaElipsePanel3.ResumeLayout(false);
             this.gunaElipsePanel3.PerformLayout();
-            this.gunaElipsePanel1.ResumeLayout(false);
             this.gunaElipsePanel2.ResumeLayout(false);
             this.gunaElipsePanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -398,16 +364,12 @@
         private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel3;
         private Guna.UI.WinForms.GunaButton addCategoryBtn;
         private Guna.UI.WinForms.GunaButton backNewCatBtn;
-        private Bunifu.UI.WinForms.BunifuTextBox categoryNameTxt;
+        private Bunifu.UI.WinForms.BunifuTextBox categoryIDTxt;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.Label label5;
         private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel2;
         internal System.Windows.Forms.Label label4;
-        private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel1;
-        internal System.Windows.Forms.Label label1;
-        private Guna.UI.WinForms.GunaButton greenBtn;
-        private Guna.UI.WinForms.GunaButton blueBtn;
-        private Guna.UI.WinForms.GunaButton redBtn;
-        private Guna.UI.WinForms.GunaButton yellowBtn;
+        private Bunifu.UI.WinForms.BunifuTextBox categoryNameTxt;
+        internal System.Windows.Forms.Label label2;
     }
 }

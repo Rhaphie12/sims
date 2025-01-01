@@ -118,35 +118,38 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="gunaElipse1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>15, 15</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="categoryNameTxt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAXgAAAAsCAYAAABv9aPzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHXSURBVHhe7dihbxNxGMfhk5OTSCQSuT8BiUQiJ5FLuaYz
-        CCQGiZyYQIJjyfUIhIRMIJqltx1LSZaNQOVIFnLcr/s1hCx47uV5kq/o9fQnb64A4D/Rvp3caery4fF0
-        vGtmZv/+mnq83U5HWznjN7UHk82Tevy6X2dmZsNbH/vDdKTnrP/W/7mK++f3T7rz2V73/fSNmZkNYBdH
-        +93ph6c58uWsP9g3ctr7670e3V3H/erHsgNgWH5eXXZfDp+vIj+vyvs570XRTMeP0sOv85f5VQCGZrmo
-        1p9qdnPeiyL9SA/TqQ/AMKWGCzxAQAIPEJTAAwQl8ABBCTxAUAIPEJTAAwQl8ABBCTxAUAIPEJTAAwQl
-        8ABBCTxAUAIPEJTAAwQl8ABBCTxAUAIPEJTAAwQl8ABBCTxAUAIPEJTAAwQl8ABBCTxAUAIPEJTAAwQl
-        8ABBCTxAUAIPEJTAAwT1t8DvpIffTl7l1wAYmuWiuhn4efX4Xnq4+PgsvwbA0JzP9laBb+rxds57UbQH
-        k43jujxLf5x9erE6883MbBhLl/vF0f719V6Xl33Tb+W8X2uno6115M3MbHhLcW+q8kHO+p/66m+m0z59
-        vzEzs0Ftp303uZ1zDkBcRfELeCO6tRtEvY4AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAATQAAAAsCAYAAADrc0TdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHKSURBVHhe7dehbxNxGMfhk5OTSCQSuT8BiUQiJ5FLuaYz
+        CCQGiZyYQIJjyfUWCAmZQDRLux1LSZaNQOVIFnLcr/s1ZFnw1zfPk3xFr6c/ea8ACKs5HD2Y1eXTk/Fw
+        18ysj5vVw+1mPNjK2bqrORhtntbD991aM7N1WBe3o3SE5Yz90/25jNm3Ty/ai8le++vsg5lZL3d5vN+e
+        fX6Zo1ZOuoNsI6esu87qwcNVzK5/L1qAvvtzfdV+P3q9jNq0Kh/nnBXFbDx8lh7+mL7NrwL032JerT49
+        d3POiiL9SA/TKQewLlKzBA0IQdCAMAQNCEPQgDAEDQhD0IAwBA0IQ9CAMAQNCEPQgDAEDQhD0IAwBA0I
+        Q9CAMAQNCEPQgDAEDQhD0IAwBA0IQ9CAMAQNCEPQgDAEDQhD0IAwBA0IQ9CAMAQNCEPQgDAEDQhD0IAw
+        BA0I439B20kPf56+y68B9N9iXt0N2rR6/ig9nH95lV8D6L+Lyd4yaLN6uJ1zVhTNwWjjpC7P0x/nX98s
+        zzgzs74uXWaXx/s311ldXnUNu5dzdqMZD7ZWUTMzW4elmM2q8knO2G1d5TbT6Za+R83Mer6d5uPofs4X
+        QCRF8RdWZ7C4nzP+XgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="categoryIDTxt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAXgAAAAsCAYAAABv9aPzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHXSURBVHhe7dihbxNxGMfhk5OTSCQSuT8BiUQiJ5FLuaYz
-        CCQGiZyYQIJjyfUIhIRMIJqltx1LSZaNQOVIFnLcr/s1hCx47uV5kq/o9fQnb64A4D/Rvp3caery4fF0
-        vGtmZv/+mnq83U5HWznjN7UHk82Tevy6X2dmZsNbH/vDdKTnrP/W/7mK++f3T7rz2V73/fSNmZkNYBdH
-        +93ph6c58uWsP9g3ctr7670e3V3H/erHsgNgWH5eXXZfDp+vIj+vyvs570XRTMeP0sOv85f5VQCGZrmo
-        1p9qdnPeiyL9SA/TqQ/AMKWGCzxAQAIPEJTAAwQl8ABBCTxAUAIPEJTAAwQl8ABBCTxAUAIPEJTAAwQl
-        8ABBCTxAUAIPEJTAAwQl8ABBCTxAUAIPEJTAAwQl8ABBCTxAUAIPEJTAAwQl8ABBCTxAUAIPEJTAAwQl
-        8ABBCTxAUAIPEJTAAwT1t8DvpIffTl7l1wAYmuWiuhn4efX4Xnq4+PgsvwbA0JzP9laBb+rxds57UbQH
-        k43jujxLf5x9erE6883MbBhLl/vF0f719V6Xl33Tb+W8X2uno6115M3MbHhLcW+q8kHO+p/66m+m0z59
-        vzEzs0Ftp303uZ1zDkBcRfELeCO6tRtEvY4AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAATQAAAAsCAYAAADrc0TdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHKSURBVHhe7dehbxNxGMfhk5OTSCQSuT8BiUQiJ5FLuaYz
+        CCQGiZyYQIJjyfUWCAmZQDRLux1LSZaNQOVIFnLcr/s1ZFnw1zfPk3xFr6c/ea8ACKs5HD2Y1eXTk/Fw
+        18ysj5vVw+1mPNjK2bqrORhtntbD991aM7N1WBe3o3SE5Yz90/25jNm3Ty/ai8le++vsg5lZL3d5vN+e
+        fX6Zo1ZOuoNsI6esu87qwcNVzK5/L1qAvvtzfdV+P3q9jNq0Kh/nnBXFbDx8lh7+mL7NrwL032JerT49
+        d3POiiL9SA/TKQewLlKzBA0IQdCAMAQNCEPQgDAEDQhD0IAwBA0IQ9CAMAQNCEPQgDAEDQhD0IAwBA0I
+        Q9CAMAQNCEPQgDAEDQhD0IAwBA0IQ9CAMAQNCEPQgDAEDQhD0IAwBA0IQ9CAMAQNCEPQgDAEDQhD0IAw
+        BA0I439B20kPf56+y68B9N9iXt0N2rR6/ig9nH95lV8D6L+Lyd4yaLN6uJ1zVhTNwWjjpC7P0x/nX98s
+        zzgzs74uXWaXx/s311ldXnUNu5dzdqMZD7ZWUTMzW4elmM2q8knO2G1d5TbT6Za+R83Mer6d5uPofs4X
+        QCRF8RdWZ7C4nzP+XgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="gunaElipse2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 15</value>
+  </metadata>
 </root>
