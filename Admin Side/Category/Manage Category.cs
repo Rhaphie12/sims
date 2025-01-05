@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -48,132 +49,40 @@ namespace sims.Admin_Side.Category
 
         private void LoadData()
         {
-            dbModule db = new dbModule();
-
-            using (MySqlConnection conn = db.GetConnection())
+            try
             {
-                conn.Open();
+                dbModule db = new dbModule();
+                string query = "SELECT Category_ID, Category_Name FROM categories";
 
-                // Load Items
-                string itemsQuery = "SELECT Category_ID, Category_Name FROM categories";
-                MySqlDataAdapter itemsAdapter = new MySqlDataAdapter(itemsQuery, conn);
-                itemsTable = new DataTable();
-                itemsAdapter.Fill(itemsTable);
-                itemsBindingSource.DataSource = itemsTable;
-                recentlyAddedDgv.DataSource = itemsBindingSource;
-
-                categoriesPanel.Controls.Clear();
-                foreach (DataRow row in itemsTable.Rows)
+                using (MySqlConnection conn = db.GetConnection())
                 {
-                    int categoryID = Convert.ToInt32(row["Category_ID"]);
-                    string categoryName = row["Category_Name"].ToString();
-                    AddItemPanel(categoryID, categoryName);
-                }
+                    conn.Open();
 
-                if (recentlyAddedDgv.Columns.Contains("Category_ID"))
-                {
-                    recentlyAddedDgv.Columns["Category_ID"].Visible = false;
-                }
-
-                // Add a Delete Button Column
-                if (recentlyAddedDgv != null)
-                {
-                    if (!recentlyAddedDgv.Columns.Contains("DeleteButton"))
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        DataGridViewImageColumn deleteIconColumn = new DataGridViewImageColumn
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                         {
-                            Name = "DeleteButton",
-                            HeaderText = "Delete",
-                            Image = Properties.Resources.delete, // Ensure the resource exists
-                            ImageLayout = DataGridViewImageCellLayout.Zoom
-                        };
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
 
-                        recentlyAddedDgv.Columns.Add(deleteIconColumn);
-                        recentlyAddedDgv.Columns["DeleteButton"].Width = 100; // Set desired width
-                    }
-                }
+                            recentlyAddedDgv.DataSource = dataTable;
+                            recentlyAddedDgv.ClearSelection();
+                            recentlyAddedDgv.CurrentCell = null;
 
-                recentlyAddedDgv.CellMouseMove += (s, e) =>
-                {
-                    if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-                    {
-                        // Check if the hovered column is the DeleteButton
-                        if (recentlyAddedDgv.Columns[e.ColumnIndex].Name == "DeleteButton")
-                        {
-                            recentlyAddedDgv.Cursor = Cursors.Hand; // Set cursor to hand
-                        }
-                        else
-                        {
-                            recentlyAddedDgv.Cursor = Cursors.Default; // Reset cursor
+                            categoriesPanel.Controls.Clear();
+                            foreach (DataRow row in dataTable.Rows)
+                            {
+                                int categoryID = Convert.ToInt32(row["Category_ID"]);
+                                string categoryName = row["Category_Name"].ToString();
+                                AddItemPanel(categoryID, categoryName);
+                            }
                         }
                     }
-                    else
-                    {
-                        recentlyAddedDgv.Cursor = Cursors.Default; // Reset cursor
-                    }
-                };
-            }
-        }
-        private void recentlyAddedDgv_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                if (recentlyAddedDgv.Columns.Contains("DeleteButton") &&
-                    e.ColumnIndex == recentlyAddedDgv.Columns["DeleteButton"].Index)
-                {
-                    // Handle Delete
-                    int categoryID = Convert.ToInt32(recentlyAddedDgv.Rows[e.RowIndex].Cells["Category_ID"].Value);
-
-                    DialogResult result = MessageBox.Show("Are you sure you want to delete this category?",
-                        "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                    if (result == DialogResult.Yes)
-                    {
-                        DeleteCategory(categoryID);
-                        RemovePanelFromFlowLayout(categoryID);
-                        LoadData();
-                    }
                 }
             }
-        }
-
-        private void RemovePanelFromFlowLayout(int categoryID)
-        {
-            Control panelToRemove = null;
-
-            // Find the panel with the matching category ID in the ItemDetails object
-            foreach (Control control in categoriesPanel.Controls)
+            catch (Exception ex)
             {
-                if (control is GunaElipsePanel panel &&
-                    panel.Tag is Categories details &&
-                    details.CategoryID == categoryID)
-                {
-                    panelToRemove = panel;
-                    break;
-                }
-            }
-
-            if (panelToRemove != null)
-            {
-                categoriesPanel.Controls.Remove(panelToRemove);
-                panelToRemove.Dispose();
-            }
-        }
-
-        private void DeleteCategory(int categoryID)
-        {
-            dbModule db = new dbModule();
-
-            using (MySqlConnection conn = db.GetConnection())
-            {
-                conn.Open();
-
-                string deleteQuery = "DELETE FROM categories WHERE Category_ID = @CategoryID";
-                using (MySqlCommand cmd = new MySqlCommand(deleteQuery, conn))
-                {
-                    cmd.Parameters.AddWithValue("@CategoryID", categoryID);
-                    cmd.ExecuteNonQuery();
-                }
+                MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -221,7 +130,6 @@ namespace sims.Admin_Side.Category
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        // Clear existing controls in the panel
                         categoriesPanel.Controls.Clear();
 
                         while (reader.Read())
@@ -243,7 +151,7 @@ namespace sims.Admin_Side.Category
         {
             GunaElipsePanel productPanel = new GunaElipsePanel
             {
-                Width = 395,
+                Width = 280,
                 Height = 100,
                 Radius = 8,
                 BackColor = Color.FromArgb(222, 196, 125),
@@ -251,13 +159,15 @@ namespace sims.Admin_Side.Category
                 {
                     CategoryID = categoryID,
                     Category = category
-                }
+                },
+                Margin = new Padding(73, 3, 3, 3) // Adds a left margin of 73 pixels
             };
+
 
             Label categoryLabel = new Label
             {
                 Text = category,
-                Font = new Font("Poppins", 14),
+                Font = new Font("Poppins", 15),
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 AutoSize = false
@@ -266,5 +176,68 @@ namespace sims.Admin_Side.Category
             productPanel.Controls.Add(categoryLabel);
             categoriesPanel.Controls.Add(productPanel);
         }
+
+        private void DeleteCategoryBtn_Click(object sender, EventArgs e)
+        {
+            if (recentlyAddedDgv.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a record to delete.", "Notice!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    string selectedCategoryId = recentlyAddedDgv.SelectedRows[0].Cells["Category_ID"]?.Value?.ToString();
+                    DeleteRecord(selectedCategoryId);
+                    recentlyAddedDgv.Rows.RemoveAt(recentlyAddedDgv.SelectedRows[0].Index);
+                    DeleteCategoryPanel(selectedCategoryId);
+                    MessageBox.Show("Record successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void DeleteRecord(string categoryID)
+        {
+            dbModule db = new dbModule();
+            string query = "DELETE FROM categories WHERE Category_ID = @Category_ID";
+
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Category_ID", categoryID);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error while deleting the record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void DeleteCategoryPanel(string categoryID)
+        {
+            foreach (Control control in categoriesPanel.Controls)
+            {
+                if (control.Tag != null && control.Tag.ToString() == categoryID)
+                {
+                    categoriesPanel.Controls.Remove(control);
+                    control.Dispose();
+                    break;
+                }
+            }
+        }
+
     }
 }

@@ -105,6 +105,7 @@ namespace sims.Admin_Side.Category
                         command.ExecuteNonQuery();
                         MessageBox.Show("Category added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         categoryNameTxt.Clear();
+                        GenerateRandomItemID();
                         Populate();
                         AddItemPanel(categoryName);
                         categoryNameTxt.Focus();

@@ -89,7 +89,7 @@
             this.addCategoryBtn.ForeColor = System.Drawing.Color.White;
             this.addCategoryBtn.Image = null;
             this.addCategoryBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.addCategoryBtn.Location = new System.Drawing.Point(147, 258);
+            this.addCategoryBtn.Location = new System.Drawing.Point(149, 257);
             this.addCategoryBtn.Name = "addCategoryBtn";
             this.addCategoryBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
             this.addCategoryBtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -98,7 +98,7 @@
             this.addCategoryBtn.OnPressedColor = System.Drawing.Color.Black;
             this.addCategoryBtn.Radius = 5;
             this.addCategoryBtn.Size = new System.Drawing.Size(151, 43);
-            this.addCategoryBtn.TabIndex = 3;
+            this.addCategoryBtn.TabIndex = 2;
             this.addCategoryBtn.Text = "Add Category";
             this.addCategoryBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.addCategoryBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
@@ -119,7 +119,7 @@
             this.backNewCatBtn.ForeColor = System.Drawing.Color.Black;
             this.backNewCatBtn.Image = null;
             this.backNewCatBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.backNewCatBtn.Location = new System.Drawing.Point(304, 258);
+            this.backNewCatBtn.Location = new System.Drawing.Point(306, 257);
             this.backNewCatBtn.Name = "backNewCatBtn";
             this.backNewCatBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
             this.backNewCatBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
@@ -128,7 +128,7 @@
             this.backNewCatBtn.OnPressedColor = System.Drawing.Color.White;
             this.backNewCatBtn.Radius = 6;
             this.backNewCatBtn.Size = new System.Drawing.Size(151, 43);
-            this.backNewCatBtn.TabIndex = 4;
+            this.backNewCatBtn.TabIndex = 3;
             this.backNewCatBtn.Text = "Back";
             this.backNewCatBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.backNewCatBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
@@ -161,9 +161,10 @@
             this.categoryNameTxt.IconRight = null;
             this.categoryNameTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.categoryNameTxt.Lines = new string[0];
-            this.categoryNameTxt.Location = new System.Drawing.Point(111, 185);
+            this.categoryNameTxt.Location = new System.Drawing.Point(113, 184);
+            this.categoryNameTxt.MaximumSize = new System.Drawing.Size(376, 44);
             this.categoryNameTxt.MaxLength = 32767;
-            this.categoryNameTxt.MinimumSize = new System.Drawing.Size(1, 1);
+            this.categoryNameTxt.MinimumSize = new System.Drawing.Size(376, 44);
             this.categoryNameTxt.Modified = false;
             this.categoryNameTxt.Multiline = false;
             this.categoryNameTxt.Name = "categoryNameTxt";
@@ -225,7 +226,7 @@
             this.categoryIDTxt.BorderThickness = 2;
             this.categoryIDTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.categoryIDTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.categoryIDTxt.DefaultFont = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryIDTxt.DefaultFont = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryIDTxt.DefaultText = "";
             this.categoryIDTxt.FillColor = System.Drawing.Color.White;
             this.categoryIDTxt.HideSelection = true;
@@ -235,9 +236,10 @@
             this.categoryIDTxt.IconRight = null;
             this.categoryIDTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.categoryIDTxt.Lines = new string[0];
-            this.categoryIDTxt.Location = new System.Drawing.Point(111, 98);
+            this.categoryIDTxt.Location = new System.Drawing.Point(113, 97);
+            this.categoryIDTxt.MaximumSize = new System.Drawing.Size(376, 44);
             this.categoryIDTxt.MaxLength = 32767;
-            this.categoryIDTxt.MinimumSize = new System.Drawing.Size(1, 1);
+            this.categoryIDTxt.MinimumSize = new System.Drawing.Size(376, 44);
             this.categoryIDTxt.Modified = false;
             this.categoryIDTxt.Multiline = false;
             this.categoryIDTxt.Name = "categoryIDTxt";
@@ -264,7 +266,7 @@
             this.categoryIDTxt.Padding = new System.Windows.Forms.Padding(3);
             this.categoryIDTxt.PasswordChar = '\0';
             this.categoryIDTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.categoryIDTxt.PlaceholderText = "Auto Generated";
+            this.categoryIDTxt.PlaceholderText = "AUTO GENERATED";
             this.categoryIDTxt.ReadOnly = true;
             this.categoryIDTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.categoryIDTxt.SelectedText = "";
@@ -273,12 +275,12 @@
             this.categoryIDTxt.ShortcutsEnabled = true;
             this.categoryIDTxt.Size = new System.Drawing.Size(376, 44);
             this.categoryIDTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.categoryIDTxt.TabIndex = 1;
+            this.categoryIDTxt.TabIndex = 4;
             this.categoryIDTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.categoryIDTxt.TextMarginBottom = 0;
             this.categoryIDTxt.TextMarginLeft = 3;
             this.categoryIDTxt.TextMarginTop = 0;
-            this.categoryIDTxt.TextPlaceholder = "Auto Generated";
+            this.categoryIDTxt.TextPlaceholder = "AUTO GENERATED";
             this.categoryIDTxt.UseSystemPasswordChar = false;
             this.categoryIDTxt.WordWrap = true;
             // 
@@ -287,7 +289,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(106, 154);
+            this.label2.Location = new System.Drawing.Point(108, 153);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 28);
             this.label2.TabIndex = 21;
@@ -298,7 +300,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(106, 67);
+            this.label6.Location = new System.Drawing.Point(108, 66);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 28);
             this.label6.TabIndex = 21;
