@@ -55,6 +55,15 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuButton">
       <HintPath>..\..\..\Downloads\BACKUP\.net\.net frameworks\BunifuCrack-main\Bunifu.UI.WinForms.BunifuButton.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDataGridView">
+      <HintPath>..\..\..\Downloads\BACKUP\.net\.net frameworks\BunifuCrack-main\Bunifu.UI.WinForms.BunifuDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDatePicker">
+      <HintPath>..\..\..\Downloads\BACKUP\.net\.net frameworks\BunifuCrack-main\Bunifu.UI.WinForms.BunifuDatePicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
+      <HintPath>..\..\..\Downloads\BACKUP\.net\.net frameworks\BunifuCrack-main\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuTextbox">
       <HintPath>..\..\..\Downloads\BACKUP\.net\.net frameworks\BunifuCrack-main\Bunifu.UI.WinForms.BunifuTextbox.dll</HintPath>
     </Reference>
@@ -96,6 +105,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin Side\Category\Edit Category.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Category\Edit Category.Designer.cs">
+      <DependentUpon>Edit Category.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin Side\Category\Manage Category.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,6 +129,48 @@
     <Compile Include="Admin Side\Dashboard Inventory.Designer.cs">
       <DependentUpon>Dashboard Inventory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin Side\Items\Edit Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Items\Edit Items.Designer.cs">
+      <DependentUpon>Edit Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Items\Manage Items.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Items\Manage Items.Designer.cs">
+      <DependentUpon>Manage Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Items\New Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Items\New Items.Designer.cs">
+      <DependentUpon>New Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Sales Report\Manage Sales Report.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Sales Report\Manage Sales Report.Designer.cs">
+      <DependentUpon>Manage Sales Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Sales\Manage Sales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Sales\Manage Sales.Designer.cs">
+      <DependentUpon>Manage Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Stocks\Manage Stock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Stocks\Manage Stock.Designer.cs">
+      <DependentUpon>Manage Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Users\Manage User Staff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Users\Manage User Staff.Designer.cs">
+      <DependentUpon>Manage User Staff.cs</DependentUpon>
+    </Compile>
     <Compile Include="dbModule.cs" />
     <Compile Include="Dashboard Owner.cs">
       <SubType>Form</SubType>
@@ -121,8 +178,77 @@
     <Compile Include="Dashboard Owner.Designer.cs">
       <DependentUpon>Dashboard Owner.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forgot Password\Forgot Password.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forgot Password\Forgot Password.Designer.cs">
+      <DependentUpon>Forgot Password.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forgot Password\New Password.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forgot Password\New Password.Designer.cs">
+      <DependentUpon>New Password.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login Form.Designer.cs">
+      <DependentUpon>Login Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages Boxes\Field Required.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messages Boxes\Field Required.Designer.cs">
+      <DependentUpon>Field Required.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages Boxes\Forgot Password msgbox\Username Exists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messages Boxes\Forgot Password msgbox\Username Exists.Designer.cs">
+      <DependentUpon>Username Exists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages Boxes\Forgot Password msgbox\UsernameNotFound.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messages Boxes\Forgot Password msgbox\UsernameNotFound.Designer.cs">
+      <DependentUpon>UsernameNotFound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages Boxes\Forgot Password msgbox\UsernameRequired.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messages Boxes\Forgot Password msgbox\UsernameRequired.Designer.cs">
+      <DependentUpon>UsernameRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages Boxes\Invalid Account Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messages Boxes\Invalid Account Staff.Designer.cs">
+      <DependentUpon>Invalid Account Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages Boxes\Invalid Account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messages Boxes\Invalid Account.Designer.cs">
+      <DependentUpon>Invalid Account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages Boxes\ownerLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messages Boxes\ownerLogin.Designer.cs">
+      <DependentUpon>ownerLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages Boxes\Staff Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messages Boxes\Staff Login.Designer.cs">
+      <DependentUpon>Staff Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Admin Side\Category\Edit Category.resx">
+      <DependentUpon>Edit Category.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Category\Manage Category.resx">
       <DependentUpon>Manage Category.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,8 +258,62 @@
     <EmbeddedResource Include="Admin Side\Dashboard Inventory.resx">
       <DependentUpon>Dashboard Inventory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Items\Edit Items.resx">
+      <DependentUpon>Edit Items.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Items\Manage Items.resx">
+      <DependentUpon>Manage Items.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Items\New Items.resx">
+      <DependentUpon>New Items.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Sales Report\Manage Sales Report.resx">
+      <DependentUpon>Manage Sales Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Sales\Manage Sales.resx">
+      <DependentUpon>Manage Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Stocks\Manage Stock.resx">
+      <DependentUpon>Manage Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Users\Manage User Staff.resx">
+      <DependentUpon>Manage User Staff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard Owner.resx">
       <DependentUpon>Dashboard Owner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forgot Password\Forgot Password.resx">
+      <DependentUpon>Forgot Password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forgot Password\New Password.resx">
+      <DependentUpon>New Password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login Form.resx">
+      <DependentUpon>Login Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages Boxes\Field Required.resx">
+      <DependentUpon>Field Required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages Boxes\Forgot Password msgbox\Username Exists.resx">
+      <DependentUpon>Username Exists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages Boxes\Forgot Password msgbox\UsernameNotFound.resx">
+      <DependentUpon>UsernameNotFound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages Boxes\Forgot Password msgbox\UsernameRequired.resx">
+      <DependentUpon>UsernameRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages Boxes\Invalid Account Staff.resx">
+      <DependentUpon>Invalid Account Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages Boxes\Invalid Account.resx">
+      <DependentUpon>Invalid Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages Boxes\ownerLogin.resx">
+      <DependentUpon>ownerLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages Boxes\Staff Login.resx">
+      <DependentUpon>Staff Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -260,7 +440,9 @@
     <None Include="Resources\warning-sign-icon-transparent-ba.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin Side\Items\" />
+    <Folder Include="Notification\" />
+    <Folder Include="Splash page and Loading Screen\" />
+    <Folder Include="Staff Side\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -276,6 +458,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\down-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list.png" />
+    <None Include="Resources\info icon.png" />
+    <None Include="Resources\470051646_583224937412573_4083420680221085625_n.png" />
+    <None Include="Resources\blue-round-information-icon-butt.png" />
+    <None Include="Resources\add.png" />
+    <Content Include="Resources\delete.png" />
+    <None Include="Resources\delete1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
