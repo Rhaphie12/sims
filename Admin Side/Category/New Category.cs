@@ -1,5 +1,6 @@
 ﻿using Guna.UI.WinForms;
 using MySql.Data.MySqlClient;
+using sims.Notification;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,11 @@ namespace sims.Admin_Side.Category
             public int CategoryID { get; set; }
             public string Category { get; set; }
         }
+        public void Alert(string msg)
+        {
+            Category_Added frm = new Category_Added();
+            frm.showalert(msg);
+        }
 
         private void New_Category_Load(object sender, EventArgs e)
         {
@@ -54,7 +60,7 @@ namespace sims.Admin_Side.Category
                 try
                 {
                     conn.Open();
-                    string queryCategories = "SELECT Category_ID, Category_Name FROM categories";
+                    string queryCategories = "SELECT * FROM categories";
                     using (MySqlCommand commandCategories = new MySqlCommand(queryCategories, conn))
                     using (MySqlDataAdapter adapterCategories = new MySqlDataAdapter(commandCategories))
                     {
@@ -81,13 +87,10 @@ namespace sims.Admin_Side.Category
 
             string categoryID = categoryIDTxt.Text.Trim();
             string categoryName = categoryNameTxt.Text.Trim();
+            string categoryDescription = categoryDescriptionTxt.Text.Trim();
 
-            if (string.IsNullOrEmpty(categoryName))
+            if (string.IsNullOrEmpty(categoryName) || string.IsNullOrEmpty(categoryDescription))
             {
-                //MessageBox.Show("Category name are required!",
-                //                "Information Required",
-                //                MessageBoxButtons.OK,
-                //                MessageBoxIcon.Warning);
                 new Messages_Boxes.Field_Required().Show();
                 return;
             }
@@ -97,18 +100,21 @@ namespace sims.Admin_Side.Category
                 try
                 {
                     conn.Open();
-                    string query = "INSERT INTO categories (Category_ID, Category_Name) VALUES (@Category_ID, @Category_Name)";
-                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    string query = "INSERT INTO categories (Category_ID, Category_Name, Category_Description) VALUES (@Category_ID, @Category_Name, @Category_Description)";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        command.Parameters.AddWithValue("@Category_ID", categoryID);
-                        command.Parameters.AddWithValue("@Category_Name", categoryName);
-                        command.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@Category_ID", categoryID);
+                        cmd.Parameters.AddWithValue("@Category_Name", categoryName);
+                        cmd.Parameters.AddWithValue("@Category_Description", categoryDescription);
+                        cmd.ExecuteNonQuery();
                         MessageBox.Show("Category added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         categoryNameTxt.Clear();
+                        categoryDescriptionTxt.Clear();
                         GenerateRandomItemID();
                         Populate();
                         AddItemPanel(categoryName);
                         categoryNameTxt.Focus();
+                        this.Alert("Category Added Successfully");
                     }
                 }
                 catch (Exception ex)

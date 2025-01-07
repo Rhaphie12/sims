@@ -1,5 +1,7 @@
 ﻿using Guna.UI.WinForms;
 using MySql.Data.MySqlClient;
+using sims.Admin_Side.Items;
+using sims.Notification;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,8 +19,8 @@ namespace sims.Admin_Side.Category
 {
     public partial class Manage_Category : UserControl
     {
-        private DataTable itemsTable;
-        private BindingSource itemsBindingSource = new BindingSource();
+        private DataTable originalDataTable;
+        private BindingSource bindingSource = new BindingSource();
 
         public Manage_Category()
         {
@@ -40,11 +42,17 @@ namespace sims.Admin_Side.Category
             New_Category newCategory = new New_Category(this, this);
             newCategory.Show();
         }
+        public void Alert(string msg)
+        {
+            Category_Deleted frm = new Category_Deleted();
+            frm.showalert(msg);
+        }
 
         private void Manage_Category_Load(object sender, EventArgs e)
         {
             LoadData();
             LoadItemsPanel();
+            searchFunction();
         }
 
         private void LoadData()
@@ -85,36 +93,76 @@ namespace sims.Admin_Side.Category
                 MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void ApplyFilter(DataTable dataTable, BindingSource bindingSource, string searchText)
+        private void searchFunction()
         {
-            if (dataTable != null)
+            dbModule db = new dbModule();
+            string query = "SELECT * FROM categories";
+            try
             {
-                try
+                using (MySqlConnection conn = db.GetConnection())
                 {
-                    if (string.IsNullOrEmpty(searchText))
-                    {
-                        bindingSource.RemoveFilter();
-                    }
-                    else
-                    {
-                        string filterExpression = string.Join(" OR ", dataTable.Columns
-                            .OfType<DataColumn>()
-                            .Select(column => $"CONVERT([{column.ColumnName}], 'System.String') LIKE '%{searchText}%'"));
+                    conn.Open();
 
-                        bindingSource.Filter = filterExpression;
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        originalDataTable = dataTable;
+                        bindingSource.DataSource = originalDataTable;
+                        recentlyAddedDgv.DataSource = bindingSource;
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error filtering data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         private void searchCategoryTxt_TextChanged(object sender, EventArgs e)
         {
+            if (originalDataTable == null) return;
             string searchText = searchCategoryTxt.Text.Trim();
-            ApplyFilter(itemsTable, itemsBindingSource, searchText);
+            DataView dv = originalDataTable.DefaultView;
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                dv.RowFilter = "";
+                ResetFilters();
+            }
+            else
+            {
+                dv.RowFilter = $"Category_Name LIKE '%{searchText}%'";
+            }
+
+            recentlyAddedDgv.DataSource = dv.ToTable();
+        }
+        private void ResetFilters()
+        {
+            try
+            {
+                string query = "SELECT * FROM categories";
+                dbModule db = new dbModule();
+
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            recentlyAddedDgv.DataSource = dataTable;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error resetting filters: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadItemsPanel()
@@ -151,7 +199,7 @@ namespace sims.Admin_Side.Category
         {
             GunaElipsePanel productPanel = new GunaElipsePanel
             {
-                Width = 280,
+                Width = 395,
                 Height = 100,
                 Radius = 8,
                 BackColor = Color.FromArgb(222, 196, 125),
@@ -160,7 +208,7 @@ namespace sims.Admin_Side.Category
                     CategoryID = categoryID,
                     Category = category
                 },
-                Margin = new Padding(73, 3, 3, 3) // Adds a left margin of 73 pixels
+                //Margin = new Padding(73, 3, 3, 3) // Adds a left margin of 73 pixels
             };
 
 
@@ -195,7 +243,8 @@ namespace sims.Admin_Side.Category
                     DeleteRecord(selectedCategoryId);
                     recentlyAddedDgv.Rows.RemoveAt(recentlyAddedDgv.SelectedRows[0].Index);
                     DeleteCategoryPanel(selectedCategoryId);
-                    MessageBox.Show("Record successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Category successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Alert("Category successfully deleted.");
                     LoadData();
                 }
                 catch (Exception ex)
@@ -239,5 +288,31 @@ namespace sims.Admin_Side.Category
             }
         }
 
+        private void editCategoryBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to update this record?", "Update Category?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    int selectedRowIndex = recentlyAddedDgv.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = recentlyAddedDgv.Rows[selectedRowIndex];
+                    string itemID = selectedRow.Cells["Category_ID"]?.Value?.ToString();
+                    if (!string.IsNullOrEmpty(itemID))
+                    {
+                        Edit_Category updateCategoryForm = new Edit_Category(itemID, this, this);
+                        updateCategoryForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Item_ID. Unable to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

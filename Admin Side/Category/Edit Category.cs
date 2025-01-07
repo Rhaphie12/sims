@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Guna.UI.WinForms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static sims.Admin_Side.Category.New_Category;
 
 namespace sims.Admin_Side.Category
 {
@@ -17,9 +19,6 @@ namespace sims.Admin_Side.Category
         private string _categoryID;
         private Manage_Category dashboardForm;
         private Manage_Category flow;
-        private int categoryID;
-        private string categoryName;
-        private Manage_Category manage_Category;
 
         public Edit_Category(string categoryID, Manage_Category dashboardForm, Manage_Category flow)
         {
@@ -29,17 +28,10 @@ namespace sims.Admin_Side.Category
             this.flow = flow;
         }
 
-        public Edit_Category(int categoryID, string categoryName, Manage_Category manage_Category)
-        {
-            this.categoryID = categoryID;
-            this.categoryName = categoryName;
-            this.manage_Category = manage_Category;
-        }
-
         private void Edit_Category_Load(object sender, EventArgs e)
         {
             Populate();
-            LoadProductDetails(_categoryID);
+            LoadCategoryDetails(_categoryID);
         }
 
         private void Populate()
@@ -64,11 +56,11 @@ namespace sims.Admin_Side.Category
                 }
             }
         }
-        private void LoadProductDetails(string itemID)
+        private void LoadCategoryDetails(string itemID)
         {
             dbModule db = new dbModule();
-            string query = "SELECT Category_ID, Category_Name " +
-                           "FROM items WHERE Category_ID = @Category_ID";
+            string query = "SELECT Category_ID, Category_Name, Category_Description " +
+                           "FROM categories WHERE Category_ID = @Category_ID";
 
             using (MySqlConnection conn = db.GetConnection())
             {
@@ -83,9 +75,9 @@ namespace sims.Admin_Side.Category
                         {
                             if (reader.Read())
                             {
-                                // Fetch textual data
                                 categoryIDTxt.Text = reader["Category_ID"].ToString();
                                 categoryNameTxt.Text = reader["Category_Name"].ToString();
+                                categoryDescriptionTxt.Text = reader["Category_Description"].ToString();
                             }
                             else
                             {
@@ -95,11 +87,96 @@ namespace sims.Admin_Side.Category
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"An error occurred while fetching categgories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"An error occurred while fetching categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
+
+        private void UpdateProductButton(int categoryID, string itemName)
+        {
+            foreach (Control ctrl in flow.CategoriesPanel.Controls)
+            {
+                if (ctrl is GunaElipsePanel panel && panel.Tag is Categories details)
+                {
+                    if (details.CategoryID == categoryID)
+                    {
+                        // Update the label text inside the panel
+                        foreach (Control innerCtrl in panel.Controls)
+                        {
+                            if (innerCtrl is Label label)
+                            {
+                                label.Text = $"{itemName}";
+                            }
+                        }
+                        return;
+                    }
+                }
+            }
+        }
+
+
+        private void editCategoryBtn_Click(object sender, EventArgs e)
+        {
+            editCategory();
+        }
+
+        private void editCategory()
+        {
+            dbModule db = new dbModule();
+            MySqlConnection conn = db.GetConnection();
+            MySqlCommand cmd = db.GetCommand();
+
+            string categoryID = categoryIDTxt.Text.Trim();
+            string categoryName = categoryNameTxt.Text.Trim();
+            string categoryDescription = categoryDescriptionTxt.Text.Trim();
+
+            if (string.IsNullOrEmpty(categoryName) || string.IsNullOrEmpty(categoryDescription))
+            {
+                new Messages_Boxes.Field_Required().Show();
+                return;
+            }
+
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "UPDATE categories SET Category_Name = @Category_Name, Category_Description = @Category_Description WHERE Category_ID = @Category_ID";
+                cmd.Parameters.AddWithValue("@Category_ID", categoryID);
+                cmd.Parameters.AddWithValue("@Category_Name", categoryName);
+                cmd.Parameters.AddWithValue("@Category_Description", categoryDescription);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Category updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    categoryNameTxt.Clear();
+                    categoryDescriptionTxt.Clear();
+                    Populate();
+                    UpdateProductButton(Convert.ToInt32(categoryID), categoryName);
+                }
+                else
+                {
+                    MessageBox.Show("Category not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating category: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                cmd.Dispose();
+                conn.Dispose();
+            }
+        }
+
         private void backNewCatBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
