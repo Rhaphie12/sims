@@ -61,6 +61,9 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuDatePicker">
       <HintPath>..\..\..\Downloads\BACKUP\.net\.net frameworks\BunifuCrack-main\Bunifu.UI.WinForms.BunifuDatePicker.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDropdown">
+      <HintPath>..\..\..\Downloads\BACKUP\.net\.net frameworks\BunifuCrack-main\Bunifu.UI.WinForms.BunifuDropdown.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
       <HintPath>..\..\..\Downloads\BACKUP\.net\.net frameworks\BunifuCrack-main\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
     </Reference>
@@ -171,6 +174,12 @@
     <Compile Include="Admin Side\Users\Manage User Staff.Designer.cs">
       <DependentUpon>Manage User Staff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin Side\Users\New Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Users\New Staff.Designer.cs">
+      <DependentUpon>New Staff.cs</DependentUpon>
+    </Compile>
     <Compile Include="dbModule.cs" />
     <Compile Include="Dashboard Owner.cs">
       <SubType>Form</SubType>
@@ -244,6 +253,30 @@
     <Compile Include="Messages Boxes\Staff Login.Designer.cs">
       <DependentUpon>Staff Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notification\Category notification\Category_Added.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification\Category notification\Category_Added.Designer.cs">
+      <DependentUpon>Category_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notification\Category notification\Category_Deleted.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification\Category notification\Category_Deleted.Designer.cs">
+      <DependentUpon>Category_Deleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notification\Item notification\Item_Added.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification\Item notification\Item_Added.Designer.cs">
+      <DependentUpon>Item_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notification\Item notification\Item_Deleted.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification\Item notification\Item_Deleted.Designer.cs">
+      <DependentUpon>Item_Deleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Admin Side\Category\Edit Category.resx">
@@ -278,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Users\Manage User Staff.resx">
       <DependentUpon>Manage User Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Users\New Staff.resx">
+      <DependentUpon>New Staff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard Owner.resx">
       <DependentUpon>Dashboard Owner.cs</DependentUpon>
@@ -314,6 +350,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Messages Boxes\Staff Login.resx">
       <DependentUpon>Staff Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification\Category notification\Category_Added.resx">
+      <DependentUpon>Category_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification\Category notification\Category_Deleted.resx">
+      <DependentUpon>Category_Deleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification\Item notification\Item_Added.resx">
+      <DependentUpon>Item_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification\Item notification\Item_Deleted.resx">
+      <DependentUpon>Item_Deleted.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -440,7 +488,6 @@
     <None Include="Resources\warning-sign-icon-transparent-ba.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Notification\" />
     <Folder Include="Splash page and Loading Screen\" />
     <Folder Include="Staff Side\" />
   </ItemGroup>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardOwner));
             this.PanelMenu = new System.Windows.Forms.Panel();
             this.UserBtn = new FontAwesome.Sharp.IconButton();
             this.SalesReportBtn = new FontAwesome.Sharp.IconButton();
@@ -91,7 +92,7 @@
             this.UserBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.UserBtn.IconSize = 40;
             this.UserBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.UserBtn.Location = new System.Drawing.Point(0, 492);
+            this.UserBtn.Location = new System.Drawing.Point(0, 486);
             this.UserBtn.Name = "UserBtn";
             this.UserBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.UserBtn.Size = new System.Drawing.Size(299, 58);
@@ -114,7 +115,7 @@
             this.SalesReportBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.SalesReportBtn.IconSize = 40;
             this.SalesReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesReportBtn.Location = new System.Drawing.Point(0, 434);
+            this.SalesReportBtn.Location = new System.Drawing.Point(0, 428);
             this.SalesReportBtn.Name = "SalesReportBtn";
             this.SalesReportBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.SalesReportBtn.Size = new System.Drawing.Size(299, 58);
@@ -137,7 +138,7 @@
             this.SalesBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.SalesBtn.IconSize = 40;
             this.SalesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesBtn.Location = new System.Drawing.Point(0, 376);
+            this.SalesBtn.Location = new System.Drawing.Point(0, 370);
             this.SalesBtn.Name = "SalesBtn";
             this.SalesBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.SalesBtn.Size = new System.Drawing.Size(299, 58);
@@ -155,7 +156,7 @@
             this.InventoryPanelSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.InventoryPanelSubMenu.Location = new System.Drawing.Point(0, 256);
             this.InventoryPanelSubMenu.Name = "InventoryPanelSubMenu";
-            this.InventoryPanelSubMenu.Size = new System.Drawing.Size(299, 120);
+            this.InventoryPanelSubMenu.Size = new System.Drawing.Size(299, 114);
             this.InventoryPanelSubMenu.TabIndex = 0;
             // 
             // StocksBtn
@@ -436,6 +437,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.PanelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DashboardOwner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Dashboard (Owner)";
