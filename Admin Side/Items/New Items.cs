@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bunifu.UI.WinForms;
+using sims.Notification;
 
 namespace sims.Admin_Side.Items
 {
@@ -36,6 +37,11 @@ namespace sims.Admin_Side.Items
                 return ms.ToArray();
             }
         }
+        public void Alert(string msg)
+        {
+            Item_Added frm = new Item_Added();
+            frm.showalert(msg);
+        }
 
         private void New_Items_Load(object sender, EventArgs e)
         {
@@ -43,6 +49,8 @@ namespace sims.Admin_Side.Items
             GenerateRandomItemID();
             LoadComboBoxData();
             CalculateTotalValue();
+            UnitType();
+            WeightUnit();
         }
         private void ItemsCount()
         {
@@ -100,9 +108,10 @@ namespace sims.Admin_Side.Items
                 }
             }
         }
+        private Dictionary<string, (int CategoryID, string Description)> categoryData = new Dictionary<string, (int, string)>();
         private void LoadComboBoxData()
         {
-            string query = "SELECT Category_Name FROM categories";
+            string query = "SELECT Category_ID, Category_Name, Category_Description FROM categories";
             dbModule db = new dbModule();
 
             try
@@ -117,7 +126,69 @@ namespace sims.Admin_Side.Items
                         {
                             while (reader.Read())
                             {
-                                categoryCmb.Items.Add(reader["Category_Name"].ToString());
+                                string categoryName = reader["Category_Name"].ToString();
+                                int categoryID = Convert.ToInt32(reader["Category_ID"]);
+                                string categoryDescription = reader["Category_Description"].ToString();
+                                categoryCmb.Items.Add(categoryName);
+                                categoryData[categoryName] = (categoryID, categoryDescription);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UnitType()
+        {
+            string query = "SELECT Unit_Type FROM unittype";
+            dbModule db = new dbModule();
+
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                unitTypeCmb.Items.Add(reader["Unit_Type"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void WeightUnit()
+        {
+            string query = "SELECT Weight_Unit FROM weightunit";
+            dbModule db = new dbModule();
+
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                weightUnitCmb.Items.Add(reader["Weight_Unit"].ToString());
                             }
                         }
                     }
@@ -133,25 +204,20 @@ namespace sims.Admin_Side.Items
         {
             try
             {
-                // Parse the quantity and price from the textboxes
                 if (int.TryParse(itemQuantityTxt.Text, out int quantity) &&
                     decimal.TryParse(itemPriceTxt.Text, out decimal price))
                 {
-                    // Calculate the total value
                     decimal totalValue = quantity * price;
 
-                    // Display the total value in the totalValueTxt textbox
                     totalValueTxt.Text = totalValue.ToString("0.00");
                 }
                 else
                 {
-                    // If parsing fails, clear the totalValueTxt
                     totalValueTxt.Text = string.Empty;
                 }
             }
             catch (Exception ex)
             {
-                // Handle any unexpected errors
                 MessageBox.Show($"An error occurred: {ex.Message}",
                                 "Error",
                                 MessageBoxButtons.OK,
@@ -180,6 +246,8 @@ namespace sims.Admin_Side.Items
             string category = categoryCmb.SelectedItem?.ToString() ?? string.Empty;
             string dateAdded = dateAddedTxt.Text.Trim();
             string itemQuantity = itemQuantityTxt.Text.Trim();
+            string unitType = unitTypeCmb.SelectedItem?.ToString() ?? string.Empty;
+            string weightUnit = weightUnitCmb.SelectedItem?.ToString() ?? string.Empty;
             string itemPrice = itemPriceTxt.Text.Trim();
             string totalValue = totalValueTxt.Text.Trim();
             string itemDescription = itemDescTxt.Text.Trim();
@@ -187,31 +255,24 @@ namespace sims.Admin_Side.Items
 
             // Validation for empty fields
             if (string.IsNullOrEmpty(itemID) || string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(dateAdded) ||
-                string.IsNullOrEmpty(itemQuantity) || string.IsNullOrEmpty(itemPrice) || string.IsNullOrEmpty(totalValue) || string.IsNullOrEmpty(itemDescription))
+                string.IsNullOrEmpty(itemQuantity) || string.IsNullOrEmpty(unitType) || string.IsNullOrEmpty(weightUnit) || string.IsNullOrEmpty(itemPrice) || string.IsNullOrEmpty(totalValue) || string.IsNullOrEmpty(itemDescription))
             {
                 new Messages_Boxes.Field_Required().Show();
                 return;
             }
-
-            // Date format validation - only accepts MM/dd/yyyy format (no time)
-            //if (!DateTime.TryParseExact(dateAdded, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
-            //{
-            //    MessageBox.Show("Please enter the date in the correct format (MM/dd/yyyy).", "Invalid Date Format", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            //string formattedDate = parsedDate.ToString("yyyy-MM-dd");
+            string quantity = itemQuantity + " " + unitType;
             try
             {
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "INSERT INTO items (Item_ID, Item_Name, Category, Date_Added, Item_Quantity, Item_Price, Item_Total, Item_Description, Item_Image) " +
-                    "VALUES (@Item_ID, @Item_name, @Category, @Date_Added, @Item_Quantity, @Item_Price, @Item_Total, @Item_Description, @Item_Image)";
+                cmd.CommandText = "INSERT INTO items (Item_ID, Item_Name, Category, Date_Added, Item_Quantity, Weight_Unit, Item_Price, Item_Total, Item_Description, Item_Image) " +
+                    "VALUES (@Item_ID, @Item_name, @Category, @Date_Added, @Item_Quantity, @Weight_Unit, @Item_Price, @Item_Total, @Item_Description, @Item_Image)";
                 cmd.Parameters.AddWithValue("@Item_ID", itemID);
                 cmd.Parameters.AddWithValue("@Item_name", itemName);
                 cmd.Parameters.AddWithValue("@Category", category);
                 cmd.Parameters.AddWithValue("@Date_Added", dateAdded);
-                cmd.Parameters.AddWithValue("@Item_Quantity", itemQuantity);
+                cmd.Parameters.AddWithValue("@Item_Quantity", quantity);
+                cmd.Parameters.AddWithValue("@Weight_Unit", weightUnit);
                 cmd.Parameters.AddWithValue("@Item_Price", itemPrice);
                 cmd.Parameters.AddWithValue("@Item_Description", itemDescription);
                 cmd.Parameters.AddWithValue("@Item_Total", totalValue);
@@ -229,11 +290,13 @@ namespace sims.Admin_Side.Items
                     itemNameTxt.Clear();
                     categoryCmb.SelectedIndex = -1;
                     itemQuantityTxt.Clear();
+                    unitTypeCmb.SelectedIndex = -1;
                     dateAddedTxt.Clear();
                     itemPriceTxt.Clear();
                     totalValueTxt.Clear();
                     itemDescTxt.Clear();
                     itemImagePic.Image = null;
+                    this.Alert("Item Added Successfully");
                     Populate();
                 }
                 else
@@ -272,7 +335,7 @@ namespace sims.Admin_Side.Items
         {
             ValidateTextBoxForNumbersOnly(dateAddedTxt);
         }
-
+        
         private void itemQuantityTxt_TextChanged(object sender, EventArgs e)
         {
             ValidateTextBoxForNumbersOnly(itemQuantityTxt);
@@ -306,6 +369,31 @@ namespace sims.Admin_Side.Items
                     }
                 }
             }
+        }
+        private void categoryCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (categoryCmb.SelectedItem != null)
+            {
+                string selectedCategory = categoryCmb.SelectedItem.ToString();
+
+                if (categoryData.TryGetValue(selectedCategory, out var categoryDetails))
+                {
+                    int categoryID = categoryDetails.CategoryID;
+                    string categoryDescription = categoryDetails.Description;
+
+                    // Display the category description in the TextBox
+                    itemDescTxt.Text = categoryDescription;
+                }
+                else
+                {
+                    itemDescTxt.Text = string.Empty;
+                }
+            }
+        }
+
+        private void totalInfoBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Item Total is calculated by muliplying Item Quantity and Item Price", "Item Total of Item Quantity and Item Price", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

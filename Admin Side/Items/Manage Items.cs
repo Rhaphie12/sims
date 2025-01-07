@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bunifu.UI.WinForms;
+using sims.Notification;
 
 namespace sims.Admin_Side.Items
 {
@@ -30,6 +31,13 @@ namespace sims.Admin_Side.Items
         {
             get { return itemCountTxt; }
         }
+
+        public void Alert(string msg)
+        {
+            Item_Deleted frm = new Item_Deleted();
+            frm.showalert(msg);
+        }
+
         private void Manage_Items_Load(object sender, EventArgs e)
         {
             Populate();
@@ -88,8 +96,9 @@ namespace sims.Admin_Side.Items
 
         private void searchComboBox()
         {
-            searchCategoryCmb.DropDownStyle = ComboBoxStyle.DropDown;
             searchCategoryCmb.Items.Clear();
+            //searchCategoryCmb.Items.Add("All");
+            //searchCategoryCmb.SelectedIndex = 0;
 
             string query = "SELECT Category_Name FROM categories";
             dbModule db = new dbModule();
@@ -115,10 +124,6 @@ namespace sims.Admin_Side.Items
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                searchCategoryCmb.SelectedIndex = -1;
             }
         }
 
@@ -203,7 +208,8 @@ namespace sims.Admin_Side.Items
                     {
                         DeleteRecord(selectedItemID);
                         itemsDgv.Rows.RemoveAt(selectedRowIndex);
-                        MessageBox.Show("Item successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Item successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Alert("Item successfully deleted.");
                         Populate();
                     }
                     else
@@ -353,6 +359,8 @@ namespace sims.Admin_Side.Items
                 MessageBox.Show("Letters are not allowed!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox.Text = System.Text.RegularExpressions.Regex.Replace(newText, @"[a-zA-Z]", "");
                 textBox.SelectionStart = textBox.Text.Length;
+
+                searchCategoryCmb.SelectedIndex = -1;
             }
         }
     }
