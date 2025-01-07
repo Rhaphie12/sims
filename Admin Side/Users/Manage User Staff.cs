@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace sims.Admin_Side.Users
         public Manage_User_Staff()
         {
             InitializeComponent();
+        }
+
+        private void NewStaffBtn_Click(object sender, EventArgs e)
+        {
+            new New_Staff().Show();
         }
     }
 }
