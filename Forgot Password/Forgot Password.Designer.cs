@@ -63,7 +63,7 @@
             this.ContinueBtn.AnimationHoverSpeed = 0.07F;
             this.ContinueBtn.AnimationSpeed = 0.03F;
             this.ContinueBtn.BackColor = System.Drawing.Color.Transparent;
-            this.ContinueBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.ContinueBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.ContinueBtn.BorderColor = System.Drawing.Color.Black;
             this.ContinueBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ContinueBtn.DialogResult = System.Windows.Forms.DialogResult.None;
@@ -74,8 +74,8 @@
             this.ContinueBtn.ImageSize = new System.Drawing.Size(20, 20);
             this.ContinueBtn.Location = new System.Drawing.Point(434, 246);
             this.ContinueBtn.Name = "ContinueBtn";
-            this.ContinueBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.ContinueBtn.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.ContinueBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.ContinueBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.ContinueBtn.OnHoverForeColor = System.Drawing.Color.White;
             this.ContinueBtn.OnHoverImage = null;
             this.ContinueBtn.OnPressedColor = System.Drawing.Color.Black;
