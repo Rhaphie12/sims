@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard_Inventory));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
@@ -43,14 +46,22 @@
             this.itemsCountTxt = new System.Windows.Forms.Label();
             this.gunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
             this.gunaGroupBox7 = new Guna.UI.WinForms.GunaGroupBox();
-            this.itemButtonsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.gunaGroupBox4 = new Guna.UI.WinForms.GunaGroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.gunaGroupBox6 = new Guna.UI.WinForms.GunaGroupBox();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.gunaGroupBox5 = new Guna.UI.WinForms.GunaGroupBox();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.itemStockDgv = new Guna.UI.WinForms.GunaDataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.gunaGroupBox3.SuspendLayout();
@@ -65,7 +76,11 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.gunaGroupBox5.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemStockDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -258,7 +273,7 @@
             this.gunaGroupBox7.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox7.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox7.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox7.Controls.Add(this.itemButtonsPanel);
+            this.gunaGroupBox7.Controls.Add(this.panel7);
             this.gunaGroupBox7.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox7.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
             this.gunaGroupBox7.LineTop = 0;
@@ -269,21 +284,9 @@
             this.gunaGroupBox7.Radius = 10;
             this.gunaGroupBox7.Size = new System.Drawing.Size(362, 407);
             this.gunaGroupBox7.TabIndex = 117;
-            this.gunaGroupBox7.Text = "Recently Added Items";
+            this.gunaGroupBox7.Text = "Activity Logs";
             this.gunaGroupBox7.TextLocation = new System.Drawing.Point(10, 8);
             this.gunaGroupBox7.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            // 
-            // itemButtonsPanel
-            // 
-            this.itemButtonsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.itemButtonsPanel.AutoScroll = true;
-            this.itemButtonsPanel.BackColor = System.Drawing.Color.White;
-            this.itemButtonsPanel.Location = new System.Drawing.Point(-1, 34);
-            this.itemButtonsPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.itemButtonsPanel.Name = "itemButtonsPanel";
-            this.itemButtonsPanel.Size = new System.Drawing.Size(364, 363);
-            this.itemButtonsPanel.TabIndex = 34;
             // 
             // tableLayoutPanel2
             // 
@@ -361,22 +364,12 @@
             this.gunaGroupBox6.TextLocation = new System.Drawing.Point(10, 8);
             this.gunaGroupBox6.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.Controls.Add(this.gunaGroupBox5);
-            this.panel6.Location = new System.Drawing.Point(10, 118);
-            this.panel6.Margin = new System.Windows.Forms.Padding(0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(802, 299);
-            this.panel6.TabIndex = 119;
-            // 
             // gunaGroupBox5
             // 
             this.gunaGroupBox5.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox5.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox5.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox5.Controls.Add(this.guna2Panel1);
             this.gunaGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox5.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
@@ -390,6 +383,149 @@
             this.gunaGroupBox5.Text = "Stock Overview";
             this.gunaGroupBox5.TextLocation = new System.Drawing.Point(10, 8);
             this.gunaGroupBox5.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Controls.Add(this.cartesianChart1);
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 33);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(802, 258);
+            this.guna2Panel1.TabIndex = 0;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.Controls.Add(this.gunaGroupBox5);
+            this.panel6.Location = new System.Drawing.Point(10, 118);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(802, 299);
+            this.panel6.TabIndex = 119;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.itemStockDgv);
+            this.panel7.Location = new System.Drawing.Point(0, 34);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(362, 365);
+            this.panel7.TabIndex = 0;
+            // 
+            // itemStockDgv
+            // 
+            this.itemStockDgv.AllowUserToAddRows = false;
+            this.itemStockDgv.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.itemStockDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.itemStockDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.itemStockDgv.BackgroundColor = System.Drawing.Color.White;
+            this.itemStockDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.itemStockDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.itemStockDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemStockDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.itemStockDgv.ColumnHeadersHeight = 40;
+            this.itemStockDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemStockDgv.DefaultCellStyle = dataGridViewCellStyle6;
+            this.itemStockDgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itemStockDgv.EnableHeadersVisualStyles = false;
+            this.itemStockDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.itemStockDgv.Location = new System.Drawing.Point(0, 0);
+            this.itemStockDgv.Name = "itemStockDgv";
+            this.itemStockDgv.ReadOnly = true;
+            this.itemStockDgv.RowHeadersVisible = false;
+            this.itemStockDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.itemStockDgv.RowTemplate.Height = 100;
+            this.itemStockDgv.RowTemplate.ReadOnly = true;
+            this.itemStockDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.itemStockDgv.Size = new System.Drawing.Size(362, 365);
+            this.itemStockDgv.TabIndex = 4;
+            this.itemStockDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
+            this.itemStockDgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.itemStockDgv.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.itemStockDgv.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.itemStockDgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.itemStockDgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.itemStockDgv.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.itemStockDgv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.itemStockDgv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.itemStockDgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.itemStockDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemStockDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.itemStockDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.itemStockDgv.ThemeStyle.HeaderStyle.Height = 40;
+            this.itemStockDgv.ThemeStyle.ReadOnly = true;
+            this.itemStockDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.itemStockDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.itemStockDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemStockDgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.itemStockDgv.ThemeStyle.RowsStyle.Height = 100;
+            this.itemStockDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.itemStockDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Staff name";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 122;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Item Name";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 123;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Stock In";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 96;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Stock Out";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 111;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Date";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 73;
+            // 
+            // cartesianChart1
+            // 
+            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartesianChart1.Location = new System.Drawing.Point(0, 0);
+            this.cartesianChart1.Name = "cartesianChart1";
+            this.cartesianChart1.Size = new System.Drawing.Size(802, 258);
+            this.cartesianChart1.TabIndex = 22;
+            this.cartesianChart1.Text = "cartesianChart1";
             // 
             // Dashboard_Inventory
             // 
@@ -419,7 +555,11 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.gunaGroupBox5.ResumeLayout(false);
+            this.guna2Panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.itemStockDgv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -442,10 +582,18 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel5;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox6;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.FlowLayoutPanel itemButtonsPanel;
-        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox5;
         private System.Windows.Forms.Panel panel4;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox4;
+        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox5;
+        private System.Windows.Forms.Panel panel6;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.Panel panel7;
+        private Guna.UI.WinForms.GunaDataGridView itemStockDgv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private LiveCharts.WinForms.CartesianChart cartesianChart1;
     }
 }
