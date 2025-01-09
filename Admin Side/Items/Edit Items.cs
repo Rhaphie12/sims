@@ -22,10 +22,16 @@ namespace sims.Admin_Side.Items
             InitializeComponent();
             _itemID = itemID;
             this.dashboard = dashboard;
-
-            itemQuantityTxt.TextChanged += (s, e) => CalculateTotalValue();
-            itemPriceTxt.TextChanged += (s, e) => CalculateTotalValue();
         }
+        private byte[] ImageToByteArray(Image image)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+
         private void Edit_Items_Load(object sender, EventArgs e)
         {
             Populate();
@@ -87,7 +93,7 @@ namespace sims.Admin_Side.Items
         private void LoadProductDetails(string itemID)
         {
             dbModule db = new dbModule();
-            string query = "SELECT Item_ID, Item_Name, Category, Date_Added, Item_Quantity, Weight_Unit, Item_Price, Item_Total, Item_Description, Item_Image " +
+            string query = "SELECT Item_ID, Item_Name, Category, Item_Description, Item_Image " +
                            "FROM items WHERE Item_ID = @Item_ID";
 
             using (MySqlConnection conn = db.GetConnection())
@@ -106,31 +112,7 @@ namespace sims.Admin_Side.Items
                                 itemIDTxt.Text = reader["Item_ID"].ToString();
                                 itemNameTxt.Text = reader["Item_Name"].ToString();
                                 string categoryValue = reader["Category"].ToString();
-                                dateAddedTxt.Text = reader["Date_Added"].ToString();
-                                string itemQuantityValue = reader["Item_Quantity"].ToString();
-                                string weightUnitValue = reader["Weight_Unit"].ToString();
-                                itemPriceTxt.Text = reader["Item_Price"].ToString();
-                                totalValueTxt.Text = reader["Item_Total"].ToString();
                                 itemDescTxt.Text = reader["Item_Description"].ToString();
-
-                                if (!string.IsNullOrEmpty(itemQuantityValue))
-                                {
-                                    string[] parts = itemQuantityValue.Split(' ');
-                                    if (parts.Length == 2)
-                                    {
-                                        itemQuantityTxt.Text = parts[0];
-                                        string unitType = parts[1];  
-                                        if (!unitTypeCmb.Items.Contains(unitType))
-                                        {
-                                            unitTypeCmb.Items.Add(unitType);
-                                        }
-                                        unitTypeCmb.SelectedItem = unitType;
-                                    }
-                                    else
-                                    {
-                                        itemQuantityTxt.Text = itemQuantityValue;
-                                    }
-                                }
 
                                 if (!string.IsNullOrEmpty(categoryValue))
                                 {
@@ -139,16 +121,6 @@ namespace sims.Admin_Side.Items
                                     {
                                         categoryCmb.Items.Add(categoryValue);
                                         categoryCmb.SelectedItem = categoryValue;
-                                    }
-                                }
-
-                                if (!string.IsNullOrEmpty(weightUnitValue))
-                                {
-                                    weightUnitCmb.SelectedItem = weightUnitValue;
-                                    if (!weightUnitCmb.Items.Contains(weightUnitValue))
-                                    {
-                                        weightUnitCmb.Items.Add(weightUnitValue);
-                                        weightUnitCmb.SelectedItem = weightUnitValue;
                                     }
                                 }
 
@@ -179,31 +151,6 @@ namespace sims.Admin_Side.Items
             }
         }
 
-        private void CalculateTotalValue()
-        {
-            try
-            {
-                if (int.TryParse(itemQuantityTxt.Text, out int quantity) &&
-                    decimal.TryParse(itemPriceTxt.Text, out decimal price))
-                {
-                    decimal totalValue = quantity * price;
-
-                    totalValueTxt.Text = totalValue.ToString("0.00");
-                }
-                else
-                {
-                    totalValueTxt.Text = string.Empty;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}",
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-        }
-
         private void EditItemBtn_Click(object sender, EventArgs e)
         {
             UpdateItem();
@@ -218,29 +165,46 @@ namespace sims.Admin_Side.Items
             string itemID = itemIDTxt.Text.Trim();
             string itemName = itemNameTxt.Text.Trim();
             string category = categoryCmb.SelectedItem?.ToString() ?? string.Empty;
-            string dateAdded = dateAddedTxt.Text.Trim();
-            string itemQuantity = itemQuantityTxt.Text.Trim();
-            string unitType = unitTypeCmb.SelectedItem?.ToString() ?? string.Empty;
-            string weightUnit = weightUnitCmb.SelectedItem?.ToString() ?? string.Empty;
-            string itemPrice = itemPriceTxt.Text.Trim();
             string itemDescription = itemDescTxt.Text.Trim();
 
             try
             {
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "UPDATE items SET Item_name = @Item_name, Category = @Category, Date_Added = @Date_Added, " +
-                                  "Item_Quantity = @Item_Quantity, Weight_Unit = @Weight_Unit, Item_Price = @Item_Price, Item_Description = @Item_Description " +
+                cmd.CommandText = "UPDATE items SET Item_name = @Item_name, Category = @Category, " +
+                                  "Item_Description = @Item_Description, Item_Image = @Item_Image " +
                                   "WHERE Item_ID = @Item_ID";
 
                 cmd.Parameters.AddWithValue("@Item_ID", itemID);
                 cmd.Parameters.AddWithValue("@Item_name", itemName);
                 cmd.Parameters.AddWithValue("@Category", category);
-                cmd.Parameters.AddWithValue("@Date_Added", dateAdded);
-                cmd.Parameters.AddWithValue("@Item_Quantity", itemQuantity);
-                cmd.Parameters.AddWithValue("@Weight_Unit", weightUnit);
-                cmd.Parameters.AddWithValue("@Item_Price", itemPrice);
                 cmd.Parameters.AddWithValue("@Item_Description", itemDescription);
+
+                if (itemImagePic.Image != null)
+                {
+                    try
+                    {
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            using (Bitmap bitmap = new Bitmap(itemImagePic.Image)) // Clone to avoid locking issues
+                            {
+                                bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png); // Use a specific format
+                                byte[] imageBytes = ms.ToArray();
+                                cmd.Parameters.AddWithValue("@Item_Image", imageBytes);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error processing image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmd.Parameters.AddWithValue("@Item_Image", DBNull.Value); // Set to NULL on failure
+                    }
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Item_Image", DBNull.Value); // No image to save
+                }
+
 
                 int rowsAffected = cmd.ExecuteNonQuery();
 
@@ -249,14 +213,10 @@ namespace sims.Admin_Side.Items
                     MessageBox.Show("Item updated successfully!", "Item Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
                     itemNameTxt.Clear();
-                    dateAddedTxt.Clear();
                     categoryCmb.SelectedIndex = -1;
-                    itemQuantityTxt.Clear();
-                    weightUnitCmb.SelectedIndex = -1;
-                    itemPriceTxt.Clear();
                     itemDescTxt.Clear();
                     itemImagePic.Image = null;
-                    Populate();
+                    Populate(); // Refresh the list of items
                 }
                 else
                 {
@@ -277,6 +237,7 @@ namespace sims.Admin_Side.Items
                 conn.Dispose();
             }
         }
+
         private void backNewItemsBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -285,6 +246,30 @@ namespace sims.Admin_Side.Items
         private void totalInfoBtn_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Item Total is calculated by muliplying Item Quantity and Item Price", "Item Total of Item Quantity and Item Price", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void browseImageBtn_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif|All Files|*.*";
+                openFileDialog.Title = "Select an Image";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string imagePath = openFileDialog.FileName;
+
+                    try
+                    {
+                        itemImagePic.Image = Image.FromFile(imagePath);
+                        itemImagePic.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error loading image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

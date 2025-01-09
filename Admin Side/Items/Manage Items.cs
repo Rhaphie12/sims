@@ -22,6 +22,7 @@ namespace sims.Admin_Side.Items
         {
             InitializeComponent();
         }
+
         public DataGridView ItemsDgv
         {
             get { return itemsDgv; }
@@ -68,6 +69,7 @@ namespace sims.Admin_Side.Items
                 }
             }
         }
+
         private void searchFunction()
         {
             dbModule db = new dbModule();
@@ -158,6 +160,7 @@ namespace sims.Admin_Side.Items
         {
             New_Items newProductForm = new New_Items(this, this);
             newProductForm.Show();
+            ResetFilters();
         }
 
         private void UpdateItemBtn_Click(object sender, EventArgs e)
@@ -271,26 +274,6 @@ namespace sims.Admin_Side.Items
             itemsDgv.DataSource = dv.ToTable();
         }
 
-        private void searchDateTxt_TextChanged(object sender, EventArgs e)
-        {
-            if (originalDataTable == null) return;
-            string searchText = searchDateTxt.Text.Trim();
-            DataView dv = originalDataTable.DefaultView;
-
-            if (string.IsNullOrEmpty(searchText))
-            {
-                dv.RowFilter = "";
-                ResetFilters();
-            }
-            else
-            {
-                dv.RowFilter = $"Date_Added LIKE '%{searchText}%' OR Category LIKE '%{searchText}%'";
-            }
-
-            itemsDgv.DataSource = dv.ToTable();
-            ValidateTextBoxForNumbersOnly(searchDateTxt);
-        }
-
         private void searchCategoryCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedCategory = searchCategoryCmb.SelectedItem?.ToString();
@@ -324,6 +307,8 @@ namespace sims.Admin_Side.Items
 
         private void ResetFilters()
         {
+            searchCategoryCmb.SelectedIndex = -1;
+
             try
             {
                 string query = "SELECT * FROM items";
@@ -359,9 +344,12 @@ namespace sims.Admin_Side.Items
                 MessageBox.Show("Letters are not allowed!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox.Text = System.Text.RegularExpressions.Regex.Replace(newText, @"[a-zA-Z]", "");
                 textBox.SelectionStart = textBox.Text.Length;
-
-                searchCategoryCmb.SelectedIndex = -1;
             }
+        }
+
+        private void refreshBtn_Click(object sender, EventArgs e)
+        {
+            ResetFilters();
         }
     }
 }

@@ -33,10 +33,6 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -52,8 +48,10 @@
             this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.refreshBtn = new FontAwesome.Sharp.IconButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.searchCategoryCmb = new Guna.UI.WinForms.GunaComboBox();
-            this.searchDateTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.searchItemTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.NewItemBtn = new Guna.UI.WinForms.GunaButton();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
@@ -64,16 +62,8 @@
             this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Weight_Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Item_Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -180,7 +170,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(215, 34);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Soothing Cafe Items";
+            this.label5.Text = "Soothing Café Items";
             // 
             // panel2
             // 
@@ -223,17 +213,55 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.refreshBtn);
             this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.label2);
             this.panel6.Controls.Add(this.label1);
             this.panel6.Controls.Add(this.searchCategoryCmb);
-            this.panel6.Controls.Add(this.searchDateTxt);
             this.panel6.Controls.Add(this.searchItemTxt);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(786, 118);
             this.panel6.TabIndex = 1;
+            // 
+            // refreshBtn
+            // 
+            this.refreshBtn.BackColor = System.Drawing.Color.White;
+            this.refreshBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.refreshBtn.FlatAppearance.BorderSize = 2;
+            this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshBtn.IconChar = FontAwesome.Sharp.IconChar.Redo;
+            this.refreshBtn.IconColor = System.Drawing.Color.Black;
+            this.refreshBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.refreshBtn.IconSize = 20;
+            this.refreshBtn.Location = new System.Drawing.Point(543, 24);
+            this.refreshBtn.Name = "refreshBtn";
+            this.refreshBtn.Size = new System.Drawing.Size(28, 26);
+            this.refreshBtn.TabIndex = 74;
+            this.refreshBtn.UseVisualStyleBackColor = false;
+            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(370, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(171, 28);
+            this.label3.TabIndex = 73;
+            this.label3.Text = "Search by Category";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(73, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(184, 28);
+            this.label1.TabIndex = 73;
+            this.label1.Text = "Search by Item Name";
             // 
             // searchCategoryCmb
             // 
@@ -247,7 +275,7 @@
             this.searchCategoryCmb.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchCategoryCmb.ForeColor = System.Drawing.Color.Black;
             this.searchCategoryCmb.FormattingEnabled = true;
-            this.searchCategoryCmb.Location = new System.Drawing.Point(494, 54);
+            this.searchCategoryCmb.Location = new System.Drawing.Point(375, 55);
             this.searchCategoryCmb.MaximumSize = new System.Drawing.Size(233, 0);
             this.searchCategoryCmb.MinimumSize = new System.Drawing.Size(233, 0);
             this.searchCategoryCmb.Name = "searchCategoryCmb";
@@ -258,82 +286,6 @@
             this.searchCategoryCmb.TabIndex = 72;
             this.searchCategoryCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.searchCategoryCmb.SelectedIndexChanged += new System.EventHandler(this.searchCategoryCmb_SelectedIndexChanged);
-            // 
-            // searchDateTxt
-            // 
-            this.searchDateTxt.AcceptsReturn = false;
-            this.searchDateTxt.AcceptsTab = false;
-            this.searchDateTxt.AnimationSpeed = 200;
-            this.searchDateTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.searchDateTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.searchDateTxt.BackColor = System.Drawing.Color.Transparent;
-            this.searchDateTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("searchDateTxt.BackgroundImage")));
-            this.searchDateTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.searchDateTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.searchDateTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.searchDateTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.searchDateTxt.BorderRadius = 8;
-            this.searchDateTxt.BorderThickness = 2;
-            this.searchDateTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.searchDateTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchDateTxt.DefaultFont = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchDateTxt.DefaultText = "";
-            this.searchDateTxt.FillColor = System.Drawing.Color.White;
-            this.searchDateTxt.HideSelection = true;
-            this.searchDateTxt.IconLeft = null;
-            this.searchDateTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchDateTxt.IconPadding = 10;
-            this.searchDateTxt.IconRight = null;
-            this.searchDateTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchDateTxt.Lines = new string[0];
-            this.searchDateTxt.Location = new System.Drawing.Point(255, 53);
-            this.searchDateTxt.MaximumSize = new System.Drawing.Size(233, 40);
-            this.searchDateTxt.MaxLength = 32767;
-            this.searchDateTxt.MinimumSize = new System.Drawing.Size(233, 40);
-            this.searchDateTxt.Modified = false;
-            this.searchDateTxt.Multiline = false;
-            this.searchDateTxt.Name = "searchDateTxt";
-            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchDateTxt.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.searchDateTxt.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchDateTxt.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties4.FillColor = System.Drawing.Color.White;
-            stateProperties4.ForeColor = System.Drawing.Color.Empty;
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchDateTxt.OnIdleState = stateProperties4;
-            this.searchDateTxt.Padding = new System.Windows.Forms.Padding(3);
-            this.searchDateTxt.PasswordChar = '\0';
-            this.searchDateTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.searchDateTxt.PlaceholderText = "Search by Date Added";
-            this.searchDateTxt.ReadOnly = false;
-            this.searchDateTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.searchDateTxt.SelectedText = "";
-            this.searchDateTxt.SelectionLength = 0;
-            this.searchDateTxt.SelectionStart = 0;
-            this.searchDateTxt.ShortcutsEnabled = true;
-            this.searchDateTxt.Size = new System.Drawing.Size(233, 40);
-            this.searchDateTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.searchDateTxt.TabIndex = 70;
-            this.searchDateTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.searchDateTxt.TextMarginBottom = 0;
-            this.searchDateTxt.TextMarginLeft = 3;
-            this.searchDateTxt.TextMarginTop = 0;
-            this.searchDateTxt.TextPlaceholder = "Search by Date Added";
-            this.searchDateTxt.UseSystemPasswordChar = false;
-            this.searchDateTxt.WordWrap = true;
-            this.searchDateTxt.TextChanged += new System.EventHandler(this.searchDateTxt_TextChanged);
             // 
             // searchItemTxt
             // 
@@ -362,33 +314,33 @@
             this.searchItemTxt.IconRight = null;
             this.searchItemTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.searchItemTxt.Lines = new string[0];
-            this.searchItemTxt.Location = new System.Drawing.Point(16, 53);
+            this.searchItemTxt.Location = new System.Drawing.Point(78, 53);
             this.searchItemTxt.MaximumSize = new System.Drawing.Size(233, 40);
             this.searchItemTxt.MaxLength = 32767;
             this.searchItemTxt.MinimumSize = new System.Drawing.Size(233, 40);
             this.searchItemTxt.Modified = false;
             this.searchItemTxt.Multiline = false;
             this.searchItemTxt.Name = "searchItemTxt";
-            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties5.FillColor = System.Drawing.Color.Empty;
-            stateProperties5.ForeColor = System.Drawing.Color.Empty;
-            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchItemTxt.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.searchItemTxt.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties7.FillColor = System.Drawing.Color.Empty;
-            stateProperties7.ForeColor = System.Drawing.Color.Empty;
-            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchItemTxt.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties8.FillColor = System.Drawing.Color.White;
-            stateProperties8.ForeColor = System.Drawing.Color.Empty;
-            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchItemTxt.OnIdleState = stateProperties8;
+            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchItemTxt.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.searchItemTxt.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchItemTxt.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchItemTxt.OnIdleState = stateProperties4;
             this.searchItemTxt.Padding = new System.Windows.Forms.Padding(3);
             this.searchItemTxt.PasswordChar = '\0';
             this.searchItemTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -462,7 +414,7 @@
             this.gunaGroupBox2.Radius = 10;
             this.gunaGroupBox2.Size = new System.Drawing.Size(1170, 476);
             this.gunaGroupBox2.TabIndex = 47;
-            this.gunaGroupBox2.Text = "Manage Items";
+            this.gunaGroupBox2.Text = "Soothing Café Items";
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 13);
             this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
@@ -546,7 +498,7 @@
             this.itemsDgv.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.itemsDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.itemsDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.itemsDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.itemsDgv.BackgroundColor = System.Drawing.Color.White;
             this.itemsDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.itemsDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -559,18 +511,13 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.itemsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.itemsDgv.ColumnHeadersHeight = 58;
+            this.itemsDgv.ColumnHeadersHeight = 40;
             this.itemsDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Item_ID,
             this.Column2,
             this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Weight_Unit,
-            this.Column6,
-            this.Item_Total,
             this.Column7,
-            this.Column8});
+            this.Item_Image});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -587,7 +534,7 @@
             this.itemsDgv.ReadOnly = true;
             this.itemsDgv.RowHeadersVisible = false;
             this.itemsDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.itemsDgv.RowTemplate.Height = 40;
+            this.itemsDgv.RowTemplate.Height = 100;
             this.itemsDgv.RowTemplate.ReadOnly = true;
             this.itemsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.itemsDgv.Size = new System.Drawing.Size(1147, 351);
@@ -605,13 +552,13 @@
             this.itemsDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemsDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.itemsDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.itemsDgv.ThemeStyle.HeaderStyle.Height = 58;
+            this.itemsDgv.ThemeStyle.HeaderStyle.Height = 40;
             this.itemsDgv.ThemeStyle.ReadOnly = true;
             this.itemsDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.itemsDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.itemsDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemsDgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.itemsDgv.ThemeStyle.RowsStyle.Height = 40;
+            this.itemsDgv.ThemeStyle.RowsStyle.Height = 100;
             this.itemsDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.itemsDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
@@ -621,7 +568,7 @@
             this.Item_ID.HeaderText = "Item ID";
             this.Item_ID.Name = "Item_ID";
             this.Item_ID.ReadOnly = true;
-            this.Item_ID.Width = 83;
+            this.Item_ID.Visible = false;
             // 
             // Column2
             // 
@@ -629,7 +576,6 @@
             this.Column2.HeaderText = "Item Name";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 113;
             // 
             // Column3
             // 
@@ -637,47 +583,6 @@
             this.Column3.HeaderText = "Category";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 110;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Date_Added";
-            this.Column4.HeaderText = "Date Added";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 120;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Item_Quantity";
-            this.Column5.HeaderText = "Item Quantity";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 131;
-            // 
-            // Weight_Unit
-            // 
-            this.Weight_Unit.DataPropertyName = "Weight_Unit";
-            this.Weight_Unit.HeaderText = "Weight Unit";
-            this.Weight_Unit.Name = "Weight_Unit";
-            this.Weight_Unit.ReadOnly = true;
-            this.Weight_Unit.Width = 116;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Item_Price";
-            this.Column6.HeaderText = "Item Price";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 104;
-            // 
-            // Item_Total
-            // 
-            this.Item_Total.DataPropertyName = "Item_Total";
-            this.Item_Total.HeaderText = "Item Total";
-            this.Item_Total.Name = "Item_Total";
-            this.Item_Total.ReadOnly = true;
-            this.Item_Total.Width = 105;
             // 
             // Column7
             // 
@@ -685,51 +590,18 @@
             this.Column7.HeaderText = "Item Description";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
-            this.Column7.Width = 150;
             // 
-            // Column8
+            // Item_Image
             // 
-            this.Column8.DataPropertyName = "Item_Image";
-            this.Column8.HeaderText = "Item Image";
-            this.Column8.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column8.Width = 116;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(11, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 28);
-            this.label1.TabIndex = 73;
-            this.label1.Text = "Search by Item Name";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(250, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(192, 28);
-            this.label2.TabIndex = 73;
-            this.label2.Text = "Search by Date Added";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(489, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 28);
-            this.label3.TabIndex = 73;
-            this.label3.Text = "Search by Category";
+            this.Item_Image.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Item_Image.DataPropertyName = "Item_Image";
+            this.Item_Image.HeaderText = "Item Image";
+            this.Item_Image.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Item_Image.Name = "Item_Image";
+            this.Item_Image.ReadOnly = true;
+            this.Item_Image.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Item_Image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Item_Image.Width = 127;
             // 
             // Manage_Items
             // 
@@ -780,22 +652,16 @@
         private Guna.UI.WinForms.GunaButton DeleteItemBtn;
         private Guna.UI.WinForms.GunaDataGridView itemsDgv;
         private Guna.UI.WinForms.GunaComboBox searchCategoryCmb;
-        private Bunifu.UI.WinForms.BunifuTextBox searchDateTxt;
         private Bunifu.UI.WinForms.BunifuTextBox searchItemTxt;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel4;
+        internal System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Weight_Unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Item_Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewImageColumn Column8;
-        internal System.Windows.Forms.Label label3;
-        internal System.Windows.Forms.Label label2;
-        internal System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewImageColumn Item_Image;
+        private FontAwesome.Sharp.IconButton refreshBtn;
     }
 }
