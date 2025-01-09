@@ -47,10 +47,10 @@
             this.Category_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
             this.DeleteCategoryBtn = new Guna.UI.WinForms.GunaButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.categoriesPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.searchCategoryTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.editCategoryBtn = new Guna.UI.WinForms.GunaButton();
+            this.categoriesPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -132,9 +132,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.recentlyAddedDgv);
-            this.panel1.Location = new System.Drawing.Point(434, 59);
+            this.panel1.Location = new System.Drawing.Point(16, 59);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(727, 487);
+            this.panel1.Size = new System.Drawing.Size(1145, 487);
             this.panel1.TabIndex = 28;
             // 
             // recentlyAddedDgv
@@ -150,13 +150,13 @@
             this.recentlyAddedDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(157)))), ((int)(((byte)(49)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.recentlyAddedDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.recentlyAddedDgv.ColumnHeadersHeight = 28;
+            this.recentlyAddedDgv.ColumnHeadersHeight = 40;
             this.recentlyAddedDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.recentlyAddedDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Category_ID,
@@ -164,7 +164,7 @@
             this.Category_Description});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -180,7 +180,7 @@
             this.recentlyAddedDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.recentlyAddedDgv.RowTemplate.Height = 35;
             this.recentlyAddedDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.recentlyAddedDgv.Size = new System.Drawing.Size(725, 485);
+            this.recentlyAddedDgv.Size = new System.Drawing.Size(1143, 485);
             this.recentlyAddedDgv.TabIndex = 30;
             this.recentlyAddedDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -192,14 +192,14 @@
             this.recentlyAddedDgv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.recentlyAddedDgv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.recentlyAddedDgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recentlyAddedDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.recentlyAddedDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.Height = 28;
+            this.recentlyAddedDgv.ThemeStyle.HeaderStyle.Height = 40;
             this.recentlyAddedDgv.ThemeStyle.ReadOnly = true;
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.recentlyAddedDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recentlyAddedDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.Height = 35;
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -248,7 +248,7 @@
             this.gunaGroupBox1.Radius = 10;
             this.gunaGroupBox1.Size = new System.Drawing.Size(1171, 605);
             this.gunaGroupBox1.TabIndex = 15;
-            this.gunaGroupBox1.Text = "Soothing Cafe Categories";
+            this.gunaGroupBox1.Text = "Soothing Café Categories";
             this.gunaGroupBox1.TextLocation = new System.Drawing.Point(10, 13);
             this.gunaGroupBox1.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
@@ -282,28 +282,6 @@
             this.DeleteCategoryBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DeleteCategoryBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.DeleteCategoryBtn.Click += new System.EventHandler(this.DeleteCategoryBtn_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel3.Controls.Add(this.categoriesPanel);
-            this.panel3.Location = new System.Drawing.Point(10, 59);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(418, 487);
-            this.panel3.TabIndex = 31;
-            // 
-            // categoriesPanel
-            // 
-            this.categoriesPanel.AutoScroll = true;
-            this.categoriesPanel.BackColor = System.Drawing.Color.White;
-            this.categoriesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.categoriesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.categoriesPanel.Location = new System.Drawing.Point(0, 0);
-            this.categoriesPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.categoriesPanel.Name = "categoriesPanel";
-            this.categoriesPanel.Size = new System.Drawing.Size(418, 487);
-            this.categoriesPanel.TabIndex = 39;
             // 
             // searchCategoryTxt
             // 
@@ -413,6 +391,29 @@
             this.editCategoryBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.editCategoryBtn.Click += new System.EventHandler(this.editCategoryBtn_Click);
             // 
+            // categoriesPanel
+            // 
+            this.categoriesPanel.AutoScroll = true;
+            this.categoriesPanel.BackColor = System.Drawing.Color.White;
+            this.categoriesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.categoriesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.categoriesPanel.Location = new System.Drawing.Point(0, 0);
+            this.categoriesPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.categoriesPanel.Name = "categoriesPanel";
+            this.categoriesPanel.Size = new System.Drawing.Size(418, 41);
+            this.categoriesPanel.TabIndex = 39;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel3.Controls.Add(this.categoriesPanel);
+            this.panel3.Location = new System.Drawing.Point(16, 557);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(418, 41);
+            this.panel3.TabIndex = 31;
+            this.panel3.Visible = false;
+            // 
             // Manage_Category
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,13 +444,13 @@
         private System.Windows.Forms.Panel panel1;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox1;
         private Bunifu.UI.WinForms.BunifuTextBox searchCategoryTxt;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.FlowLayoutPanel categoriesPanel;
         private Guna.UI.WinForms.GunaButton DeleteCategoryBtn;
         private Guna.UI.WinForms.GunaButton editCategoryBtn;
         public Guna.UI.WinForms.GunaDataGridView recentlyAddedDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category_Description;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.FlowLayoutPanel categoriesPanel;
     }
 }

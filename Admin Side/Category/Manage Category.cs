@@ -227,7 +227,7 @@ namespace sims.Admin_Side.Category
 
         private void DeleteCategoryBtn_Click(object sender, EventArgs e)
         {
-            if (recentlyAddedDgv.SelectedRows.Count == 0)
+            if (recentlyAddedDgv.SelectedCells.Count == 0)
             {
                 MessageBox.Show("Please select a record to delete.", "Notice!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -239,13 +239,23 @@ namespace sims.Admin_Side.Category
             {
                 try
                 {
-                    string selectedCategoryId = recentlyAddedDgv.SelectedRows[0].Cells["Category_ID"]?.Value?.ToString();
-                    DeleteRecord(selectedCategoryId);
-                    recentlyAddedDgv.Rows.RemoveAt(recentlyAddedDgv.SelectedRows[0].Index);
-                    DeleteCategoryPanel(selectedCategoryId);
-                    //MessageBox.Show("Category successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Alert("Category successfully deleted.");
-                    LoadData();
+                    int selectedRowIndex = recentlyAddedDgv.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = recentlyAddedDgv.Rows[selectedRowIndex];
+                    string selectedItemID = selectedRow.Cells["Category_ID"]?.Value?.ToString();
+
+                    if (!string.IsNullOrEmpty(selectedItemID))
+                    {
+                        DeleteRecord(selectedItemID);
+                        recentlyAddedDgv.Rows.RemoveAt(selectedRowIndex);
+                        //MessageBox.Show("Item successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Alert("Category successfully deleted.");
+                        DeleteCategoryPanel(selectedItemID);
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Item_ID. Unable to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception ex)
                 {
