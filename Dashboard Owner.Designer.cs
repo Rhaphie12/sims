@@ -34,6 +34,7 @@
             this.SalesReportBtn = new FontAwesome.Sharp.IconButton();
             this.SalesBtn = new FontAwesome.Sharp.IconButton();
             this.InventoryPanelSubMenu = new System.Windows.Forms.Panel();
+            this.inventoryReport = new FontAwesome.Sharp.IconButton();
             this.StocksBtn = new FontAwesome.Sharp.IconButton();
             this.ItemsBtn = new FontAwesome.Sharp.IconButton();
             this.inventoryBtn = new FontAwesome.Sharp.IconButton();
@@ -92,12 +93,12 @@
             this.UserBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.UserBtn.IconSize = 40;
             this.UserBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.UserBtn.Location = new System.Drawing.Point(0, 486);
+            this.UserBtn.Location = new System.Drawing.Point(0, 545);
             this.UserBtn.Name = "UserBtn";
             this.UserBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.UserBtn.Size = new System.Drawing.Size(299, 58);
             this.UserBtn.TabIndex = 32;
-            this.UserBtn.Text = "Users";
+            this.UserBtn.Text = "Staff";
             this.UserBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.UserBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.UserBtn.UseVisualStyleBackColor = true;
@@ -115,7 +116,7 @@
             this.SalesReportBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.SalesReportBtn.IconSize = 40;
             this.SalesReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesReportBtn.Location = new System.Drawing.Point(0, 428);
+            this.SalesReportBtn.Location = new System.Drawing.Point(0, 487);
             this.SalesReportBtn.Name = "SalesReportBtn";
             this.SalesReportBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.SalesReportBtn.Size = new System.Drawing.Size(299, 58);
@@ -138,7 +139,7 @@
             this.SalesBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.SalesBtn.IconSize = 40;
             this.SalesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesBtn.Location = new System.Drawing.Point(0, 370);
+            this.SalesBtn.Location = new System.Drawing.Point(0, 429);
             this.SalesBtn.Name = "SalesBtn";
             this.SalesBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.SalesBtn.Size = new System.Drawing.Size(299, 58);
@@ -151,13 +152,37 @@
             // 
             // InventoryPanelSubMenu
             // 
+            this.InventoryPanelSubMenu.Controls.Add(this.inventoryReport);
             this.InventoryPanelSubMenu.Controls.Add(this.StocksBtn);
             this.InventoryPanelSubMenu.Controls.Add(this.ItemsBtn);
             this.InventoryPanelSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.InventoryPanelSubMenu.Location = new System.Drawing.Point(0, 256);
             this.InventoryPanelSubMenu.Name = "InventoryPanelSubMenu";
-            this.InventoryPanelSubMenu.Size = new System.Drawing.Size(299, 114);
+            this.InventoryPanelSubMenu.Size = new System.Drawing.Size(299, 173);
             this.InventoryPanelSubMenu.TabIndex = 0;
+            // 
+            // inventoryReport
+            // 
+            this.inventoryReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inventoryReport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.inventoryReport.FlatAppearance.BorderSize = 0;
+            this.inventoryReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventoryReport.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inventoryReport.IconChar = FontAwesome.Sharp.IconChar.Newspaper;
+            this.inventoryReport.IconColor = System.Drawing.Color.Black;
+            this.inventoryReport.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.inventoryReport.IconSize = 40;
+            this.inventoryReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.inventoryReport.Location = new System.Drawing.Point(0, 116);
+            this.inventoryReport.Name = "inventoryReport";
+            this.inventoryReport.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
+            this.inventoryReport.Size = new System.Drawing.Size(299, 58);
+            this.inventoryReport.TabIndex = 18;
+            this.inventoryReport.Text = "Inventory Report";
+            this.inventoryReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.inventoryReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.inventoryReport.UseVisualStyleBackColor = true;
+            this.inventoryReport.Click += new System.EventHandler(this.inventoryReport_Click);
             // 
             // StocksBtn
             // 
@@ -334,7 +359,7 @@
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(168, 37);
             this.Label1.TabIndex = 7;
-            this.Label1.Text = "Soothing Cafe";
+            this.Label1.Text = "Soothing Café";
             // 
             // panel2
             // 
@@ -472,7 +497,6 @@
         internal System.Windows.Forms.Label Label2;
         private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBox2;
         private System.Windows.Forms.Panel DashboardPanel;
-        internal FontAwesome.Sharp.IconButton inventoryBtn;
         private System.Windows.Forms.Panel InventoryPanelSubMenu;
         internal FontAwesome.Sharp.IconButton ItemsBtn;
         internal FontAwesome.Sharp.IconButton StocksBtn;
@@ -481,6 +505,8 @@
         internal FontAwesome.Sharp.IconButton SalesBtn;
         internal Guna.UI.WinForms.GunaPictureBox notifPic;
         internal Bunifu.UI.WinForms.BunifuPictureBox profilePicBox;
+        internal FontAwesome.Sharp.IconButton inventoryReport;
+        internal FontAwesome.Sharp.IconButton inventoryBtn;
     }
 }
 

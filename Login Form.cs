@@ -119,5 +119,10 @@ namespace sims
             this.Hide();
             new Forgot_Password.Forgot_Password().Show();
         }
+
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

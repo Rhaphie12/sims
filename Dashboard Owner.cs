@@ -3,6 +3,7 @@ using Guna.UI.WinForms;
 using MySql.Data.MySqlClient;
 using sims.Admin_Side;
 using sims.Admin_Side.Category;
+using sims.Admin_Side.Inventory_Report;
 using sims.Admin_Side.Items;
 using sims.Admin_Side.Sales;
 using sims.Admin_Side.Sales_Report;
@@ -177,6 +178,12 @@ namespace sims
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
             OpeninPanel(new Manage_Stock());
 
+        }
+
+        private void inventoryReport_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, Color.FromArgb(255, 255, 255));
+            OpeninPanel(new Inventory_Report());
         }
 
         private void SalesBtn_Click(object sender, EventArgs e)

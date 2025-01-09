@@ -79,8 +79,18 @@
     <Reference Include="Guna.UI">
       <HintPath>..\..\..\Downloads\BACKUP\.net\.net frameworks\Guna.UI-Framework-Lib-master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Guna.UI2">
-      <HintPath>..\..\..\Downloads\BACKUP\.net\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna.UI-Framework-Lib-master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+    <Reference Include="Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySql.Data">
@@ -95,6 +105,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -106,6 +117,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin Side\Category\Edit Category.cs">
@@ -131,6 +143,12 @@
     </Compile>
     <Compile Include="Admin Side\Dashboard Inventory.Designer.cs">
       <DependentUpon>Dashboard Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Inventory Report\Inventory Report.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Inventory Report\Inventory Report.Designer.cs">
+      <DependentUpon>Inventory Report.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Items\Edit Items.cs">
       <SubType>Form</SubType>
@@ -161,6 +179,18 @@
     </Compile>
     <Compile Include="Admin Side\Sales\Manage Sales.Designer.cs">
       <DependentUpon>Manage Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Stocks\Add Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Stocks\Add Stock.Designer.cs">
+      <DependentUpon>Add Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Stocks\Edit Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Stocks\Edit Stock.Designer.cs">
+      <DependentUpon>Edit Stock.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Stocks\Manage Stock.cs">
       <SubType>UserControl</SubType>
@@ -277,6 +307,18 @@
     <Compile Include="Notification\Item notification\Item_Deleted.Designer.cs">
       <DependentUpon>Item_Deleted.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notification\Stock notification\Stock Added.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification\Stock notification\Stock Added.Designer.cs">
+      <DependentUpon>Stock Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notification\Stock notification\Stock_Deleted.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification\Stock notification\Stock_Deleted.Designer.cs">
+      <DependentUpon>Stock_Deleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Admin Side\Category\Edit Category.resx">
@@ -290,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Dashboard Inventory.resx">
       <DependentUpon>Dashboard Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Inventory Report\Inventory Report.resx">
+      <DependentUpon>Inventory Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Items\Edit Items.resx">
       <DependentUpon>Edit Items.cs</DependentUpon>
@@ -305,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Sales\Manage Sales.resx">
       <DependentUpon>Manage Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Stocks\Add Stock.resx">
+      <DependentUpon>Add Stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Manage Stock.resx">
       <DependentUpon>Manage Stock.cs</DependentUpon>
@@ -362,6 +410,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Notification\Item notification\Item_Deleted.resx">
       <DependentUpon>Item_Deleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification\Stock notification\Stock Added.resx">
+      <DependentUpon>Stock Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification\Stock notification\Stock_Deleted.resx">
+      <DependentUpon>Stock_Deleted.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
