@@ -38,11 +38,10 @@ namespace sims.Admin_Side.Users
         }
         private void New_Staff_Load(object sender, EventArgs e)
         {
-            userRoleCmb.Items.Clear();
-            userRoleCmb.Items.Add("Select user role");
-            userRoleCmb.Items.Add("Owner");
-            userRoleCmb.Items.Add("Staff");
-            userRoleCmb.SelectedIndex = 0;
+            //userRoleCmb.Items.Clear();
+            //userRoleCmb.Items.Add("Select user role");
+            //userRoleCmb.Items.Add("Staff");
+            //userRoleCmb.SelectedIndex = 0;
 
         }
 
