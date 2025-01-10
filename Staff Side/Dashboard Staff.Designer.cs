@@ -35,7 +35,6 @@
             this.inventoryReport = new FontAwesome.Sharp.IconButton();
             this.StocksBtn = new FontAwesome.Sharp.IconButton();
             this.SignoutBtn = new FontAwesome.Sharp.IconButton();
-            this.CategoriesBtn = new FontAwesome.Sharp.IconButton();
             this.DashboardBtn = new FontAwesome.Sharp.IconButton();
             this.panel12 = new System.Windows.Forms.Panel();
             this.gunaCirclePictureBox2 = new Guna.UI.WinForms.GunaCirclePictureBox();
@@ -66,7 +65,6 @@
             this.PanelMenu.Controls.Add(this.inventoryReport);
             this.PanelMenu.Controls.Add(this.StocksBtn);
             this.PanelMenu.Controls.Add(this.SignoutBtn);
-            this.PanelMenu.Controls.Add(this.CategoriesBtn);
             this.PanelMenu.Controls.Add(this.DashboardBtn);
             this.PanelMenu.Controls.Add(this.panel12);
             this.PanelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -87,7 +85,7 @@
             this.SalesReportBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.SalesReportBtn.IconSize = 40;
             this.SalesReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesReportBtn.Location = new System.Drawing.Point(0, 372);
+            this.SalesReportBtn.Location = new System.Drawing.Point(0, 314);
             this.SalesReportBtn.Name = "SalesReportBtn";
             this.SalesReportBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.SalesReportBtn.Size = new System.Drawing.Size(299, 58);
@@ -110,7 +108,7 @@
             this.SalesBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.SalesBtn.IconSize = 40;
             this.SalesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesBtn.Location = new System.Drawing.Point(0, 314);
+            this.SalesBtn.Location = new System.Drawing.Point(0, 256);
             this.SalesBtn.Name = "SalesBtn";
             this.SalesBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.SalesBtn.Size = new System.Drawing.Size(299, 58);
@@ -133,7 +131,7 @@
             this.inventoryReport.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.inventoryReport.IconSize = 40;
             this.inventoryReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.inventoryReport.Location = new System.Drawing.Point(0, 256);
+            this.inventoryReport.Location = new System.Drawing.Point(0, 198);
             this.inventoryReport.Name = "inventoryReport";
             this.inventoryReport.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.inventoryReport.Size = new System.Drawing.Size(299, 58);
@@ -156,7 +154,7 @@
             this.StocksBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.StocksBtn.IconSize = 40;
             this.StocksBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StocksBtn.Location = new System.Drawing.Point(0, 198);
+            this.StocksBtn.Location = new System.Drawing.Point(0, 140);
             this.StocksBtn.Name = "StocksBtn";
             this.StocksBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.StocksBtn.Size = new System.Drawing.Size(299, 58);
@@ -190,30 +188,6 @@
             this.SignoutBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SignoutBtn.UseVisualStyleBackColor = true;
             this.SignoutBtn.Click += new System.EventHandler(this.SignoutBtn_Click);
-            // 
-            // CategoriesBtn
-            // 
-            this.CategoriesBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CategoriesBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CategoriesBtn.FlatAppearance.BorderSize = 0;
-            this.CategoriesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CategoriesBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CategoriesBtn.ForeColor = System.Drawing.Color.Black;
-            this.CategoriesBtn.IconChar = FontAwesome.Sharp.IconChar.ClipboardList;
-            this.CategoriesBtn.IconColor = System.Drawing.Color.Black;
-            this.CategoriesBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.CategoriesBtn.IconSize = 40;
-            this.CategoriesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CategoriesBtn.Location = new System.Drawing.Point(0, 140);
-            this.CategoriesBtn.Name = "CategoriesBtn";
-            this.CategoriesBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
-            this.CategoriesBtn.Size = new System.Drawing.Size(299, 58);
-            this.CategoriesBtn.TabIndex = 22;
-            this.CategoriesBtn.Text = "Categories";
-            this.CategoriesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CategoriesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.CategoriesBtn.UseVisualStyleBackColor = true;
-            this.CategoriesBtn.Click += new System.EventHandler(this.CategoriesBtn_Click);
             // 
             // DashboardBtn
             // 
@@ -398,7 +372,6 @@
 
         private System.Windows.Forms.Panel PanelMenu;
         internal FontAwesome.Sharp.IconButton SignoutBtn;
-        internal FontAwesome.Sharp.IconButton CategoriesBtn;
         internal FontAwesome.Sharp.IconButton DashboardBtn;
         private System.Windows.Forms.Panel panel12;
         private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBox2;

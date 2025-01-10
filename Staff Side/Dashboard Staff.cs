@@ -36,7 +36,7 @@ namespace sims.Staff_Side
         private void ShowUsernameWithGreeting()
         {
             dbModule db = new dbModule();
-            string query = "SELECT username FROM staff LIMIT 1";
+            string query = "SELECT Staff_Name FROM staff LIMIT 1";
 
             using (MySqlConnection conn = db.GetConnection())
             {
@@ -156,7 +156,6 @@ namespace sims.Staff_Side
 
         private void SignoutBtn_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, Color.FromArgb(255, 255, 255));
             DialogResult result = MessageBox.Show(
                 "Are you sure you want to logout?",
                 "Logout?",
