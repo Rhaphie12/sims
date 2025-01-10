@@ -52,7 +52,7 @@
             this.continueBtn.AnimationHoverSpeed = 0.07F;
             this.continueBtn.AnimationSpeed = 0.03F;
             this.continueBtn.BackColor = System.Drawing.Color.Transparent;
-            this.continueBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.continueBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.continueBtn.BorderColor = System.Drawing.Color.Black;
             this.continueBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.continueBtn.DialogResult = System.Windows.Forms.DialogResult.None;
@@ -61,15 +61,15 @@
             this.continueBtn.ForeColor = System.Drawing.Color.White;
             this.continueBtn.Image = null;
             this.continueBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.continueBtn.Location = new System.Drawing.Point(345, 207);
+            this.continueBtn.Location = new System.Drawing.Point(336, 208);
             this.continueBtn.Name = "continueBtn";
-            this.continueBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.continueBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.continueBtn.OnHoverBorderColor = System.Drawing.Color.Black;
             this.continueBtn.OnHoverForeColor = System.Drawing.Color.White;
             this.continueBtn.OnHoverImage = null;
             this.continueBtn.OnPressedColor = System.Drawing.Color.Black;
             this.continueBtn.Radius = 7;
-            this.continueBtn.Size = new System.Drawing.Size(185, 41);
+            this.continueBtn.Size = new System.Drawing.Size(200, 41);
             this.continueBtn.TabIndex = 33;
             this.continueBtn.Text = "CONTINUE";
             this.continueBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -79,11 +79,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(385, 147);
+            this.label2.Location = new System.Drawing.Point(339, 144);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 34);
+            this.label2.Size = new System.Drawing.Size(195, 34);
             this.label2.TabIndex = 32;
-            this.label2.Text = "As Owner";
+            this.label2.Text = "Invalid Credentials";
             // 
             // label1
             // 

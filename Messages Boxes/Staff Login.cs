@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sims.Staff_Side;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace sims.Messages_Boxes
         public Staff_Login()
         {
             InitializeComponent();
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            new Dashboard_Staff().Show();
+            this.Hide();
         }
     }
 }

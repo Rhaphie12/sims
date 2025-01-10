@@ -54,7 +54,7 @@
             this.loginBtn.AnimationHoverSpeed = 0.07F;
             this.loginBtn.AnimationSpeed = 0.03F;
             this.loginBtn.BackColor = System.Drawing.Color.Transparent;
-            this.loginBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.loginBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.loginBtn.BorderColor = System.Drawing.Color.Black;
             this.loginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginBtn.DialogResult = System.Windows.Forms.DialogResult.None;
@@ -65,7 +65,7 @@
             this.loginBtn.ImageSize = new System.Drawing.Size(20, 20);
             this.loginBtn.Location = new System.Drawing.Point(310, 261);
             this.loginBtn.Name = "loginBtn";
-            this.loginBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.loginBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.loginBtn.OnHoverBorderColor = System.Drawing.Color.Black;
             this.loginBtn.OnHoverForeColor = System.Drawing.Color.White;
             this.loginBtn.OnHoverImage = null;
@@ -75,6 +75,7 @@
             this.loginBtn.TabIndex = 30;
             this.loginBtn.Text = "CONTINUE";
             this.loginBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
             // label2
             // 

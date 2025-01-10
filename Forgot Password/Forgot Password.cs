@@ -18,6 +18,7 @@ namespace sims.Forgot_Password
         {
             InitializeComponent();
         }
+
         public BunifuTextBox UsernameTxt
         {
             get { return usernameTxt; }
