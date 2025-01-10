@@ -363,6 +363,26 @@ namespace sims.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sales_and_inventory {
+            get {
+                object obj = ResourceManager.GetObject("sales-and-inventory", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sales_and_inventory_edit {
+            get {
+                object obj = ResourceManager.GetObject("sales-and-inventory edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap staff_of_a_coffee_shop {
             get {
                 object obj = ResourceManager.GetObject("staff-of-a-coffee-shop", resourceCulture);

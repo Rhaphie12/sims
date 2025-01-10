@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sims.Splash_page_and_Loading_Screen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace sims
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DashboardOwner());
+            Application.Run(new Splash_page());
         }
     }
 }

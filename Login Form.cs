@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
+using sims.Admin_Side.Items;
 using sims.Messages_Boxes;
+using sims.Staff_Side;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,13 +47,9 @@ namespace sims
             Login();
         }
 
-        public void Login()
+        private void Login()
         {
             dbModule db = new dbModule();
-            MySqlConnection conn = db.GetConnection();
-            MySqlCommand cmd = db.GetCommand();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
             string username = usernameTxt.Text.Trim();
             string password = passwordTxt.Text.Trim();
 
@@ -64,43 +62,53 @@ namespace sims
                 return;
             }
 
+            string userQuery = "SELECT COUNT(*) FROM users WHERE BINARY username = @Username AND BINARY password = @Password";
+            string staffQuery = "SELECT COUNT(*) FROM staff WHERE BINARY username = @Username AND BINARY password = @Password";
+
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = "SELECT username, password FROM users WHERE BINARY username = @uname AND BINARY password = @password LIMIT 1";
-                cmd.Parameters.Clear();
-
-                cmd.Parameters.AddWithValue("@uname", username);
-                cmd.Parameters.AddWithValue("@password", password);
-
-                using (MySqlDataReader reader = cmd.ExecuteReader())
+                using (MySqlConnection conn = db.GetConnection())
                 {
-                    if (reader.HasRows)
+                    using (MySqlCommand cmd = new MySqlCommand(userQuery, conn))
                     {
-                        usernameTxt.Clear();
-                        passwordTxt.Clear();
-                        this.Hide();
-                        new ownerLogin().Show();
-                    }
-                    else
-                    {
-                        usernameTxt.Focus();
-                        new Invalid_Account().Show();
-                        usernameTxt.Clear();
-                        passwordTxt.Clear();
+                        conn.Open();
+                        cmd.Parameters.AddWithValue("@Username", usernameTxt.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Password", passwordTxt.Text.Trim());
+
+                        int isOwner = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        if (isOwner > 0)
+                        {
+                            new ownerLogin().Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            cmd.CommandText = staffQuery;
+                            int isStaff = Convert.ToInt32(cmd.ExecuteScalar());
+
+                            if (isStaff > 0)
+                            {
+                                new Staff_Login().Show();
+                                this.Hide();
+                            }
+                            else
+                            {
+                                usernameTxt.Focus();
+                                new Invalid_Account().Show();
+                                usernameTxt.Clear();
+                                passwordTxt.Clear();
+                            }
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Invalid Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
+                MessageBox.Show($"Error: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void showPasswordChk_OnChange(object sender, EventArgs e)
         {
