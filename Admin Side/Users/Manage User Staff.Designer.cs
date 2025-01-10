@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,15 +38,16 @@
             this.DeleteStaffBtn = new Guna.UI.WinForms.GunaButton();
             this.NewStaffBtn = new Guna.UI.WinForms.GunaButton();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.itemsDgv = new Guna.UI.WinForms.GunaDataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffsDgv = new Guna.UI.WinForms.GunaDataGridView();
+            this.Staff_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Staff_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsDgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staffsDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -133,7 +134,7 @@
             this.DeleteStaffBtn.Radius = 6;
             this.DeleteStaffBtn.Size = new System.Drawing.Size(147, 35);
             this.DeleteStaffBtn.TabIndex = 36;
-            this.DeleteStaffBtn.Text = "Delete Staff";
+            this.DeleteStaffBtn.Text = "Remove Staff";
             this.DeleteStaffBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DeleteStaffBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
@@ -174,92 +175,94 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.itemsDgv);
+            this.panel5.Controls.Add(this.staffsDgv);
             this.panel5.Location = new System.Drawing.Point(10, 62);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1151, 484);
             this.panel5.TabIndex = 31;
             // 
-            // itemsDgv
+            // staffsDgv
             // 
-            this.itemsDgv.AllowUserToAddRows = false;
-            this.itemsDgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.itemsDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.itemsDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.itemsDgv.BackgroundColor = System.Drawing.Color.White;
-            this.itemsDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.itemsDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.itemsDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.itemsDgv.ColumnHeadersHeight = 58;
-            this.itemsDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Column1,
-            this.username});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemsDgv.DefaultCellStyle = dataGridViewCellStyle3;
-            this.itemsDgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemsDgv.EnableHeadersVisualStyles = false;
-            this.itemsDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.itemsDgv.Location = new System.Drawing.Point(0, 0);
-            this.itemsDgv.Name = "itemsDgv";
-            this.itemsDgv.ReadOnly = true;
-            this.itemsDgv.RowHeadersVisible = false;
-            this.itemsDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.itemsDgv.RowTemplate.Height = 40;
-            this.itemsDgv.RowTemplate.ReadOnly = true;
-            this.itemsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.itemsDgv.Size = new System.Drawing.Size(1149, 482);
-            this.itemsDgv.TabIndex = 3;
-            this.itemsDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
-            this.itemsDgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.itemsDgv.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.itemsDgv.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.itemsDgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.itemsDgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.itemsDgv.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.itemsDgv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.itemsDgv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.itemsDgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.itemsDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemsDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.itemsDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.itemsDgv.ThemeStyle.HeaderStyle.Height = 58;
-            this.itemsDgv.ThemeStyle.ReadOnly = true;
-            this.itemsDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.itemsDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.itemsDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemsDgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.itemsDgv.ThemeStyle.RowsStyle.Height = 40;
-            this.itemsDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.itemsDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.staffsDgv.AllowUserToAddRows = false;
+            this.staffsDgv.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.staffsDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.staffsDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.staffsDgv.BackgroundColor = System.Drawing.Color.White;
+            this.staffsDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.staffsDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.staffsDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.staffsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.staffsDgv.ColumnHeadersHeight = 58;
+            this.staffsDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Staff_ID,
+            this.Staff_Name,
+            this.username,
+            this.password});
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.staffsDgv.DefaultCellStyle = dataGridViewCellStyle9;
+            this.staffsDgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.staffsDgv.EnableHeadersVisualStyles = false;
+            this.staffsDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.staffsDgv.Location = new System.Drawing.Point(0, 0);
+            this.staffsDgv.Name = "staffsDgv";
+            this.staffsDgv.ReadOnly = true;
+            this.staffsDgv.RowHeadersVisible = false;
+            this.staffsDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.staffsDgv.RowTemplate.Height = 40;
+            this.staffsDgv.RowTemplate.ReadOnly = true;
+            this.staffsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.staffsDgv.Size = new System.Drawing.Size(1149, 482);
+            this.staffsDgv.TabIndex = 3;
+            this.staffsDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
+            this.staffsDgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.staffsDgv.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.staffsDgv.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.staffsDgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.staffsDgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.staffsDgv.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.staffsDgv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.staffsDgv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.staffsDgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.staffsDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.staffsDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.staffsDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.staffsDgv.ThemeStyle.HeaderStyle.Height = 58;
+            this.staffsDgv.ThemeStyle.ReadOnly = true;
+            this.staffsDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.staffsDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.staffsDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.staffsDgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.staffsDgv.ThemeStyle.RowsStyle.Height = 40;
+            this.staffsDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.staffsDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // ID
+            // Staff_ID
             // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "Staff ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
+            this.Staff_ID.DataPropertyName = "Staff_ID";
+            this.Staff_ID.HeaderText = "Staff ID";
+            this.Staff_ID.Name = "Staff_ID";
+            this.Staff_ID.ReadOnly = true;
             // 
-            // Column1
+            // Staff_Name
             // 
-            this.Column1.HeaderText = "Staff name";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.Staff_Name.DataPropertyName = "Staff_Name";
+            this.Staff_Name.HeaderText = "Staff name";
+            this.Staff_Name.Name = "Staff_Name";
+            this.Staff_Name.ReadOnly = true;
             // 
             // username
             // 
@@ -267,6 +270,14 @@
             this.username.HeaderText = "Username";
             this.username.Name = "username";
             this.username.ReadOnly = true;
+            // 
+            // password
+            // 
+            this.password.DataPropertyName = "password";
+            this.password.HeaderText = "Password";
+            this.password.Name = "password";
+            this.password.ReadOnly = true;
+            this.password.Visible = false;
             // 
             // Manage_User_Staff
             // 
@@ -277,12 +288,13 @@
             this.Controls.Add(this.panel1);
             this.Name = "Manage_User_Staff";
             this.Size = new System.Drawing.Size(1194, 700);
+            this.Load += new System.EventHandler(this.Manage_User_Staff_Load);
             this.panel1.ResumeLayout(false);
             this.gunaElipsePanel2.ResumeLayout(false);
             this.gunaElipsePanel2.PerformLayout();
             this.gunaGroupBox2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.itemsDgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staffsDgv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -294,11 +306,12 @@
         internal System.Windows.Forms.Label label4;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox2;
         private System.Windows.Forms.Panel panel5;
-        private Guna.UI.WinForms.GunaDataGridView itemsDgv;
+        private Guna.UI.WinForms.GunaDataGridView staffsDgv;
         private Guna.UI.WinForms.GunaButton DeleteStaffBtn;
         private Guna.UI.WinForms.GunaButton NewStaffBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Staff_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Staff_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn password;
     }
 }

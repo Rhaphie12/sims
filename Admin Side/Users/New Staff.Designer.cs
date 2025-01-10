@@ -30,22 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(New_Staff));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties49 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties50 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties51 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties52 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties57 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties58 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties59 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties60 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties61 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties62 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties63 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties64 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties53 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties54 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties55 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties56 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties17 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties21 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties22 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties23 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties24 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties25 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties26 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties27 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties28 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties29 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties30 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties31 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties32 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,18 +53,16 @@
             this.GunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
             this.showPasswordChk = new Bunifu.Framework.UI.BunifuCheckbox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.passwordTxt = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.staffNameTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.usernameTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.staffIDTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.addStaffBtn = new Guna.UI.WinForms.GunaButton();
             this.backStaffBtn = new Guna.UI.WinForms.GunaButton();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
-            this.staffNameTxt = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.categoryCmb = new Guna.UI.WinForms.GunaComboBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -79,7 +77,7 @@
             this.panel1.Location = new System.Drawing.Point(11, 10);
             this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(678, 53);
+            this.panel1.Size = new System.Drawing.Size(578, 53);
             this.panel1.TabIndex = 43;
             // 
             // gunaElipsePanel2
@@ -92,7 +90,7 @@
             this.gunaElipsePanel2.Margin = new System.Windows.Forms.Padding(0);
             this.gunaElipsePanel2.Name = "gunaElipsePanel2";
             this.gunaElipsePanel2.Radius = 7;
-            this.gunaElipsePanel2.Size = new System.Drawing.Size(678, 53);
+            this.gunaElipsePanel2.Size = new System.Drawing.Size(578, 53);
             this.gunaElipsePanel2.TabIndex = 46;
             // 
             // label4
@@ -114,7 +112,7 @@
             this.panel2.Location = new System.Drawing.Point(11, 73);
             this.panel2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(678, 313);
+            this.panel2.Size = new System.Drawing.Size(578, 313);
             this.panel2.TabIndex = 44;
             // 
             // GunaGroupBox1
@@ -122,8 +120,6 @@
             this.GunaGroupBox1.BackColor = System.Drawing.Color.Transparent;
             this.GunaGroupBox1.BaseColor = System.Drawing.Color.White;
             this.GunaGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
-            this.GunaGroupBox1.Controls.Add(this.categoryCmb);
-            this.GunaGroupBox1.Controls.Add(this.label12);
             this.GunaGroupBox1.Controls.Add(this.showPasswordChk);
             this.GunaGroupBox1.Controls.Add(this.label1);
             this.GunaGroupBox1.Controls.Add(this.label2);
@@ -142,7 +138,7 @@
             this.GunaGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.GunaGroupBox1.Name = "GunaGroupBox1";
             this.GunaGroupBox1.Radius = 10;
-            this.GunaGroupBox1.Size = new System.Drawing.Size(678, 313);
+            this.GunaGroupBox1.Size = new System.Drawing.Size(578, 313);
             this.GunaGroupBox1.TabIndex = 49;
             this.GunaGroupBox1.TextLocation = new System.Drawing.Point(10, 8);
             this.GunaGroupBox1.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAliasGridFit;
@@ -155,7 +151,7 @@
             this.showPasswordChk.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.showPasswordChk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.showPasswordChk.ForeColor = System.Drawing.Color.White;
-            this.showPasswordChk.Location = new System.Drawing.Point(196, 166);
+            this.showPasswordChk.Location = new System.Drawing.Point(469, 173);
             this.showPasswordChk.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.showPasswordChk.Name = "showPasswordChk";
             this.showPasswordChk.Size = new System.Drawing.Size(20, 20);
@@ -167,18 +163,29 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(22, 126);
+            this.label1.Location = new System.Drawing.Point(291, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 28);
             this.label1.TabIndex = 47;
             this.label1.Text = "Staff Password";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(291, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 28);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "Staff name";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(449, 29);
+            this.label9.Location = new System.Drawing.Point(72, 133);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(134, 28);
             this.label9.TabIndex = 47;
@@ -189,7 +196,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(22, 29);
+            this.label8.Location = new System.Drawing.Point(72, 32);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 28);
             this.label8.TabIndex = 48;
@@ -222,33 +229,33 @@
             this.passwordTxt.IconRight = null;
             this.passwordTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.passwordTxt.Lines = new string[0];
-            this.passwordTxt.Location = new System.Drawing.Point(27, 157);
+            this.passwordTxt.Location = new System.Drawing.Point(296, 164);
             this.passwordTxt.MaximumSize = new System.Drawing.Size(200, 37);
             this.passwordTxt.MaxLength = 32767;
             this.passwordTxt.MinimumSize = new System.Drawing.Size(200, 37);
             this.passwordTxt.Modified = false;
             this.passwordTxt.Multiline = false;
             this.passwordTxt.Name = "passwordTxt";
-            stateProperties49.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties49.FillColor = System.Drawing.Color.Empty;
-            stateProperties49.ForeColor = System.Drawing.Color.Empty;
-            stateProperties49.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.passwordTxt.OnActiveState = stateProperties49;
-            stateProperties50.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties50.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties50.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.passwordTxt.OnDisabledState = stateProperties50;
-            stateProperties51.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties51.FillColor = System.Drawing.Color.Empty;
-            stateProperties51.ForeColor = System.Drawing.Color.Empty;
-            stateProperties51.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.passwordTxt.OnHoverState = stateProperties51;
-            stateProperties52.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties52.FillColor = System.Drawing.Color.White;
-            stateProperties52.ForeColor = System.Drawing.Color.Empty;
-            stateProperties52.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.passwordTxt.OnIdleState = stateProperties52;
+            stateProperties17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties17.FillColor = System.Drawing.Color.Empty;
+            stateProperties17.ForeColor = System.Drawing.Color.Empty;
+            stateProperties17.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.passwordTxt.OnActiveState = stateProperties17;
+            stateProperties18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties18.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.passwordTxt.OnDisabledState = stateProperties18;
+            stateProperties19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties19.FillColor = System.Drawing.Color.Empty;
+            stateProperties19.ForeColor = System.Drawing.Color.Empty;
+            stateProperties19.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.passwordTxt.OnHoverState = stateProperties19;
+            stateProperties20.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties20.FillColor = System.Drawing.Color.White;
+            stateProperties20.ForeColor = System.Drawing.Color.Empty;
+            stateProperties20.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.passwordTxt.OnIdleState = stateProperties20;
             this.passwordTxt.Padding = new System.Windows.Forms.Padding(3);
             this.passwordTxt.PasswordChar = '\0';
             this.passwordTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -269,6 +276,82 @@
             this.passwordTxt.TextPlaceholder = "●●●●●";
             this.passwordTxt.UseSystemPasswordChar = false;
             this.passwordTxt.WordWrap = true;
+            // 
+            // staffNameTxt
+            // 
+            this.staffNameTxt.AcceptsReturn = false;
+            this.staffNameTxt.AcceptsTab = false;
+            this.staffNameTxt.AnimationSpeed = 200;
+            this.staffNameTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.staffNameTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.staffNameTxt.BackColor = System.Drawing.Color.Transparent;
+            this.staffNameTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("staffNameTxt.BackgroundImage")));
+            this.staffNameTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.staffNameTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.staffNameTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.staffNameTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.staffNameTxt.BorderRadius = 6;
+            this.staffNameTxt.BorderThickness = 2;
+            this.staffNameTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.staffNameTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.staffNameTxt.DefaultFont = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.staffNameTxt.DefaultText = "";
+            this.staffNameTxt.FillColor = System.Drawing.Color.White;
+            this.staffNameTxt.HideSelection = true;
+            this.staffNameTxt.IconLeft = null;
+            this.staffNameTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.staffNameTxt.IconPadding = 10;
+            this.staffNameTxt.IconRight = null;
+            this.staffNameTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.staffNameTxt.Lines = new string[0];
+            this.staffNameTxt.Location = new System.Drawing.Point(296, 63);
+            this.staffNameTxt.MaximumSize = new System.Drawing.Size(200, 37);
+            this.staffNameTxt.MaxLength = 32767;
+            this.staffNameTxt.MinimumSize = new System.Drawing.Size(200, 37);
+            this.staffNameTxt.Modified = false;
+            this.staffNameTxt.Multiline = false;
+            this.staffNameTxt.Name = "staffNameTxt";
+            stateProperties21.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties21.FillColor = System.Drawing.Color.Empty;
+            stateProperties21.ForeColor = System.Drawing.Color.Empty;
+            stateProperties21.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.staffNameTxt.OnActiveState = stateProperties21;
+            stateProperties22.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties22.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties22.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.staffNameTxt.OnDisabledState = stateProperties22;
+            stateProperties23.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties23.FillColor = System.Drawing.Color.Empty;
+            stateProperties23.ForeColor = System.Drawing.Color.Empty;
+            stateProperties23.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.staffNameTxt.OnHoverState = stateProperties23;
+            stateProperties24.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties24.FillColor = System.Drawing.Color.White;
+            stateProperties24.ForeColor = System.Drawing.Color.Empty;
+            stateProperties24.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.staffNameTxt.OnIdleState = stateProperties24;
+            this.staffNameTxt.Padding = new System.Windows.Forms.Padding(3);
+            this.staffNameTxt.PasswordChar = '\0';
+            this.staffNameTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.staffNameTxt.PlaceholderText = "Antone vogart";
+            this.staffNameTxt.ReadOnly = false;
+            this.staffNameTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.staffNameTxt.SelectedText = "";
+            this.staffNameTxt.SelectionLength = 0;
+            this.staffNameTxt.SelectionStart = 0;
+            this.staffNameTxt.ShortcutsEnabled = true;
+            this.staffNameTxt.Size = new System.Drawing.Size(200, 37);
+            this.staffNameTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.staffNameTxt.TabIndex = 45;
+            this.staffNameTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.staffNameTxt.TextMarginBottom = 0;
+            this.staffNameTxt.TextMarginLeft = 3;
+            this.staffNameTxt.TextMarginTop = 0;
+            this.staffNameTxt.TextPlaceholder = "Antone vogart";
+            this.staffNameTxt.UseSystemPasswordChar = false;
+            this.staffNameTxt.WordWrap = true;
+            this.staffNameTxt.TextChanged += new System.EventHandler(this.staffNameTxt_TextChanged);
             // 
             // usernameTxt
             // 
@@ -297,33 +380,33 @@
             this.usernameTxt.IconRight = null;
             this.usernameTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.usernameTxt.Lines = new string[0];
-            this.usernameTxt.Location = new System.Drawing.Point(454, 60);
+            this.usernameTxt.Location = new System.Drawing.Point(77, 164);
             this.usernameTxt.MaximumSize = new System.Drawing.Size(200, 37);
             this.usernameTxt.MaxLength = 32767;
             this.usernameTxt.MinimumSize = new System.Drawing.Size(200, 37);
             this.usernameTxt.Modified = false;
             this.usernameTxt.Multiline = false;
             this.usernameTxt.Name = "usernameTxt";
-            stateProperties57.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties57.FillColor = System.Drawing.Color.Empty;
-            stateProperties57.ForeColor = System.Drawing.Color.Empty;
-            stateProperties57.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.usernameTxt.OnActiveState = stateProperties57;
-            stateProperties58.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties58.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties58.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.usernameTxt.OnDisabledState = stateProperties58;
-            stateProperties59.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties59.FillColor = System.Drawing.Color.Empty;
-            stateProperties59.ForeColor = System.Drawing.Color.Empty;
-            stateProperties59.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.usernameTxt.OnHoverState = stateProperties59;
-            stateProperties60.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties60.FillColor = System.Drawing.Color.White;
-            stateProperties60.ForeColor = System.Drawing.Color.Empty;
-            stateProperties60.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.usernameTxt.OnIdleState = stateProperties60;
+            stateProperties25.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties25.FillColor = System.Drawing.Color.Empty;
+            stateProperties25.ForeColor = System.Drawing.Color.Empty;
+            stateProperties25.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.usernameTxt.OnActiveState = stateProperties25;
+            stateProperties26.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties26.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties26.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.usernameTxt.OnDisabledState = stateProperties26;
+            stateProperties27.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties27.FillColor = System.Drawing.Color.Empty;
+            stateProperties27.ForeColor = System.Drawing.Color.Empty;
+            stateProperties27.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.usernameTxt.OnHoverState = stateProperties27;
+            stateProperties28.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties28.FillColor = System.Drawing.Color.White;
+            stateProperties28.ForeColor = System.Drawing.Color.Empty;
+            stateProperties28.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.usernameTxt.OnIdleState = stateProperties28;
             this.usernameTxt.Padding = new System.Windows.Forms.Padding(3);
             this.usernameTxt.PasswordChar = '\0';
             this.usernameTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -372,33 +455,33 @@
             this.staffIDTxt.IconRight = null;
             this.staffIDTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.staffIDTxt.Lines = new string[0];
-            this.staffIDTxt.Location = new System.Drawing.Point(27, 60);
+            this.staffIDTxt.Location = new System.Drawing.Point(77, 63);
             this.staffIDTxt.MaximumSize = new System.Drawing.Size(200, 37);
             this.staffIDTxt.MaxLength = 32767;
             this.staffIDTxt.MinimumSize = new System.Drawing.Size(200, 37);
             this.staffIDTxt.Modified = false;
             this.staffIDTxt.Multiline = false;
             this.staffIDTxt.Name = "staffIDTxt";
-            stateProperties61.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties61.FillColor = System.Drawing.Color.Empty;
-            stateProperties61.ForeColor = System.Drawing.Color.Empty;
-            stateProperties61.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.staffIDTxt.OnActiveState = stateProperties61;
-            stateProperties62.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties62.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties62.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.staffIDTxt.OnDisabledState = stateProperties62;
-            stateProperties63.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties63.FillColor = System.Drawing.Color.Empty;
-            stateProperties63.ForeColor = System.Drawing.Color.Empty;
-            stateProperties63.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.staffIDTxt.OnHoverState = stateProperties63;
-            stateProperties64.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties64.FillColor = System.Drawing.Color.White;
-            stateProperties64.ForeColor = System.Drawing.Color.Empty;
-            stateProperties64.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.staffIDTxt.OnIdleState = stateProperties64;
+            stateProperties29.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties29.FillColor = System.Drawing.Color.Empty;
+            stateProperties29.ForeColor = System.Drawing.Color.Empty;
+            stateProperties29.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.staffIDTxt.OnActiveState = stateProperties29;
+            stateProperties30.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties30.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties30.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.staffIDTxt.OnDisabledState = stateProperties30;
+            stateProperties31.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties31.FillColor = System.Drawing.Color.Empty;
+            stateProperties31.ForeColor = System.Drawing.Color.Empty;
+            stateProperties31.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.staffIDTxt.OnHoverState = stateProperties31;
+            stateProperties32.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties32.FillColor = System.Drawing.Color.White;
+            stateProperties32.ForeColor = System.Drawing.Color.Empty;
+            stateProperties32.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.staffIDTxt.OnIdleState = stateProperties32;
             this.staffIDTxt.Padding = new System.Windows.Forms.Padding(3);
             this.staffIDTxt.PasswordChar = '\0';
             this.staffIDTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -434,7 +517,7 @@
             this.addStaffBtn.ForeColor = System.Drawing.Color.White;
             this.addStaffBtn.Image = null;
             this.addStaffBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.addStaffBtn.Location = new System.Drawing.Point(193, 252);
+            this.addStaffBtn.Location = new System.Drawing.Point(135, 234);
             this.addStaffBtn.Name = "addStaffBtn";
             this.addStaffBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.addStaffBtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -447,6 +530,7 @@
             this.addStaffBtn.Text = "Register ";
             this.addStaffBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.addStaffBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.addStaffBtn.Click += new System.EventHandler(this.addStaffBtn_Click);
             // 
             // backStaffBtn
             // 
@@ -463,7 +547,7 @@
             this.backStaffBtn.ForeColor = System.Drawing.Color.Black;
             this.backStaffBtn.Image = null;
             this.backStaffBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.backStaffBtn.Location = new System.Drawing.Point(346, 252);
+            this.backStaffBtn.Location = new System.Drawing.Point(288, 234);
             this.backStaffBtn.Name = "backStaffBtn";
             this.backStaffBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.backStaffBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -483,129 +567,12 @@
             this.gunaElipse1.Radius = 7;
             this.gunaElipse1.TargetControl = this;
             // 
-            // staffNameTxt
-            // 
-            this.staffNameTxt.AcceptsReturn = false;
-            this.staffNameTxt.AcceptsTab = false;
-            this.staffNameTxt.AnimationSpeed = 200;
-            this.staffNameTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.staffNameTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.staffNameTxt.BackColor = System.Drawing.Color.Transparent;
-            this.staffNameTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("staffNameTxt.BackgroundImage")));
-            this.staffNameTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.staffNameTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.staffNameTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.staffNameTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.staffNameTxt.BorderRadius = 6;
-            this.staffNameTxt.BorderThickness = 2;
-            this.staffNameTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.staffNameTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.staffNameTxt.DefaultFont = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.staffNameTxt.DefaultText = "";
-            this.staffNameTxt.FillColor = System.Drawing.Color.White;
-            this.staffNameTxt.HideSelection = true;
-            this.staffNameTxt.IconLeft = null;
-            this.staffNameTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.staffNameTxt.IconPadding = 10;
-            this.staffNameTxt.IconRight = null;
-            this.staffNameTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.staffNameTxt.Lines = new string[0];
-            this.staffNameTxt.Location = new System.Drawing.Point(246, 60);
-            this.staffNameTxt.MaximumSize = new System.Drawing.Size(200, 37);
-            this.staffNameTxt.MaxLength = 32767;
-            this.staffNameTxt.MinimumSize = new System.Drawing.Size(200, 37);
-            this.staffNameTxt.Modified = false;
-            this.staffNameTxt.Multiline = false;
-            this.staffNameTxt.Name = "staffNameTxt";
-            stateProperties53.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties53.FillColor = System.Drawing.Color.Empty;
-            stateProperties53.ForeColor = System.Drawing.Color.Empty;
-            stateProperties53.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.staffNameTxt.OnActiveState = stateProperties53;
-            stateProperties54.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties54.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties54.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.staffNameTxt.OnDisabledState = stateProperties54;
-            stateProperties55.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties55.FillColor = System.Drawing.Color.Empty;
-            stateProperties55.ForeColor = System.Drawing.Color.Empty;
-            stateProperties55.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.staffNameTxt.OnHoverState = stateProperties55;
-            stateProperties56.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties56.FillColor = System.Drawing.Color.White;
-            stateProperties56.ForeColor = System.Drawing.Color.Empty;
-            stateProperties56.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.staffNameTxt.OnIdleState = stateProperties56;
-            this.staffNameTxt.Padding = new System.Windows.Forms.Padding(3);
-            this.staffNameTxt.PasswordChar = '\0';
-            this.staffNameTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.staffNameTxt.PlaceholderText = "owner123";
-            this.staffNameTxt.ReadOnly = false;
-            this.staffNameTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.staffNameTxt.SelectedText = "";
-            this.staffNameTxt.SelectionLength = 0;
-            this.staffNameTxt.SelectionStart = 0;
-            this.staffNameTxt.ShortcutsEnabled = true;
-            this.staffNameTxt.Size = new System.Drawing.Size(200, 37);
-            this.staffNameTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.staffNameTxt.TabIndex = 45;
-            this.staffNameTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.staffNameTxt.TextMarginBottom = 0;
-            this.staffNameTxt.TextMarginLeft = 3;
-            this.staffNameTxt.TextMarginTop = 0;
-            this.staffNameTxt.TextPlaceholder = "owner123";
-            this.staffNameTxt.UseSystemPasswordChar = false;
-            this.staffNameTxt.WordWrap = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(241, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 28);
-            this.label2.TabIndex = 47;
-            this.label2.Text = "Staff name";
-            // 
-            // categoryCmb
-            // 
-            this.categoryCmb.BackColor = System.Drawing.Color.Transparent;
-            this.categoryCmb.BaseColor = System.Drawing.Color.White;
-            this.categoryCmb.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.categoryCmb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.categoryCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.categoryCmb.FocusedColor = System.Drawing.Color.Empty;
-            this.categoryCmb.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryCmb.ForeColor = System.Drawing.Color.Black;
-            this.categoryCmb.FormattingEnabled = true;
-            this.categoryCmb.Location = new System.Drawing.Point(246, 159);
-            this.categoryCmb.Name = "categoryCmb";
-            this.categoryCmb.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.categoryCmb.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.categoryCmb.Radius = 4;
-            this.categoryCmb.Size = new System.Drawing.Size(185, 32);
-            this.categoryCmb.TabIndex = 96;
-            this.categoryCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(241, 126);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(81, 28);
-            this.label12.TabIndex = 97;
-            this.label12.Text = "User role";
-            // 
             // New_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.ClientSize = new System.Drawing.Size(698, 405);
+            this.ClientSize = new System.Drawing.Size(598, 405);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -642,7 +609,5 @@
         private Bunifu.Framework.UI.BunifuCheckbox showPasswordChk;
         internal System.Windows.Forms.Label label2;
         private Bunifu.UI.WinForms.BunifuTextBox staffNameTxt;
-        private Guna.UI.WinForms.GunaComboBox categoryCmb;
-        internal System.Windows.Forms.Label label12;
     }
 }
