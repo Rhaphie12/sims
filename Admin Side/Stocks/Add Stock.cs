@@ -310,7 +310,6 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
-
         private void backNewStockBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -319,6 +318,15 @@ namespace sims.Admin_Side.Stocks
         private void itemQuantityTxt_TextChanged(object sender, EventArgs e)
         {
             ValidateTextBoxForNumbersOnly(itemQuantityTxt);
+
+            if (int.TryParse(itemQuantityTxt.Text, out int quantity))
+            {
+                if (quantity > 20)
+                {
+                    MessageBox.Show("The maximum stock quantity is 20.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    itemQuantityTxt.Clear();
+                }
+            }
         }
 
         private void itemPriceTxt_TextChanged(object sender, EventArgs e)

@@ -87,6 +87,7 @@ namespace sims.Admin_Side.Stocks
                 MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void Populate()
         {
             dbModule db = new dbModule();
