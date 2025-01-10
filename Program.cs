@@ -17,7 +17,7 @@ namespace sims
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Splash_page());
+            Application.Run(new DashboardOwner());
         }
     }
 }

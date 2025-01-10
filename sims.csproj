@@ -640,7 +640,9 @@
   <ItemGroup>
     <None Include="Resources\warning-sign-icon-transparent-ba.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Staff Side\Stocks\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
