@@ -42,6 +42,7 @@ namespace sims.Admin_Side.Category
             New_Category newCategory = new New_Category(this, this);
             newCategory.Show();
         }
+
         public void Alert(string msg)
         {
             Category_Deleted frm = new Category_Deleted();
