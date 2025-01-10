@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
+using MySql.Data.MySqlClient;
 
 namespace sims.Admin_Side.Inventory_Report
 {
@@ -15,6 +17,11 @@ namespace sims.Admin_Side.Inventory_Report
         public Inventory_Report()
         {
             InitializeComponent();
+        }
+
+        private void stockReportBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
