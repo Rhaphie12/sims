@@ -311,8 +311,8 @@ namespace sims.Admin_Side.Items
 
             try
             {
-                string query = "SELECT * FROM items";
                 dbModule db = new dbModule();
+                string query = "SELECT * FROM items";
 
                 using (MySqlConnection conn = db.GetConnection())
                 {
