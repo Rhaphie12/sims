@@ -18,9 +18,12 @@ namespace sims.Admin_Side.Items
         private DataTable originalDataTable;
         private BindingSource bindingSource = new BindingSource();
 
-        public Manage_Items()
+        private Inventory_Dashboard countItems;
+
+        public Manage_Items(Inventory_Dashboard countItems)
         {
             InitializeComponent();
+            this.countItems = countItems;
         }
 
         public DataGridView ItemsDgv
@@ -99,8 +102,6 @@ namespace sims.Admin_Side.Items
         private void searchComboBox()
         {
             searchCategoryCmb.Items.Clear();
-            //searchCategoryCmb.Items.Add("All");
-            //searchCategoryCmb.SelectedIndex = 0;
 
             string query = "SELECT Category_Name FROM categories";
             dbModule db = new dbModule();
@@ -155,7 +156,32 @@ namespace sims.Admin_Side.Items
                 }
             }
         }
+        private void ItemsCountDashboard()
+        {
+            dbModule db = new dbModule();
+            string query = "SELECT COUNT(*) FROM items";
 
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        int itemCount = Convert.ToInt32(cmd.ExecuteScalar());
+                        countItems.ItemsCountLabel.Text = itemCount.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
         private void NewItemBtn_Click(object sender, EventArgs e)
         {
             New_Items newProductForm = new New_Items(this, this);
@@ -214,6 +240,8 @@ namespace sims.Admin_Side.Items
                         //MessageBox.Show("Item successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Alert("Item successfully deleted.");
                         Populate();
+                        ItemsCount();
+                        ItemsCountDashboard();
                     }
                     else
                     {
@@ -257,94 +285,47 @@ namespace sims.Admin_Side.Items
 
         private void searchItemTxt_TextChanged(object sender, EventArgs e)
         {
-            if (originalDataTable == null) return;
-            string searchText = searchItemTxt.Text.Trim();
-            DataView dv = originalDataTable.DefaultView;
-
-            if (string.IsNullOrEmpty(searchText))
-            {
-                dv.RowFilter = "";
-                ResetFilters();
-            }
-            else
-            {
-                dv.RowFilter = $"Item_Name LIKE '%{searchText}%'";
-            }
-
-            itemsDgv.DataSource = dv.ToTable();
+            ApplyFilters();
         }
 
         private void searchCategoryCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ApplyFilters();
+        }
+
+        private void ApplyFilters()
+        {
+            if (originalDataTable == null) return;
+
+            string searchText = searchItemTxt.Text.Trim();
             string selectedCategory = searchCategoryCmb.SelectedItem?.ToString();
-            string query = "SELECT * FROM items WHERE Category = @CategoryName";
-            dbModule db = new dbModule();
 
-            try
+            // Construct the filter dynamically
+            List<string> filters = new List<string>();
+
+            if (!string.IsNullOrEmpty(selectedCategory))
             {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@CategoryName", selectedCategory);
-
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-                            itemsDgv.DataSource = dataTable;
-                        }
-                    }
-                }
+                filters.Add($"Category = '{selectedCategory.Replace("'", "''")}'"); // Escape single quotes
             }
-            catch (Exception ex)
+
+            if (!string.IsNullOrEmpty(searchText))
             {
-                MessageBox.Show($"Error searching categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                filters.Add($"Item_Name LIKE '%{searchText.Replace("'", "''")}%'"); // Escape single quotes
             }
+
+            string combinedFilter = string.Join(" AND ", filters);
+
+            DataView dv = originalDataTable.DefaultView;
+            dv.RowFilter = combinedFilter;
+
+            itemsDgv.DataSource = dv.ToTable();
         }
 
         private void ResetFilters()
         {
-            searchCategoryCmb.SelectedIndex = -1;
-
-            try
-            {
-                dbModule db = new dbModule();
-                string query = "SELECT * FROM items";
-
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-                            itemsDgv.DataSource = dataTable;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error resetting filters: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ValidateTextBoxForNumbersOnly(BunifuTextBox textBox)
-        {
-            string newText = textBox.Text;
-
-            if (System.Text.RegularExpressions.Regex.IsMatch(newText, @"[a-zA-Z]"))
-            {
-                MessageBox.Show("Letters are not allowed!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox.Text = System.Text.RegularExpressions.Regex.Replace(newText, @"[a-zA-Z]", "");
-                textBox.SelectionStart = textBox.Text.Length;
-            }
+            searchCategoryCmb.SelectedIndex = -1; // Reset category filter
+            searchItemTxt.Clear();               // Clear text filter
+            ApplyFilters();                      // Reapply filters to reset DataView
         }
 
         private void refreshBtn_Click(object sender, EventArgs e)

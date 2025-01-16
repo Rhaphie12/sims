@@ -20,6 +20,7 @@ namespace sims.Admin_Side.Items
         private Manage_Items dashboard;
         private Manage_Items count;
 
+
         public New_Items(Manage_Items dashboard, Manage_Items count)
         {
             InitializeComponent();
@@ -49,7 +50,9 @@ namespace sims.Admin_Side.Items
             ItemsCount();
             GenerateRandomItemID();
             LoadComboBoxData();
+            Populate();
         }
+
         private void ItemsCount()
         {
             dbModule db = new dbModule();
@@ -174,9 +177,9 @@ namespace sims.Admin_Side.Items
                 conn.Open();
                 cmd.Connection = conn;
                 cmd.CommandText = "INSERT INTO items (Item_ID, Item_Name, Category, Item_Description, Item_Image) " +
-                                  "VALUES (@Item_ID, @Item_name, @Category, @Date_Added, @Item_Description, @Item_Image)";
+                                  "VALUES (@Item_ID, @Item_Name, @Category, @Item_Description, @Item_Image)";
                 cmd.Parameters.AddWithValue("@Item_ID", itemID);
-                cmd.Parameters.AddWithValue("@Item_name", itemName);
+                cmd.Parameters.AddWithValue("@Item_Name", itemName);
                 cmd.Parameters.AddWithValue("@Category", category);
                 cmd.Parameters.AddWithValue("@Item_Description", itemDescription);
 
@@ -188,8 +191,6 @@ namespace sims.Admin_Side.Items
 
                 if (rowsAffected > 0)
                 {
-                    //MessageBox.Show("Item added successfully!", "Item Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
                     GenerateRandomItemID();
                     ItemsCount();
                     itemNameTxt.Clear();
@@ -197,6 +198,7 @@ namespace sims.Admin_Side.Items
                     itemDescTxt.Clear();
                     itemImagePic.Image = null;
                     this.Alert("Item Added Successfully");
+                    this.Hide();
                     Populate();
                 }
                 else
@@ -218,6 +220,7 @@ namespace sims.Admin_Side.Items
                 conn.Dispose();
             }
         }
+
 
         private Image ResizeImage(Image image, int width, int height)
         {

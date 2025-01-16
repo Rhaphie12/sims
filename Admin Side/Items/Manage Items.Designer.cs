@@ -49,10 +49,10 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.refreshBtn = new FontAwesome.Sharp.IconButton();
-            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.searchCategoryCmb = new Guna.UI.WinForms.GunaComboBox();
             this.searchItemTxt = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.searchCategoryCmb = new Guna.UI.WinForms.GunaComboBox();
             this.NewItemBtn = new Guna.UI.WinForms.GunaButton();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
             this.DeleteItemBtn = new Guna.UI.WinForms.GunaButton();
@@ -214,10 +214,10 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.refreshBtn);
-            this.panel6.Controls.Add(this.label3);
             this.panel6.Controls.Add(this.label1);
-            this.panel6.Controls.Add(this.searchCategoryCmb);
             this.panel6.Controls.Add(this.searchItemTxt);
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Controls.Add(this.searchCategoryCmb);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
@@ -234,58 +234,23 @@
             this.refreshBtn.IconColor = System.Drawing.Color.Black;
             this.refreshBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.refreshBtn.IconSize = 20;
-            this.refreshBtn.Location = new System.Drawing.Point(543, 24);
+            this.refreshBtn.Location = new System.Drawing.Point(279, 24);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(28, 26);
             this.refreshBtn.TabIndex = 74;
             this.refreshBtn.UseVisualStyleBackColor = false;
             this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(370, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 28);
-            this.label3.TabIndex = 73;
-            this.label3.Text = "Search by Category";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(73, 22);
+            this.label1.Location = new System.Drawing.Point(371, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 28);
             this.label1.TabIndex = 73;
             this.label1.Text = "Search by Item Name";
-            // 
-            // searchCategoryCmb
-            // 
-            this.searchCategoryCmb.BackColor = System.Drawing.Color.Transparent;
-            this.searchCategoryCmb.BaseColor = System.Drawing.Color.White;
-            this.searchCategoryCmb.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.searchCategoryCmb.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchCategoryCmb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.searchCategoryCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.searchCategoryCmb.FocusedColor = System.Drawing.Color.Empty;
-            this.searchCategoryCmb.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCategoryCmb.ForeColor = System.Drawing.Color.Black;
-            this.searchCategoryCmb.FormattingEnabled = true;
-            this.searchCategoryCmb.Location = new System.Drawing.Point(375, 55);
-            this.searchCategoryCmb.MaximumSize = new System.Drawing.Size(233, 0);
-            this.searchCategoryCmb.MinimumSize = new System.Drawing.Size(233, 0);
-            this.searchCategoryCmb.Name = "searchCategoryCmb";
-            this.searchCategoryCmb.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.searchCategoryCmb.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.searchCategoryCmb.Radius = 4;
-            this.searchCategoryCmb.Size = new System.Drawing.Size(233, 37);
-            this.searchCategoryCmb.TabIndex = 72;
-            this.searchCategoryCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.searchCategoryCmb.SelectedIndexChanged += new System.EventHandler(this.searchCategoryCmb_SelectedIndexChanged);
             // 
             // searchItemTxt
             // 
@@ -314,7 +279,7 @@
             this.searchItemTxt.IconRight = null;
             this.searchItemTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.searchItemTxt.Lines = new string[0];
-            this.searchItemTxt.Location = new System.Drawing.Point(78, 53);
+            this.searchItemTxt.Location = new System.Drawing.Point(376, 53);
             this.searchItemTxt.MaximumSize = new System.Drawing.Size(233, 40);
             this.searchItemTxt.MaxLength = 32767;
             this.searchItemTxt.MinimumSize = new System.Drawing.Size(233, 40);
@@ -362,6 +327,41 @@
             this.searchItemTxt.UseSystemPasswordChar = false;
             this.searchItemTxt.WordWrap = true;
             this.searchItemTxt.TextChanged += new System.EventHandler(this.searchItemTxt_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(106, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(171, 28);
+            this.label3.TabIndex = 73;
+            this.label3.Text = "Search by Category";
+            // 
+            // searchCategoryCmb
+            // 
+            this.searchCategoryCmb.BackColor = System.Drawing.Color.Transparent;
+            this.searchCategoryCmb.BaseColor = System.Drawing.Color.White;
+            this.searchCategoryCmb.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.searchCategoryCmb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchCategoryCmb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.searchCategoryCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.searchCategoryCmb.FocusedColor = System.Drawing.Color.Empty;
+            this.searchCategoryCmb.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchCategoryCmb.ForeColor = System.Drawing.Color.Black;
+            this.searchCategoryCmb.FormattingEnabled = true;
+            this.searchCategoryCmb.Location = new System.Drawing.Point(111, 55);
+            this.searchCategoryCmb.MaximumSize = new System.Drawing.Size(233, 0);
+            this.searchCategoryCmb.MinimumSize = new System.Drawing.Size(233, 0);
+            this.searchCategoryCmb.Name = "searchCategoryCmb";
+            this.searchCategoryCmb.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.searchCategoryCmb.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.searchCategoryCmb.Radius = 4;
+            this.searchCategoryCmb.Size = new System.Drawing.Size(233, 37);
+            this.searchCategoryCmb.TabIndex = 72;
+            this.searchCategoryCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.searchCategoryCmb.SelectedIndexChanged += new System.EventHandler(this.searchCategoryCmb_SelectedIndexChanged);
             // 
             // NewItemBtn
             // 
@@ -657,11 +657,11 @@
         private System.Windows.Forms.Panel panel4;
         internal System.Windows.Forms.Label label3;
         internal System.Windows.Forms.Label label1;
+        private FontAwesome.Sharp.IconButton refreshBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewImageColumn Item_Image;
-        private FontAwesome.Sharp.IconButton refreshBtn;
     }
 }

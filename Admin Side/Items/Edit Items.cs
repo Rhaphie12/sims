@@ -216,7 +216,7 @@ namespace sims.Admin_Side.Items
                     categoryCmb.SelectedIndex = -1;
                     itemDescTxt.Clear();
                     itemImagePic.Image = null;
-                    Populate(); // Refresh the list of items
+                    Populate(); 
                 }
                 else
                 {
