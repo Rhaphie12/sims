@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -55,6 +56,20 @@ namespace sims.Admin_Side.Users
             staffIDTxt.Text = randomNumber.ToString();
         }
 
+        //private string HashPassword(string password)
+        //{
+        //    using (SHA256 sha256 = SHA256.Create())
+        //    {
+        //        byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+        //        StringBuilder builder = new StringBuilder();
+        //        foreach (byte b in bytes)
+        //        {
+        //            builder.Append(b.ToString("x2"));
+        //        }
+        //        return builder.ToString();
+        //    }
+        //}
+
         private void addStaffBtn_Click(object sender, EventArgs e)
         {
             register();
@@ -70,13 +85,13 @@ namespace sims.Admin_Side.Users
             string staffName = staffNameTxt.Text.Trim();
             string username = usernameTxt.Text.Trim();
             string password = passwordTxt.Text.Trim();
+            //string hashedPassword = HashPassword(password);
 
             if (string.IsNullOrEmpty(staffName) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 new Messages_Boxes.Field_Required().Show();
                 return;
             }
-
             try
             {
                 conn.Open();
@@ -171,7 +186,6 @@ namespace sims.Admin_Side.Users
                 staffNameTxt.Text = System.Text.RegularExpressions.Regex.Replace(newText, @"\d", "");
                 staffNameTxt.SelectionStart = staffNameTxt.Text.Length;
             }
-
         }
     }
 }
