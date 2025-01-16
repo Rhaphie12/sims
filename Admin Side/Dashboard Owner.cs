@@ -2,6 +2,7 @@
 using Guna.UI.WinForms;
 using MySql.Data.MySqlClient;
 using sims.Admin_Side;
+using sims.Admin_Side.Backup_Database;
 using sims.Admin_Side.Category;
 using sims.Admin_Side.Inventory_Report;
 using sims.Admin_Side.Items;
@@ -26,6 +27,17 @@ namespace sims
         private IconButton currentBtn;
         private GunaPanel leftBorderBtn;
 
+        private Inventory_Dashboard dashboardInventoryInstance;
+        private Manage_Category manageCategoryInstance;
+        private Manage_Items manageItemsInstance;
+        private Manage_Stock manageStockInstance;
+        private Inventory_Report inventoryReportInstance;
+        private Manage_Sales manageSalesProductsInstance;
+        private Product_Sales productSalesInstance;
+        private Manage_Sales_Report manageSalesReportInstance;
+        private Manage_User_Staff manageUserStaffInstance;
+        private Backup_Database backupDatabaseInstance;
+
         public DashboardOwner()
         {
             InitializeComponent();
@@ -36,6 +48,25 @@ namespace sims
                 Size = new Size(10, 58)
             };
             PanelMenu.Controls.Add(leftBorderBtn);
+        }
+
+        private void DashboardOwner_Load(object sender, EventArgs e)
+        {
+            dashboardInventoryInstance = new Inventory_Dashboard();
+            manageCategoryInstance = new Manage_Category(dashboardInventoryInstance);
+            manageItemsInstance = new Manage_Items(dashboardInventoryInstance);
+            manageStockInstance = new Manage_Stock(dashboardInventoryInstance);
+            inventoryReportInstance = new Inventory_Report();
+            manageSalesProductsInstance = new Manage_Sales();
+            productSalesInstance = new Product_Sales(manageSalesProductsInstance);
+            manageSalesReportInstance = new Manage_Sales_Report();
+            manageUserStaffInstance = new Manage_User_Staff();
+            backupDatabaseInstance = new Backup_Database();
+
+            LoadView(dashboardInventoryInstance);
+            ActivateButton(DashboardBtn, Color.White);
+
+            ShowUsernameWithGreeting();
         }
 
         private void ShowUsernameWithGreeting()
@@ -70,9 +101,45 @@ namespace sims
             }
         }
 
+        private void LoadView(object viewInstance)
+        {
+            foreach (Control control in DashboardPanel.Controls)
+            {
+                control.Visible = false;
+            }
+
+            if (viewInstance is UserControl uc)
+            {
+                if (!DashboardPanel.Controls.Contains(uc))
+                {
+                    uc.Dock = DockStyle.Fill;
+                    DashboardPanel.Controls.Add(uc);
+                }
+                uc.Visible = true;
+                uc.BringToFront();
+            }
+            else if (viewInstance is Form form)
+            {
+                if (!DashboardPanel.Controls.Contains(form))
+                {
+                    form.TopLevel = false;
+                    form.FormBorderStyle = FormBorderStyle.None;
+                    form.Dock = DockStyle.Fill;
+                    DashboardPanel.Controls.Add(form);
+                }
+                form.Visible = true;
+                form.BringToFront();
+            }
+            else
+            {
+                throw new InvalidOperationException("Unsupported type. Only UserControl and Form are allowed.");
+            }
+        }
+
         private void customizeDesign()
         {
             InventoryPanelSubMenu.Visible = false;
+            salesPanelSubMenu.Visible = false;
         }
 
         private void hideSubMenu()
@@ -80,12 +147,18 @@ namespace sims
             if (InventoryPanelSubMenu.Visible == true)
                 InventoryPanelSubMenu.Visible = false;
         }
+        private void hideSubMenu2()
+        {
+            if (salesPanelSubMenu.Visible == true)
+                salesPanelSubMenu.Visible = false;
+        }
 
         private void showSubMenu(Panel subMenu)
         {
             if (subMenu.Visible == false)
             {
                 hideSubMenu();
+                hideSubMenu2();
                 subMenu.Visible = true;
             }
             else
@@ -94,48 +167,54 @@ namespace sims
 
         private void ActivateButton(object senderBtn, Color customColor)
         {
-            if (senderBtn != null)
-            {
-                DisableBtn();
-
-                currentBtn = (IconButton)senderBtn;
-                currentBtn.BackColor = Color.FromArgb(222, 196, 125);
-                currentBtn.ForeColor = customColor;
-                currentBtn.IconColor = customColor;
-                currentBtn.TextAlign = ContentAlignment.MiddleCenter;
-                currentBtn.ImageAlign = ContentAlignment.MiddleRight;
-                currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
-
-                leftBorderBtn.BackColor = customColor;
-                leftBorderBtn.Location = new Point(0, currentBtn.Location.Y);
-                leftBorderBtn.Visible = true;
-                leftBorderBtn.BringToFront();
-            }
+            if (senderBtn == null) return;
+            DisableBtn();
+            currentBtn = (IconButton)senderBtn;
+            currentBtn.BackColor = Color.FromArgb(222, 196, 125);
+            currentBtn.ForeColor = customColor;
+            currentBtn.IconColor = customColor;                  
+            currentBtn.TextAlign = ContentAlignment.MiddleCenter; 
+            currentBtn.ImageAlign = ContentAlignment.MiddleRight; 
+            currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage; 
+            leftBorderBtn.BackColor = customColor;
+            leftBorderBtn.Size = new Size(7, currentBtn.Height);
+            leftBorderBtn.Location = new Point(0, currentBtn.Location.Y);
+            leftBorderBtn.Visible = true;
+            leftBorderBtn.BringToFront();
         }
+
         private void OpeninPanel(object formOpen)
         {
-            // Clear existing controls in the DashboardPanel
-            if (DashboardPanel.Controls.Count > 0)
+            foreach (Control control in DashboardPanel.Controls)
             {
-                DashboardPanel.Controls.RemoveAt(0);
+                control.Visible = false;
             }
 
-            // Check if the object is a UserControl
             if (formOpen is UserControl uc)
             {
-                uc.Dock = DockStyle.Fill;
-                DashboardPanel.Controls.Add(uc);
-                DashboardPanel.Tag = uc;
+                if (!DashboardPanel.Controls.Contains(uc))
+                {
+                    uc.Dock = DockStyle.Fill;
+                    DashboardPanel.Controls.Add(uc);
+                    DashboardPanel.Tag = uc;
+                }
+
+                uc.Visible = true;
+                uc.BringToFront();
             }
-            // Check if the object is a Form
             else if (formOpen is Form dh)
             {
-                dh.TopLevel = false;
-                dh.FormBorderStyle = FormBorderStyle.None;
-                dh.Dock = DockStyle.Fill;
-                DashboardPanel.Controls.Add(dh);
-                DashboardPanel.Tag = dh;
-                dh.Show();
+                if (!DashboardPanel.Controls.Contains(dh))
+                {
+                    dh.TopLevel = false;
+                    dh.FormBorderStyle = FormBorderStyle.None;
+                    dh.Dock = DockStyle.Fill;
+                    DashboardPanel.Controls.Add(dh);
+                    DashboardPanel.Tag = dh;
+                }
+
+                dh.Visible = true;
+                dh.BringToFront();
             }
         }
 
@@ -150,18 +229,26 @@ namespace sims
                 currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
             }
+            leftBorderBtn.Visible = false;
         }
 
         private void DashboardBtn_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(new Dashboard_Inventory());
+            ActivateButton(sender, Color.White);
+            foreach (Control control in DashboardPanel.Controls)
+            {
+                control.Visible = false;
+            }
+            dashboardInventoryInstance.Visible = true;
+            dashboardInventoryInstance.BringToFront();
+            customizeDesign();
         }
 
         private void CategoriesBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(new Manage_Category());
+            OpeninPanel(manageCategoryInstance);
+            customizeDesign();
         }
 
         private void inventoryBtn_Click(object sender, EventArgs e)
@@ -172,41 +259,57 @@ namespace sims
         private void ItemsBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(new Manage_Items());
+            OpeninPanel(manageItemsInstance);
 
         }
 
         private void StocksBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(new Manage_Stock());
+            OpeninPanel(manageStockInstance);
 
         }
 
         private void inventoryReport_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(new Inventory_Report());
+            OpeninPanel(inventoryReportInstance);
         }
 
         private void SalesBtn_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(new Manage_Sales());
-
+            showSubMenu(salesPanelSubMenu);
         }
 
-        private void SalesReportBtn_Click(object sender, EventArgs e)
+        private void productsBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(new Manage_Sales_Report());
+            OpeninPanel(manageSalesProductsInstance);
+        }
+        private void productSalesBtn_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, Color.FromArgb(255, 255, 255));
+            OpeninPanel(productSalesInstance);
+        }
 
+        private void salesReportBtn_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, Color.FromArgb(255, 255, 255));
+            OpeninPanel(manageSalesReportInstance);
         }
 
         private void UserBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(new Manage_User_Staff());
+            OpeninPanel(manageUserStaffInstance);
+            customizeDesign();
+        }
+
+        private void backupDbBtn_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, Color.FromArgb(255, 255, 255));
+            OpeninPanel(backupDatabaseInstance);
+            customizeDesign();
         }
 
         private void SignoutBtn_Click(object sender, EventArgs e)

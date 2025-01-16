@@ -13,14 +13,22 @@ using System.Windows.Forms;
 
 namespace sims.Admin_Side
 {
-    public partial class Dashboard_Inventory : UserControl
+    public partial class Inventory_Dashboard : Form
     {
-        public Dashboard_Inventory()
+        public LiveCharts.WinForms.CartesianChart StockChart => cartesianChart1;
+        public Label CategoriesCountLabel => categoriesCountTxt;
+        public Label ItemsCountLabel => itemsCountTxt;
+
+        public Inventory_Dashboard()
         {
             InitializeComponent();
-            CategoriesCount();
-            ItemsCount();
+        }
+
+        private void Inventory_Dashboard_Load(object sender, EventArgs e)
+        {
             stockPreview();
+            ItemsCount();
+            CategoriesCount();
         }
 
         private void CategoriesCount()
@@ -49,6 +57,7 @@ namespace sims.Admin_Side
                 }
             }
         }
+
         private void ItemsCount()
         {
             dbModule db = new dbModule();
@@ -96,11 +105,12 @@ namespace sims.Admin_Side
 
                         while (reader.Read())
                         {
-                            string itemName = reader["Item_Name"].ToString();
-                            int itemQuantity = int.Parse(reader["Stock_In"].ToString());
-
-                            itemNames.Add(itemName);
-                            values.Add(itemQuantity);
+                            string itemName = reader["Item_Name"]?.ToString() ?? string.Empty;
+                            if (int.TryParse(reader["Stock_In"]?.ToString(), out int itemQuantity))
+                            {
+                                itemNames.Add(itemName);
+                                values.Add(itemQuantity);
+                            }
                         }
 
                         series.Add(new ColumnSeries
@@ -111,20 +121,26 @@ namespace sims.Admin_Side
                         });
                     }
                 }
+
                 if (cartesianChart1 != null)
                 {
+                    cartesianChart1.Series.Clear();
                     cartesianChart1.Series = series;
+
                     cartesianChart1.AxisX.Clear();
                     cartesianChart1.AxisX.Add(new Axis
                     {
                         Title = "Item Name",
                         Labels = itemNames
                     });
+
                     cartesianChart1.AxisY.Clear();
                     cartesianChart1.AxisY.Add(new Axis
                     {
                         Title = "Item Stocks"
                     });
+
+                    cartesianChart1.Update(true, true);
                 }
                 else
                 {

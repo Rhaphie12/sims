@@ -30,8 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardOwner));
             this.PanelMenu = new System.Windows.Forms.Panel();
+            this.backupDbBtn = new FontAwesome.Sharp.IconButton();
             this.UserBtn = new FontAwesome.Sharp.IconButton();
-            this.SalesReportBtn = new FontAwesome.Sharp.IconButton();
+            this.salesPanelSubMenu = new System.Windows.Forms.Panel();
+            this.salesReportBtn = new FontAwesome.Sharp.IconButton();
+            this.productSalesBtn = new FontAwesome.Sharp.IconButton();
+            this.productsBtn = new FontAwesome.Sharp.IconButton();
             this.SalesBtn = new FontAwesome.Sharp.IconButton();
             this.InventoryPanelSubMenu = new System.Windows.Forms.Panel();
             this.inventoryReport = new FontAwesome.Sharp.IconButton();
@@ -53,6 +57,7 @@
             this.greetingNameTxt = new System.Windows.Forms.Label();
             this.DashboardPanel = new System.Windows.Forms.Panel();
             this.PanelMenu.SuspendLayout();
+            this.salesPanelSubMenu.SuspendLayout();
             this.InventoryPanelSubMenu.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox2)).BeginInit();
@@ -66,8 +71,9 @@
             // PanelMenu
             // 
             this.PanelMenu.BackColor = System.Drawing.Color.White;
+            this.PanelMenu.Controls.Add(this.backupDbBtn);
             this.PanelMenu.Controls.Add(this.UserBtn);
-            this.PanelMenu.Controls.Add(this.SalesReportBtn);
+            this.PanelMenu.Controls.Add(this.salesPanelSubMenu);
             this.PanelMenu.Controls.Add(this.SalesBtn);
             this.PanelMenu.Controls.Add(this.InventoryPanelSubMenu);
             this.PanelMenu.Controls.Add(this.inventoryBtn);
@@ -78,8 +84,31 @@
             this.PanelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelMenu.Location = new System.Drawing.Point(0, 0);
             this.PanelMenu.Name = "PanelMenu";
-            this.PanelMenu.Size = new System.Drawing.Size(299, 779);
+            this.PanelMenu.Size = new System.Drawing.Size(299, 833);
             this.PanelMenu.TabIndex = 90;
+            // 
+            // backupDbBtn
+            // 
+            this.backupDbBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backupDbBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.backupDbBtn.FlatAppearance.BorderSize = 0;
+            this.backupDbBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backupDbBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backupDbBtn.IconChar = FontAwesome.Sharp.IconChar.Database;
+            this.backupDbBtn.IconColor = System.Drawing.Color.Black;
+            this.backupDbBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.backupDbBtn.IconSize = 40;
+            this.backupDbBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.backupDbBtn.Location = new System.Drawing.Point(0, 716);
+            this.backupDbBtn.Name = "backupDbBtn";
+            this.backupDbBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
+            this.backupDbBtn.Size = new System.Drawing.Size(299, 58);
+            this.backupDbBtn.TabIndex = 33;
+            this.backupDbBtn.Text = "Database";
+            this.backupDbBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.backupDbBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.backupDbBtn.UseVisualStyleBackColor = true;
+            this.backupDbBtn.Click += new System.EventHandler(this.backupDbBtn_Click);
             // 
             // UserBtn
             // 
@@ -93,39 +122,96 @@
             this.UserBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.UserBtn.IconSize = 40;
             this.UserBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.UserBtn.Location = new System.Drawing.Point(0, 545);
+            this.UserBtn.Location = new System.Drawing.Point(0, 658);
             this.UserBtn.Name = "UserBtn";
             this.UserBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
             this.UserBtn.Size = new System.Drawing.Size(299, 58);
             this.UserBtn.TabIndex = 32;
-            this.UserBtn.Text = "Staff";
+            this.UserBtn.Text = "Users";
             this.UserBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.UserBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.UserBtn.UseVisualStyleBackColor = true;
             this.UserBtn.Click += new System.EventHandler(this.UserBtn_Click);
             // 
-            // SalesReportBtn
+            // salesPanelSubMenu
             // 
-            this.SalesReportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SalesReportBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SalesReportBtn.FlatAppearance.BorderSize = 0;
-            this.SalesReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SalesReportBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SalesReportBtn.IconChar = FontAwesome.Sharp.IconChar.Newspaper;
-            this.SalesReportBtn.IconColor = System.Drawing.Color.Black;
-            this.SalesReportBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.SalesReportBtn.IconSize = 40;
-            this.SalesReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesReportBtn.Location = new System.Drawing.Point(0, 487);
-            this.SalesReportBtn.Name = "SalesReportBtn";
-            this.SalesReportBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
-            this.SalesReportBtn.Size = new System.Drawing.Size(299, 58);
-            this.SalesReportBtn.TabIndex = 31;
-            this.SalesReportBtn.Text = "Sales Report\r\n";
-            this.SalesReportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesReportBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SalesReportBtn.UseVisualStyleBackColor = true;
-            this.SalesReportBtn.Click += new System.EventHandler(this.SalesReportBtn_Click);
+            this.salesPanelSubMenu.Controls.Add(this.salesReportBtn);
+            this.salesPanelSubMenu.Controls.Add(this.productSalesBtn);
+            this.salesPanelSubMenu.Controls.Add(this.productsBtn);
+            this.salesPanelSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.salesPanelSubMenu.Location = new System.Drawing.Point(0, 487);
+            this.salesPanelSubMenu.Name = "salesPanelSubMenu";
+            this.salesPanelSubMenu.Size = new System.Drawing.Size(299, 171);
+            this.salesPanelSubMenu.TabIndex = 31;
+            // 
+            // salesReportBtn
+            // 
+            this.salesReportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.salesReportBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.salesReportBtn.FlatAppearance.BorderSize = 0;
+            this.salesReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.salesReportBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salesReportBtn.IconChar = FontAwesome.Sharp.IconChar.Newspaper;
+            this.salesReportBtn.IconColor = System.Drawing.Color.Black;
+            this.salesReportBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.salesReportBtn.IconSize = 40;
+            this.salesReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.salesReportBtn.Location = new System.Drawing.Point(0, 116);
+            this.salesReportBtn.Name = "salesReportBtn";
+            this.salesReportBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
+            this.salesReportBtn.Size = new System.Drawing.Size(299, 58);
+            this.salesReportBtn.TabIndex = 18;
+            this.salesReportBtn.Text = "Sales Report";
+            this.salesReportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.salesReportBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.salesReportBtn.UseVisualStyleBackColor = true;
+            this.salesReportBtn.Click += new System.EventHandler(this.salesReportBtn_Click);
+            // 
+            // productSalesBtn
+            // 
+            this.productSalesBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.productSalesBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.productSalesBtn.FlatAppearance.BorderSize = 0;
+            this.productSalesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.productSalesBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productSalesBtn.IconChar = FontAwesome.Sharp.IconChar.SackDollar;
+            this.productSalesBtn.IconColor = System.Drawing.Color.Black;
+            this.productSalesBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.productSalesBtn.IconSize = 40;
+            this.productSalesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.productSalesBtn.Location = new System.Drawing.Point(0, 58);
+            this.productSalesBtn.Name = "productSalesBtn";
+            this.productSalesBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
+            this.productSalesBtn.Size = new System.Drawing.Size(299, 58);
+            this.productSalesBtn.TabIndex = 17;
+            this.productSalesBtn.Text = "Products Sales";
+            this.productSalesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.productSalesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.productSalesBtn.UseVisualStyleBackColor = true;
+            this.productSalesBtn.Click += new System.EventHandler(this.productSalesBtn_Click);
+            // 
+            // productsBtn
+            // 
+            this.productsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.productsBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.productsBtn.FlatAppearance.BorderSize = 0;
+            this.productsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.productsBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productsBtn.IconChar = FontAwesome.Sharp.IconChar.CartShopping;
+            this.productsBtn.IconColor = System.Drawing.Color.Black;
+            this.productsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.productsBtn.IconSize = 40;
+            this.productsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.productsBtn.Location = new System.Drawing.Point(0, 0);
+            this.productsBtn.Name = "productsBtn";
+            this.productsBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
+            this.productsBtn.Size = new System.Drawing.Size(299, 58);
+            this.productsBtn.TabIndex = 16;
+            this.productsBtn.Text = "Products";
+            this.productsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.productsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.productsBtn.UseVisualStyleBackColor = true;
+            this.productsBtn.Click += new System.EventHandler(this.productsBtn_Click);
             // 
             // SalesBtn
             // 
@@ -267,7 +353,7 @@
             this.SignoutBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.SignoutBtn.IconSize = 40;
             this.SignoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SignoutBtn.Location = new System.Drawing.Point(0, 721);
+            this.SignoutBtn.Location = new System.Drawing.Point(0, 775);
             this.SignoutBtn.Name = "SignoutBtn";
             this.SignoutBtn.Padding = new System.Windows.Forms.Padding(30, 0, 20, 0);
             this.SignoutBtn.Size = new System.Drawing.Size(299, 58);
@@ -449,7 +535,7 @@
             this.DashboardPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DashboardPanel.Location = new System.Drawing.Point(299, 79);
             this.DashboardPanel.Name = "DashboardPanel";
-            this.DashboardPanel.Size = new System.Drawing.Size(1145, 700);
+            this.DashboardPanel.Size = new System.Drawing.Size(1145, 754);
             this.DashboardPanel.TabIndex = 92;
             // 
             // DashboardOwner
@@ -457,7 +543,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.ClientSize = new System.Drawing.Size(1444, 779);
+            this.ClientSize = new System.Drawing.Size(1444, 833);
             this.Controls.Add(this.DashboardPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.PanelMenu);
@@ -467,7 +553,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Dashboard (Owner)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.DashboardOwner_Load);
             this.PanelMenu.ResumeLayout(false);
+            this.salesPanelSubMenu.ResumeLayout(false);
             this.InventoryPanelSubMenu.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
@@ -500,13 +588,17 @@
         private System.Windows.Forms.Panel InventoryPanelSubMenu;
         internal FontAwesome.Sharp.IconButton ItemsBtn;
         internal FontAwesome.Sharp.IconButton StocksBtn;
-        internal FontAwesome.Sharp.IconButton UserBtn;
-        internal FontAwesome.Sharp.IconButton SalesReportBtn;
         internal FontAwesome.Sharp.IconButton SalesBtn;
         internal Guna.UI.WinForms.GunaPictureBox notifPic;
         internal Bunifu.UI.WinForms.BunifuPictureBox profilePicBox;
         internal FontAwesome.Sharp.IconButton inventoryReport;
         internal FontAwesome.Sharp.IconButton inventoryBtn;
+        private System.Windows.Forms.Panel salesPanelSubMenu;
+        internal FontAwesome.Sharp.IconButton productsBtn;
+        internal FontAwesome.Sharp.IconButton salesReportBtn;
+        internal FontAwesome.Sharp.IconButton productSalesBtn;
+        internal FontAwesome.Sharp.IconButton backupDbBtn;
+        internal FontAwesome.Sharp.IconButton UserBtn;
     }
 }
 
