@@ -13,19 +13,24 @@ using System.Windows.Forms;
 using Bunifu.UI.WinForms;
 using sims.Notification;
 using sims.Notification.Stock_notification;
+using LiveCharts.Wpf;
+using LiveCharts;
 
 namespace sims.Admin_Side.Stocks
 {
     public partial class Add_Stock : Form
     {
         private Manage_Stock dashboard;
-        public Add_Stock(Manage_Stock dashboard)
+        private Inventory_Dashboard stockChart;
+
+        public Add_Stock(Manage_Stock dashboard, Inventory_Dashboard stockChart)
         {
             InitializeComponent();
             this.dashboard = dashboard;
 
             itemQuantityTxt.TextChanged += (s, e) => CalculateTotalValue();
             itemPriceTxt.TextChanged += (s, e) => CalculateTotalValue();
+            this.stockChart = stockChart;
         }
         public class ComboBoxItem
         {
@@ -67,7 +72,7 @@ namespace sims.Admin_Side.Stocks
             CalculateTotalValue();
             SelectItemID();
             UnitType();
-            WeightUnit();
+            ChartStock();
         }
         private void Populate()
         {
@@ -117,11 +122,7 @@ namespace sims.Admin_Side.Stocks
                                 byte[] itemImage = !reader.IsDBNull(reader.GetOrdinal("Item_Image"))
                                     ? (byte[])reader["Item_Image"]
                                     : null;
-
-                                // Add Item_Name to ComboBox
                                 selectItemNameCmb.Items.Add(itemName);
-
-                                // Store ItemID, ItemName, and ItemImage in the dictionary
                                 itemData[itemName] = (itemID, itemName, itemImage);
                             }
                         }
@@ -133,6 +134,7 @@ namespace sims.Admin_Side.Stocks
                 MessageBox.Show($"Error loading items: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void UnitType()
         {
             string query = "SELECT Unit_Type FROM unittype";
@@ -162,34 +164,6 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
-        private void WeightUnit()
-        {
-            string query = "SELECT Weight_Unit FROM weightunit";
-            dbModule db = new dbModule();
-
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                weightUnitCmb.Items.Add(reader["Weight_Unit"].ToString());
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void CalculateTotalValue()
         {
             try
@@ -199,11 +173,16 @@ namespace sims.Admin_Side.Stocks
                 {
                     decimal totalValue = quantity * price;
 
-                    itemTotalTxt.Text = totalValue.ToString("0.00");
+                    // Store the plain numeric value in a variable for future use
+                    itemTotalTxt.Tag = totalValue;
+
+                    // Display the value with a peso sign and formatting
+                    itemTotalTxt.Text = $"₱ {totalValue:0.00}";
                 }
                 else
                 {
                     itemTotalTxt.Text = string.Empty;
+                    itemTotalTxt.Tag = null; // Clear the stored value
                 }
             }
             catch (Exception ex)
@@ -214,6 +193,76 @@ namespace sims.Admin_Side.Stocks
                                 MessageBoxIcon.Error);
             }
         }
+
+
+        private void ChartStock()
+        {
+            dbModule db = new dbModule();
+            SeriesCollection series = new SeriesCollection();
+            List<string> itemNames = new List<string>();
+
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT Item_Name, Stock_In FROM stocks";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        ChartValues<int> values = new ChartValues<int>();
+
+                        while (reader.Read())
+                        {
+                            string itemName = reader["Item_Name"]?.ToString() ?? string.Empty;
+                            if (int.TryParse(reader["Stock_In"]?.ToString(), out int itemQuantity))
+                            {
+                                itemNames.Add(itemName);
+                                values.Add(itemQuantity);
+                            }
+                        }
+
+                        series.Add(new ColumnSeries
+                        {
+                            Title = "Items",
+                            Values = values,
+                            DataLabels = true
+                        });
+                    }
+                }
+
+                if (stockChart.StockChart != null)
+                {
+                    stockChart.StockChart.Series.Clear(); // Clear existing series
+                    stockChart.StockChart.Series = series;
+
+                    stockChart.StockChart.AxisX.Clear();
+                    stockChart.StockChart.AxisX.Add(new Axis
+                    {
+                        Title = "Item Name",
+                        Labels = itemNames
+                    });
+
+                    stockChart.StockChart.AxisY.Clear();
+                    stockChart.StockChart.AxisY.Add(new Axis
+                    {
+                        Title = "Item Stocks"
+                    });
+
+                    stockChart.StockChart.Update(true, true); // Force redraw
+                }
+                else
+                {
+                    MessageBox.Show("Cartesian chart is not initialized!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
         private void ValidateTextBoxForNumbersOnly(BunifuTextBox textBox)
         {
             string newText = textBox.Text;
@@ -241,54 +290,50 @@ namespace sims.Admin_Side.Stocks
             string itemName = selectItemNameCmb.SelectedItem?.ToString() ?? string.Empty;
             string stockIn = itemQuantityTxt.Text.Trim();
             string unitType = unitTypeCmb.SelectedItem?.ToString() ?? string.Empty;
-            string weightUnit = weightUnitCmb.SelectedItem?.ToString() ?? string.Empty;
-            string dateAdded = dateAddedTxt.Text.Trim();
+            string dateAdded = dateAddedDtp.Value.ToString("yyyy-MM-dd");
             string itemPrice = itemPriceTxt.Text.Trim();
-            string itemTotal = itemTotalTxt.Text.Trim();
+            decimal itemTotal = itemTotalTxt.Tag is decimal value ? value : 0;
             System.Drawing.Image itemImage = itemImagePic.Image;
 
-            if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(stockIn) || string.IsNullOrEmpty(unitType) ||
-                string.IsNullOrEmpty(weightUnit) || string.IsNullOrEmpty(dateAdded) || string.IsNullOrEmpty(itemPrice) || string.IsNullOrEmpty(itemTotal))
+            if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(stockIn) || string.IsNullOrEmpty(unitType) || string.IsNullOrEmpty(itemPrice))
             {
                 new Messages_Boxes.Field_Required().Show();
                 return;
             }
 
+
             try
             {
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "INSERT INTO stocks (Item_ID, Item_Name, Stock_In, Unit_Type, Weight_Unit, Date_Added, Item_Price, Item_Total, Item_Image) " +
-                                  "VALUES (@Item_ID, @Item_Name, @Stock_In, @Unit_Type, @Weight_Unit, @Date_Added, @Item_Price, @Item_Total, @Item_Image)";
+                cmd.CommandText = "INSERT INTO stocks (Item_ID, Item_Name, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image) " +
+                                  "VALUES (@Item_ID, @Item_Name, @Stock_In, @Unit_Type, @Date_Added, @Item_Price, @Item_Total, @Item_Image)";
 
                 cmd.Parameters.AddWithValue("@Item_ID", itemID);
                 cmd.Parameters.AddWithValue("@Item_Name", itemName);
-                cmd.Parameters.AddWithValue("@Stock_In", stockIn);
+                cmd.Parameters.AddWithValue("@Stock_In", int.TryParse(stockIn, out var stock) ? stock : 0); // Convert to integer
                 cmd.Parameters.AddWithValue("@Unit_Type", unitType);
-                cmd.Parameters.AddWithValue("@Weight_Unit", weightUnit);
                 cmd.Parameters.AddWithValue("@Date_Added", dateAdded);
-                cmd.Parameters.AddWithValue("@Item_Price", itemPrice);
+                cmd.Parameters.AddWithValue("@Item_Price", decimal.TryParse(itemPrice, out var price) ? price : 0); // Convert to decimal
                 cmd.Parameters.AddWithValue("@Item_Total", itemTotal);
 
-                // Resize and convert the image
                 byte[] imageBytes = itemImage != null ? ImageToByteArray(ResizeImage(itemImage, 300, 300)) : null;
                 cmd.Parameters.AddWithValue("@Item_Image", imageBytes ?? (object)DBNull.Value);
-
                 int rowsAffected = cmd.ExecuteNonQuery();
 
                 if (rowsAffected > 0)
-                {
-                    // Clear form fields
+                { 
+                    ChartStock();
                     selectItemNameCmb.SelectedIndex = -1;
                     itemQuantityTxt.Clear();
                     unitTypeCmb.SelectedIndex = -1;
-                    weightUnitCmb.SelectedIndex = -1;
-                    dateAddedTxt.Clear();
+                    dateAddedDtp.Value = DateTime.Now;
                     itemPriceTxt.Clear();
                     itemTotalTxt.Clear();
                     itemImagePic.Image = null;
+                    this.Hide();
                     this.Alert("Stock Added Successfully");
-                    Populate(); // Refresh data
+                    Populate();
                 }
                 else
                 {
@@ -370,11 +415,11 @@ namespace sims.Admin_Side.Stocks
             }
             else
             {
-                //MessageBox.Show("No item selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 itemIDTxt.Clear();
                 itemImagePic.Image = null;
             }
         }
+
         private System.Drawing.Image ResizeImage(System.Drawing.Image image, int width, int height)
         {
             var destRect = new Rectangle(0, 0, width, height);
@@ -397,11 +442,6 @@ namespace sims.Admin_Side.Stocks
                 }
             }
             return destImage;
-        }
-
-        private void dateAddedTxt_TextChanged(object sender, EventArgs e)
-        {
-            ValidateTextBoxForNumbersOnly(dateAddedTxt);
         }
     }
 }

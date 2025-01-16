@@ -53,7 +53,6 @@
             this.Stock_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Weight_Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date_Added = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -227,7 +226,7 @@
             this.DeleteStockBtn.Radius = 6;
             this.DeleteStockBtn.Size = new System.Drawing.Size(147, 35);
             this.DeleteStockBtn.TabIndex = 36;
-            this.DeleteStockBtn.Text = "Delete Stock";
+            this.DeleteStockBtn.Text = "Remove Stock";
             this.DeleteStockBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DeleteStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.DeleteStockBtn.Click += new System.EventHandler(this.DeleteStockBtn_Click);
@@ -261,6 +260,7 @@
             this.UpdateStockBtn.Text = "Edit Stock";
             this.UpdateStockBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.UpdateStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.UpdateStockBtn.Visible = false;
             this.UpdateStockBtn.Click += new System.EventHandler(this.UpdateStockBtn_Click);
             // 
             // NewStockBtn
@@ -334,7 +334,6 @@
             this.Stock_In,
             this.Stock_Out,
             this.Unit_Type,
-            this.Weight_Unit,
             this.Date_Added,
             this.Item_Price,
             this.Item_Total});
@@ -381,6 +380,7 @@
             this.itemStockDgv.ThemeStyle.RowsStyle.Height = 100;
             this.itemStockDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.itemStockDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.itemStockDgv.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.itemStockDgv_CellFormatting);
             // 
             // Column8
             // 
@@ -436,13 +436,6 @@
             this.Unit_Type.HeaderText = "Unit Type";
             this.Unit_Type.Name = "Unit_Type";
             this.Unit_Type.ReadOnly = true;
-            // 
-            // Weight_Unit
-            // 
-            this.Weight_Unit.DataPropertyName = "Weight_Unit";
-            this.Weight_Unit.HeaderText = "Weight Unit";
-            this.Weight_Unit.Name = "Weight_Unit";
-            this.Weight_Unit.ReadOnly = true;
             // 
             // Date_Added
             // 
@@ -504,7 +497,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock_In;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock_Out;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unit_Type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Weight_Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date_Added;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_Total;

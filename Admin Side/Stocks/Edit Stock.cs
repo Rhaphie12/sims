@@ -16,5 +16,20 @@ namespace sims.Admin_Side.Stocks
         {
             InitializeComponent();
         }
+
+        private void Edit_Stock_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backNewStockBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void addStockBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using LiveCharts.Wpf;
+using LiveCharts;
+using MySql.Data.MySqlClient;
 using sims.Notification;
 using sims.Notification.Stock_notification;
 using System;
@@ -17,10 +19,13 @@ namespace sims.Admin_Side.Stocks
     {
         private DataTable originalDataTable;
         private BindingSource bindingSource = new BindingSource();
+        private Inventory_Dashboard stockChart;
 
-        public Manage_Stock()
+        public Manage_Stock(Inventory_Dashboard stockChart)
         {
             InitializeComponent();
+            itemStockDgv.CellFormatting += itemStockDgv_CellFormatting;
+            this.stockChart = stockChart;
         }
 
         public DataGridView ItemsStockDgv
@@ -62,6 +67,7 @@ namespace sims.Admin_Side.Stocks
                 }
             }
         }
+
         private void searchFunction()
         {
             dbModule db = new dbModule();
@@ -111,15 +117,85 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
+        private void ChartStock()
+        {
+            dbModule db = new dbModule();
+            SeriesCollection series = new SeriesCollection();
+            List<string> itemNames = new List<string>();
+
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT Item_Name, Stock_In FROM stocks";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        ChartValues<int> values = new ChartValues<int>();
+
+                        while (reader.Read())
+                        {
+                            string itemName = reader["Item_Name"]?.ToString() ?? string.Empty;
+                            if (int.TryParse(reader["Stock_In"]?.ToString(), out int itemQuantity))
+                            {
+                                itemNames.Add(itemName);
+                                values.Add(itemQuantity);
+                            }
+                        }
+
+                        series.Add(new ColumnSeries
+                        {
+                            Title = "Items",
+                            Values = values,
+                            DataLabels = true
+                        });
+                    }
+                }
+
+                if (stockChart.StockChart != null)
+                {
+                    stockChart.StockChart.Series.Clear(); // Clear existing series
+                    stockChart.StockChart.Series = series;
+
+                    stockChart.StockChart.AxisX.Clear();
+                    stockChart.StockChart.AxisX.Add(new Axis
+                    {
+                        Title = "Item Name",
+                        Labels = itemNames
+                    });
+
+                    stockChart.StockChart.AxisY.Clear();
+                    stockChart.StockChart.AxisY.Add(new Axis
+                    {
+                        Title = "Item Stocks"
+                    });
+
+                    stockChart.StockChart.Update(true, true); // Force redraw
+                }
+                else
+                {
+                    MessageBox.Show("Cartesian chart is not initialized!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
         private void NewStockBtn_Click(object sender, EventArgs e)
         {
-            Add_Stock add_Stock = new Add_Stock(this);
+            Inventory_Dashboard dashboardInventory = new Inventory_Dashboard();
+            Add_Stock add_Stock = new Add_Stock(this, dashboardInventory);
             add_Stock.Show();
         }
 
         private void UpdateStockBtn_Click(object sender, EventArgs e)
         {
-
+            Edit_Stock edit_Stock = new Edit_Stock();
+            edit_Stock.Show();
         }
 
         private void DeleteStockBtn_Click(object sender, EventArgs e)
@@ -143,9 +219,9 @@ namespace sims.Admin_Side.Stocks
                     {
                         DeleteRecord(selectedItemID);
                         itemStockDgv.Rows.RemoveAt(selectedRowIndex);
-                        //MessageBox.Show("Stock successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Alert("Stock successfully deleted.");
                         Populate();
+                        ChartStock();
                     }
                     else
                     {
@@ -157,7 +233,8 @@ namespace sims.Admin_Side.Stocks
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
+        } 
+
         private void DeleteRecord(string stockID)
         {
             dbModule db = new dbModule();
@@ -230,6 +307,37 @@ namespace sims.Admin_Side.Stocks
             catch (Exception ex)
             {
                 MessageBox.Show($"Error resetting filters: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void itemStockDgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            int stockColumnIndex = itemStockDgv.Columns["Stock_In"].Index;
+
+            if (e.ColumnIndex == stockColumnIndex && e.Value != null)
+            {
+                int stockLevel = Convert.ToInt32(e.Value);
+
+                // Define stock level thresholds
+                int lowStockThreshold = 5;    // Example: stock is low if ≤ 10
+                int normalStockThreshold = 30; // Example: stock is normal if > 10 and ≤ 50
+
+                // Set the background color based on stock level
+                if (stockLevel <= lowStockThreshold)
+                {
+                    e.CellStyle.BackColor = Color.Red;
+                    e.CellStyle.ForeColor = Color.White;
+                }
+                else if (stockLevel <= normalStockThreshold)
+                {
+                    e.CellStyle.BackColor = Color.Green;
+                    e.CellStyle.ForeColor = Color.White;
+                }
+                else
+                {
+                    e.CellStyle.BackColor = Color.Orange;
+                    e.CellStyle.ForeColor = Color.Black;
+                }
             }
         }
     }
