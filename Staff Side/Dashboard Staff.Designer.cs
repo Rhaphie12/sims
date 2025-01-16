@@ -30,10 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard_Staff));
             this.PanelMenu = new System.Windows.Forms.Panel();
-            this.SalesReportBtn = new FontAwesome.Sharp.IconButton();
-            this.SalesBtn = new FontAwesome.Sharp.IconButton();
-            this.inventoryReport = new FontAwesome.Sharp.IconButton();
-            this.StocksBtn = new FontAwesome.Sharp.IconButton();
             this.SignoutBtn = new FontAwesome.Sharp.IconButton();
             this.DashboardBtn = new FontAwesome.Sharp.IconButton();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -47,6 +43,11 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.greetingNameTxt = new System.Windows.Forms.Label();
             this.DashboardPanel = new System.Windows.Forms.Panel();
+            this.ItemsBtn = new FontAwesome.Sharp.IconButton();
+            this.StocksBtn = new FontAwesome.Sharp.IconButton();
+            this.salesReportBtn = new FontAwesome.Sharp.IconButton();
+            this.SalesBtn = new FontAwesome.Sharp.IconButton();
+            this.inventoryReport = new FontAwesome.Sharp.IconButton();
             this.PanelMenu.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox2)).BeginInit();
@@ -60,10 +61,11 @@
             // PanelMenu
             // 
             this.PanelMenu.BackColor = System.Drawing.Color.White;
-            this.PanelMenu.Controls.Add(this.SalesReportBtn);
+            this.PanelMenu.Controls.Add(this.salesReportBtn);
             this.PanelMenu.Controls.Add(this.SalesBtn);
             this.PanelMenu.Controls.Add(this.inventoryReport);
             this.PanelMenu.Controls.Add(this.StocksBtn);
+            this.PanelMenu.Controls.Add(this.ItemsBtn);
             this.PanelMenu.Controls.Add(this.SignoutBtn);
             this.PanelMenu.Controls.Add(this.DashboardBtn);
             this.PanelMenu.Controls.Add(this.panel12);
@@ -72,98 +74,6 @@
             this.PanelMenu.Name = "PanelMenu";
             this.PanelMenu.Size = new System.Drawing.Size(299, 779);
             this.PanelMenu.TabIndex = 91;
-            // 
-            // SalesReportBtn
-            // 
-            this.SalesReportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SalesReportBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SalesReportBtn.FlatAppearance.BorderSize = 0;
-            this.SalesReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SalesReportBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SalesReportBtn.IconChar = FontAwesome.Sharp.IconChar.Newspaper;
-            this.SalesReportBtn.IconColor = System.Drawing.Color.Black;
-            this.SalesReportBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.SalesReportBtn.IconSize = 40;
-            this.SalesReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesReportBtn.Location = new System.Drawing.Point(0, 314);
-            this.SalesReportBtn.Name = "SalesReportBtn";
-            this.SalesReportBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
-            this.SalesReportBtn.Size = new System.Drawing.Size(299, 58);
-            this.SalesReportBtn.TabIndex = 33;
-            this.SalesReportBtn.Text = "Sales Report\r\n";
-            this.SalesReportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesReportBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SalesReportBtn.UseVisualStyleBackColor = true;
-            this.SalesReportBtn.Click += new System.EventHandler(this.SalesReportBtn_Click);
-            // 
-            // SalesBtn
-            // 
-            this.SalesBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SalesBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SalesBtn.FlatAppearance.BorderSize = 0;
-            this.SalesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SalesBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SalesBtn.IconChar = FontAwesome.Sharp.IconChar.ChartSimple;
-            this.SalesBtn.IconColor = System.Drawing.Color.Black;
-            this.SalesBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.SalesBtn.IconSize = 40;
-            this.SalesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesBtn.Location = new System.Drawing.Point(0, 256);
-            this.SalesBtn.Name = "SalesBtn";
-            this.SalesBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
-            this.SalesBtn.Size = new System.Drawing.Size(299, 58);
-            this.SalesBtn.TabIndex = 32;
-            this.SalesBtn.Text = "Sales";
-            this.SalesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SalesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SalesBtn.UseVisualStyleBackColor = true;
-            this.SalesBtn.Click += new System.EventHandler(this.SalesBtn_Click);
-            // 
-            // inventoryReport
-            // 
-            this.inventoryReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.inventoryReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.inventoryReport.FlatAppearance.BorderSize = 0;
-            this.inventoryReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventoryReport.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inventoryReport.IconChar = FontAwesome.Sharp.IconChar.Newspaper;
-            this.inventoryReport.IconColor = System.Drawing.Color.Black;
-            this.inventoryReport.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.inventoryReport.IconSize = 40;
-            this.inventoryReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.inventoryReport.Location = new System.Drawing.Point(0, 198);
-            this.inventoryReport.Name = "inventoryReport";
-            this.inventoryReport.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
-            this.inventoryReport.Size = new System.Drawing.Size(299, 58);
-            this.inventoryReport.TabIndex = 31;
-            this.inventoryReport.Text = "Inventory Report";
-            this.inventoryReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.inventoryReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.inventoryReport.UseVisualStyleBackColor = true;
-            this.inventoryReport.Click += new System.EventHandler(this.inventoryReport_Click);
-            // 
-            // StocksBtn
-            // 
-            this.StocksBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.StocksBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.StocksBtn.FlatAppearance.BorderSize = 0;
-            this.StocksBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StocksBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StocksBtn.IconChar = FontAwesome.Sharp.IconChar.ChartColumn;
-            this.StocksBtn.IconColor = System.Drawing.Color.Black;
-            this.StocksBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.StocksBtn.IconSize = 40;
-            this.StocksBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StocksBtn.Location = new System.Drawing.Point(0, 140);
-            this.StocksBtn.Name = "StocksBtn";
-            this.StocksBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
-            this.StocksBtn.Size = new System.Drawing.Size(299, 58);
-            this.StocksBtn.TabIndex = 30;
-            this.StocksBtn.Text = "Stocks";
-            this.StocksBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StocksBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.StocksBtn.UseVisualStyleBackColor = true;
-            this.StocksBtn.Click += new System.EventHandler(this.StocksBtn_Click);
             // 
             // SignoutBtn
             // 
@@ -340,6 +250,121 @@
             this.DashboardPanel.Size = new System.Drawing.Size(1145, 700);
             this.DashboardPanel.TabIndex = 93;
             // 
+            // ItemsBtn
+            // 
+            this.ItemsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ItemsBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ItemsBtn.FlatAppearance.BorderSize = 0;
+            this.ItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ItemsBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemsBtn.IconChar = FontAwesome.Sharp.IconChar.List;
+            this.ItemsBtn.IconColor = System.Drawing.Color.Black;
+            this.ItemsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ItemsBtn.IconSize = 40;
+            this.ItemsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ItemsBtn.Location = new System.Drawing.Point(0, 140);
+            this.ItemsBtn.Name = "ItemsBtn";
+            this.ItemsBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
+            this.ItemsBtn.Size = new System.Drawing.Size(299, 58);
+            this.ItemsBtn.TabIndex = 29;
+            this.ItemsBtn.Text = "Items";
+            this.ItemsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ItemsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ItemsBtn.UseVisualStyleBackColor = true;
+            this.ItemsBtn.Click += new System.EventHandler(this.ItemsBtn_Click);
+            // 
+            // StocksBtn
+            // 
+            this.StocksBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.StocksBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.StocksBtn.FlatAppearance.BorderSize = 0;
+            this.StocksBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StocksBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StocksBtn.IconChar = FontAwesome.Sharp.IconChar.ChartColumn;
+            this.StocksBtn.IconColor = System.Drawing.Color.Black;
+            this.StocksBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.StocksBtn.IconSize = 40;
+            this.StocksBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.StocksBtn.Location = new System.Drawing.Point(0, 198);
+            this.StocksBtn.Name = "StocksBtn";
+            this.StocksBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
+            this.StocksBtn.Size = new System.Drawing.Size(299, 58);
+            this.StocksBtn.TabIndex = 30;
+            this.StocksBtn.Text = "Stocks";
+            this.StocksBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.StocksBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.StocksBtn.UseVisualStyleBackColor = true;
+            this.StocksBtn.Click += new System.EventHandler(this.StocksBtn_Click);
+            // 
+            // salesReportBtn
+            // 
+            this.salesReportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.salesReportBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.salesReportBtn.FlatAppearance.BorderSize = 0;
+            this.salesReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.salesReportBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salesReportBtn.IconChar = FontAwesome.Sharp.IconChar.Newspaper;
+            this.salesReportBtn.IconColor = System.Drawing.Color.Black;
+            this.salesReportBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.salesReportBtn.IconSize = 40;
+            this.salesReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.salesReportBtn.Location = new System.Drawing.Point(0, 372);
+            this.salesReportBtn.Name = "salesReportBtn";
+            this.salesReportBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
+            this.salesReportBtn.Size = new System.Drawing.Size(299, 58);
+            this.salesReportBtn.TabIndex = 31;
+            this.salesReportBtn.Text = "Sales Report";
+            this.salesReportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.salesReportBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.salesReportBtn.UseVisualStyleBackColor = true;
+            this.salesReportBtn.Click += new System.EventHandler(this.salesReportBtn_Click);
+            // 
+            // SalesBtn
+            // 
+            this.SalesBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SalesBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SalesBtn.FlatAppearance.BorderSize = 0;
+            this.SalesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SalesBtn.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SalesBtn.IconChar = FontAwesome.Sharp.IconChar.ChartSimple;
+            this.SalesBtn.IconColor = System.Drawing.Color.Black;
+            this.SalesBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.SalesBtn.IconSize = 40;
+            this.SalesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SalesBtn.Location = new System.Drawing.Point(0, 314);
+            this.SalesBtn.Name = "SalesBtn";
+            this.SalesBtn.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
+            this.SalesBtn.Size = new System.Drawing.Size(299, 58);
+            this.SalesBtn.TabIndex = 33;
+            this.SalesBtn.Text = "Sales";
+            this.SalesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SalesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SalesBtn.UseVisualStyleBackColor = true;
+            this.SalesBtn.Click += new System.EventHandler(this.SalesBtn_Click);
+            // 
+            // inventoryReport
+            // 
+            this.inventoryReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inventoryReport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.inventoryReport.FlatAppearance.BorderSize = 0;
+            this.inventoryReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventoryReport.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inventoryReport.IconChar = FontAwesome.Sharp.IconChar.Newspaper;
+            this.inventoryReport.IconColor = System.Drawing.Color.Black;
+            this.inventoryReport.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.inventoryReport.IconSize = 40;
+            this.inventoryReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.inventoryReport.Location = new System.Drawing.Point(0, 256);
+            this.inventoryReport.Name = "inventoryReport";
+            this.inventoryReport.Padding = new System.Windows.Forms.Padding(35, 0, 20, 0);
+            this.inventoryReport.Size = new System.Drawing.Size(299, 58);
+            this.inventoryReport.TabIndex = 32;
+            this.inventoryReport.Text = "Inventory Report";
+            this.inventoryReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.inventoryReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.inventoryReport.UseVisualStyleBackColor = true;
+            this.inventoryReport.Click += new System.EventHandler(this.inventoryReport_Click);
+            // 
             // Dashboard_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,9 +409,10 @@
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label greetingNameTxt;
         private System.Windows.Forms.Panel DashboardPanel;
-        internal FontAwesome.Sharp.IconButton inventoryReport;
+        internal FontAwesome.Sharp.IconButton ItemsBtn;
         internal FontAwesome.Sharp.IconButton StocksBtn;
-        internal FontAwesome.Sharp.IconButton SalesReportBtn;
+        internal FontAwesome.Sharp.IconButton salesReportBtn;
         internal FontAwesome.Sharp.IconButton SalesBtn;
+        internal FontAwesome.Sharp.IconButton inventoryReport;
     }
 }
