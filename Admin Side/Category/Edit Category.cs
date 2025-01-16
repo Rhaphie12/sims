@@ -38,6 +38,7 @@ namespace sims.Admin_Side.Category
         {
             dbModule db = new dbModule();
             MySqlDataAdapter adapter = db.GetAdapter();
+
             using (MySqlConnection conn = db.GetConnection())
             {
                 try

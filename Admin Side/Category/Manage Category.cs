@@ -21,10 +21,12 @@ namespace sims.Admin_Side.Category
     {
         private DataTable originalDataTable;
         private BindingSource bindingSource = new BindingSource();
+        private Inventory_Dashboard countCategory;
 
-        public Manage_Category()
+        public Manage_Category(Inventory_Dashboard countCategory)
         {
             InitializeComponent();
+            this.countCategory = countCategory;
         }
 
         public DataGridView RecentlyAddedDgv
@@ -39,7 +41,8 @@ namespace sims.Admin_Side.Category
 
         private void newCategoryBtn_Click(object sender, EventArgs e)
         {
-            New_Category newCategory = new New_Category(this, this);
+            Inventory_Dashboard inventoryDashboard = new Inventory_Dashboard();
+            New_Category newCategory = new New_Category(this, this, inventoryDashboard);
             newCategory.Show();
         }
 
@@ -54,6 +57,7 @@ namespace sims.Admin_Side.Category
             LoadData();
             LoadItemsPanel();
             searchFunction();
+            CategoriesCount();
         }
 
         private void LoadData()
@@ -61,7 +65,7 @@ namespace sims.Admin_Side.Category
             try
             {
                 dbModule db = new dbModule();
-                string query = "SELECT Category_ID, Category_Name FROM categories";
+                string query = "SELECT * FROM categories";
 
                 using (MySqlConnection conn = db.GetConnection())
                 {
@@ -117,6 +121,32 @@ namespace sims.Admin_Side.Category
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void CategoriesCount()
+        {
+            dbModule db = new dbModule();
+            string query = "SELECT COUNT(*) FROM categories";
+
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        int itemCount = Convert.ToInt32(cmd.ExecuteScalar());
+                        countCategory.CategoriesCountLabel.Text = itemCount.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -252,6 +282,7 @@ namespace sims.Admin_Side.Category
                         this.Alert("Category successfully deleted.");
                         DeleteCategoryPanel(selectedItemID);
                         LoadData();
+                        CategoriesCount();
                     }
                     else
                     {
@@ -264,6 +295,7 @@ namespace sims.Admin_Side.Category
                 }
             }
         }
+
         private void DeleteRecord(string categoryID)
         {
             dbModule db = new dbModule();

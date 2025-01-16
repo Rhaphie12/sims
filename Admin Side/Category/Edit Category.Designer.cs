@@ -52,9 +52,9 @@
             this.categoryIDTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label4 = new System.Windows.Forms.Label();
+            this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.gunaElipsePanel3.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.SuspendLayout();
@@ -76,7 +76,6 @@
             this.gunaElipsePanel3.Controls.Add(this.categoryIDTxt);
             this.gunaElipsePanel3.Controls.Add(this.label2);
             this.gunaElipsePanel3.Controls.Add(this.label6);
-            this.gunaElipsePanel3.Controls.Add(this.label5);
             this.gunaElipsePanel3.Location = new System.Drawing.Point(12, 70);
             this.gunaElipsePanel3.Name = "gunaElipsePanel3";
             this.gunaElipsePanel3.Radius = 9;
@@ -97,7 +96,7 @@
             this.editCategoryBtn.ForeColor = System.Drawing.Color.White;
             this.editCategoryBtn.Image = null;
             this.editCategoryBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.editCategoryBtn.Location = new System.Drawing.Point(147, 281);
+            this.editCategoryBtn.Location = new System.Drawing.Point(147, 252);
             this.editCategoryBtn.Name = "editCategoryBtn";
             this.editCategoryBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.editCategoryBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -127,7 +126,7 @@
             this.backNewCatBtn.ForeColor = System.Drawing.Color.Black;
             this.backNewCatBtn.Image = null;
             this.backNewCatBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.backNewCatBtn.Location = new System.Drawing.Point(304, 281);
+            this.backNewCatBtn.Location = new System.Drawing.Point(304, 252);
             this.backNewCatBtn.Name = "backNewCatBtn";
             this.backNewCatBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.backNewCatBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -169,7 +168,7 @@
             this.categoryDescriptionTxt.IconRight = null;
             this.categoryDescriptionTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.categoryDescriptionTxt.Lines = new string[0];
-            this.categoryDescriptionTxt.Location = new System.Drawing.Point(118, 189);
+            this.categoryDescriptionTxt.Location = new System.Drawing.Point(118, 160);
             this.categoryDescriptionTxt.MaxLength = 32767;
             this.categoryDescriptionTxt.MinimumSize = new System.Drawing.Size(1, 1);
             this.categoryDescriptionTxt.Modified = false;
@@ -243,7 +242,7 @@
             this.categoryNameTxt.IconRight = null;
             this.categoryNameTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.categoryNameTxt.Lines = new string[0];
-            this.categoryNameTxt.Location = new System.Drawing.Point(289, 97);
+            this.categoryNameTxt.Location = new System.Drawing.Point(289, 68);
             this.categoryNameTxt.MaxLength = 32767;
             this.categoryNameTxt.MinimumSize = new System.Drawing.Size(1, 1);
             this.categoryNameTxt.Modified = false;
@@ -295,7 +294,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(113, 158);
+            this.label1.Location = new System.Drawing.Point(113, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 28);
             this.label1.TabIndex = 21;
@@ -328,7 +327,7 @@
             this.categoryIDTxt.IconRight = null;
             this.categoryIDTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.categoryIDTxt.Lines = new string[0];
-            this.categoryIDTxt.Location = new System.Drawing.Point(118, 97);
+            this.categoryIDTxt.Location = new System.Drawing.Point(118, 68);
             this.categoryIDTxt.MaxLength = 32767;
             this.categoryIDTxt.MinimumSize = new System.Drawing.Size(1, 1);
             this.categoryIDTxt.Modified = false;
@@ -380,7 +379,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(284, 66);
+            this.label2.Location = new System.Drawing.Point(284, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 28);
             this.label2.TabIndex = 21;
@@ -391,22 +390,11 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(113, 66);
+            this.label6.Location = new System.Drawing.Point(113, 37);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 28);
             this.label6.TabIndex = 21;
             this.label6.Text = "Category ID";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(10, 11);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(145, 34);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Edit Category";
             // 
             // gunaElipsePanel2
             // 
@@ -426,9 +414,13 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(8, 10);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(395, 34);
+            this.label4.Size = new System.Drawing.Size(431, 34);
             this.label4.TabIndex = 21;
-            this.label4.Text = "Dashboard / Categories / Edit Category\r\n";
+            this.label4.Text = "Dashboard / Categories / Update Category\r\n";
+            // 
+            // gunaDragControl1
+            // 
+            this.gunaDragControl1.TargetControl = this.gunaElipsePanel2;
             // 
             // Edit_Category
             // 
@@ -463,8 +455,8 @@
         private Bunifu.UI.WinForms.BunifuTextBox categoryIDTxt;
         internal System.Windows.Forms.Label label2;
         internal System.Windows.Forms.Label label6;
-        internal System.Windows.Forms.Label label5;
         private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel2;
         internal System.Windows.Forms.Label label4;
+        private Guna.UI.WinForms.GunaDragControl gunaDragControl1;
     }
 }

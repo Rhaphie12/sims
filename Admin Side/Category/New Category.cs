@@ -19,12 +19,14 @@ namespace sims.Admin_Side.Category
     {
         private Manage_Category dashboardForm;
         private Manage_Category flow;
+        private Inventory_Dashboard countCategory;
 
-        public New_Category(Manage_Category dashboardForm, Manage_Category flow)
+        public New_Category(Manage_Category dashboardForm, Manage_Category flow, Inventory_Dashboard countCategory)
         {
             InitializeComponent();
             this.dashboardForm = dashboardForm;
             this.flow = flow;
+            this.countCategory = countCategory;
         }
 
         public class Categories
@@ -32,6 +34,7 @@ namespace sims.Admin_Side.Category
             public int CategoryID { get; set; }
             public string Category { get; set; }
         }
+
         public void Alert(string msg)
         {
             Category_Added frm = new Category_Added();
@@ -42,6 +45,7 @@ namespace sims.Admin_Side.Category
         {
             LoadItemsPanel();
             GenerateRandomItemID();
+            CategoriesCount();
         }
 
         private void GenerateRandomItemID()
@@ -72,6 +76,33 @@ namespace sims.Admin_Side.Category
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void CategoriesCount()
+        {
+            dbModule db = new dbModule();
+            string query = "SELECT COUNT(*) FROM categories";
+
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        int itemCount = Convert.ToInt32(cmd.ExecuteScalar());
+                        countCategory.CategoriesCountLabel.Text = itemCount.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
                 }
             }
         }
@@ -107,13 +138,13 @@ namespace sims.Admin_Side.Category
                         cmd.Parameters.AddWithValue("@Category_Name", categoryName);
                         cmd.Parameters.AddWithValue("@Category_Description", categoryDescription);
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Category added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
                         categoryNameTxt.Clear();
                         categoryDescriptionTxt.Clear();
+                        CategoriesCount();
                         GenerateRandomItemID();
                         Populate();
                         AddItemPanel(categoryName);
-                        categoryNameTxt.Focus();
                         this.Alert("Category Added Successfully");
                     }
                 }
@@ -123,6 +154,7 @@ namespace sims.Admin_Side.Category
                 }
             }
         }
+
 
         private void backNewCatBtn_Click(object sender, EventArgs e)
         {
@@ -157,6 +189,7 @@ namespace sims.Admin_Side.Category
                 }
             }
         }
+
         private void AddItemPanel(string category)
         {
             GunaElipsePanel productPanel = new GunaElipsePanel
@@ -182,6 +215,18 @@ namespace sims.Admin_Side.Category
 
             productPanel.Controls.Add(categoryLabel);
             flow.CategoriesPanel.Controls.Add(productPanel);
+        }
+
+        private void categoryNameTxt_TextChanged(object sender, EventArgs e)
+        {
+            string newText = categoryNameTxt.Text;
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(newText, @"\d"))
+            {
+                MessageBox.Show("Numbers are not allowed!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                categoryNameTxt.Text = System.Text.RegularExpressions.Regex.Replace(newText, @"\d", "");
+                categoryNameTxt.SelectionStart = categoryNameTxt.Text.Length;
+            }
         }
     }
 }
