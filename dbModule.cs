@@ -12,7 +12,6 @@ namespace sims
         private MySqlConnection connection;
         private MySqlCommand cmd;
         private MySqlDataAdapter adapter;
-        private MySqlDataReader reader;
 
         public MySqlConnection GetConnection()
         {

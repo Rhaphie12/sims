@@ -200,6 +200,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin Side\Backup Database\Backup Database.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Backup Database\Backup Database.Designer.cs">
+      <DependentUpon>Backup Database.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin Side\Category\Edit Category.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,11 +224,11 @@
     <Compile Include="Admin Side\Category\New Category.Designer.cs">
       <DependentUpon>New Category.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Dashboard Inventory.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Admin Side\Inventory Dashboard.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin Side\Dashboard Inventory.Designer.cs">
-      <DependentUpon>Dashboard Inventory.cs</DependentUpon>
+    <Compile Include="Admin Side\Inventory Dashboard.Designer.cs">
+      <DependentUpon>Inventory Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Inventory Report\Inventory Report.cs">
       <SubType>UserControl</SubType>
@@ -254,11 +260,23 @@
     <Compile Include="Admin Side\Sales Report\Manage Sales Report.Designer.cs">
       <DependentUpon>Manage Sales Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin Side\Sales\Add Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Sales\Add Product.Designer.cs">
+      <DependentUpon>Add Product.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin Side\Sales\Manage Sales.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Admin Side\Sales\Manage Sales.Designer.cs">
       <DependentUpon>Manage Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Sales\Product Sales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Sales\Product Sales.Designer.cs">
+      <DependentUpon>Product Sales.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Stocks\Add Stock.cs">
       <SubType>Form</SubType>
@@ -408,12 +426,39 @@
       <DependentUpon>Splash page.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Staff Side\Dashboard Inventory Staff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Dashboard Inventory Staff.Designer.cs">
+      <DependentUpon>Dashboard Inventory Staff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Staff Side\Dashboard Staff.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Staff Side\Dashboard Staff.Designer.cs">
       <DependentUpon>Dashboard Staff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Staff Side\Items\Manage_Items_Staff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Items\Manage_Items_Staff.Designer.cs">
+      <DependentUpon>Manage_Items_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Stocks\Manage_Stocks_Staff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Stocks\Manage_Stocks_Staff.Designer.cs">
+      <DependentUpon>Manage_Stocks_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Stocks\Stock Item.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Stocks\Stock Item.Designer.cs">
+      <DependentUpon>Stock Item.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin Side\Backup Database\Backup Database.resx">
+      <DependentUpon>Backup Database.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Category\Edit Category.resx">
       <DependentUpon>Edit Category.cs</DependentUpon>
     </EmbeddedResource>
@@ -423,8 +468,8 @@
     <EmbeddedResource Include="Admin Side\Category\New Category.resx">
       <DependentUpon>New Category.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Dashboard Inventory.resx">
-      <DependentUpon>Dashboard Inventory.cs</DependentUpon>
+    <EmbeddedResource Include="Admin Side\Inventory Dashboard.resx">
+      <DependentUpon>Inventory Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Inventory Report\Inventory Report.resx">
       <DependentUpon>Inventory Report.cs</DependentUpon>
@@ -441,11 +486,20 @@
     <EmbeddedResource Include="Admin Side\Sales Report\Manage Sales Report.resx">
       <DependentUpon>Manage Sales Report.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Sales\Add Product.resx">
+      <DependentUpon>Add Product.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Sales\Manage Sales.resx">
       <DependentUpon>Manage Sales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Sales\Product Sales.resx">
+      <DependentUpon>Product Sales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Add Stock.resx">
       <DependentUpon>Add Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Stocks\Edit Stock.resx">
+      <DependentUpon>Edit Stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Manage Stock.resx">
       <DependentUpon>Manage Stock.cs</DependentUpon>
@@ -524,8 +578,20 @@
     <EmbeddedResource Include="Splash page and Loading Screen\Splash page.resx">
       <DependentUpon>Splash page.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Dashboard Inventory Staff.resx">
+      <DependentUpon>Dashboard Inventory Staff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Staff Side\Dashboard Staff.resx">
       <DependentUpon>Dashboard Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Items\Manage_Items_Staff.resx">
+      <DependentUpon>Manage_Items_Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Stocks\Manage_Stocks_Staff.resx">
+      <DependentUpon>Manage_Stocks_Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Stocks\Stock Item.resx">
+      <DependentUpon>Stock Item.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -641,7 +707,9 @@
     <None Include="Resources\warning-sign-icon-transparent-ba.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Staff Side\Stocks\" />
+    <Folder Include="Staff Side\Inventory Report Staff\" />
+    <Folder Include="Staff Side\Sales Report Staff\" />
+    <Folder Include="Staff Side\Sales Staff\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
