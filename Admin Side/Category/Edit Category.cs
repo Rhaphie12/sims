@@ -17,10 +17,10 @@ namespace sims.Admin_Side.Category
     public partial class Edit_Category : Form
     {
         private string _categoryID;
-        private Manage_Category dashboardForm;
-        private Manage_Category flow;
+        private Manage_Categoryy dashboardForm;
+        private Manage_Categoryy flow;
 
-        public Edit_Category(string categoryID, Manage_Category dashboardForm, Manage_Category flow)
+        public Edit_Category(string categoryID, Manage_Categoryy dashboardForm, Manage_Categoryy flow)
         {
             InitializeComponent();
             _categoryID = categoryID;
@@ -94,29 +94,6 @@ namespace sims.Admin_Side.Category
             }
         }
 
-        private void UpdateProductButton(int categoryID, string itemName)
-        {
-            foreach (Control ctrl in flow.CategoriesPanel.Controls)
-            {
-                if (ctrl is GunaElipsePanel panel && panel.Tag is Categories details)
-                {
-                    if (details.CategoryID == categoryID)
-                    {
-                        // Update the label text inside the panel
-                        foreach (Control innerCtrl in panel.Controls)
-                        {
-                            if (innerCtrl is Label label)
-                            {
-                                label.Text = $"{itemName}";
-                            }
-                        }
-                        return;
-                    }
-                }
-            }
-        }
-
-
         private void editCategoryBtn_Click(object sender, EventArgs e)
         {
             editCategory();
@@ -156,7 +133,6 @@ namespace sims.Admin_Side.Category
                     categoryNameTxt.Clear();
                     categoryDescriptionTxt.Clear();
                     Populate();
-                    UpdateProductButton(Convert.ToInt32(categoryID), categoryName);
                 }
                 else
                 {

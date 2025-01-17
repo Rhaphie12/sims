@@ -17,16 +17,15 @@ namespace sims.Admin_Side.Category
 {
     public partial class New_Category : Form
     {
-        private Manage_Category dashboardForm;
-        private Manage_Category flow;
-        private Inventory_Dashboard countCategory;
+        public DataTable originalDataTable;
+        private BindingSource bindingSource = new BindingSource();
 
-        public New_Category(Manage_Category dashboardForm, Manage_Category flow, Inventory_Dashboard countCategory)
+        private Manage_Categoryy dashboardForm;
+
+        public New_Category(Manage_Categoryy dashboardForm)
         {
             InitializeComponent();
             this.dashboardForm = dashboardForm;
-            this.flow = flow;
-            this.countCategory = countCategory;
         }
 
         public class Categories
@@ -43,9 +42,9 @@ namespace sims.Admin_Side.Category
 
         private void New_Category_Load(object sender, EventArgs e)
         {
-            LoadItemsPanel();
             GenerateRandomItemID();
-            CategoriesCount();
+            Populate();
+            //searchFunction();
         }
 
         private void GenerateRandomItemID()
@@ -58,20 +57,18 @@ namespace sims.Admin_Side.Category
         private void Populate()
         {
             dbModule db = new dbModule();
-
+            MySqlDataAdapter adapter = db.GetAdapter();
             using (MySqlConnection conn = db.GetConnection())
             {
                 try
                 {
                     conn.Open();
-                    string queryCategories = "SELECT * FROM categories";
-                    using (MySqlCommand commandCategories = new MySqlCommand(queryCategories, conn))
-                    using (MySqlDataAdapter adapterCategories = new MySqlDataAdapter(commandCategories))
-                    {
-                        DataTable dtCategories = new DataTable();
-                        adapterCategories.Fill(dtCategories);
-                        dashboardForm.RecentlyAddedDgv.DataSource = dtCategories;
-                    }
+                    string query = "SELECT * FROM categories";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    adapter.SelectCommand = command;
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dashboardForm.RecentlyAddedDgv.DataSource = dt;
                 }
                 catch (Exception ex)
                 {
@@ -80,32 +77,38 @@ namespace sims.Admin_Side.Category
             }
         }
 
-        private void CategoriesCount()
-        {
-            dbModule db = new dbModule();
-            string query = "SELECT COUNT(*) FROM categories";
+        //private void searchFunction()
+        //{
+        //    dbModule db = new dbModule();
+        //    string query = "SELECT * FROM categories";
+        //    MySqlConnection conn = null;
 
-            using (MySqlConnection conn = db.GetConnection())
-            {
-                try
-                {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        int itemCount = Convert.ToInt32(cmd.ExecuteScalar());
-                        countCategory.CategoriesCountLabel.Text = itemCount.ToString();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-        }
+        //    try
+        //    {
+        //        conn = db.GetConnection();
+        //        conn.Open();
+
+        //        using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
+        //        {
+        //            DataTable dataTable = new DataTable();
+        //            adapter.Fill(dataTable);
+        //            originalDataTable = dataTable;
+        //            bindingSource.DataSource = originalDataTable;
+        //            dashboardForm.RecentlyAddedDgv.DataSource = bindingSource;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        if (conn != null && conn.State == ConnectionState.Open)
+        //        {
+        //            conn.Close();
+        //        }
+        //    }
+        //}
 
         private void addCategoryBtn_Click(object sender, EventArgs e)
         {
@@ -138,14 +141,14 @@ namespace sims.Admin_Side.Category
                         cmd.Parameters.AddWithValue("@Category_Name", categoryName);
                         cmd.Parameters.AddWithValue("@Category_Description", categoryDescription);
                         cmd.ExecuteNonQuery();
+
                         this.Hide();
                         categoryNameTxt.Clear();
                         categoryDescriptionTxt.Clear();
-                        CategoriesCount();
                         GenerateRandomItemID();
-                        Populate();
-                        AddItemPanel(categoryName);
                         this.Alert("Category Added Successfully");
+                        Populate();
+                        //searchFunction();
                     }
                 }
                 catch (Exception ex)
@@ -159,62 +162,6 @@ namespace sims.Admin_Side.Category
         private void backNewCatBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
-
-        private void LoadItemsPanel()
-        {
-            dbModule db = new dbModule();
-            using (MySqlConnection conn = db.GetConnection())
-            {
-                try
-                {
-                    conn.Open();
-                    string query = "SELECT Category_Name FROM categories";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        flow.CategoriesPanel.Controls.Clear();
-
-                        while (reader.Read())
-                        {
-                            string category = reader.GetString("Category_Name");
-                            AddItemPanel(category);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error loading products: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void AddItemPanel(string category)
-        {
-            GunaElipsePanel productPanel = new GunaElipsePanel
-            {
-                Width = 395,
-                Height = 100,
-                Radius = 8,
-                BackColor = Color.FromArgb(222, 196, 125),
-                Tag = new Categories
-                {
-                    Category = category
-                }
-            };
-
-            Label categoryLabel = new Label
-            {
-                Text = category,
-                Font = new Font("Poppins", 14),
-                TextAlign = ContentAlignment.MiddleCenter,
-                Dock = DockStyle.Fill,
-                AutoSize = false
-            };
-
-            productPanel.Controls.Add(categoryLabel);
-            flow.CategoriesPanel.Controls.Add(productPanel);
         }
 
         private void categoryNameTxt_TextChanged(object sender, EventArgs e)
