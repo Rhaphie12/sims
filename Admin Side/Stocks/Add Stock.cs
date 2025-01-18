@@ -15,22 +15,21 @@ using sims.Notification;
 using sims.Notification.Stock_notification;
 using LiveCharts.Wpf;
 using LiveCharts;
+using sims.Admin_Side.Category;
 
 namespace sims.Admin_Side.Stocks
 {
     public partial class Add_Stock : Form
     {
         private Manage_Stock dashboard;
-        private Inventory_Dashboard stockChart;
 
-        public Add_Stock(Manage_Stock dashboard, Inventory_Dashboard stockChart)
+        public Add_Stock(Manage_Stock dashboard)
         {
             InitializeComponent();
             this.dashboard = dashboard;
 
             itemQuantityTxt.TextChanged += (s, e) => CalculateTotalValue();
             itemPriceTxt.TextChanged += (s, e) => CalculateTotalValue();
-            this.stockChart = stockChart;
         }
         public class ComboBoxItem
         {
@@ -72,8 +71,8 @@ namespace sims.Admin_Side.Stocks
             CalculateTotalValue();
             SelectItemID();
             UnitType();
-            ChartStock();
         }
+
         private void Populate()
         {
             dbModule db = new dbModule();
@@ -194,75 +193,6 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
-
-        private void ChartStock()
-        {
-            dbModule db = new dbModule();
-            SeriesCollection series = new SeriesCollection();
-            List<string> itemNames = new List<string>();
-
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-                    string query = "SELECT Item_Name, Stock_In FROM stocks";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        ChartValues<int> values = new ChartValues<int>();
-
-                        while (reader.Read())
-                        {
-                            string itemName = reader["Item_Name"]?.ToString() ?? string.Empty;
-                            if (int.TryParse(reader["Stock_In"]?.ToString(), out int itemQuantity))
-                            {
-                                itemNames.Add(itemName);
-                                values.Add(itemQuantity);
-                            }
-                        }
-
-                        series.Add(new ColumnSeries
-                        {
-                            Title = "Items",
-                            Values = values,
-                            DataLabels = true
-                        });
-                    }
-                }
-
-                if (stockChart.StockChart != null)
-                {
-                    stockChart.StockChart.Series.Clear(); // Clear existing series
-                    stockChart.StockChart.Series = series;
-
-                    stockChart.StockChart.AxisX.Clear();
-                    stockChart.StockChart.AxisX.Add(new Axis
-                    {
-                        Title = "Item Name",
-                        Labels = itemNames
-                    });
-
-                    stockChart.StockChart.AxisY.Clear();
-                    stockChart.StockChart.AxisY.Add(new Axis
-                    {
-                        Title = "Item Stocks"
-                    });
-
-                    stockChart.StockChart.Update(true, true); // Force redraw
-                }
-                else
-                {
-                    MessageBox.Show("Cartesian chart is not initialized!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
-        }
-
         private void ValidateTextBoxForNumbersOnly(BunifuTextBox textBox)
         {
             string newText = textBox.Text;
@@ -323,7 +253,6 @@ namespace sims.Admin_Side.Stocks
 
                 if (rowsAffected > 0)
                 { 
-                    ChartStock();
                     selectItemNameCmb.SelectedIndex = -1;
                     itemQuantityTxt.Clear();
                     unitTypeCmb.SelectedIndex = -1;
@@ -381,7 +310,7 @@ namespace sims.Admin_Side.Stocks
 
         private void totalInfoBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Item Total is calculated by muliplying Item Quantity and Item Price", "Item Total of Item Quantity and Item Price", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            _ = MessageBox.Show("Item Total is calculated by multiplying Item Quantity and Item Price", "Item Total of Item Quantity and Item Price", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void selectItemIDCmb_SelectedIndexChanged(object sender, EventArgs e)

@@ -12,20 +12,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using sims.Admin_Side.Items;
+using System.Web.UI.WebControls;
 
 namespace sims.Admin_Side.Stocks
 {
     public partial class Manage_Stock : UserControl
     {
-        private DataTable originalDataTable;
-        private BindingSource bindingSource = new BindingSource();
-        private Inventory_Dashboard stockChart;
-
-        public Manage_Stock(Inventory_Dashboard stockChart)
+        public Manage_Stock()
         {
             InitializeComponent();
             itemStockDgv.CellFormatting += itemStockDgv_CellFormatting;
-            this.stockChart = stockChart;
         }
 
         public DataGridView ItemsStockDgv
@@ -42,160 +39,113 @@ namespace sims.Admin_Side.Stocks
         private void Manage_Stock_Load(object sender, EventArgs e)
         {
             ViewStock();
-            searchFunction();
         }
 
         private void ViewStock()
         {
             dbModule db = new dbModule();
-            MySqlDataAdapter adapter = db.GetAdapter();
-            using (MySqlConnection conn = db.GetConnection())
+            MySqlConnection conn = db.GetConnection();
+            MySqlCommand cmd = db.GetCommand();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable dataTable = new DataTable();
+
+            try
             {
-                try
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM stocks";
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+
+                itemStockDgv.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to populate stock data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    conn.Open();
-                    string query = "SELECT * FROM stocks";
-                    MySqlCommand command = new MySqlCommand(query, conn);
-                    adapter.SelectCommand = command;
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    itemStockDgv.DataSource = dt;
+                    conn.Close();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                cmd.Dispose();
+                conn.Dispose();
             }
         }
 
-        private void searchFunction()
+        private DataTable SearchInDatabase(string searchTerm)
         {
+            DataTable dataTable = new DataTable();
             dbModule db = new dbModule();
-            string query = "SELECT * FROM stocks";
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string query = "SELECT Stock_ID, Item_ID, Item_Name, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image " +
+                               "FROM stocks WHERE Item_Name LIKE @SearchTerm";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                     {
-                        DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        originalDataTable = dataTable;
-                        bindingSource.DataSource = originalDataTable;
-                        itemStockDgv.DataSource = bindingSource;
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            return dataTable;
         }
 
-        private void Populate()
+        private void searchCategoryTxt_TextChanged(object sender, EventArgs e)
         {
-            dbModule db = new dbModule();
-            MySqlDataAdapter adapter = db.GetAdapter();
-            using (MySqlConnection conn = db.GetConnection())
-            {
-                try
-                {
-                    conn.Open();
-                    string query = "SELECT * FROM stocks";
-                    MySqlCommand command = new MySqlCommand(query, conn);
-                    adapter.SelectCommand = command;
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    itemStockDgv.DataSource = dt;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
+            string searchTerm = searchCategoryTxt.Text.Trim();
 
-        private void ChartStock()
-        {
-            dbModule db = new dbModule();
-            SeriesCollection series = new SeriesCollection();
-            List<string> itemNames = new List<string>();
+            // Search for results in the database
+            DataTable searchResultDataTable = SearchInDatabase(searchTerm);
 
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-                    string query = "SELECT Item_Name, Stock_In FROM stocks";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
+            // Bind the search results to the DataGridView
+            itemStockDgv.DataSource = searchResultDataTable;
 
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        ChartValues<int> values = new ChartValues<int>();
-
-                        while (reader.Read())
-                        {
-                            string itemName = reader["Item_Name"]?.ToString() ?? string.Empty;
-                            if (int.TryParse(reader["Stock_In"]?.ToString(), out int itemQuantity))
-                            {
-                                itemNames.Add(itemName);
-                                values.Add(itemQuantity);
-                            }
-                        }
-
-                        series.Add(new ColumnSeries
-                        {
-                            Title = "Items",
-                            Values = values,
-                            DataLabels = true
-                        });
-                    }
-                }
-
-                if (stockChart.StockChart != null)
-                {
-                    stockChart.StockChart.Series.Clear(); // Clear existing series
-                    stockChart.StockChart.Series = series;
-
-                    stockChart.StockChart.AxisX.Clear();
-                    stockChart.StockChart.AxisX.Add(new Axis
-                    {
-                        Title = "Item Name",
-                        Labels = itemNames
-                    });
-
-                    stockChart.StockChart.AxisY.Clear();
-                    stockChart.StockChart.AxisY.Add(new Axis
-                    {
-                        Title = "Item Stocks"
-                    });
-
-                    stockChart.StockChart.Update(true, true); // Force redraw
-                }
-                else
-                {
-                    MessageBox.Show("Cartesian chart is not initialized!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
+            // Clear selection in the DataGridView
+            itemStockDgv.ClearSelection();
         }
 
         private void NewStockBtn_Click(object sender, EventArgs e)
         {
-            Inventory_Dashboard dashboardInventory = new Inventory_Dashboard();
-            Add_Stock add_Stock = new Add_Stock(this, dashboardInventory);
+            Add_Stock add_Stock = new Add_Stock(this);
             add_Stock.Show();
         }
 
         private void UpdateStockBtn_Click(object sender, EventArgs e)
         {
-            Edit_Stock edit_Stock = new Edit_Stock();
-            edit_Stock.Show();
+            DialogResult result = MessageBox.Show("Are you sure you want to update this record?", "Update Item!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    int selectedRowIndex = itemStockDgv.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = itemStockDgv.Rows[selectedRowIndex];
+                    string itemID = selectedRow.Cells["Stock_ID"]?.Value?.ToString();
+                    if (!string.IsNullOrEmpty(itemID))
+                    {
+                        Edit_Stock updateProductForm = new Edit_Stock(itemID, this);
+                        updateProductForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Item_ID. Unable to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void DeleteStockBtn_Click(object sender, EventArgs e)
@@ -220,8 +170,7 @@ namespace sims.Admin_Side.Stocks
                         DeleteRecord(selectedItemID);
                         itemStockDgv.Rows.RemoveAt(selectedRowIndex);
                         this.Alert("Stock successfully deleted.");
-                        Populate();
-                        ChartStock();
+                        ViewStock();
                     }
                     else
                     {
@@ -260,53 +209,6 @@ namespace sims.Admin_Side.Stocks
                 {
                     MessageBox.Show($"Error while deleting the record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-        }
-
-        private void searchCategoryTxt_TextChanged(object sender, EventArgs e)
-        {
-            if (originalDataTable == null) return;
-            string searchText = searchCategoryTxt.Text.Trim();
-            DataView dv = originalDataTable.DefaultView;
-
-            if (string.IsNullOrEmpty(searchText))
-            {
-                dv.RowFilter = "";
-                ResetFilters();
-            }
-            else
-            {
-                dv.RowFilter = $"Item_Name LIKE '%{searchText}%'";
-            }
-
-            itemStockDgv.DataSource = dv.ToTable();
-        }
-
-        private void ResetFilters()
-        {
-            try
-            {
-                string query = "SELECT * FROM stocks";
-                dbModule db = new dbModule();
-
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-                            itemStockDgv.DataSource = dataTable;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error resetting filters: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
