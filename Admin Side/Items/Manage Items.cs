@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bunifu.UI.WinForms;
 using sims.Notification;
+using Guna.UI.WinForms;
 
 namespace sims.Admin_Side.Items
 {
@@ -18,12 +19,9 @@ namespace sims.Admin_Side.Items
         private DataTable originalDataTable;
         private BindingSource bindingSource = new BindingSource();
 
-        private Inventory_Dashboard countItems;
-
-        public Manage_Items(Inventory_Dashboard countItems)
+        public Manage_Items()
         {
             InitializeComponent();
-            this.countItems = countItems;
         }
 
         public DataGridView ItemsDgv
@@ -46,7 +44,6 @@ namespace sims.Admin_Side.Items
         {
             Populate();
             ItemsCount();
-            searchFunction();
             searchComboBox();
         }
 
@@ -70,32 +67,6 @@ namespace sims.Admin_Side.Items
                 {
                     MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-        }
-
-        private void searchFunction()
-        {
-            dbModule db = new dbModule();
-            string query = "SELECT * FROM items";
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        originalDataTable = dataTable;
-                        bindingSource.DataSource = originalDataTable;
-                        itemsDgv.DataSource = bindingSource;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -156,32 +127,7 @@ namespace sims.Admin_Side.Items
                 }
             }
         }
-        private void ItemsCountDashboard()
-        {
-            dbModule db = new dbModule();
-            string query = "SELECT COUNT(*) FROM items";
 
-            using (MySqlConnection conn = db.GetConnection())
-            {
-                try
-                {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        int itemCount = Convert.ToInt32(cmd.ExecuteScalar());
-                        countItems.ItemsCountLabel.Text = itemCount.ToString();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-        }
         private void NewItemBtn_Click(object sender, EventArgs e)
         {
             New_Items newProductForm = new New_Items(this, this);
@@ -237,11 +183,9 @@ namespace sims.Admin_Side.Items
                     {
                         DeleteRecord(selectedItemID);
                         itemsDgv.Rows.RemoveAt(selectedRowIndex);
-                        //MessageBox.Show("Item successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Alert("Item successfully deleted.");
-                        Populate();
                         ItemsCount();
-                        ItemsCountDashboard();
+                        Populate();
                     }
                     else
                     {
@@ -293,14 +237,44 @@ namespace sims.Admin_Side.Items
             ApplyFilters();
         }
 
+        private DataTable SearchInDatabase(string searchTerm)
+        {
+            DataTable dataTable = new DataTable();
+            dbModule db = new dbModule();
+
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string query = "SELECT Item_ID, Item_Name, Category, Item_Description, Item_Image " +
+                               "FROM items WHERE Item_Name LIKE @SearchTerm";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+            return dataTable;
+        }
+
         private void ApplyFilters()
         {
-            if (originalDataTable == null) return;
-
             string searchText = searchItemTxt.Text.Trim();
             string selectedCategory = searchCategoryCmb.SelectedItem?.ToString();
 
-            // Construct the filter dynamically
+            // If no filters are applied, show all data
+            if (string.IsNullOrEmpty(searchText) && string.IsNullOrEmpty(selectedCategory))
+            {
+                itemsDgv.DataSource = SearchInDatabase(""); // Pass an empty string to retrieve all records
+                return;
+            }
+
+            // Build the search term for database filtering
             List<string> filters = new List<string>();
 
             if (!string.IsNullOrEmpty(selectedCategory))
@@ -313,13 +287,23 @@ namespace sims.Admin_Side.Items
                 filters.Add($"Item_Name LIKE '%{searchText.Replace("'", "''")}%'"); // Escape single quotes
             }
 
-            string combinedFilter = string.Join(" AND ", filters);
+            string searchTerm = string.Join(" AND ", filters);
 
-            DataView dv = originalDataTable.DefaultView;
-            dv.RowFilter = combinedFilter;
+            // Retrieve filtered data from the database
+            DataTable filteredData = SearchInDatabase(searchText); // Use `searchText` to fetch from the database
 
-            itemsDgv.DataSource = dv.ToTable();
+            // If a category is selected, filter the returned data further
+            if (!string.IsNullOrEmpty(selectedCategory))
+            {
+                DataView dv = filteredData.DefaultView;
+                dv.RowFilter = $"Category = '{selectedCategory.Replace("'", "''")}'";
+                filteredData = dv.ToTable();
+            }
+
+            // Bind the filtered data to the DataGridView
+            itemsDgv.DataSource = filteredData;
         }
+
 
         private void ResetFilters()
         {

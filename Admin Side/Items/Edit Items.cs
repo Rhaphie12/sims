@@ -17,19 +17,12 @@ namespace sims.Admin_Side.Items
     {
         private string _itemID;
         private Manage_Items dashboard;
+
         public Edit_Items(string itemID, Manage_Items dashboard)
         {
             InitializeComponent();
             _itemID = itemID;
             this.dashboard = dashboard;
-        }
-        private byte[] ImageToByteArray(Image image)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                return ms.ToArray();
-            }
         }
 
         private void Edit_Items_Load(object sender, EventArgs e)
@@ -61,6 +54,7 @@ namespace sims.Admin_Side.Items
                 }
             }
         }
+
         private void LoadComboBoxData()
         {
             string query = "SELECT Category_Name FROM categories";
@@ -205,7 +199,6 @@ namespace sims.Admin_Side.Items
                     cmd.Parameters.AddWithValue("@Item_Image", DBNull.Value); // No image to save
                 }
 
-
                 int rowsAffected = cmd.ExecuteNonQuery();
 
                 if (rowsAffected > 0)
@@ -245,7 +238,7 @@ namespace sims.Admin_Side.Items
 
         private void totalInfoBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Item Total is calculated by muliplying Item Quantity and Item Price", "Item Total of Item Quantity and Item Price", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Item Total is calculated by multiplying Item Quantity and Item Price", "Item Total of Item Quantity and Item Price", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void browseImageBtn_Click(object sender, EventArgs e)

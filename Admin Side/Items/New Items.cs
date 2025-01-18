@@ -17,9 +17,10 @@ namespace sims.Admin_Side.Items
 {
     public partial class New_Items : Form
     {
-        private Manage_Items dashboard;
+        private DataTable originalDataTable;
+        private BindingSource bindingSource = new BindingSource();
         private Manage_Items count;
-
+        private Manage_Items dashboard;
 
         public New_Items(Manage_Items dashboard, Manage_Items count)
         {
@@ -27,6 +28,7 @@ namespace sims.Admin_Side.Items
             this.dashboard = dashboard;
             this.count = count;
         }
+
         private byte[] ImageToByteArray(Image image)
         {
             if (image == null)
@@ -51,6 +53,7 @@ namespace sims.Admin_Side.Items
             GenerateRandomItemID();
             LoadComboBoxData();
             Populate();
+            searchFunction(); 
         }
 
         private void ItemsCount()
@@ -109,7 +112,31 @@ namespace sims.Admin_Side.Items
                 }
             }
         }
+        private void searchFunction()
+        {
+            dbModule db = new dbModule();
+            string query = "SELECT * FROM items";
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
 
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        originalDataTable = dataTable;
+                        bindingSource.DataSource = originalDataTable;
+                        dashboard.ItemsDgv.DataSource = bindingSource;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private Dictionary<string, (int CategoryID, string Description)> categoryData = new Dictionary<string, (int, string)>();
         private void LoadComboBoxData()
         {
@@ -200,6 +227,7 @@ namespace sims.Admin_Side.Items
                     this.Alert("Item Added Successfully");
                     this.Hide();
                     Populate();
+                    searchFunction();
                 }
                 else
                 {
