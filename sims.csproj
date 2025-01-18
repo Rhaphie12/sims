@@ -212,11 +212,11 @@
     <Compile Include="Admin Side\Category\Edit Category.Designer.cs">
       <DependentUpon>Edit Category.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Category\Manage Category.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Admin Side\Category\Manage Categoryy.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin Side\Category\Manage Category.Designer.cs">
-      <DependentUpon>Manage Category.cs</DependentUpon>
+    <Compile Include="Admin Side\Category\Manage Categoryy.Designer.cs">
+      <DependentUpon>Manage Categoryy.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Category\New Category.cs">
       <SubType>Form</SubType>
@@ -462,8 +462,8 @@
     <EmbeddedResource Include="Admin Side\Category\Edit Category.resx">
       <DependentUpon>Edit Category.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Category\Manage Category.resx">
-      <DependentUpon>Manage Category.cs</DependentUpon>
+    <EmbeddedResource Include="Admin Side\Category\Manage Categoryy.resx">
+      <DependentUpon>Manage Categoryy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Category\New Category.resx">
       <DependentUpon>New Category.cs</DependentUpon>
