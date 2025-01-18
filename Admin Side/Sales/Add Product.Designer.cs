@@ -30,28 +30,37 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_Product));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties33 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties34 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties35 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties36 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties37 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties38 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties39 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties40 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties41 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties42 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties43 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties44 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties45 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties46 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties47 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties48 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties17 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label4 = new System.Windows.Forms.Label();
             this.gunaElipsePanel3 = new Guna.UI.WinForms.GunaElipsePanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.stock5Cmb = new Guna.UI.WinForms.GunaComboBox();
             this.stock6Cmb = new Guna.UI.WinForms.GunaComboBox();
             this.stock4Cmb = new Guna.UI.WinForms.GunaComboBox();
@@ -60,10 +69,12 @@
             this.stockCmb = new Guna.UI.WinForms.GunaComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.productPriceTxt = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.quantityStockTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.quantitySoldTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.productNameTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -72,11 +83,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.addProductBtn = new Guna.UI.WinForms.GunaButton();
             this.backBtn = new Guna.UI.WinForms.GunaButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.gunaElipsePanel2.SuspendLayout();
             this.gunaElipsePanel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -124,10 +130,12 @@
             this.gunaElipsePanel3.BaseColor = System.Drawing.Color.White;
             this.gunaElipsePanel3.Controls.Add(this.panel1);
             this.gunaElipsePanel3.Controls.Add(this.label1);
+            this.gunaElipsePanel3.Controls.Add(this.label14);
             this.gunaElipsePanel3.Controls.Add(this.label2);
             this.gunaElipsePanel3.Controls.Add(this.label13);
             this.gunaElipsePanel3.Controls.Add(this.label9);
             this.gunaElipsePanel3.Controls.Add(this.productPriceTxt);
+            this.gunaElipsePanel3.Controls.Add(this.quantityStockTxt);
             this.gunaElipsePanel3.Controls.Add(this.quantitySoldTxt);
             this.gunaElipsePanel3.Controls.Add(this.productNameTxt);
             this.gunaElipsePanel3.Controls.Add(this.label8);
@@ -161,6 +169,61 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(437, 233);
             this.panel1.TabIndex = 105;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(225, 155);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(122, 28);
+            this.label11.TabIndex = 52;
+            this.label11.Text = "Stock Item - 6";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(225, 5);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(121, 28);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "Stock Item - 2";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(225, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 28);
+            this.label7.TabIndex = 50;
+            this.label7.Text = "Stock Item - 4";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(19, 155);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(122, 28);
+            this.label6.TabIndex = 49;
+            this.label6.Text = "Stock Item - 5";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(19, 81);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(121, 28);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "Stock Item - 3";
             // 
             // stock5Cmb
             // 
@@ -304,12 +367,23 @@
             this.label1.TabIndex = 104;
             this.label1.Text = "Product Price";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(62, 211);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(128, 28);
+            this.label14.TabIndex = 104;
+            this.label14.Text = "Stock Quantity";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(161, 209);
+            this.label2.Location = new System.Drawing.Point(253, 211);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 28);
             this.label2.TabIndex = 104;
@@ -370,26 +444,26 @@
             this.productPriceTxt.Modified = false;
             this.productPriceTxt.Multiline = false;
             this.productPriceTxt.Name = "productPriceTxt";
-            stateProperties33.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties33.FillColor = System.Drawing.Color.Empty;
-            stateProperties33.ForeColor = System.Drawing.Color.Empty;
-            stateProperties33.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.productPriceTxt.OnActiveState = stateProperties33;
-            stateProperties34.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties34.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties34.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.productPriceTxt.OnDisabledState = stateProperties34;
-            stateProperties35.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties35.FillColor = System.Drawing.Color.Empty;
-            stateProperties35.ForeColor = System.Drawing.Color.Empty;
-            stateProperties35.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.productPriceTxt.OnHoverState = stateProperties35;
-            stateProperties36.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties36.FillColor = System.Drawing.Color.White;
-            stateProperties36.ForeColor = System.Drawing.Color.Empty;
-            stateProperties36.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.productPriceTxt.OnIdleState = stateProperties36;
+            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.productPriceTxt.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.productPriceTxt.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.productPriceTxt.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.productPriceTxt.OnIdleState = stateProperties4;
             this.productPriceTxt.Padding = new System.Windows.Forms.Padding(3);
             this.productPriceTxt.PasswordChar = '\0';
             this.productPriceTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -411,6 +485,81 @@
             this.productPriceTxt.UseSystemPasswordChar = false;
             this.productPriceTxt.WordWrap = true;
             this.productPriceTxt.TextChanged += new System.EventHandler(this.productPriceTxt_TextChanged);
+            // 
+            // quantityStockTxt
+            // 
+            this.quantityStockTxt.AcceptsReturn = false;
+            this.quantityStockTxt.AcceptsTab = false;
+            this.quantityStockTxt.AnimationSpeed = 200;
+            this.quantityStockTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.quantityStockTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.quantityStockTxt.BackColor = System.Drawing.Color.Transparent;
+            this.quantityStockTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("quantityStockTxt.BackgroundImage")));
+            this.quantityStockTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.quantityStockTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.quantityStockTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.quantityStockTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.quantityStockTxt.BorderRadius = 6;
+            this.quantityStockTxt.BorderThickness = 2;
+            this.quantityStockTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.quantityStockTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.quantityStockTxt.DefaultFont = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantityStockTxt.DefaultText = "";
+            this.quantityStockTxt.FillColor = System.Drawing.Color.White;
+            this.quantityStockTxt.HideSelection = true;
+            this.quantityStockTxt.IconLeft = null;
+            this.quantityStockTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.quantityStockTxt.IconPadding = 10;
+            this.quantityStockTxt.IconRight = null;
+            this.quantityStockTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.quantityStockTxt.Lines = new string[0];
+            this.quantityStockTxt.Location = new System.Drawing.Point(67, 242);
+            this.quantityStockTxt.MaxLength = 32767;
+            this.quantityStockTxt.MinimumSize = new System.Drawing.Size(1, 1);
+            this.quantityStockTxt.Modified = false;
+            this.quantityStockTxt.Multiline = false;
+            this.quantityStockTxt.Name = "quantityStockTxt";
+            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties5.FillColor = System.Drawing.Color.Empty;
+            stateProperties5.ForeColor = System.Drawing.Color.Empty;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.quantityStockTxt.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.quantityStockTxt.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.quantityStockTxt.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties8.FillColor = System.Drawing.Color.White;
+            stateProperties8.ForeColor = System.Drawing.Color.Empty;
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.quantityStockTxt.OnIdleState = stateProperties8;
+            this.quantityStockTxt.Padding = new System.Windows.Forms.Padding(3);
+            this.quantityStockTxt.PasswordChar = '\0';
+            this.quantityStockTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.quantityStockTxt.PlaceholderText = "";
+            this.quantityStockTxt.ReadOnly = false;
+            this.quantityStockTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.quantityStockTxt.SelectedText = "";
+            this.quantityStockTxt.SelectionLength = 0;
+            this.quantityStockTxt.SelectionStart = 0;
+            this.quantityStockTxt.ShortcutsEnabled = true;
+            this.quantityStockTxt.Size = new System.Drawing.Size(185, 37);
+            this.quantityStockTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.quantityStockTxt.TabIndex = 103;
+            this.quantityStockTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.quantityStockTxt.TextMarginBottom = 0;
+            this.quantityStockTxt.TextMarginLeft = 3;
+            this.quantityStockTxt.TextMarginTop = 0;
+            this.quantityStockTxt.TextPlaceholder = "";
+            this.quantityStockTxt.UseSystemPasswordChar = false;
+            this.quantityStockTxt.WordWrap = true;
+            this.quantityStockTxt.TextChanged += new System.EventHandler(this.quantityStockTxt_TextChanged);
             // 
             // quantitySoldTxt
             // 
@@ -439,32 +588,32 @@
             this.quantitySoldTxt.IconRight = null;
             this.quantitySoldTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.quantitySoldTxt.Lines = new string[0];
-            this.quantitySoldTxt.Location = new System.Drawing.Point(166, 240);
+            this.quantitySoldTxt.Location = new System.Drawing.Point(258, 242);
             this.quantitySoldTxt.MaxLength = 32767;
             this.quantitySoldTxt.MinimumSize = new System.Drawing.Size(1, 1);
             this.quantitySoldTxt.Modified = false;
             this.quantitySoldTxt.Multiline = false;
             this.quantitySoldTxt.Name = "quantitySoldTxt";
-            stateProperties37.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties37.FillColor = System.Drawing.Color.Empty;
-            stateProperties37.ForeColor = System.Drawing.Color.Empty;
-            stateProperties37.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.quantitySoldTxt.OnActiveState = stateProperties37;
-            stateProperties38.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties38.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties38.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.quantitySoldTxt.OnDisabledState = stateProperties38;
-            stateProperties39.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties39.FillColor = System.Drawing.Color.Empty;
-            stateProperties39.ForeColor = System.Drawing.Color.Empty;
-            stateProperties39.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.quantitySoldTxt.OnHoverState = stateProperties39;
-            stateProperties40.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties40.FillColor = System.Drawing.Color.White;
-            stateProperties40.ForeColor = System.Drawing.Color.Empty;
-            stateProperties40.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.quantitySoldTxt.OnIdleState = stateProperties40;
+            stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties9.FillColor = System.Drawing.Color.Empty;
+            stateProperties9.ForeColor = System.Drawing.Color.Empty;
+            stateProperties9.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.quantitySoldTxt.OnActiveState = stateProperties9;
+            stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties10.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.quantitySoldTxt.OnDisabledState = stateProperties10;
+            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties11.FillColor = System.Drawing.Color.Empty;
+            stateProperties11.ForeColor = System.Drawing.Color.Empty;
+            stateProperties11.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.quantitySoldTxt.OnHoverState = stateProperties11;
+            stateProperties12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties12.FillColor = System.Drawing.Color.White;
+            stateProperties12.ForeColor = System.Drawing.Color.Empty;
+            stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.quantitySoldTxt.OnIdleState = stateProperties12;
             this.quantitySoldTxt.Padding = new System.Windows.Forms.Padding(3);
             this.quantitySoldTxt.PasswordChar = '\0';
             this.quantitySoldTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -520,26 +669,26 @@
             this.productNameTxt.Modified = false;
             this.productNameTxt.Multiline = false;
             this.productNameTxt.Name = "productNameTxt";
-            stateProperties41.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties41.FillColor = System.Drawing.Color.Empty;
-            stateProperties41.ForeColor = System.Drawing.Color.Empty;
-            stateProperties41.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.productNameTxt.OnActiveState = stateProperties41;
-            stateProperties42.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties42.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties42.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.productNameTxt.OnDisabledState = stateProperties42;
-            stateProperties43.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties43.FillColor = System.Drawing.Color.Empty;
-            stateProperties43.ForeColor = System.Drawing.Color.Empty;
-            stateProperties43.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.productNameTxt.OnHoverState = stateProperties43;
-            stateProperties44.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties44.FillColor = System.Drawing.Color.White;
-            stateProperties44.ForeColor = System.Drawing.Color.Empty;
-            stateProperties44.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.productNameTxt.OnIdleState = stateProperties44;
+            stateProperties13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties13.FillColor = System.Drawing.Color.Empty;
+            stateProperties13.ForeColor = System.Drawing.Color.Empty;
+            stateProperties13.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.productNameTxt.OnActiveState = stateProperties13;
+            stateProperties14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties14.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties14.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.productNameTxt.OnDisabledState = stateProperties14;
+            stateProperties15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties15.FillColor = System.Drawing.Color.Empty;
+            stateProperties15.ForeColor = System.Drawing.Color.Empty;
+            stateProperties15.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.productNameTxt.OnHoverState = stateProperties15;
+            stateProperties16.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties16.FillColor = System.Drawing.Color.White;
+            stateProperties16.ForeColor = System.Drawing.Color.Empty;
+            stateProperties16.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.productNameTxt.OnIdleState = stateProperties16;
             this.productNameTxt.Padding = new System.Windows.Forms.Padding(3);
             this.productNameTxt.PasswordChar = '\0';
             this.productNameTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -606,26 +755,26 @@
             this.productIDTxt.Modified = false;
             this.productIDTxt.Multiline = false;
             this.productIDTxt.Name = "productIDTxt";
-            stateProperties45.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties45.FillColor = System.Drawing.Color.Empty;
-            stateProperties45.ForeColor = System.Drawing.Color.Empty;
-            stateProperties45.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.productIDTxt.OnActiveState = stateProperties45;
-            stateProperties46.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties46.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties46.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.productIDTxt.OnDisabledState = stateProperties46;
-            stateProperties47.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties47.FillColor = System.Drawing.Color.Empty;
-            stateProperties47.ForeColor = System.Drawing.Color.Empty;
-            stateProperties47.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.productIDTxt.OnHoverState = stateProperties47;
-            stateProperties48.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties48.FillColor = System.Drawing.Color.White;
-            stateProperties48.ForeColor = System.Drawing.Color.Empty;
-            stateProperties48.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.productIDTxt.OnIdleState = stateProperties48;
+            stateProperties17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties17.FillColor = System.Drawing.Color.Empty;
+            stateProperties17.ForeColor = System.Drawing.Color.Empty;
+            stateProperties17.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.productIDTxt.OnActiveState = stateProperties17;
+            stateProperties18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties18.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.productIDTxt.OnDisabledState = stateProperties18;
+            stateProperties19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties19.FillColor = System.Drawing.Color.Empty;
+            stateProperties19.ForeColor = System.Drawing.Color.Empty;
+            stateProperties19.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.productIDTxt.OnHoverState = stateProperties19;
+            stateProperties20.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties20.FillColor = System.Drawing.Color.White;
+            stateProperties20.ForeColor = System.Drawing.Color.Empty;
+            stateProperties20.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.productIDTxt.OnIdleState = stateProperties20;
             this.productIDTxt.Padding = new System.Windows.Forms.Padding(3);
             this.productIDTxt.PasswordChar = '\0';
             this.productIDTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -739,61 +888,6 @@
             this.backBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(19, 81);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 28);
-            this.label5.TabIndex = 48;
-            this.label5.Text = "Stock Item - 3";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(19, 155);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 28);
-            this.label6.TabIndex = 49;
-            this.label6.Text = "Stock Item - 5";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(225, 81);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(122, 28);
-            this.label7.TabIndex = 50;
-            this.label7.Text = "Stock Item - 4";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(225, 5);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(121, 28);
-            this.label10.TabIndex = 51;
-            this.label10.Text = "Stock Item - 2";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(225, 155);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(122, 28);
-            this.label11.TabIndex = 52;
-            this.label11.Text = "Stock Item - 6";
-            // 
             // Add_Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -850,5 +944,7 @@
         internal System.Windows.Forms.Label label7;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.Label label5;
+        internal System.Windows.Forms.Label label14;
+        private Bunifu.UI.WinForms.BunifuTextBox quantityStockTxt;
     }
 }

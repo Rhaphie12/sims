@@ -83,27 +83,22 @@ namespace sims.Admin_Side.Sales
                 Font = new Font("Poppins", 12),
                 TextAlign = ContentAlignment.MiddleCenter
             };
-            // productButton.Click += ProductButton_Click;
 
-            // Add product button to the appropriate layout panel
-            if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
+            switch (category)
             {
-                CoffeeLayoutPanel.Controls.Add(productButton);
+                case "Coffee":
+                    coffeeLayoutPanel.Controls.Add(productButton);
+                    break;
+                case "Non-Coffee":
+                    nonCoffeeLayoutPanel.Controls.Add(productButton);
+                    break;
+                case "Hot":
+                    hotCoffeeLayoutPanel.Controls.Add(productButton);
+                    break;
+                default:
+                    MessageBox.Show($"Unknown category: {category}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
             }
-            else if (category.Equals("Non-Coffee", StringComparison.OrdinalIgnoreCase))
-            {
-                NonCoffeeLayoutPanel.Controls.Add(productButton);
-            }
-            else if (category.Equals("Hot", StringComparison.OrdinalIgnoreCase))
-            {
-                HotCoffeeLayoutPanel.Controls.Add(productButton);
-            }
-            else
-            {
-                MessageBox.Show($"Category '{category}' is not recognized.", "Unknown Category", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            Populate();
         }
 
         private void LoadProductButtons()
@@ -119,19 +114,18 @@ namespace sims.Admin_Side.Sales
                 cmd.CommandText = "SELECT Product_ID, Product_Name, Product_Price, Category FROM products";
 
                 MySqlDataReader reader = cmd.ExecuteReader();
-                CoffeeLayoutPanel.Controls.Clear();
-                NonCoffeeLayoutPanel.Controls.Clear();
-                HotCoffeeLayoutPanel.Controls.Clear();
+                coffeeLayoutPanel.Controls.Clear();
+                nonCoffeeLayoutPanel.Controls.Clear();
+                hotCoffeeLayoutPanel.Controls.Clear();
 
                 while (reader.Read())
                 {
-                    string productID = reader.GetInt32("Product_ID").ToString(); // Corrected here
+                    string productID = reader.GetInt32("Product_ID").ToString();
                     string productName = reader.GetString("Product_Name");
-                    string productPrice = reader.GetDecimal("Product_Price").ToString("F2"); // Assuming Product_Price is a decimal
-                    string category = reader.GetString("Category"); // Retrieve the category
+                    string productPrice = reader.GetDecimal("Product_Price").ToString("F2");
+                    string category = reader.GetString("Category");
 
                     AddProductButton(productID, productName, productPrice, category);
-                    Populate();
                 }
             }
             catch (Exception ex)

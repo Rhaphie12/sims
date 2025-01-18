@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Guna.UI.WinForms;
+using MySql.Data.MySqlClient;
+using sims.Admin_Side.Stocks;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,15 +15,12 @@ namespace sims.Admin_Side.Sales
 {
     public partial class Manage_Sales : UserControl
     {
-        private DataTable originalDataTable;
-        private BindingSource bindingSource = new BindingSource();
-
         public Manage_Sales()
         {
             InitializeComponent();
         }
 
-        public DataGridView ProductsDgv
+        public GunaDataGridView ProductsDgv
         {
             get { return productsDgv; }
         }
@@ -33,13 +32,12 @@ namespace sims.Admin_Side.Sales
 
         private void Manage_Sales_Load(object sender, EventArgs e)
         {
-            LoadProducts();
+            Populate();
             ProductsCount();
             searchComboBox();
-            searchFunction();
         }
 
-        private void LoadProducts()
+        private void Populate()
         {
             dbModule db = new dbModule();
             MySqlDataAdapter adapter = db.GetAdapter();
@@ -61,6 +59,7 @@ namespace sims.Admin_Side.Sales
                 }
             }
         }
+
         private void ProductsCount()
         {
             dbModule db = new dbModule();
@@ -85,31 +84,6 @@ namespace sims.Admin_Side.Sales
                 {
                     conn.Close();
                 }
-            }
-        }
-        private void searchFunction()
-        {
-            dbModule db = new dbModule();
-            string query = "SELECT * FROM products";
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        originalDataTable = dataTable;
-                        bindingSource.DataSource = originalDataTable;
-                        productsDgv.DataSource = bindingSource;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -144,14 +118,43 @@ namespace sims.Admin_Side.Sales
             }
         }
 
+        private DataTable SearchInDatabase(string searchTerm)
+        {
+            DataTable dataTable = new DataTable();
+            dbModule db = new dbModule();
+
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string query = "SELECT Product_ID, Product_Name, Category, Product_Price, Quantity_Sold, Stock_Needed " +
+                               "FROM products WHERE Product_Name LIKE @SearchTerm";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+            return dataTable;
+        }
+
         private void ApplyFilters()
         {
-            if (originalDataTable == null) return;
-
             string searchText = searchProductTxt.Text.Trim();
             string selectedCategory = searchCategoryCmb.SelectedItem?.ToString();
 
-            // Construct the filter dynamically
+            if (string.IsNullOrEmpty(searchText) && string.IsNullOrEmpty(selectedCategory))
+            {
+                productsDgv.DataSource = SearchInDatabase(""); // Pass an empty string to retrieve all records
+                return;
+            }
+
+            // Build the search term for database filtering
             List<string> filters = new List<string>();
 
             if (!string.IsNullOrEmpty(selectedCategory))
@@ -164,25 +167,35 @@ namespace sims.Admin_Side.Sales
                 filters.Add($"Product_Name LIKE '%{searchText.Replace("'", "''")}%'"); // Escape single quotes
             }
 
-            string combinedFilter = string.Join(" AND ", filters);
+            string searchTerm = string.Join(" AND ", filters);
 
-            DataView dv = originalDataTable.DefaultView;
-            dv.RowFilter = combinedFilter;
+            // Retrieve filtered data from the database
+            DataTable filteredData = SearchInDatabase(searchText); // Use `searchText` to fetch from the database
 
-            productsDgv.DataSource = dv.ToTable();
+            // If a category is selected, filter the returned data further
+            if (!string.IsNullOrEmpty(selectedCategory))
+            {
+                DataView dv = filteredData.DefaultView;
+                dv.RowFilter = $"Category = '{selectedCategory.Replace("'", "''")}'";
+                filteredData = dv.ToTable();
+            }
+
+            // Bind the filtered data to the DataGridView
+            productsDgv.DataSource = filteredData;
         }
 
         private void ResetFilters()
         {
             searchCategoryCmb.SelectedIndex = -1;
-            searchProductTxt.Clear();               
-            ApplyFilters();                      
+            searchProductTxt.Clear();
+            ApplyFilters();
         }
 
         private void NewProductBtn_Click(object sender, EventArgs e)
         {
+            Manage_Stock manage_Stock = new Manage_Stock();
             Product_Sales product_Sales = new Product_Sales(this);
-            Add_Product addProduct = new Add_Product(this, this, product_Sales, product_Sales, product_Sales);
+            Add_Product addProduct = new Add_Product(this, this, product_Sales, product_Sales, product_Sales, manage_Stock);
             addProduct.Show();
         }
 
