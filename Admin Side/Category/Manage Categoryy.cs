@@ -17,7 +17,6 @@ namespace sims.Admin_Side.Category
     public partial class Manage_Categoryy : Form
     {
         public DataTable originalDataTable;
-        private BindingSource bindingSource = new BindingSource();
 
         public Manage_Categoryy()
         {
@@ -38,7 +37,6 @@ namespace sims.Admin_Side.Category
         private void Manage_Categoryy_Load(object sender, EventArgs e)
         {
             PopulateData();
-            //searchFunction();
         }
 
         private void PopulateData()
@@ -110,8 +108,8 @@ namespace sims.Admin_Side.Category
             {
                 conn.Open();
 
-                string query = "SELECT Category_ID, Category_Name, Category_Description FROM categories " +
-                               "WHERE Category_ID LIKE @SearchTerm OR Category_Name LIKE @SearchTerm OR Category_Description LIKE @SearchTerm";
+                string query = "SELECT Category_ID, Category_Name, Category_Description " +
+                               "FROM categories WHERE Category_Name LIKE @SearchTerm";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -127,7 +125,6 @@ namespace sims.Admin_Side.Category
             return dataTable;
         }
 
-
         private void searchCategoryTxt_TextChanged(object sender, EventArgs e)
         {
             string searchTerm = searchCategoryTxt.Text.Trim();
@@ -135,30 +132,11 @@ namespace sims.Admin_Side.Category
             // Search for results in the database
             DataTable searchResultDataTable = SearchInDatabase(searchTerm);
 
-            // Check if the DataTable is empty
-            if (searchResultDataTable.Rows.Count > 0)
-            {
-                // Bind the search results to a DataGridView or any other control
-                recentlyAddedDgv.DataSource = searchResultDataTable;
+            // Bind the search results to the DataGridView
+            recentlyAddedDgv.DataSource = searchResultDataTable;
 
-                // Clear selection in the DataGridView
-                recentlyAddedDgv.ClearSelection();
-            }
-            else
-            {
-                // If no results found, create a new DataTable with the same structure
-                DataTable emptyDataTable = new DataTable();
-                emptyDataTable.Columns.Add("Category_ID");
-                emptyDataTable.Columns.Add("Category_Name");
-                emptyDataTable.Columns.Add("Category_Description");
-
-                // Bind the empty DataTable to the DataGridView
-                recentlyAddedDgv.DataSource = emptyDataTable;
-
-                // Clear selection in the DataGridView
-                recentlyAddedDgv.ClearSelection();
-            }
-
+            // Clear selection in the DataGridView
+            recentlyAddedDgv.ClearSelection();
         }
 
         private void newCategoryBtn_Click(object sender, EventArgs e)
