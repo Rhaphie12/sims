@@ -10,13 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using sims.Admin_Side.Items;
+using System.Security.Permissions;
 
 namespace sims.Admin_Side
 {
     public partial class Inventory_Dashboard : Form
     {
         public LiveCharts.WinForms.CartesianChart StockChart => cartesianChart1;
-        public Label CategoriesCountLabel => categoriesCountTxt;
         public Label ItemsCountLabel => itemsCountTxt;
 
         public Inventory_Dashboard()

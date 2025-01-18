@@ -28,7 +28,7 @@ namespace sims
         private GunaPanel leftBorderBtn;
 
         private Inventory_Dashboard dashboardInventoryInstance;
-        private Manage_Category manageCategoryInstance;
+        private Manage_Categoryy manageCategoryInstance;
         private Manage_Items manageItemsInstance;
         private Manage_Stock manageStockInstance;
         private Inventory_Report inventoryReportInstance;
@@ -53,9 +53,9 @@ namespace sims
         private void DashboardOwner_Load(object sender, EventArgs e)
         {
             dashboardInventoryInstance = new Inventory_Dashboard();
-            manageCategoryInstance = new Manage_Category(dashboardInventoryInstance);
-            manageItemsInstance = new Manage_Items(dashboardInventoryInstance);
-            manageStockInstance = new Manage_Stock(dashboardInventoryInstance);
+            manageCategoryInstance = new Manage_Categoryy();
+            manageItemsInstance = new Manage_Items();
+            manageStockInstance = new Manage_Stock();
             inventoryReportInstance = new Inventory_Report();
             manageSalesProductsInstance = new Manage_Sales();
             productSalesInstance = new Product_Sales(manageSalesProductsInstance);
