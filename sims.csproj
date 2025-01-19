@@ -200,12 +200,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin Side\Backup Database\Backup Database.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Admin Side\Backup Database\Backup Database.Designer.cs">
-      <DependentUpon>Backup Database.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin Side\Category\Edit Category.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -456,9 +450,6 @@
     <Compile Include="Staff Side\Stocks\Stock Item.Designer.cs">
       <DependentUpon>Stock Item.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Admin Side\Backup Database\Backup Database.resx">
-      <DependentUpon>Backup Database.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Category\Edit Category.resx">
       <DependentUpon>Edit Category.cs</DependentUpon>
     </EmbeddedResource>
