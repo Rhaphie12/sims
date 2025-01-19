@@ -2,7 +2,6 @@
 using Guna.UI.WinForms;
 using MySql.Data.MySqlClient;
 using sims.Admin_Side;
-using sims.Admin_Side.Backup_Database;
 using sims.Admin_Side.Category;
 using sims.Admin_Side.Inventory_Report;
 using sims.Admin_Side.Items;
@@ -36,7 +35,6 @@ namespace sims
         private Product_Sales productSalesInstance;
         private Manage_Sales_Report manageSalesReportInstance;
         private Manage_User_Staff manageUserStaffInstance;
-        private Backup_Database backupDatabaseInstance;
 
         public DashboardOwner()
         {
@@ -61,7 +59,6 @@ namespace sims
             productSalesInstance = new Product_Sales(manageSalesProductsInstance);
             manageSalesReportInstance = new Manage_Sales_Report();
             manageUserStaffInstance = new Manage_User_Staff();
-            backupDatabaseInstance = new Backup_Database();
 
             LoadView(dashboardInventoryInstance);
             ActivateButton(DashboardBtn, Color.White);
@@ -302,13 +299,6 @@ namespace sims
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
             OpeninPanel(manageUserStaffInstance);
-            customizeDesign();
-        }
-
-        private void backupDbBtn_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(backupDatabaseInstance);
             customizeDesign();
         }
 

@@ -108,7 +108,6 @@
             this.backupDbBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.backupDbBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.backupDbBtn.UseVisualStyleBackColor = true;
-            this.backupDbBtn.Click += new System.EventHandler(this.backupDbBtn_Click);
             // 
             // UserBtn
             // 
