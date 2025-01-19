@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using sims.Admin_Side.Items;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -66,7 +67,7 @@ namespace sims.Admin_Side.Sales
             }
         }
 
-        private void AddProductButton(string productID, string productName, string productPrice, string category)
+        public void AddProductButton(string productID, string productName, string productPrice, string category)
         {
             Button productButton = new Button
             {
@@ -83,6 +84,7 @@ namespace sims.Admin_Side.Sales
                 Font = new Font("Poppins", 12),
                 TextAlign = ContentAlignment.MiddleCenter
             };
+            productButton.Click += ProductButton_Click;
 
             switch (category)
             {
@@ -100,8 +102,17 @@ namespace sims.Admin_Side.Sales
                     break;
             }
         }
+        private void ProductButton_Click(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is ProductDetails productDetails)
+            {
+                //string itemID = productDetails.ItemID;
+                var detailsForm = new Sales_Form();
+                detailsForm.Show();
+            }
+        }
 
-        private void LoadProductButtons()
+        public void LoadProductButtons()
         {
             dbModule db = new dbModule();
             MySqlConnection conn = db.GetConnection();

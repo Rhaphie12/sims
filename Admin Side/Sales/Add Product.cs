@@ -1,4 +1,5 @@
 ﻿using Bunifu.UI.WinForms;
+using Guna.UI.WinForms;
 using MySql.Data.MySqlClient;
 using sims.Admin_Side.Stocks;
 using sims.Messages_Boxes;
@@ -22,7 +23,9 @@ namespace sims.Admin_Side.Sales
         private Manage_Stockk _stock;
         private Inventory_Dashboard _inventoryDashboard;
 
-        public Add_Product(Manage_Sales count, Manage_Sales dashboard, Product_Sales CoffeeLayoutPanel, Product_Sales NonCoffeeLayoutPanel, Product_Sales HotCoffeeLayoutPanel, Manage_Stockk stock, Inventory_Dashboard inventoryDashboard)
+        public Add_Product(Manage_Sales count, Manage_Sales dashboard, Product_Sales CoffeeLayoutPanel, 
+                           Product_Sales NonCoffeeLayoutPanel, Product_Sales HotCoffeeLayoutPanel, Manage_Stockk stock, 
+                           Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
             this.count = count;
@@ -48,7 +51,6 @@ namespace sims.Admin_Side.Sales
             stocks();
             Populate();
             ProductsCount();
-            LoadProductButtons();
             GenerateRandomItemID();
             LoadCategoriesProducts();
         }
@@ -75,7 +77,6 @@ namespace sims.Admin_Side.Sales
                 MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
-
         private void LoadCategoriesProducts()
         {
             string query = "SELECT Category_Name FROM categoriesproducts";
@@ -104,6 +105,8 @@ namespace sims.Admin_Side.Sales
                 MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private List<string> allStockItems = new List<string>();
+        private bool isUpdatingComboBoxes = false;
 
         private void stocks()
         {
@@ -120,22 +123,100 @@ namespace sims.Admin_Side.Sales
                     {
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
+                            allStockItems.Clear();
+
                             while (reader.Read())
                             {
-                                stockCmb.Items.Add(reader["Item_Name"].ToString());
-                                stock2Cmb.Items.Add(reader["Item_Name"].ToString());
-                                stock3Cmb.Items.Add(reader["Item_Name"].ToString());
-                                stock4Cmb.Items.Add(reader["Item_Name"].ToString());
-                                stock5Cmb.Items.Add(reader["Item_Name"].ToString());
-                                stock6Cmb.Items.Add(reader["Item_Name"].ToString());
+                                string itemName = reader["Item_Name"].ToString();
+                                allStockItems.Add(itemName);
                             }
                         }
                     }
                 }
+
+                // Populate combo boxes
+                PopulateComboBoxes();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading stocks: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PopulateComboBoxes()
+        {
+            stockCmb.Items.Clear();
+            stock2Cmb.Items.Clear();
+            stock3Cmb.Items.Clear();
+            stock4Cmb.Items.Clear();
+            stock5Cmb.Items.Clear();
+            stock6Cmb.Items.Clear();
+
+            foreach (var item in allStockItems)
+            {
+                stockCmb.Items.Add(item);
+                stock2Cmb.Items.Add(item);
+                stock3Cmb.Items.Add(item);
+                stock4Cmb.Items.Add(item);
+                stock5Cmb.Items.Add(item);
+                stock6Cmb.Items.Add(item);
+            }
+        }
+
+        private void UpdateComboBoxItems()
+        {
+            // Prevent recursive updates
+            if (isUpdatingComboBoxes) return;
+
+            isUpdatingComboBoxes = true;
+
+            try
+            {
+                // Get selected items from all combo boxes
+                var selectedItems = new HashSet<string>
+        {
+            stockCmb.SelectedItem?.ToString(),
+            stock2Cmb.SelectedItem?.ToString(),
+            stock3Cmb.SelectedItem?.ToString(),
+            stock4Cmb.SelectedItem?.ToString(),
+            stock5Cmb.SelectedItem?.ToString(),
+            stock6Cmb.SelectedItem?.ToString()
+        };
+
+                // Update each combo box's items
+                UpdateComboBox(stockCmb, selectedItems);
+                UpdateComboBox(stock2Cmb, selectedItems);
+                UpdateComboBox(stock3Cmb, selectedItems);
+                UpdateComboBox(stock4Cmb, selectedItems);
+                UpdateComboBox(stock5Cmb, selectedItems);
+                UpdateComboBox(stock6Cmb, selectedItems);
+            }
+            finally
+            {
+                // Re-enable updates
+                isUpdatingComboBoxes = false;
+            }
+        }
+
+        private void UpdateComboBox(GunaComboBox comboBox, HashSet<string> selectedItems)
+        {
+            // Get the currently selected item
+            var currentSelection = comboBox.SelectedItem?.ToString();
+
+            // Clear and repopulate items
+            comboBox.Items.Clear();
+            foreach (var item in allStockItems)
+            {
+                if (!selectedItems.Contains(item) || item == currentSelection)
+                {
+                    comboBox.Items.Add(item);
+                }
+            }
+
+            // Restore the current selection if still valid
+            if (!string.IsNullOrEmpty(currentSelection))
+            {
+                comboBox.SelectedItem = currentSelection;
             }
         }
 
@@ -218,6 +299,9 @@ namespace sims.Admin_Side.Sales
             if (!string.IsNullOrEmpty(stockCmb.SelectedItem?.ToString())) stockItems.Add(stockCmb.SelectedItem.ToString());
             if (!string.IsNullOrEmpty(stock2Cmb.SelectedItem?.ToString())) stockItems.Add(stock2Cmb.SelectedItem.ToString());
             if (!string.IsNullOrEmpty(stock3Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock4Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock5Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock6Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
 
             string stockNeeded = string.Join(", ", stockItems);
 
@@ -274,7 +358,6 @@ namespace sims.Admin_Side.Sales
                     this.Hide();
                     ProductsCount();
                     GenerateRandomItemID();
-                    LoadProductButtons();
                     AddProductButton(productID, productName, productPrice, category);
                 }
                 else
@@ -332,50 +415,9 @@ namespace sims.Admin_Side.Sales
             }
         }
 
-        private void LoadProductButtons()
-        {
-            dbModule db = new dbModule();
-            MySqlConnection conn = db.GetConnection();
-            MySqlCommand cmd = db.GetCommand();
-
-            try
-            {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = "SELECT Product_ID, Product_Name, Product_Price, Category FROM products";
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                // Clear existing controls from the panels
-                _CoffeeLayoutPanel.Controls.Clear();
-                _NonCoffeeLayoutPanel.Controls.Clear();
-                _HotCoffeeLayoutPanel.Controls.Clear();
-
-                while (reader.Read())
-                {
-                    string productID = reader.GetInt32("Product_ID").ToString();
-                    string productName = reader.GetString("Product_Name");
-                    string productPrice = reader.GetDecimal("Product_Price").ToString("F2");
-                    string category = reader.GetString("Category");
-
-                    AddProductButton(productID, productName, productPrice, category);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading products: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-                cmd.Dispose();
-                conn.Dispose();
-            }
-        }
-
         private void backBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void ValidateTextBoxForNumbersOnly(BunifuTextBox textBox)
@@ -407,14 +449,68 @@ namespace sims.Admin_Side.Sales
             ValidateTextBoxForNumbersOnly(productPriceTxt);
         }
 
+        private void productPriceTxt_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(productPriceTxt.Text))
+            {
+                // Remove peso sign and other formatting for processing
+                string rawInput = productPriceTxt.Text.Replace("₱", "").Trim();
+
+                if (decimal.TryParse(rawInput, out decimal price))
+                {
+                    // Format the input with the peso sign and two decimal places
+                    productPriceTxt.Text = $"₱{price:0.00}";
+                }
+                else
+                {
+                    MessageBox.Show("Invalid input. Please enter a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    productPriceTxt.Clear();
+                }
+            }
+        }
+
+        private void quantityStockTxt_TextChanged(object sender, EventArgs e)
+        {
+            // Ensure the input is a valid number
+            ValidateTextBoxForNumbersOnly(quantityStockTxt);
+
+            // Update the quantitySoldTxt with the same value
+            quantitySoldTxt.Text = quantityStockTxt.Text;
+        }
+
         private void quantitySoldTxt_TextChanged(object sender, EventArgs e)
         {
             ValidateTextBoxForNumbersOnly(quantitySoldTxt);
         }
 
-        private void quantityStockTxt_TextChanged(object sender, EventArgs e)
+        private void stockCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValidateTextBoxForNumbersOnly(quantityStockTxt);
+            UpdateComboBoxItems();
+        }
+
+        private void stock2Cmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateComboBoxItems();
+        }
+
+        private void stock3Cmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateComboBoxItems();
+        }
+
+        private void stock4Cmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateComboBoxItems();
+        }
+
+        private void stock5Cmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateComboBoxItems();
+        }
+
+        private void stock6Cmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateComboBoxItems();
         }
     }
 }

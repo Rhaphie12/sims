@@ -12,6 +12,7 @@ namespace sims.Admin_Side.Sales
     {
         private Inventory_Dashboard _inventoryDashboard;
         private Manage_Stockk _stock;
+        private Add_Product _addProductForm;
 
         public Manage_Sales(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock)
         {
@@ -193,10 +194,19 @@ namespace sims.Admin_Side.Sales
 
         private void NewProductBtn_Click(object sender, EventArgs e)
         {
-            var manage_Stock = new Manage_Stockk(_inventoryDashboard);
-            var product_Sales = new Product_Sales(this);
-            Add_Product addProduct = new Add_Product(this, this, product_Sales, product_Sales, product_Sales, _stock, _inventoryDashboard);
-            addProduct.Show();
+            // Check if the form is already open
+            if (_addProductForm == null || _addProductForm.IsDisposed)
+            {
+                var manage_Stock = new Manage_Stockk(_inventoryDashboard);
+                var product_Sales = new Product_Sales(this);
+                _addProductForm = new Add_Product(this, this, product_Sales, product_Sales, product_Sales, _stock, _inventoryDashboard);
+                _addProductForm.Show();
+            }
+            else
+            {
+                // If the form is already open, bring it to the front
+                _addProductForm.BringToFront();
+            }
         }
 
         private void searchCategoryCmb_SelectedIndexChanged(object sender, EventArgs e)

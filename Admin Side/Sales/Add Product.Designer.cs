@@ -244,6 +244,7 @@
             this.stock5Cmb.Size = new System.Drawing.Size(185, 32);
             this.stock5Cmb.TabIndex = 46;
             this.stock5Cmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.stock5Cmb.SelectedIndexChanged += new System.EventHandler(this.stock5Cmb_SelectedIndexChanged);
             // 
             // stock6Cmb
             // 
@@ -264,6 +265,7 @@
             this.stock6Cmb.Size = new System.Drawing.Size(185, 32);
             this.stock6Cmb.TabIndex = 46;
             this.stock6Cmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.stock6Cmb.SelectedIndexChanged += new System.EventHandler(this.stock6Cmb_SelectedIndexChanged);
             // 
             // stock4Cmb
             // 
@@ -284,6 +286,7 @@
             this.stock4Cmb.Size = new System.Drawing.Size(185, 32);
             this.stock4Cmb.TabIndex = 46;
             this.stock4Cmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.stock4Cmb.SelectedIndexChanged += new System.EventHandler(this.stock4Cmb_SelectedIndexChanged);
             // 
             // stock3Cmb
             // 
@@ -304,6 +307,7 @@
             this.stock3Cmb.Size = new System.Drawing.Size(185, 32);
             this.stock3Cmb.TabIndex = 46;
             this.stock3Cmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.stock3Cmb.SelectedIndexChanged += new System.EventHandler(this.stock3Cmb_SelectedIndexChanged);
             // 
             // stock2Cmb
             // 
@@ -324,6 +328,7 @@
             this.stock2Cmb.Size = new System.Drawing.Size(185, 32);
             this.stock2Cmb.TabIndex = 46;
             this.stock2Cmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.stock2Cmb.SelectedIndexChanged += new System.EventHandler(this.stock2Cmb_SelectedIndexChanged);
             // 
             // stockCmb
             // 
@@ -344,6 +349,7 @@
             this.stockCmb.Size = new System.Drawing.Size(185, 32);
             this.stockCmb.TabIndex = 46;
             this.stockCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.stockCmb.SelectedIndexChanged += new System.EventHandler(this.stockCmb_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -476,7 +482,7 @@
             this.productPriceTxt.ShortcutsEnabled = true;
             this.productPriceTxt.Size = new System.Drawing.Size(185, 37);
             this.productPriceTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.productPriceTxt.TabIndex = 103;
+            this.productPriceTxt.TabIndex = 3;
             this.productPriceTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.productPriceTxt.TextMarginBottom = 0;
             this.productPriceTxt.TextMarginLeft = 3;
@@ -485,6 +491,7 @@
             this.productPriceTxt.UseSystemPasswordChar = false;
             this.productPriceTxt.WordWrap = true;
             this.productPriceTxt.TextChanged += new System.EventHandler(this.productPriceTxt_TextChanged);
+            this.productPriceTxt.Leave += new System.EventHandler(this.productPriceTxt_Leave);
             // 
             // quantityStockTxt
             // 
@@ -551,7 +558,7 @@
             this.quantityStockTxt.ShortcutsEnabled = true;
             this.quantityStockTxt.Size = new System.Drawing.Size(185, 37);
             this.quantityStockTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.quantityStockTxt.TabIndex = 103;
+            this.quantityStockTxt.TabIndex = 4;
             this.quantityStockTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.quantityStockTxt.TextMarginBottom = 0;
             this.quantityStockTxt.TextMarginLeft = 3;
@@ -626,7 +633,7 @@
             this.quantitySoldTxt.ShortcutsEnabled = true;
             this.quantitySoldTxt.Size = new System.Drawing.Size(185, 37);
             this.quantitySoldTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.quantitySoldTxt.TabIndex = 103;
+            this.quantitySoldTxt.TabIndex = 5;
             this.quantitySoldTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.quantitySoldTxt.TextMarginBottom = 0;
             this.quantitySoldTxt.TextMarginLeft = 3;
@@ -701,7 +708,7 @@
             this.productNameTxt.ShortcutsEnabled = true;
             this.productNameTxt.Size = new System.Drawing.Size(185, 37);
             this.productNameTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.productNameTxt.TabIndex = 103;
+            this.productNameTxt.TabIndex = 1;
             this.productNameTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.productNameTxt.TextMarginBottom = 0;
             this.productNameTxt.TextMarginLeft = 3;
@@ -813,7 +820,7 @@
             this.categoryCmb.OnHoverItemForeColor = System.Drawing.Color.White;
             this.categoryCmb.Radius = 4;
             this.categoryCmb.Size = new System.Drawing.Size(185, 32);
-            this.categoryCmb.TabIndex = 46;
+            this.categoryCmb.TabIndex = 2;
             this.categoryCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
             // label12
