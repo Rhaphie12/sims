@@ -11,12 +11,16 @@ using System.Windows.Forms;
 using Bunifu.UI.WinForms;
 using sims.Notification;
 using Guna.UI.WinForms;
+using sims.Admin_Side.Sales;
+using sims.Admin_Side.Stocks;
+using System.Collections;
 
 namespace sims.Admin_Side.Items
 {
     public partial class Manage_Items : UserControl
     {
         private Inventory_Dashboard _inventoryDashboard;
+        private New_Items _newItems;
 
         public Manage_Items(Inventory_Dashboard inventoryDashboard)
         {
@@ -141,9 +145,17 @@ namespace sims.Admin_Side.Items
 
         private void NewItemBtn_Click(object sender, EventArgs e)
         {
-            New_Items newProductForm = new New_Items(this, this , _inventoryDashboard);
-            newProductForm.Show();
-            ResetFilters();
+            // Check if the form is already open
+            if (_newItems == null || _newItems.IsDisposed)
+            {
+                _newItems = new New_Items(this, this, _inventoryDashboard);
+                _newItems.Show();
+            }
+            else
+            {
+                // If the form is already open, bring it to the front
+                _newItems.BringToFront();
+            }
         }
 
         private void UpdateItemBtn_Click(object sender, EventArgs e)

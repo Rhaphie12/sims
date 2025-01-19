@@ -160,7 +160,7 @@ namespace sims.Admin_Side.Items
 
         private void backNewItemsBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void addItemBtn_Click(object sender, EventArgs e)
