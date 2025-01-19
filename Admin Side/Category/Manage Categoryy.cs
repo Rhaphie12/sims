@@ -16,11 +16,12 @@ namespace sims.Admin_Side.Category
 {
     public partial class Manage_Categoryy : Form
     {
-        public DataTable originalDataTable;
+        private Inventory_Dashboard _inventoryDashboard;
 
-        public Manage_Categoryy()
+        public Manage_Categoryy(Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
+            _inventoryDashboard = inventoryDashboard;
         }
 
         public DataGridView RecentlyAddedDgv
@@ -71,31 +72,15 @@ namespace sims.Admin_Side.Category
             }
         }
 
-        private void ResetFilters()
+        private void CategoryCount()
         {
-            try
+            if (_inventoryDashboard != null)
             {
-                dbModule db = new dbModule();
-                string query = "SELECT * FROM categories";
-
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-                            recentlyAddedDgv.DataSource = dataTable;
-                        }
-                    }
-                }
+                _inventoryDashboard.CategoriesCount();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error resetting filters: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
 
@@ -141,7 +126,7 @@ namespace sims.Admin_Side.Category
 
         private void newCategoryBtn_Click(object sender, EventArgs e)
         {
-            New_Category newCategory = new New_Category(this);
+            var newCategory = new New_Category(this, _inventoryDashboard);
             newCategory.Show();
         }
 
@@ -196,7 +181,7 @@ namespace sims.Admin_Side.Category
                         recentlyAddedDgv.Rows.RemoveAt(selectedRowIndex);
                         //MessageBox.Show("Item successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Alert("Category successfully deleted.");
-                        //searchFunction();
+                        CategoryCount();
                     }
                     else
                     {

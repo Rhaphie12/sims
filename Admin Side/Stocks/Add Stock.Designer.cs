@@ -81,7 +81,7 @@
             this.gunaElipsePanel2.BackColor = System.Drawing.Color.Transparent;
             this.gunaElipsePanel2.BaseColor = System.Drawing.Color.White;
             this.gunaElipsePanel2.Controls.Add(this.label4);
-            this.gunaElipsePanel2.Location = new System.Drawing.Point(12, 12);
+            this.gunaElipsePanel2.Location = new System.Drawing.Point(11, 10);
             this.gunaElipsePanel2.Name = "gunaElipsePanel2";
             this.gunaElipsePanel2.Radius = 7;
             this.gunaElipsePanel2.Size = new System.Drawing.Size(776, 52);
@@ -121,7 +121,7 @@
             this.gunaElipsePanel1.Controls.Add(this.label9);
             this.gunaElipsePanel1.Controls.Add(this.label2);
             this.gunaElipsePanel1.Controls.Add(this.itemTotalTxt);
-            this.gunaElipsePanel1.Location = new System.Drawing.Point(12, 70);
+            this.gunaElipsePanel1.Location = new System.Drawing.Point(11, 68);
             this.gunaElipsePanel1.Name = "gunaElipsePanel1";
             this.gunaElipsePanel1.Radius = 7;
             this.gunaElipsePanel1.Size = new System.Drawing.Size(776, 368);

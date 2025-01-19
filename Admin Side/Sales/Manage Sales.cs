@@ -3,21 +3,19 @@ using MySql.Data.MySqlClient;
 using sims.Admin_Side.Stocks;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sims.Admin_Side.Sales
 {
     public partial class Manage_Sales : UserControl
     {
-        public Manage_Sales()
+        private Inventory_Dashboard _inventoryDashboard;
+
+        public Manage_Sales(Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
+            _inventoryDashboard = inventoryDashboard;
         }
 
         public GunaDataGridView ProductsDgv
@@ -193,8 +191,8 @@ namespace sims.Admin_Side.Sales
 
         private void NewProductBtn_Click(object sender, EventArgs e)
         {
-            Manage_Stock manage_Stock = new Manage_Stock();
-            Product_Sales product_Sales = new Product_Sales(this);
+            var manage_Stock = new Manage_Stockk(_inventoryDashboard);
+            var product_Sales = new Product_Sales(this);
             Add_Product addProduct = new Add_Product(this, this, product_Sales, product_Sales, product_Sales, manage_Stock);
             addProduct.Show();
         }

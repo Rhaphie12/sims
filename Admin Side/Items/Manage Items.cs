@@ -16,12 +16,12 @@ namespace sims.Admin_Side.Items
 {
     public partial class Manage_Items : UserControl
     {
-        private DataTable originalDataTable;
-        private BindingSource bindingSource = new BindingSource();
+        private Inventory_Dashboard _inventoryDashboard;
 
-        public Manage_Items()
+        public Manage_Items(Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
+            _inventoryDashboard = inventoryDashboard;
         }
 
         public DataGridView ItemsDgv
@@ -67,6 +67,17 @@ namespace sims.Admin_Side.Items
                 {
                     MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+        private void previewStock()
+        {
+            if (_inventoryDashboard != null)
+            {
+                _inventoryDashboard.ItemsCount();
+            }
+            else
+            {
+                MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
 
@@ -130,7 +141,7 @@ namespace sims.Admin_Side.Items
 
         private void NewItemBtn_Click(object sender, EventArgs e)
         {
-            New_Items newProductForm = new New_Items(this, this);
+            New_Items newProductForm = new New_Items(this, this , _inventoryDashboard);
             newProductForm.Show();
             ResetFilters();
         }

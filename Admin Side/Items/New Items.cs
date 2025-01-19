@@ -17,16 +17,16 @@ namespace sims.Admin_Side.Items
 {
     public partial class New_Items : Form
     {
-        private DataTable originalDataTable;
-        private BindingSource bindingSource = new BindingSource();
         private Manage_Items count;
         private Manage_Items dashboard;
+        private Inventory_Dashboard _inventoryDashboard;
 
-        public New_Items(Manage_Items dashboard, Manage_Items count)
+        public New_Items(Manage_Items dashboard, Manage_Items count, Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
             this.dashboard = dashboard;
             this.count = count;
+            _inventoryDashboard = inventoryDashboard;
         }
 
         private byte[] ImageToByteArray(Image image)
@@ -53,7 +53,7 @@ namespace sims.Admin_Side.Items
             GenerateRandomItemID();
             LoadComboBoxData();
             Populate();
-            searchFunction(); 
+            previewItems();
         }
 
         private void ItemsCount()
@@ -112,31 +112,18 @@ namespace sims.Admin_Side.Items
                 }
             }
         }
-        private void searchFunction()
+        private void previewItems()
         {
-            dbModule db = new dbModule();
-            string query = "SELECT * FROM items";
-            try
+            if (_inventoryDashboard != null)
             {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        originalDataTable = dataTable;
-                        bindingSource.DataSource = originalDataTable;
-                        dashboard.ItemsDgv.DataSource = bindingSource;
-                    }
-                }
+                _inventoryDashboard.ItemsCount();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
+
         private Dictionary<string, (int CategoryID, string Description)> categoryData = new Dictionary<string, (int, string)>();
         private void LoadComboBoxData()
         {
@@ -227,7 +214,7 @@ namespace sims.Admin_Side.Items
                     this.Alert("Item Added Successfully");
                     this.Hide();
                     Populate();
-                    searchFunction();
+                    previewItems();
                 }
                 else
                 {

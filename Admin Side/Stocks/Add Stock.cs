@@ -13,15 +13,18 @@ namespace sims.Admin_Side.Stocks
     public partial class Add_Stock : Form
     {
         private Manage_Stockk dashboard;
+        private Inventory_Dashboard _inventoryDashboard;
 
-        public Add_Stock(Manage_Stockk dashboard)
+        public Add_Stock(Manage_Stockk dashboard, Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
             this.dashboard = dashboard;
 
             itemQuantityTxt.TextChanged += (s, e) => CalculateTotalValue();
             itemPriceTxt.TextChanged += (s, e) => CalculateTotalValue();
+            _inventoryDashboard = inventoryDashboard;
         }
+
         public class ComboBoxItem
         {
             public string Text { get; set; }
@@ -62,6 +65,19 @@ namespace sims.Admin_Side.Stocks
             CalculateTotalValue();
             SelectItemID();
             UnitType();
+            previewStock();
+        }
+
+        private void previewStock()
+        {
+            if (_inventoryDashboard != null)
+            {
+                _inventoryDashboard.StockPreview();
+            }
+            else
+            {
+                MessageBox.Show("Inventory Dashboard is not available.");
+            }
         }
 
         private void Populate()
@@ -254,6 +270,7 @@ namespace sims.Admin_Side.Stocks
                     this.Hide();
                     this.Alert("Stock Added Successfully");
                     Populate();
+                    previewStock();
                 }
                 else
                 {

@@ -53,11 +53,11 @@ namespace sims
         private void DashboardOwner_Load(object sender, EventArgs e)
         {
             dashboardInventoryInstance = new Inventory_Dashboard();
-            manageCategoryInstance = new Manage_Categoryy();
-            manageItemsInstance = new Manage_Items();
-            manageStockInstance = new Manage_Stockk();
+            manageCategoryInstance = new Manage_Categoryy(dashboardInventoryInstance);
+            manageItemsInstance = new Manage_Items(dashboardInventoryInstance);
+            manageStockInstance = new Manage_Stockk(dashboardInventoryInstance);
             inventoryReportInstance = new Inventory_Report();
-            manageSalesProductsInstance = new Manage_Sales();
+            manageSalesProductsInstance = new Manage_Sales(dashboardInventoryInstance);
             productSalesInstance = new Product_Sales(manageSalesProductsInstance);
             manageSalesReportInstance = new Manage_Sales_Report();
             manageUserStaffInstance = new Manage_User_Staff();

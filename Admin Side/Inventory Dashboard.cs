@@ -17,9 +17,6 @@ namespace sims.Admin_Side
 {
     public partial class Inventory_Dashboard : Form
     {
-        public LiveCharts.WinForms.CartesianChart StockChart => cartesianChart1;
-        public Label ItemsCountLabel => itemsCountTxt;
-
         public Inventory_Dashboard()
         {
             InitializeComponent();
@@ -27,12 +24,12 @@ namespace sims.Admin_Side
 
         private void Inventory_Dashboard_Load(object sender, EventArgs e)
         {
-            stockPreview();
+            StockPreview();
             ItemsCount();
             CategoriesCount();
         }
 
-        private void CategoriesCount()
+        public void CategoriesCount()
         {
             dbModule db = new dbModule();
             string query = "SELECT COUNT(*) FROM categories";
@@ -59,7 +56,7 @@ namespace sims.Admin_Side
             }
         }
 
-        private void ItemsCount()
+        public void ItemsCount()
         {
             dbModule db = new dbModule();
             string query = "SELECT COUNT(*) FROM items";
@@ -86,7 +83,7 @@ namespace sims.Admin_Side
             }
         }
 
-        private void stockPreview()
+        public void StockPreview()
         {
             dbModule db = new dbModule();
             SeriesCollection series = new SeriesCollection();
@@ -123,25 +120,25 @@ namespace sims.Admin_Side
                     }
                 }
 
-                if (cartesianChart1 != null)
+                if (stockPreviewChart != null)
                 {
-                    cartesianChart1.Series.Clear();
-                    cartesianChart1.Series = series;
+                    stockPreviewChart.Series.Clear();
+                    stockPreviewChart.Series = series;
 
-                    cartesianChart1.AxisX.Clear();
-                    cartesianChart1.AxisX.Add(new Axis
+                    stockPreviewChart.AxisX.Clear();
+                    stockPreviewChart.AxisX.Add(new Axis
                     {
                         Title = "Item Name",
                         Labels = itemNames
                     });
 
-                    cartesianChart1.AxisY.Clear();
-                    cartesianChart1.AxisY.Add(new Axis
+                    stockPreviewChart.AxisY.Clear();
+                    stockPreviewChart.AxisY.Add(new Axis
                     {
                         Title = "Item Stocks"
                     });
 
-                    cartesianChart1.Update(true, true);
+                    stockPreviewChart.Update(true, true);
                 }
                 else
                 {

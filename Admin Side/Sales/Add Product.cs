@@ -17,9 +17,9 @@ namespace sims.Admin_Side.Sales
         private Product_Sales CoffeeLayoutPanel;
         private Product_Sales NonCoffeeLayoutPanel;
         private Product_Sales HotCoffeeLayoutPanel;
-        private Manage_Stock stock;
+        private Manage_Stockk stock;
 
-        public Add_Product(Manage_Sales count, Manage_Sales dashboard, Product_Sales CoffeeLayoutPanel, Product_Sales NonCoffeeLayoutPanel, Product_Sales HotCoffeeLayoutPanel, Manage_Stock stock)
+        public Add_Product(Manage_Sales count, Manage_Sales dashboard, Product_Sales CoffeeLayoutPanel, Product_Sales NonCoffeeLayoutPanel, Product_Sales HotCoffeeLayoutPanel, Manage_Stockk stock)
         {
             InitializeComponent();
             this.count = count;

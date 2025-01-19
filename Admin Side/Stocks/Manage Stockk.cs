@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using sims.Admin_Side.Items;
 using sims.Notification.Stock_notification;
 using System;
 using System.Data;
@@ -9,10 +10,13 @@ namespace sims.Admin_Side.Stocks
 {
     public partial class Manage_Stockk : Form
     {
-        public Manage_Stockk()
+        private Inventory_Dashboard _inventoryDashboard;
+
+        public Manage_Stockk(Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
             itemStockDgv.CellFormatting += itemStockDgv_CellFormatting;
+            _inventoryDashboard = inventoryDashboard;
         }
 
         public DataGridView ItemsStockDgv
@@ -64,6 +68,19 @@ namespace sims.Admin_Side.Stocks
                 conn.Dispose();
             }
         }
+
+        private void previewStock()
+        {
+            if (_inventoryDashboard != null)
+            {
+                _inventoryDashboard.StockPreview();
+            }
+            else
+            {
+                MessageBox.Show("Inventory Dashboard is not available.");
+            }
+        }
+
         private DataTable SearchInDatabase(string searchTerm)
         {
             DataTable dataTable = new DataTable();
@@ -106,13 +123,35 @@ namespace sims.Admin_Side.Stocks
 
         private void NewStockBtn_Click(object sender, EventArgs e)
         {
-            Add_Stock add_Stock = new Add_Stock(this);
+            Add_Stock add_Stock = new Add_Stock(this, _inventoryDashboard);
             add_Stock.Show();
         }
 
         private void UpdateStockBtn_Click(object sender, EventArgs e)
         {
-
+            DialogResult result = MessageBox.Show("Are you sure you want to update this record?", "Update Item!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    int selectedRowIndex = itemStockDgv.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = itemStockDgv.Rows[selectedRowIndex];
+                    string itemID = selectedRow.Cells["Item_ID"]?.Value?.ToString();
+                    if (!string.IsNullOrEmpty(itemID))
+                    {
+                        Edit_Stock updateProductForm = new Edit_Stock(itemID);
+                        updateProductForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Item_ID. Unable to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void DeleteStockBtn_Click(object sender, EventArgs e)
@@ -143,6 +182,7 @@ namespace sims.Admin_Side.Stocks
                         itemStockDgv.Rows.RemoveAt(selectedRowIndex);
                         this.Alert("Stock successfully deleted.");
                         ViewStock();
+                        previewStock();
                     }
                     else
                     {

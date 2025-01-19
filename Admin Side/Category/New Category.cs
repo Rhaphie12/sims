@@ -1,31 +1,22 @@
-﻿using Guna.UI.WinForms;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using sims.Notification;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace sims.Admin_Side.Category
 {
     public partial class New_Category : Form
     {
-        public DataTable originalDataTable;
-        private BindingSource bindingSource = new BindingSource();
-
         private Manage_Categoryy dashboardForm;
+        private Inventory_Dashboard _inventoryDashboard;
 
-        public New_Category(Manage_Categoryy dashboardForm)
+        public New_Category(Manage_Categoryy dashboardForm, Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
             this.dashboardForm = dashboardForm;
+
+            _inventoryDashboard = inventoryDashboard;
         }
 
         public class Categories
@@ -44,7 +35,19 @@ namespace sims.Admin_Side.Category
         {
             GenerateRandomItemID();
             Populate();
-            //searchFunction();
+            CategoryCount();
+        }
+
+        private void CategoryCount()
+        {
+            if (_inventoryDashboard != null)
+            {
+                _inventoryDashboard.CategoriesCount();
+            }
+            else
+            {
+                MessageBox.Show("Inventory Dashboard is not available.");
+            }
         }
 
         private void GenerateRandomItemID()
@@ -76,39 +79,6 @@ namespace sims.Admin_Side.Category
                 }
             }
         }
-
-        //private void searchFunction()
-        //{
-        //    dbModule db = new dbModule();
-        //    string query = "SELECT * FROM categories";
-        //    MySqlConnection conn = null;
-
-        //    try
-        //    {
-        //        conn = db.GetConnection();
-        //        conn.Open();
-
-        //        using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-        //        {
-        //            DataTable dataTable = new DataTable();
-        //            adapter.Fill(dataTable);
-        //            originalDataTable = dataTable;
-        //            bindingSource.DataSource = originalDataTable;
-        //            dashboardForm.RecentlyAddedDgv.DataSource = bindingSource;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    finally
-        //    {
-        //        if (conn != null && conn.State == ConnectionState.Open)
-        //        {
-        //            conn.Close();
-        //        }
-        //    }
-        //}
 
         private void addCategoryBtn_Click(object sender, EventArgs e)
         {
@@ -148,7 +118,7 @@ namespace sims.Admin_Side.Category
                         GenerateRandomItemID();
                         this.Alert("Category Added Successfully");
                         Populate();
-                        //searchFunction();
+                        CategoryCount();
                     }
                 }
                 catch (Exception ex)
