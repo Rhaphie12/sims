@@ -35,7 +35,7 @@ namespace sims.Admin_Side.Stocks
             ViewStock();
         }
 
-        private void ViewStock()
+        public void ViewStock()
         {
             dbModule db = new dbModule();
             MySqlConnection conn = db.GetConnection();

@@ -197,6 +197,7 @@ namespace sims.Admin_Side.Items
                         this.Alert("Item successfully deleted.");
                         ItemsCount();
                         Populate();
+                        previewStock();
                     }
                     else
                     {

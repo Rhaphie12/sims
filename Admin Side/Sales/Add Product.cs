@@ -1,6 +1,5 @@
 ﻿using Bunifu.UI.WinForms;
 using MySql.Data.MySqlClient;
-using sims.Admin_Side.Stocks;
 using sims.Messages_Boxes;
 using System;
 using System.Collections.Generic;
@@ -17,9 +16,8 @@ namespace sims.Admin_Side.Sales
         private Product_Sales CoffeeLayoutPanel;
         private Product_Sales NonCoffeeLayoutPanel;
         private Product_Sales HotCoffeeLayoutPanel;
-        private Manage_Stockk stock;
 
-        public Add_Product(Manage_Sales count, Manage_Sales dashboard, Product_Sales CoffeeLayoutPanel, Product_Sales NonCoffeeLayoutPanel, Product_Sales HotCoffeeLayoutPanel, Manage_Stockk stock)
+        public Add_Product(Manage_Sales count, Manage_Sales dashboard, Product_Sales CoffeeLayoutPanel, Product_Sales NonCoffeeLayoutPanel, Product_Sales HotCoffeeLayoutPanel)
         {
             InitializeComponent();
             this.count = count;
@@ -27,7 +25,6 @@ namespace sims.Admin_Side.Sales
             this.CoffeeLayoutPanel = CoffeeLayoutPanel;
             this.NonCoffeeLayoutPanel = NonCoffeeLayoutPanel;
             this.HotCoffeeLayoutPanel = HotCoffeeLayoutPanel;
-            this.stock = stock;
         }
 
         public class ProductDetails
@@ -46,7 +43,6 @@ namespace sims.Admin_Side.Sales
             LoadProductButtons();
             GenerateRandomItemID();
             LoadCategoriesProducts();
-            ViewStock();
         }
 
         private void LoadCategoriesProducts()
@@ -169,47 +165,6 @@ namespace sims.Admin_Side.Sales
             }
         }
 
-        private void ViewStock()
-        {
-            if (stock == null || stock.ItemsStockDgv == null)
-            {
-                MessageBox.Show("The stock object or ItemsStockDgv is not initialized.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            DataTable dataTable = new DataTable();
-            dbModule db = new dbModule();
-
-            using (MySqlConnection conn = db.GetConnection())
-            {
-                try
-                {
-                    conn.Open();
-
-                    string query = "SELECT Stock_ID, Item_ID, Item_Name, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image FROM stocks";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            adapter.Fill(dataTable);
-                        }
-                    }
-
-                    // Bind the data table to the DataGridView
-                    stock.ItemsStockDgv.Invoke((MethodInvoker)(() =>
-                    {
-                        stock.ItemsStockDgv.DataSource = dataTable;
-                    }));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Failed to populate stock data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-
         private void addProductBtn_Click(object sender, EventArgs e)
         {
             addProduct();
@@ -272,13 +227,6 @@ namespace sims.Admin_Side.Sales
 
                     MessageBox.Show("Product added successfully, and stock quantities updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Clear fields and perform other cleanup
-                    Populate();
-                    this.Hide();
-                    ProductsCount();
-                    GenerateRandomItemID();
-                    ViewStock();
-
                     productNameTxt.Clear();
                     categoryCmb.SelectedIndex = -1;
                     productPriceTxt.Clear();
@@ -289,7 +237,10 @@ namespace sims.Admin_Side.Sales
                     stock4Cmb.SelectedIndex = -1;
                     stock5Cmb.SelectedIndex = -1;
                     stock6Cmb.SelectedIndex = -1;
-
+                    Populate();
+                    this.Hide();
+                    ProductsCount();
+                    GenerateRandomItemID();
                     LoadProductButtons();
                     AddProductButton(productID, productName, productPrice, category);
                 }

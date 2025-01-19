@@ -193,7 +193,7 @@ namespace sims.Admin_Side.Sales
         {
             var manage_Stock = new Manage_Stockk(_inventoryDashboard);
             var product_Sales = new Product_Sales(this);
-            Add_Product addProduct = new Add_Product(this, this, product_Sales, product_Sales, product_Sales, manage_Stock);
+            Add_Product addProduct = new Add_Product(this, this, product_Sales, product_Sales, product_Sales);
             addProduct.Show();
         }
 
