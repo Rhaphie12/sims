@@ -290,11 +290,11 @@
     <Compile Include="Admin Side\Stocks\Edit Stock.Designer.cs">
       <DependentUpon>Edit Stock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Stocks\Manage Stock.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Admin Side\Stocks\Manage Stockk.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin Side\Stocks\Manage Stock.Designer.cs">
-      <DependentUpon>Manage Stock.cs</DependentUpon>
+    <Compile Include="Admin Side\Stocks\Manage Stockk.Designer.cs">
+      <DependentUpon>Manage Stockk.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Users\Manage User Staff.cs">
       <SubType>UserControl</SubType>
@@ -501,8 +501,8 @@
     <EmbeddedResource Include="Admin Side\Stocks\Edit Stock.resx">
       <DependentUpon>Edit Stock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Stocks\Manage Stock.resx">
-      <DependentUpon>Manage Stock.cs</DependentUpon>
+    <EmbeddedResource Include="Admin Side\Stocks\Manage Stockk.resx">
+      <DependentUpon>Manage Stockk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Users\Manage User Staff.resx">
       <DependentUpon>Manage User Staff.cs</DependentUpon>
