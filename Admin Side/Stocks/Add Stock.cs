@@ -62,6 +62,7 @@ namespace sims.Admin_Side.Stocks
 
         private void Add_Stock_Load(object sender, EventArgs e)
         {
+            dateAddedDtp.Value = DateTime.Now;
             CalculateTotalValue();
             SelectItemID();
             UnitType();
@@ -294,7 +295,7 @@ namespace sims.Admin_Side.Stocks
 
         private void backNewStockBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void itemQuantityTxt_TextChanged(object sender, EventArgs e)

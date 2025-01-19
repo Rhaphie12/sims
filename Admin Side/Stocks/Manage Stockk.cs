@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using sims.Admin_Side.Items;
+using sims.Admin_Side.Sales;
 using sims.Notification.Stock_notification;
 using System;
 using System.Data;
@@ -11,6 +12,7 @@ namespace sims.Admin_Side.Stocks
     public partial class Manage_Stockk : Form
     {
         private Inventory_Dashboard _inventoryDashboard;
+        private Add_Stock _addStock;
 
         public Manage_Stockk(Inventory_Dashboard inventoryDashboard)
         {
@@ -123,8 +125,17 @@ namespace sims.Admin_Side.Stocks
 
         private void NewStockBtn_Click(object sender, EventArgs e)
         {
-            Add_Stock add_Stock = new Add_Stock(this, _inventoryDashboard);
-            add_Stock.Show();
+            // Check if the form is already open
+            if (_addStock == null || _addStock.IsDisposed)
+            {
+                _addStock = new Add_Stock(this, _inventoryDashboard);
+                _addStock.Show();
+            }
+            else
+            {
+                // If the form is already open, bring it to the front
+                _addStock.BringToFront();
+            }
         }
 
         private void UpdateStockBtn_Click(object sender, EventArgs e)
