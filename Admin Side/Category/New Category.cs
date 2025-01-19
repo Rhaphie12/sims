@@ -131,7 +131,7 @@ namespace sims.Admin_Side.Category
 
         private void backNewCatBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void categoryNameTxt_TextChanged(object sender, EventArgs e)

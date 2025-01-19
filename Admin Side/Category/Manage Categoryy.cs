@@ -1,6 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
+using sims.Admin_Side.Sales;
+using sims.Admin_Side.Stocks;
 using sims.Notification;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +20,7 @@ namespace sims.Admin_Side.Category
     public partial class Manage_Categoryy : Form
     {
         private Inventory_Dashboard _inventoryDashboard;
+        private New_Category _newCategory;
 
         public Manage_Categoryy(Inventory_Dashboard inventoryDashboard)
         {
@@ -126,8 +130,17 @@ namespace sims.Admin_Side.Category
 
         private void newCategoryBtn_Click(object sender, EventArgs e)
         {
-            var newCategory = new New_Category(this, _inventoryDashboard);
-            newCategory.Show();
+            // Check if the form is already open
+            if (_newCategory == null || _newCategory.IsDisposed)
+            {
+                _newCategory = new New_Category(this, _inventoryDashboard);
+                _newCategory.Show();
+            }
+            else
+            {
+                // If the form is already open, bring it to the front
+                _newCategory.BringToFront();
+            }
         }
 
         private void editCategoryBtn_Click(object sender, EventArgs e)
