@@ -30,7 +30,7 @@ namespace sims
         private Inventory_Dashboard dashboardInventoryInstance;
         private Manage_Categoryy manageCategoryInstance;
         private Manage_Items manageItemsInstance;
-        private Manage_Stock manageStockInstance;
+        private Manage_Stockk manageStockInstance;
         private Inventory_Report inventoryReportInstance;
         private Manage_Sales manageSalesProductsInstance;
         private Product_Sales productSalesInstance;
@@ -55,7 +55,7 @@ namespace sims
             dashboardInventoryInstance = new Inventory_Dashboard();
             manageCategoryInstance = new Manage_Categoryy();
             manageItemsInstance = new Manage_Items();
-            manageStockInstance = new Manage_Stock();
+            manageStockInstance = new Manage_Stockk();
             inventoryReportInstance = new Inventory_Report();
             manageSalesProductsInstance = new Manage_Sales();
             productSalesInstance = new Product_Sales(manageSalesProductsInstance);

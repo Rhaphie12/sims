@@ -1,29 +1,20 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Bunifu.UI.WinForms;
+using MySql.Data.MySqlClient;
+using sims.Notification.Stock_notification;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
-using Bunifu.UI.WinForms;
-using sims.Notification;
-using sims.Notification.Stock_notification;
-using LiveCharts.Wpf;
-using LiveCharts;
-using sims.Admin_Side.Category;
 
 namespace sims.Admin_Side.Stocks
 {
     public partial class Add_Stock : Form
     {
-        private Manage_Stock dashboard;
+        private Manage_Stockk dashboard;
 
-        public Add_Stock(Manage_Stock dashboard)
+        public Add_Stock(Manage_Stockk dashboard)
         {
             InitializeComponent();
             this.dashboard = dashboard;
@@ -252,7 +243,7 @@ namespace sims.Admin_Side.Stocks
                 int rowsAffected = cmd.ExecuteNonQuery();
 
                 if (rowsAffected > 0)
-                { 
+                {
                     selectItemNameCmb.SelectedIndex = -1;
                     itemQuantityTxt.Clear();
                     unitTypeCmb.SelectedIndex = -1;

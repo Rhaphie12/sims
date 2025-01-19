@@ -1,25 +1,15 @@
-﻿using LiveCharts.Wpf;
-using LiveCharts;
-using MySql.Data.MySqlClient;
-using sims.Notification;
+﻿using MySql.Data.MySqlClient;
 using sims.Notification.Stock_notification;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using sims.Admin_Side.Items;
-using System.Web.UI.WebControls;
 
 namespace sims.Admin_Side.Stocks
 {
-    public partial class Manage_Stock : UserControl
+    public partial class Manage_Stockk : Form
     {
-        public Manage_Stock()
+        public Manage_Stockk()
         {
             InitializeComponent();
             itemStockDgv.CellFormatting += itemStockDgv_CellFormatting;
@@ -36,7 +26,7 @@ namespace sims.Admin_Side.Stocks
             frm.showalert(msg);
         }
 
-        private void Manage_Stock_Load(object sender, EventArgs e)
+        private void Manage_Stockk_Load(object sender, EventArgs e)
         {
             ViewStock();
         }
@@ -74,7 +64,6 @@ namespace sims.Admin_Side.Stocks
                 conn.Dispose();
             }
         }
-
         private DataTable SearchInDatabase(string searchTerm)
         {
             DataTable dataTable = new DataTable();
@@ -123,32 +112,15 @@ namespace sims.Admin_Side.Stocks
 
         private void UpdateStockBtn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to update this record?", "Update Item!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    int selectedRowIndex = itemStockDgv.SelectedCells[0].RowIndex;
-                    DataGridViewRow selectedRow = itemStockDgv.Rows[selectedRowIndex];
-                    string itemID = selectedRow.Cells["Stock_ID"]?.Value?.ToString();
-                    if (!string.IsNullOrEmpty(itemID))
-                    {
-                        Edit_Stock updateProductForm = new Edit_Stock(itemID, this);
-                        updateProductForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid Item_ID. Unable to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+
         }
 
         private void DeleteStockBtn_Click(object sender, EventArgs e)
+        {
+            removeStock();
+        }
+
+        private void removeStock()
         {
             if (itemStockDgv.SelectedCells.Count == 0)
             {
@@ -182,7 +154,7 @@ namespace sims.Admin_Side.Stocks
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        } 
+        }
 
         private void DeleteRecord(string stockID)
         {
