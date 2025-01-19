@@ -57,7 +57,7 @@ namespace sims
             manageItemsInstance = new Manage_Items(dashboardInventoryInstance);
             manageStockInstance = new Manage_Stockk(dashboardInventoryInstance);
             inventoryReportInstance = new Inventory_Report();
-            manageSalesProductsInstance = new Manage_Sales(dashboardInventoryInstance);
+            manageSalesProductsInstance = new Manage_Sales(dashboardInventoryInstance, manageStockInstance);
             productSalesInstance = new Product_Sales(manageSalesProductsInstance);
             manageSalesReportInstance = new Manage_Sales_Report();
             manageUserStaffInstance = new Manage_User_Staff();

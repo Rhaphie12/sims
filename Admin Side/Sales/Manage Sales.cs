@@ -11,11 +11,13 @@ namespace sims.Admin_Side.Sales
     public partial class Manage_Sales : UserControl
     {
         private Inventory_Dashboard _inventoryDashboard;
+        private Manage_Stockk _stock;
 
-        public Manage_Sales(Inventory_Dashboard inventoryDashboard)
+        public Manage_Sales(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
+            _stock = stock;
         }
 
         public GunaDataGridView ProductsDgv
@@ -193,7 +195,7 @@ namespace sims.Admin_Side.Sales
         {
             var manage_Stock = new Manage_Stockk(_inventoryDashboard);
             var product_Sales = new Product_Sales(this);
-            Add_Product addProduct = new Add_Product(this, this, product_Sales, product_Sales, product_Sales);
+            Add_Product addProduct = new Add_Product(this, this, product_Sales, product_Sales, product_Sales, _stock, _inventoryDashboard);
             addProduct.Show();
         }
 

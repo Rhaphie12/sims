@@ -45,16 +45,11 @@
             this.productCountTxt = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
+            this.gunaButton1 = new Guna.UI.WinForms.GunaButton();
             this.UpdateProductBtn = new Guna.UI.WinForms.GunaButton();
             this.NewProductBtn = new Guna.UI.WinForms.GunaButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.productsDgv = new Guna.UI.WinForms.GunaDataGridView();
-            this.Product_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity_Sold = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock_Needed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -64,6 +59,12 @@
             this.searchProductTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.searchCategoryCmb = new Guna.UI.WinForms.GunaComboBox();
+            this.Product_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity_Sold = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock_Needed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -180,6 +181,7 @@
             this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox2.Controls.Add(this.gunaButton1);
             this.gunaGroupBox2.Controls.Add(this.UpdateProductBtn);
             this.gunaGroupBox2.Controls.Add(this.NewProductBtn);
             this.gunaGroupBox2.Controls.Add(this.panel5);
@@ -193,6 +195,37 @@
             this.gunaGroupBox2.TabIndex = 49;
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 13);
             this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // gunaButton1
+            // 
+            this.gunaButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gunaButton1.AnimationHoverSpeed = 0.07F;
+            this.gunaButton1.AnimationSpeed = 0.03F;
+            this.gunaButton1.BackColor = System.Drawing.Color.Transparent;
+            this.gunaButton1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.gunaButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.gunaButton1.BorderSize = 2;
+            this.gunaButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gunaButton1.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gunaButton1.FocusedColor = System.Drawing.Color.Empty;
+            this.gunaButton1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaButton1.ForeColor = System.Drawing.Color.White;
+            this.gunaButton1.Image = null;
+            this.gunaButton1.ImageSize = new System.Drawing.Size(20, 20);
+            this.gunaButton1.Location = new System.Drawing.Point(9, 428);
+            this.gunaButton1.Name = "gunaButton1";
+            this.gunaButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.gunaButton1.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.gunaButton1.OnHoverForeColor = System.Drawing.Color.White;
+            this.gunaButton1.OnHoverImage = null;
+            this.gunaButton1.OnPressedColor = System.Drawing.Color.White;
+            this.gunaButton1.Radius = 4;
+            this.gunaButton1.Size = new System.Drawing.Size(147, 35);
+            this.gunaButton1.TabIndex = 32;
+            this.gunaButton1.Text = "Add Stock";
+            this.gunaButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gunaButton1.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
             // UpdateProductBtn
             // 
@@ -312,6 +345,7 @@
             this.productsDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.productsDgv.RowTemplate.Height = 100;
             this.productsDgv.RowTemplate.ReadOnly = true;
+            this.productsDgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.productsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.productsDgv.Size = new System.Drawing.Size(1147, 395);
             this.productsDgv.TabIndex = 3;
@@ -337,49 +371,6 @@
             this.productsDgv.ThemeStyle.RowsStyle.Height = 100;
             this.productsDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.productsDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // Product_ID
-            // 
-            this.Product_ID.DataPropertyName = "Product_ID";
-            this.Product_ID.HeaderText = "Product ID";
-            this.Product_ID.Name = "Product_ID";
-            this.Product_ID.ReadOnly = true;
-            this.Product_ID.Visible = false;
-            // 
-            // Product_Name
-            // 
-            this.Product_Name.DataPropertyName = "Product_Name";
-            this.Product_Name.HeaderText = "Product Name";
-            this.Product_Name.Name = "Product_Name";
-            this.Product_Name.ReadOnly = true;
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "Category";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
-            // Product_Price
-            // 
-            this.Product_Price.DataPropertyName = "Product_Price";
-            this.Product_Price.HeaderText = "Product Price";
-            this.Product_Price.Name = "Product_Price";
-            this.Product_Price.ReadOnly = true;
-            // 
-            // Quantity_Sold
-            // 
-            this.Quantity_Sold.DataPropertyName = "Quantity_Sold";
-            this.Quantity_Sold.HeaderText = "Quantity Sold";
-            this.Quantity_Sold.Name = "Quantity_Sold";
-            this.Quantity_Sold.ReadOnly = true;
-            // 
-            // Stock_Needed
-            // 
-            this.Stock_Needed.DataPropertyName = "Stock_Needed";
-            this.Stock_Needed.HeaderText = "Stock Needed";
-            this.Stock_Needed.Name = "Stock_Needed";
-            this.Stock_Needed.ReadOnly = true;
             // 
             // panel2
             // 
@@ -572,6 +563,51 @@
             this.searchCategoryCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.searchCategoryCmb.SelectedIndexChanged += new System.EventHandler(this.searchCategoryCmb_SelectedIndexChanged);
             // 
+            // Product_ID
+            // 
+            this.Product_ID.DataPropertyName = "Product_ID";
+            this.Product_ID.HeaderText = "Product ID";
+            this.Product_ID.Name = "Product_ID";
+            this.Product_ID.ReadOnly = true;
+            this.Product_ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Product_ID.Visible = false;
+            // 
+            // Product_Name
+            // 
+            this.Product_Name.DataPropertyName = "Product_Name";
+            this.Product_Name.HeaderText = "Product Name";
+            this.Product_Name.Name = "Product_Name";
+            this.Product_Name.ReadOnly = true;
+            this.Product_Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // Product_Price
+            // 
+            this.Product_Price.DataPropertyName = "Product_Price";
+            this.Product_Price.HeaderText = "Product Price";
+            this.Product_Price.Name = "Product_Price";
+            this.Product_Price.ReadOnly = true;
+            // 
+            // Quantity_Sold
+            // 
+            this.Quantity_Sold.DataPropertyName = "Quantity_Sold";
+            this.Quantity_Sold.HeaderText = "Quantity Sold";
+            this.Quantity_Sold.Name = "Quantity_Sold";
+            this.Quantity_Sold.ReadOnly = true;
+            // 
+            // Stock_Needed
+            // 
+            this.Stock_Needed.DataPropertyName = "Stock_Needed";
+            this.Stock_Needed.HeaderText = "Stock Needed";
+            this.Stock_Needed.Name = "Stock_Needed";
+            this.Stock_Needed.ReadOnly = true;
+            // 
             // Manage_Sales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -627,6 +663,7 @@
         private Bunifu.UI.WinForms.BunifuTextBox searchProductTxt;
         internal System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaComboBox searchCategoryCmb;
+        private Guna.UI.WinForms.GunaButton gunaButton1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Product_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Product_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;

@@ -1,5 +1,6 @@
 ﻿using Bunifu.UI.WinForms;
 using MySql.Data.MySqlClient;
+using sims.Admin_Side.Stocks;
 using sims.Messages_Boxes;
 using System;
 using System.Collections.Generic;
@@ -13,18 +14,25 @@ namespace sims.Admin_Side.Sales
     {
         private Manage_Sales count;
         private Manage_Sales dashboard;
-        private Product_Sales CoffeeLayoutPanel;
-        private Product_Sales NonCoffeeLayoutPanel;
-        private Product_Sales HotCoffeeLayoutPanel;
 
-        public Add_Product(Manage_Sales count, Manage_Sales dashboard, Product_Sales CoffeeLayoutPanel, Product_Sales NonCoffeeLayoutPanel, Product_Sales HotCoffeeLayoutPanel)
+        private Product_Sales _CoffeeLayoutPanel;
+        private Product_Sales _NonCoffeeLayoutPanel;
+        private Product_Sales _HotCoffeeLayoutPanel;
+
+        private Manage_Stockk _stock;
+        private Inventory_Dashboard _inventoryDashboard;
+
+        public Add_Product(Manage_Sales count, Manage_Sales dashboard, Product_Sales CoffeeLayoutPanel, Product_Sales NonCoffeeLayoutPanel, Product_Sales HotCoffeeLayoutPanel, Manage_Stockk stock, Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
             this.count = count;
             this.dashboard = dashboard;
-            this.CoffeeLayoutPanel = CoffeeLayoutPanel;
-            this.NonCoffeeLayoutPanel = NonCoffeeLayoutPanel;
-            this.HotCoffeeLayoutPanel = HotCoffeeLayoutPanel;
+            _CoffeeLayoutPanel = CoffeeLayoutPanel;
+            _NonCoffeeLayoutPanel = NonCoffeeLayoutPanel;
+            _HotCoffeeLayoutPanel = HotCoffeeLayoutPanel;
+
+            _stock = stock;
+            _inventoryDashboard = inventoryDashboard;
         }
 
         public class ProductDetails
@@ -43,6 +51,29 @@ namespace sims.Admin_Side.Sales
             LoadProductButtons();
             GenerateRandomItemID();
             LoadCategoriesProducts();
+        }
+
+        private void previewStock()
+        {
+            if (_stock != null)
+            {
+                _stock.ViewStock();
+            }
+            else
+            {
+                MessageBox.Show("Inventory Dashboard is not available.");
+            }
+        }
+        private void previewStockDashboard()
+        {
+            if (_inventoryDashboard != null)
+            {
+                _inventoryDashboard.StockPreview();
+            }
+            else
+            {
+                MessageBox.Show("Inventory Dashboard is not available.");
+            }
         }
 
         private void LoadCategoriesProducts()
@@ -223,6 +254,8 @@ namespace sims.Admin_Side.Sales
                         cmd.Parameters.AddWithValue("@Stock_In", int.TryParse(stockQuantity, out var qty) ? qty : 0);
                         cmd.Parameters.AddWithValue("@ItemName", stockItem);
                         cmd.ExecuteNonQuery();
+                        previewStock();
+                        previewStockDashboard();
                     }
 
                     MessageBox.Show("Product added successfully, and stock quantities updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -285,13 +318,13 @@ namespace sims.Admin_Side.Sales
             switch (category)
             {
                 case "Coffee":
-                    CoffeeLayoutPanel.Controls.Add(productButton);
+                    _CoffeeLayoutPanel.Controls.Add(productButton);
                     break;
                 case "Non-Coffee":
-                    NonCoffeeLayoutPanel.Controls.Add(productButton);
+                   _NonCoffeeLayoutPanel.Controls.Add(productButton);
                     break;
                 case "Hot":
-                    HotCoffeeLayoutPanel.Controls.Add(productButton);
+                    _HotCoffeeLayoutPanel.Controls.Add(productButton);
                     break;
                 default:
                     MessageBox.Show($"Unknown category: {category}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -314,9 +347,9 @@ namespace sims.Admin_Side.Sales
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 // Clear existing controls from the panels
-                CoffeeLayoutPanel.Controls.Clear();
-                NonCoffeeLayoutPanel.Controls.Clear();
-                HotCoffeeLayoutPanel.Controls.Clear();
+                _CoffeeLayoutPanel.Controls.Clear();
+                _NonCoffeeLayoutPanel.Controls.Clear();
+                _HotCoffeeLayoutPanel.Controls.Clear();
 
                 while (reader.Read())
                 {
