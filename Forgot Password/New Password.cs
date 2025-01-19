@@ -23,7 +23,7 @@ namespace sims.Forgot_Password
             InitializePasswordTextBox();
             ConfirmPasswordTextBox();
             showNewPasswordChk.OnChange += new EventHandler(showNewPasswordChk_OnChange);
-            confirmPasswordCHk.OnChange += new EventHandler(showNewPasswordChk_OnChange);
+            confirmPasswordChk.OnChange += new EventHandler(showNewPasswordChk_OnChange);
         }
 
         private void InitializePasswordTextBox()
@@ -108,6 +108,7 @@ namespace sims.Forgot_Password
                 MessageBox.Show("New password and confirm password do not match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private bool IsPasswordConfirmed(string password, string confirmPassword)
         {
             return password == confirmPassword;
@@ -116,6 +117,8 @@ namespace sims.Forgot_Password
         private bool ChangePasswordInDatabase(string newPassword, string confirmPassword)
         {
             dbModule db = new dbModule();
+
+            // Ensure password is confirmed before proceeding
             if (!IsPasswordConfirmed(newPassword, confirmPassword))
             {
                 return false;
@@ -126,22 +129,41 @@ namespace sims.Forgot_Password
                 try
                 {
                     conn.Open();
-                    string updateQuery = "UPDATE users SET password = @password WHERE username = @username";
 
-                    using (MySqlCommand cmd = new MySqlCommand(updateQuery, conn))
+                    // Query to update password in 'users' table
+                    string userUpdateQuery = "UPDATE users SET password = @Password WHERE BINARY username = @Username";
+                    // Query to update password in 'staff' table
+                    string staffUpdateQuery = "UPDATE staff SET password = @Password WHERE BINARY username = @Username";
+
+                    using (MySqlCommand cmd = new MySqlCommand(userUpdateQuery, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Password", newPassword); // Use the newPassword parameter passed to the function.
-                        cmd.Parameters.AddWithValue("@username", Username); // Use the Username property to identify the user.
+                        cmd.Parameters.AddWithValue("@Password", newPassword);
+                        cmd.Parameters.AddWithValue("@Username", Username); // Use the passed-in username
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
+                        // Execute the update for the users table
+                        int userRowsAffected = cmd.ExecuteNonQuery();
+
+                        if (userRowsAffected == 0)
                         {
-                            return true;
+                            // If no rows were affected in the users table, try updating the staff table
+                            using (MySqlCommand staffCmd = new MySqlCommand(staffUpdateQuery, conn))
+                            {
+                                staffCmd.Parameters.AddWithValue("@Password", newPassword);
+                                staffCmd.Parameters.AddWithValue("@Username", Username); // Use the passed-in username
+
+                                // Execute the update for the staff table
+                                int staffRowsAffected = staffCmd.ExecuteNonQuery();
+
+                                if (staffRowsAffected > 0)
+                                {
+                                    return true; // Password updated in staff table
+                                }
+                            }
+
+                            return false; // Username not found in either table
                         }
-                        else
-                        {
-                            return false;
-                        }
+
+                        return true; // Password updated in users table
                     }
                 }
                 catch (Exception ex)
@@ -165,9 +187,15 @@ namespace sims.Forgot_Password
             }
         }
 
-        private void confirmPasswordCHk_OnChange(object sender, EventArgs e)
+        private void CancelBtn_Click(object sender, EventArgs e)
         {
-            if (confirmPasswordCHk.Checked)
+            new Forgot_Password().Show();
+            this.Hide();
+        }
+
+        private void confirmPasswordChk_OnChange(object sender, EventArgs e)
+        {
+            if (confirmPasswordChk.Checked)
             {
                 confirmPasswordTxt.PasswordChar = '\0';
             }
@@ -175,12 +203,6 @@ namespace sims.Forgot_Password
             {
                 confirmPasswordTxt.PasswordChar = '●';
             }
-        }
-
-        private void CancelBtn_Click(object sender, EventArgs e)
-        {
-            new Forgot_Password().Show();
-            this.Hide();
         }
     }
 }

@@ -51,18 +51,27 @@ namespace sims.Forgot_Password
         private bool CheckUsername(string username)
         {
             dbModule db = new dbModule();
+            string query = @"
+            SELECT COUNT(*) 
+            FROM (
+                SELECT username FROM users 
+                UNION 
+                SELECT username FROM staff
+            ) AS combined 
+            WHERE BINARY username = @Username";
+
             using (MySqlConnection conn = db.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT COUNT(*) FROM users WHERE BINARY username = @username";
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@Username", username);
                     int count = Convert.ToInt32(command.ExecuteScalar());
                     return count > 0;
                 }
             }
         }
+
 
         private void BackToSigninLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
