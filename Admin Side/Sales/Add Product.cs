@@ -6,6 +6,7 @@ using sims.Messages_Boxes;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,29 +14,21 @@ namespace sims.Admin_Side.Sales
 {
     public partial class Add_Product : Form
     {
-        private Manage_Sales count;
-        private Manage_Sales dashboard;
-
-        private Product_Sales _CoffeeLayoutPanel;
-        private Product_Sales _NonCoffeeLayoutPanel;
-        private Product_Sales _HotCoffeeLayoutPanel;
-
+        private Manage_Saless count;
+        private Manage_Saless dashboard;
         private Manage_Stockk _stock;
         private Inventory_Dashboard _inventoryDashboard;
+        private Product_Saless _productSalesForm;
 
-        public Add_Product(Manage_Sales count, Manage_Sales dashboard, Product_Sales CoffeeLayoutPanel, 
-                           Product_Sales NonCoffeeLayoutPanel, Product_Sales HotCoffeeLayoutPanel, Manage_Stockk stock, 
-                           Inventory_Dashboard inventoryDashboard)
+        public Add_Product(Manage_Saless count, Manage_Saless dashboard, Manage_Stockk stock, Inventory_Dashboard inventoryDashboard, Product_Saless productSalesForm)
         {
             InitializeComponent();
             this.count = count;
             this.dashboard = dashboard;
-            _CoffeeLayoutPanel = CoffeeLayoutPanel;
-            _NonCoffeeLayoutPanel = NonCoffeeLayoutPanel;
-            _HotCoffeeLayoutPanel = HotCoffeeLayoutPanel;
 
             _stock = stock;
             _inventoryDashboard = inventoryDashboard;
+            _productSalesForm = productSalesForm;
         }
 
         public class ProductDetails
@@ -66,17 +59,17 @@ namespace sims.Admin_Side.Sales
                 MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
+
         private void previewStockDashboard()
         {
             if (_inventoryDashboard != null)
             {
-                _inventoryDashboard.StockPreview();
-            }
-            else
-            {
                 MessageBox.Show("Inventory Dashboard is not available.");
             }
+
+            _inventoryDashboard.StockPreview();
         }
+
         private void LoadCategoriesProducts()
         {
             string query = "SELECT Category_Name FROM categoriesproducts";
@@ -162,7 +155,7 @@ namespace sims.Admin_Side.Sales
                 stock6Cmb.Items.Add(item);
             }
         }
-
+        
         private void UpdateComboBoxItems()
         {
             // Prevent recursive updates
@@ -276,6 +269,64 @@ namespace sims.Admin_Side.Sales
                 }
             }
         }
+        public void AddProductButton(string productID, string productName, string productPrice)
+        {
+            Button productButton = new Button
+            {
+                Width = 170,
+                Height = 110,
+                Text = $"{productName}\nPrice: ₱ {productPrice}",
+                Tag = new ProductDetails
+                {
+                    ProductID = productID,
+                    ProductName = productName,
+                    ProductPrice = productPrice
+                },
+                BackColor = Color.FromArgb(222, 196, 125),
+                Font = new Font("Poppins", 12),
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+
+            _productSalesForm.CoffeeLayoutPanel.Controls.Add(productButton);
+            Populate();
+        }
+
+        public void LoadProductButtons()
+        {
+            dbModule db = new dbModule();
+            MySqlConnection conn = db.GetConnection();
+            MySqlCommand cmd = db.GetCommand();
+
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT Product_ID, Product_Name, Product_Price FROM products";
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                _productSalesForm.CoffeeLayoutPanel.Controls.Clear();
+
+                while (reader.Read())
+                {
+                    string productID = reader.GetInt32("Product_ID").ToString();
+                    string productName = reader.GetString("Product_Name");
+                    string productPrice = reader.GetDecimal("Product_Price").ToString("F2");
+
+                    AddProductButton(productID, productName, productPrice);
+                    Populate();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading products: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+                cmd.Dispose();
+                conn.Dispose();
+            }
+        }
 
         private void addProductBtn_Click(object sender, EventArgs e)
         {
@@ -292,22 +343,31 @@ namespace sims.Admin_Side.Sales
             string productName = productNameTxt.Text.Trim();
             string category = categoryCmb.SelectedItem?.ToString() ?? string.Empty;
             string productPrice = productPriceTxt.Text.Trim();
-            string quantitySold = quantitySoldTxt.Text.Trim();
             string stockQuantity = quantityStockTxt.Text.Trim();
+            string quantitySold = quantitySoldTxt.Text.Trim();
 
             List<string> stockItems = new List<string>();
             if (!string.IsNullOrEmpty(stockCmb.SelectedItem?.ToString())) stockItems.Add(stockCmb.SelectedItem.ToString());
-            if (!string.IsNullOrEmpty(stock2Cmb.SelectedItem?.ToString())) stockItems.Add(stock2Cmb.SelectedItem.ToString());
-            if (!string.IsNullOrEmpty(stock3Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
-            if (!string.IsNullOrEmpty(stock4Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
-            if (!string.IsNullOrEmpty(stock5Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
-            if (!string.IsNullOrEmpty(stock6Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
+            // Add more stock items if necessary...
 
             string stockNeeded = string.Join(", ", stockItems);
 
-            if (string.IsNullOrEmpty(productID) || string.IsNullOrEmpty(productName) || string.IsNullOrEmpty(category))
+            if (string.IsNullOrEmpty(productID) || string.IsNullOrEmpty(productName) || string.IsNullOrEmpty(category) ||
+                string.IsNullOrEmpty(stockQuantity) || string.IsNullOrEmpty(quantitySold))
             {
                 new Field_Required().Show();
+                return;
+            }
+
+            if (!int.TryParse(stockQuantity, out var parsedStockQuantity))
+            {
+                MessageBox.Show("Invalid stock quantity. Please enter a valid integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(quantitySold, out var parsedQuantitySold))
+            {
+                MessageBox.Show("Invalid quantity sold. Please enter a valid integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -317,13 +377,14 @@ namespace sims.Admin_Side.Sales
                 cmd.Connection = conn;
 
                 // Insert the product
-                cmd.CommandText = "INSERT INTO products(Product_ID, Product_Name, Category, Product_Price, Quantity_Sold, Stock_Needed)" +
-                                  "VALUES (@Product_ID, @Product_Name, @Category, @Product_Price, @Quantity_Sold, @Stock_Needed)";
+                cmd.CommandText = "INSERT INTO products(Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Stock_Needed)" +
+                                  "VALUES (@Product_ID, @Product_Name, @Category, @Product_Price, @Stock_Quantity, @Quantity_Sold, @Stock_Needed)";
                 cmd.Parameters.AddWithValue("@Product_ID", productID);
                 cmd.Parameters.AddWithValue("@Product_Name", productName);
                 cmd.Parameters.AddWithValue("@Category", category);
-                cmd.Parameters.AddWithValue("@Product_Price", decimal.TryParse(productPrice, out var price) ? price : 0);
-                cmd.Parameters.AddWithValue("@Quantity_Sold", int.TryParse(quantitySold, out var qtySold) ? qtySold : 0);
+                cmd.Parameters.AddWithValue("@Product_Price", parsedPrice); // Use the parsed decimal price
+                cmd.Parameters.AddWithValue("@Stock_Quantity", parsedStockQuantity); // Use parsed integer
+                cmd.Parameters.AddWithValue("@Quantity_Sold", parsedQuantitySold); // Use parsed integer
                 cmd.Parameters.AddWithValue("@Stock_Needed", stockNeeded);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -335,7 +396,7 @@ namespace sims.Admin_Side.Sales
                     {
                         cmd.CommandText = "UPDATE stocks SET Stock_In = Stock_In - @Stock_In WHERE Item_Name = @ItemName";
                         cmd.Parameters.Clear();
-                        cmd.Parameters.AddWithValue("@Stock_In", int.TryParse(stockQuantity, out var qty) ? qty : 0);
+                        cmd.Parameters.AddWithValue("@Stock_In", parsedStockQuantity);  // Use parsed stock quantity
                         cmd.Parameters.AddWithValue("@ItemName", stockItem);
                         cmd.ExecuteNonQuery();
                         previewStock();
@@ -344,6 +405,7 @@ namespace sims.Admin_Side.Sales
 
                     MessageBox.Show("Product added successfully, and stock quantities updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    // Reset the form
                     productNameTxt.Clear();
                     categoryCmb.SelectedIndex = -1;
                     productPriceTxt.Clear();
@@ -355,10 +417,13 @@ namespace sims.Admin_Side.Sales
                     stock5Cmb.SelectedIndex = -1;
                     stock6Cmb.SelectedIndex = -1;
                     Populate();
-                    this.Hide();
+                    this.Close();
                     ProductsCount();
                     GenerateRandomItemID();
-                    AddProductButton(productID, productName, productPrice, category);
+
+                    AddProductButton(productID, productName, productPrice);
+                    LoadProductButtons();
+
                 }
                 else
                 {
@@ -377,41 +442,6 @@ namespace sims.Admin_Side.Sales
                 }
                 cmd.Dispose();
                 conn.Dispose();
-            }
-        }
-
-        private void AddProductButton(string productID, string productName, string productPrice, string category)
-        {
-            Button productButton = new Button
-            {
-                Width = 150,
-                Height = 100,
-                Text = $"{productName}\nPrice: ₱ {productPrice}",
-                Tag = new ProductDetails
-                {
-                    ProductID = productID,
-                    ProductName = productName,
-                    ProductPrice = productPrice
-                },
-                BackColor = Color.FromArgb(222, 196, 125),
-                Font = new Font("Poppins", 12),
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-
-            switch (category)
-            {
-                case "Coffee":
-                    _CoffeeLayoutPanel.Controls.Add(productButton);
-                    break;
-                case "Non-Coffee":
-                   _NonCoffeeLayoutPanel.Controls.Add(productButton);
-                    break;
-                case "Hot":
-                    _HotCoffeeLayoutPanel.Controls.Add(productButton);
-                    break;
-                default:
-                    MessageBox.Show($"Unknown category: {category}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
             }
         }
 
@@ -449,6 +479,7 @@ namespace sims.Admin_Side.Sales
             ValidateTextBoxForNumbersOnly(productPriceTxt);
         }
 
+        private decimal parsedPrice;
         private void productPriceTxt_Leave(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(productPriceTxt.Text))
@@ -456,15 +487,16 @@ namespace sims.Admin_Side.Sales
                 // Remove peso sign and other formatting for processing
                 string rawInput = productPriceTxt.Text.Replace("₱", "").Trim();
 
-                if (decimal.TryParse(rawInput, out decimal price))
+                if (decimal.TryParse(rawInput, out parsedPrice))
                 {
-                    // Format the input with the peso sign and two decimal places
-                    productPriceTxt.Text = $"₱{price:0.00}";
+                    // Format the input with the peso sign and two decimal places for display
+                    productPriceTxt.Text = $"₱{parsedPrice:0.00}";
                 }
                 else
                 {
                     MessageBox.Show("Invalid input. Please enter a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     productPriceTxt.Clear();
+                    parsedPrice = 0; // Reset the parsed value to ensure no invalid data is stored
                 }
             }
         }

@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using sims.Admin_Side.Items;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +12,11 @@ using static sims.Admin_Side.Sales.Add_Product;
 
 namespace sims.Admin_Side.Sales
 {
-    public partial class Product_Sales : UserControl
+    public partial class Product_Saless : Form
     {
-        private Manage_Sales dashboard;
+        private Manage_Saless dashboard;
 
-        public Product_Sales(Manage_Sales dashboard)
+        public Product_Saless(Manage_Saless dashboard)
         {
             InitializeComponent();
             this.dashboard = dashboard;
@@ -28,17 +27,7 @@ namespace sims.Admin_Side.Sales
             get { return coffeeLayoutPanel; }
         }
 
-        public FlowLayoutPanel NonCoffeeLayoutPanel
-        {
-            get { return nonCoffeeLayoutPanel; }
-        }
-
-        public FlowLayoutPanel HotCoffeeLayoutPanel
-        {
-            get { return hotCoffeeLayoutPanel; }
-        }
-
-        private void Product_Sales_Load(object sender, EventArgs e)
+        private void Product_Saless_Load(object sender, EventArgs e)
         {
             Populate();
             LoadProductButtons();
@@ -67,12 +56,12 @@ namespace sims.Admin_Side.Sales
             }
         }
 
-        public void AddProductButton(string productID, string productName, string productPrice, string category)
+        public void AddProductButton(string productID, string productName, string productPrice)
         {
             Button productButton = new Button
             {
-                Width = 150,
-                Height = 100,
+                Width = 170,
+                Height = 110,
                 Text = $"{productName}\nPrice: ₱ {productPrice}",
                 Tag = new ProductDetails
                 {
@@ -84,33 +73,11 @@ namespace sims.Admin_Side.Sales
                 Font = new Font("Poppins", 12),
                 TextAlign = ContentAlignment.MiddleCenter
             };
-            productButton.Click += ProductButton_Click;
 
-            switch (category)
-            {
-                case "Coffee":
-                    coffeeLayoutPanel.Controls.Add(productButton);
-                    break;
-                case "Non-Coffee":
-                    nonCoffeeLayoutPanel.Controls.Add(productButton);
-                    break;
-                case "Hot":
-                    hotCoffeeLayoutPanel.Controls.Add(productButton);
-                    break;
-                default:
-                    MessageBox.Show($"Unknown category: {category}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
-            }
+            coffeeLayoutPanel.Controls.Add(productButton);
+            Populate();
         }
-        private void ProductButton_Click(object sender, EventArgs e)
-        {
-            if (sender is Button button && button.Tag is ProductDetails productDetails)
-            {
-                //string itemID = productDetails.ItemID;
-                var detailsForm = new Sales_Form();
-                detailsForm.Show();
-            }
-        }
+
 
         public void LoadProductButtons()
         {
@@ -122,21 +89,19 @@ namespace sims.Admin_Side.Sales
             {
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "SELECT Product_ID, Product_Name, Product_Price, Category FROM products";
+                cmd.CommandText = "SELECT Product_ID, Product_Name, Product_Price FROM products";
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 coffeeLayoutPanel.Controls.Clear();
-                nonCoffeeLayoutPanel.Controls.Clear();
-                hotCoffeeLayoutPanel.Controls.Clear();
 
                 while (reader.Read())
                 {
                     string productID = reader.GetInt32("Product_ID").ToString();
                     string productName = reader.GetString("Product_Name");
                     string productPrice = reader.GetDecimal("Product_Price").ToString("F2");
-                    string category = reader.GetString("Category");
 
-                    AddProductButton(productID, productName, productPrice, category);
+                    AddProductButton(productID, productName, productPrice);
+                    Populate();
                 }
             }
             catch (Exception ex)

@@ -1,13 +1,13 @@
 ﻿namespace sims.Admin_Side.Sales
 {
-    partial class Product_Sales
+    partial class Product_Saless
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,10 +20,10 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -35,10 +35,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.gunaGroupBox4 = new Guna.UI.WinForms.GunaGroupBox();
-            this.hotCoffeeLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
-            this.nonCoffeeLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
             this.coffeeLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -47,9 +45,7 @@
             this.gunaGroupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.gunaGroupBox4.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.gunaGroupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gunaGroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +59,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1170, 53);
-            this.panel1.TabIndex = 44;
+            this.panel1.TabIndex = 51;
             // 
             // gunaElipsePanel2
             // 
@@ -101,11 +97,11 @@
             this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox2.LineColor = System.Drawing.Color.White;
             this.gunaGroupBox2.LineTop = 0;
-            this.gunaGroupBox2.Location = new System.Drawing.Point(12, 76);
+            this.gunaGroupBox2.Location = new System.Drawing.Point(11, 76);
             this.gunaGroupBox2.Name = "gunaGroupBox2";
             this.gunaGroupBox2.Radius = 10;
             this.gunaGroupBox2.Size = new System.Drawing.Size(1170, 601);
-            this.gunaGroupBox2.TabIndex = 50;
+            this.gunaGroupBox2.TabIndex = 52;
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 13);
             this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
@@ -134,9 +130,9 @@
             this.panel4.Controls.Add(this.gunaGroupBox4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(780, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(391, 580);
+            this.panel4.Size = new System.Drawing.Size(386, 580);
             this.panel4.TabIndex = 2;
             // 
             // gunaGroupBox4
@@ -144,27 +140,19 @@
             this.gunaGroupBox4.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox4.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox4.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox4.Controls.Add(this.hotCoffeeLayoutPanel);
             this.gunaGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox4.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox4.LineColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox4.ForeColor = System.Drawing.Color.White;
+            this.gunaGroupBox4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.gunaGroupBox4.LineTop = 35;
             this.gunaGroupBox4.Location = new System.Drawing.Point(0, 0);
             this.gunaGroupBox4.Margin = new System.Windows.Forms.Padding(0);
             this.gunaGroupBox4.Name = "gunaGroupBox4";
-            this.gunaGroupBox4.Size = new System.Drawing.Size(391, 580);
+            this.gunaGroupBox4.Size = new System.Drawing.Size(386, 580);
             this.gunaGroupBox4.TabIndex = 1;
             this.gunaGroupBox4.Text = "Hot Coffee";
             this.gunaGroupBox4.TextLocation = new System.Drawing.Point(10, 4);
             this.gunaGroupBox4.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            // 
-            // hotCoffeeLayoutPanel
-            // 
-            this.hotCoffeeLayoutPanel.Location = new System.Drawing.Point(1, 36);
-            this.hotCoffeeLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.hotCoffeeLayoutPanel.Name = "hotCoffeeLayoutPanel";
-            this.hotCoffeeLayoutPanel.Size = new System.Drawing.Size(384, 544);
-            this.hotCoffeeLayoutPanel.TabIndex = 0;
             // 
             // panel3
             // 
@@ -181,10 +169,10 @@
             this.gunaGroupBox3.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox3.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox3.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox3.Controls.Add(this.nonCoffeeLayoutPanel);
             this.gunaGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox3.LineColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox3.ForeColor = System.Drawing.Color.White;
+            this.gunaGroupBox3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.gunaGroupBox3.LineTop = 35;
             this.gunaGroupBox3.Location = new System.Drawing.Point(0, 0);
             this.gunaGroupBox3.Margin = new System.Windows.Forms.Padding(0);
@@ -195,22 +183,14 @@
             this.gunaGroupBox3.TextLocation = new System.Drawing.Point(10, 4);
             this.gunaGroupBox3.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
-            // nonCoffeeLayoutPanel
-            // 
-            this.nonCoffeeLayoutPanel.Location = new System.Drawing.Point(1, 36);
-            this.nonCoffeeLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.nonCoffeeLayoutPanel.Name = "nonCoffeeLayoutPanel";
-            this.nonCoffeeLayoutPanel.Size = new System.Drawing.Size(384, 544);
-            this.nonCoffeeLayoutPanel.TabIndex = 0;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.gunaGroupBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.panel2.Location = new System.Drawing.Point(5, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(385, 580);
+            this.panel2.Size = new System.Drawing.Size(380, 580);
             this.panel2.TabIndex = 0;
             // 
             // gunaGroupBox1
@@ -221,12 +201,13 @@
             this.gunaGroupBox1.Controls.Add(this.coffeeLayoutPanel);
             this.gunaGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox1.LineColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox1.ForeColor = System.Drawing.Color.White;
+            this.gunaGroupBox1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.gunaGroupBox1.LineTop = 35;
             this.gunaGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.gunaGroupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.gunaGroupBox1.Name = "gunaGroupBox1";
-            this.gunaGroupBox1.Size = new System.Drawing.Size(385, 580);
+            this.gunaGroupBox1.Size = new System.Drawing.Size(380, 580);
             this.gunaGroupBox1.TabIndex = 0;
             this.gunaGroupBox1.Text = "Coffee";
             this.gunaGroupBox1.TextLocation = new System.Drawing.Point(10, 4);
@@ -234,31 +215,35 @@
             // 
             // coffeeLayoutPanel
             // 
-            this.coffeeLayoutPanel.Location = new System.Drawing.Point(1, 36);
+            this.coffeeLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.coffeeLayoutPanel.AutoScroll = true;
+            this.coffeeLayoutPanel.BackColor = System.Drawing.Color.White;
+            this.coffeeLayoutPanel.Location = new System.Drawing.Point(0, 35);
             this.coffeeLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.coffeeLayoutPanel.Name = "coffeeLayoutPanel";
-            this.coffeeLayoutPanel.Size = new System.Drawing.Size(384, 544);
-            this.coffeeLayoutPanel.TabIndex = 0;
+            this.coffeeLayoutPanel.Size = new System.Drawing.Size(380, 545);
+            this.coffeeLayoutPanel.TabIndex = 32;
             // 
-            // Product_Sales
+            // Product_Saless
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.ClientSize = new System.Drawing.Size(1194, 700);
             this.Controls.Add(this.gunaGroupBox2);
             this.Controls.Add(this.panel1);
-            this.Name = "Product_Sales";
-            this.Size = new System.Drawing.Size(1194, 700);
-            this.Load += new System.EventHandler(this.Product_Sales_Load);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "Product_Saless";
+            this.Text = "Product_Saless";
+            this.Load += new System.EventHandler(this.Product_Saless_Load);
             this.panel1.ResumeLayout(false);
             this.gunaElipsePanel2.ResumeLayout(false);
             this.gunaElipsePanel2.PerformLayout();
             this.gunaGroupBox2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.gunaGroupBox4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.gunaGroupBox3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.gunaGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -272,14 +257,12 @@
         internal System.Windows.Forms.Label label4;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox1;
-        private System.Windows.Forms.FlowLayoutPanel coffeeLayoutPanel;
         private System.Windows.Forms.Panel panel4;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox4;
-        private System.Windows.Forms.FlowLayoutPanel hotCoffeeLayoutPanel;
+        private System.Windows.Forms.Panel panel3;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox3;
-        private System.Windows.Forms.FlowLayoutPanel nonCoffeeLayoutPanel;
+        private System.Windows.Forms.Panel panel2;
+        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox1;
+        private System.Windows.Forms.FlowLayoutPanel coffeeLayoutPanel;
     }
 }

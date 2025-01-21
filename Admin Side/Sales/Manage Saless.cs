@@ -3,24 +3,30 @@ using MySql.Data.MySqlClient;
 using sims.Admin_Side.Stocks;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sims.Admin_Side.Sales
 {
-    public partial class Manage_Sales : UserControl
+    public partial class Manage_Saless : Form
     {
         private Inventory_Dashboard _inventoryDashboard;
         private Manage_Stockk _stock;
         private Add_Product _addProductForm;
+        private Product_Saless _productSalesForm;
 
-        public Manage_Sales(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock)
+        public Manage_Saless(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock, Product_Saless productSales)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
             _stock = stock;
+            _productSalesForm = productSales;
         }
-
         public GunaDataGridView ProductsDgv
         {
             get { return productsDgv; }
@@ -31,7 +37,7 @@ namespace sims.Admin_Side.Sales
             get { return productCountTxt; }
         }
 
-        private void Manage_Sales_Load(object sender, EventArgs e)
+        private void Manage_Saless_Load(object sender, EventArgs e)
         {
             Populate();
             ProductsCount();
@@ -87,7 +93,6 @@ namespace sims.Admin_Side.Sales
                 }
             }
         }
-
         private void searchComboBox()
         {
             searchCategoryCmb.Items.Clear();
@@ -198,8 +203,7 @@ namespace sims.Admin_Side.Sales
             if (_addProductForm == null || _addProductForm.IsDisposed)
             {
                 var manage_Stock = new Manage_Stockk(_inventoryDashboard);
-                var product_Sales = new Product_Sales(this);
-                _addProductForm = new Add_Product(this, this, product_Sales, product_Sales, product_Sales, _stock, _inventoryDashboard);
+                _addProductForm = new Add_Product(this, this, _stock, _inventoryDashboard, _productSalesForm);
                 _addProductForm.Show();
             }
             else
@@ -214,7 +218,7 @@ namespace sims.Admin_Side.Sales
             ApplyFilters();
         }
 
-        private void searchItemTxt_TextChanged(object sender, EventArgs e)
+        private void searchProductTxt_TextChanged(object sender, EventArgs e)
         {
             ApplyFilters();
         }
