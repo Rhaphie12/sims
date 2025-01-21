@@ -199,16 +199,17 @@ namespace sims.Admin_Side.Sales
 
         private void NewProductBtn_Click(object sender, EventArgs e)
         {
-            // Check if the form is already open
+            // Check if the Add_Product form is already open
             if (_addProductForm == null || _addProductForm.IsDisposed)
             {
+                // Pass the valid _productSalesForm to Add_Product form
                 var manage_Stock = new Manage_Stockk(_inventoryDashboard);
                 _addProductForm = new Add_Product(this, this, _stock, _inventoryDashboard, _productSalesForm);
                 _addProductForm.Show();
             }
             else
             {
-                // If the form is already open, bring it to the front
+                // If the Add_Product form is already open, bring it to the front
                 _addProductForm.BringToFront();
             }
         }

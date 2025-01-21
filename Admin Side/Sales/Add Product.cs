@@ -18,9 +18,8 @@ namespace sims.Admin_Side.Sales
         private Manage_Saless dashboard;
         private Manage_Stockk _stock;
         private Inventory_Dashboard _inventoryDashboard;
-        private Product_Saless _productSalesForm;
 
-        public Add_Product(Manage_Saless count, Manage_Saless dashboard, Manage_Stockk stock, Inventory_Dashboard inventoryDashboard, Product_Saless productSalesForm)
+        public Add_Product(Manage_Saless count, Manage_Saless dashboard, Manage_Stockk stock, Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
             this.count = count;
@@ -28,7 +27,6 @@ namespace sims.Admin_Side.Sales
 
             _stock = stock;
             _inventoryDashboard = inventoryDashboard;
-            _productSalesForm = productSalesForm;
         }
 
         public class ProductDetails
@@ -64,10 +62,12 @@ namespace sims.Admin_Side.Sales
         {
             if (_inventoryDashboard != null)
             {
+                _inventoryDashboard.StockPreview();
+            }
+            else
+            {
                 MessageBox.Show("Inventory Dashboard is not available.");
             }
-
-            _inventoryDashboard.StockPreview();
         }
 
         private void LoadCategoriesProducts()
@@ -269,64 +269,6 @@ namespace sims.Admin_Side.Sales
                 }
             }
         }
-        public void AddProductButton(string productID, string productName, string productPrice)
-        {
-            Button productButton = new Button
-            {
-                Width = 170,
-                Height = 110,
-                Text = $"{productName}\nPrice: ₱ {productPrice}",
-                Tag = new ProductDetails
-                {
-                    ProductID = productID,
-                    ProductName = productName,
-                    ProductPrice = productPrice
-                },
-                BackColor = Color.FromArgb(222, 196, 125),
-                Font = new Font("Poppins", 12),
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-
-            _productSalesForm.CoffeeLayoutPanel.Controls.Add(productButton);
-            Populate();
-        }
-
-        public void LoadProductButtons()
-        {
-            dbModule db = new dbModule();
-            MySqlConnection conn = db.GetConnection();
-            MySqlCommand cmd = db.GetCommand();
-
-            try
-            {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = "SELECT Product_ID, Product_Name, Product_Price FROM products";
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-                _productSalesForm.CoffeeLayoutPanel.Controls.Clear();
-
-                while (reader.Read())
-                {
-                    string productID = reader.GetInt32("Product_ID").ToString();
-                    string productName = reader.GetString("Product_Name");
-                    string productPrice = reader.GetDecimal("Product_Price").ToString("F2");
-
-                    AddProductButton(productID, productName, productPrice);
-                    Populate();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading products: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-                cmd.Dispose();
-                conn.Dispose();
-            }
-        }
 
         private void addProductBtn_Click(object sender, EventArgs e)
         {
@@ -348,6 +290,11 @@ namespace sims.Admin_Side.Sales
 
             List<string> stockItems = new List<string>();
             if (!string.IsNullOrEmpty(stockCmb.SelectedItem?.ToString())) stockItems.Add(stockCmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock2Cmb.SelectedItem?.ToString())) stockItems.Add(stock2Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock3Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock4Cmb.SelectedItem?.ToString())) stockItems.Add(stock4Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock5Cmb.SelectedItem?.ToString())) stockItems.Add(stock5Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock6Cmb.SelectedItem?.ToString())) stockItems.Add(stock6Cmb.SelectedItem.ToString());
             // Add more stock items if necessary...
 
             string stockNeeded = string.Join(", ", stockItems);
@@ -420,10 +367,6 @@ namespace sims.Admin_Side.Sales
                     this.Close();
                     ProductsCount();
                     GenerateRandomItemID();
-
-                    AddProductButton(productID, productName, productPrice);
-                    LoadProductButtons();
-
                 }
                 else
                 {
