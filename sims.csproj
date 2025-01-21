@@ -260,17 +260,17 @@
     <Compile Include="Admin Side\Sales\Add Product.Designer.cs">
       <DependentUpon>Add Product.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Sales\Manage Sales.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Admin Side\Sales\Manage Saless.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin Side\Sales\Manage Sales.Designer.cs">
-      <DependentUpon>Manage Sales.cs</DependentUpon>
+    <Compile Include="Admin Side\Sales\Manage Saless.Designer.cs">
+      <DependentUpon>Manage Saless.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Sales\Product Sales.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Admin Side\Sales\Product Saless.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin Side\Sales\Product Sales.Designer.cs">
-      <DependentUpon>Product Sales.cs</DependentUpon>
+    <Compile Include="Admin Side\Sales\Product Saless.Designer.cs">
+      <DependentUpon>Product Saless.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Sales\Sales Form.cs">
       <SubType>Form</SubType>
@@ -289,6 +289,12 @@
     </Compile>
     <Compile Include="Admin Side\Stocks\Edit Stock.Designer.cs">
       <DependentUpon>Edit Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Stocks\Low Stocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Stocks\Low Stocks.Designer.cs">
+      <DependentUpon>Low Stocks.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Stocks\Manage Stockk.cs">
       <SubType>Form</SubType>
@@ -486,11 +492,11 @@
     <EmbeddedResource Include="Admin Side\Sales\Add Product.resx">
       <DependentUpon>Add Product.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Sales\Manage Sales.resx">
-      <DependentUpon>Manage Sales.cs</DependentUpon>
+    <EmbeddedResource Include="Admin Side\Sales\Manage Saless.resx">
+      <DependentUpon>Manage Saless.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Sales\Product Sales.resx">
-      <DependentUpon>Product Sales.cs</DependentUpon>
+    <EmbeddedResource Include="Admin Side\Sales\Product Saless.resx">
+      <DependentUpon>Product Saless.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Sales\Sales Form.resx">
       <DependentUpon>Sales Form.cs</DependentUpon>
@@ -500,6 +506,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Edit Stock.resx">
       <DependentUpon>Edit Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Stocks\Low Stocks.resx">
+      <DependentUpon>Low Stocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Manage Stockk.resx">
       <DependentUpon>Manage Stockk.cs</DependentUpon>
