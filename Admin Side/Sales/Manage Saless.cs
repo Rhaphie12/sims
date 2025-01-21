@@ -18,14 +18,12 @@ namespace sims.Admin_Side.Sales
         private Inventory_Dashboard _inventoryDashboard;
         private Manage_Stockk _stock;
         private Add_Product _addProductForm;
-        private Product_Saless _productSalesForm;
 
-        public Manage_Saless(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock, Product_Saless productSales)
+        public Manage_Saless(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
             _stock = stock;
-            _productSalesForm = productSales;
         }
         public GunaDataGridView ProductsDgv
         {
@@ -204,7 +202,7 @@ namespace sims.Admin_Side.Sales
             {
                 // Pass the valid _productSalesForm to Add_Product form
                 var manage_Stock = new Manage_Stockk(_inventoryDashboard);
-                _addProductForm = new Add_Product(this, this, _stock, _inventoryDashboard, _productSalesForm);
+                _addProductForm = new Add_Product(this, this, _stock, _inventoryDashboard);
                 _addProductForm.Show();
             }
             else
