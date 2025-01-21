@@ -268,7 +268,7 @@ namespace sims.Admin_Side.Stocks
                     itemPriceTxt.Clear();
                     itemTotalTxt.Clear();
                     itemImagePic.Image = null;
-                    this.Hide();
+                    this.Close();
                     this.Alert("Stock Added Successfully");
                     Populate();
                     previewStock();
