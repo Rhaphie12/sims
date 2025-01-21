@@ -31,8 +31,8 @@ namespace sims
         private Manage_Items manageItemsInstance;
         private Manage_Stockk manageStockInstance;
         private Inventory_Report inventoryReportInstance;
-        private Manage_Sales manageSalesProductsInstance;
-        private Product_Sales productSalesInstance;
+        private Manage_Saless manageSalesProductsInstance;
+        private Product_Saless productSalesInstance;
         private Manage_Sales_Report manageSalesReportInstance;
         private Manage_User_Staff manageUserStaffInstance;
 
@@ -55,8 +55,8 @@ namespace sims
             manageItemsInstance = new Manage_Items(dashboardInventoryInstance);
             manageStockInstance = new Manage_Stockk(dashboardInventoryInstance);
             inventoryReportInstance = new Inventory_Report();
-            manageSalesProductsInstance = new Manage_Sales(dashboardInventoryInstance, manageStockInstance);
-            productSalesInstance = new Product_Sales(manageSalesProductsInstance);
+            manageSalesProductsInstance = new Manage_Saless(dashboardInventoryInstance, manageStockInstance, productSalesInstance);
+            productSalesInstance = new Product_Saless();
             manageSalesReportInstance = new Manage_Sales_Report();
             manageUserStaffInstance = new Manage_User_Staff();
 
