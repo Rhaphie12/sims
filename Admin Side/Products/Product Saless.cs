@@ -13,8 +13,8 @@ namespace sims.Admin_Side.Sales
         private Inventory_Dashboard _inventoryDashboard;
         private Manage_Stockk _stock;
         private Add_Product _addProductForm;
-
-        public Product_Saless(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock)
+        private Add_Stock _addStock;
+        public Product_Saless(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock, Add_Stock _addStock)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
@@ -134,7 +134,7 @@ namespace sims.Admin_Side.Sales
 
         private void NewProductBtn_Click(object sender, EventArgs e)
         {
-            _stock = new Manage_Stockk(_inventoryDashboard);
+            _stock = new Manage_Stockk(_inventoryDashboard, _addStock);
             _addProductForm = new Add_Product(this, _stock, _inventoryDashboard);
             _addProductForm.Show();
         }

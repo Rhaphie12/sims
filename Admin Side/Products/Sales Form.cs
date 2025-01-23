@@ -1,4 +1,5 @@
-﻿using Guna.UI.WinForms;
+﻿using Bunifu.UI.WinForms;
+using Guna.UI.WinForms;
 using MySql.Data.MySqlClient;
 using sims.Admin_Side.Stocks;
 using sims.Messages_Boxes;
@@ -6,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using Bunifu.UI.WinForms;
 
 namespace sims.Admin_Side.Sales
 {
@@ -47,6 +47,18 @@ namespace sims.Admin_Side.Sales
                 MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
+        private void previewItemSales()
+        {
+            if (_inventoryDashboard != null)
+            {
+                _inventoryDashboard.TotalSalesItems();
+            }
+            else
+            {
+                MessageBox.Show("Inventory Dashboard is not available.");
+            }
+        }
+
         private void previewStockDashboard()
         {
             if (_inventoryDashboard != null)
@@ -65,12 +77,14 @@ namespace sims.Admin_Side.Sales
             previewStock();
             stocks();
             LoadCategoriesProducts();
+
             Timer timer = new Timer();
             timer.Tick += timer1_Tick;
             timer.Start();
 
             DateLbl.Text = DateTime.Now.ToString("ddd, d MMMM yyyy");
         }
+
         private void LoadCategoriesProducts()
         {
             string query = "SELECT Category_Name FROM categoriesproducts";
@@ -261,6 +275,7 @@ namespace sims.Admin_Side.Sales
                 }
             }
         }
+
         private void addProductBtn_Click(object sender, EventArgs e)
         {
             addProduct();
@@ -314,32 +329,42 @@ namespace sims.Admin_Side.Sales
                 conn.Open();
                 cmd.Connection = conn;
 
-                // Insert the product
-                cmd.CommandText = "INSERT INTO products(Product_ID, Product_Name, Category)" +
-                                  "VALUES (@Product_ID, @Product_Name, @Category)";
+                // Insert into productsales
+                cmd.CommandText = "INSERT INTO productsales (Sales_ID, Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Stock_Needed, Sale_Date, Sale_Time) " +
+                                  "VALUES (@Sales_ID, @Product_ID, @Product_Name, @Category, @Product_Price, @Stock_Quantity, @Quantity_Sold, @Stock_Needed, @Sale_Date, @Sale_Time)";
+
+                cmd.Parameters.AddWithValue("@Sales_ID", Guid.NewGuid().ToString()); // Generate a unique Sales ID
                 cmd.Parameters.AddWithValue("@Product_ID", productID);
                 cmd.Parameters.AddWithValue("@Product_Name", productName);
                 cmd.Parameters.AddWithValue("@Category", category);
-                //cmd.Parameters.AddWithValue("@Product_Price", parsedPrice); // Use the parsed decimal price
-                //cmd.Parameters.AddWithValue("@Stock_Quantity", parsedStockQuantity); // Use parsed integer
-                //cmd.Parameters.AddWithValue("@Quantity_Sold", parsedQuantitySold); // Use parsed integer
-                //cmd.Parameters.AddWithValue("@Stock_Needed", stockNeeded);
+                cmd.Parameters.AddWithValue("@Product_Price", productPrice);
+                cmd.Parameters.AddWithValue("@Stock_Quantity", stockQuantity);
+                cmd.Parameters.AddWithValue("@Quantity_Sold", quantitySold);
+                cmd.Parameters.AddWithValue("@Stock_Needed", stockNeeded);
+                cmd.Parameters.AddWithValue("@Sale_Date", DateLbl);
+                cmd.Parameters.AddWithValue("@Sale_Time", TimeLbl);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
 
                 if (rowsAffected > 0)
                 {
-                    // Reduce stock quantities
                     foreach (var stockItem in stockItems)
                     {
-                        cmd.CommandText = "UPDATE stocks SET Stock_In = Stock_In - @Stock_In WHERE Item_Name = @ItemName";
+                        // Update query to reduce both Stock_In and Item_Total
+                        cmd.CommandText = @"UPDATE stocks SET Stock_In = Stock_In - @Stock_In, Item_Total = Item_Total - (@Stock_In * Product_Price) 
+                                WHERE Item_Name = @ItemName";
+
                         cmd.Parameters.Clear();
-                        cmd.Parameters.AddWithValue("@Stock_In", parsedStockQuantity);  // Use parsed stock quantity
-                        cmd.Parameters.AddWithValue("@ItemName", stockItem);
+                        cmd.Parameters.AddWithValue("@Stock_In", parsedStockQuantity);  // Quantity sold
+                        cmd.Parameters.AddWithValue("@ItemName", stockItem);            // Item name
+
                         cmd.ExecuteNonQuery();
+
                         previewStock();
                         previewStockDashboard();
+                        previewItemSales();
                     }
+
 
                     MessageBox.Show("Product added successfully, and stock quantities updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -418,7 +443,7 @@ namespace sims.Admin_Side.Sales
         private void quantitySoldTxt_TextChanged(object sender, EventArgs e)
         {
             ValidateTextBoxForNumbersOnly(quantitySoldTxt);
-
+            
         }
 
         private void productPriceTxt_TextChanged(object sender, EventArgs e)
@@ -429,6 +454,7 @@ namespace sims.Admin_Side.Sales
         private void quantityStockTxt_TextChanged(object sender, EventArgs e)
         {
             ValidateTextBoxForNumbersOnly(quantityStockTxt);
+
             quantitySoldTxt.Text = quantityStockTxt.Text;
         }
 
