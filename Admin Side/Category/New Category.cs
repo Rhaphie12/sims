@@ -112,7 +112,7 @@ namespace sims.Admin_Side.Category
                         cmd.Parameters.AddWithValue("@Category_Description", categoryDescription);
                         cmd.ExecuteNonQuery();
 
-                        this.Hide();
+                        this.Close();
                         categoryNameTxt.Clear();
                         categoryDescriptionTxt.Clear();
                         GenerateRandomItemID();
