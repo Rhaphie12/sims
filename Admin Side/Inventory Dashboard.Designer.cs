@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inventory_Dashboard));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.gunaGroupBox5 = new Guna.UI.WinForms.GunaGroupBox();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.stockPreviewChart = new LiveCharts.WinForms.CartesianChart();
             this.cartesianChart3 = new LiveCharts.WinForms.CartesianChart();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.gunaGroupBox6 = new Guna.UI.WinForms.GunaGroupBox();
@@ -45,30 +38,29 @@
             this.gunaGroupBox4 = new Guna.UI.WinForms.GunaGroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.gunaGroupBox7 = new Guna.UI.WinForms.GunaGroupBox();
+            this.productsCountLbl = new System.Windows.Forms.Label();
+            this.gunaPictureBox4 = new Guna.UI.WinForms.GunaPictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
-            this.categoriesCountTxt = new System.Windows.Forms.Label();
+            this.categoriesCountLbl = new System.Windows.Forms.Label();
             this.gunaPictureBox2 = new Guna.UI.WinForms.GunaPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
-            this.Label4 = new System.Windows.Forms.Label();
+            this.totalSalesLbl = new System.Windows.Forms.Label();
             this.GunaPictureBox1 = new Guna.UI.WinForms.GunaPictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
-            this.itemsCountTxt = new System.Windows.Forms.Label();
+            this.itemsCountLbl = new System.Windows.Forms.Label();
             this.gunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
-            this.gunaGroupBox7 = new Guna.UI.WinForms.GunaGroupBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.itemStockDgv = new Guna.UI.WinForms.GunaDataGridView();
-            this.panel6.SuspendLayout();
-            this.gunaGroupBox5.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.gunaGroupBox8 = new Guna.UI.WinForms.GunaGroupBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.gunaGroupBox5 = new Guna.UI.WinForms.GunaGroupBox();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.stockPreviewChart = new LiveCharts.WinForms.CartesianChart();
             this.guna2Panel3.SuspendLayout();
             this.gunaGroupBox6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -77,6 +69,9 @@
             this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.gunaGroupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox4)).BeginInit();
             this.panel3.SuspendLayout();
             this.gunaGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox2)).BeginInit();
@@ -86,60 +81,11 @@
             this.panel2.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox3)).BeginInit();
-            this.gunaGroupBox7.SuspendLayout();
-            this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemStockDgv)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.gunaGroupBox5.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.Controls.Add(this.gunaGroupBox5);
-            this.panel6.Location = new System.Drawing.Point(10, 120);
-            this.panel6.Margin = new System.Windows.Forms.Padding(0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(802, 299);
-            this.panel6.TabIndex = 123;
-            // 
-            // gunaGroupBox5
-            // 
-            this.gunaGroupBox5.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox5.BaseColor = System.Drawing.Color.White;
-            this.gunaGroupBox5.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox5.Controls.Add(this.guna2Panel1);
-            this.gunaGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gunaGroupBox5.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
-            this.gunaGroupBox5.LineTop = 0;
-            this.gunaGroupBox5.Location = new System.Drawing.Point(0, 0);
-            this.gunaGroupBox5.Margin = new System.Windows.Forms.Padding(0);
-            this.gunaGroupBox5.Name = "gunaGroupBox5";
-            this.gunaGroupBox5.Radius = 10;
-            this.gunaGroupBox5.Size = new System.Drawing.Size(802, 299);
-            this.gunaGroupBox5.TabIndex = 120;
-            this.gunaGroupBox5.Text = "Stock Overview";
-            this.gunaGroupBox5.TextLocation = new System.Drawing.Point(10, 8);
-            this.gunaGroupBox5.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.Controls.Add(this.stockPreviewChart);
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 33);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(802, 258);
-            this.guna2Panel1.TabIndex = 0;
-            // 
-            // stockPreviewChart
-            // 
-            this.stockPreviewChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stockPreviewChart.Location = new System.Drawing.Point(0, 0);
-            this.stockPreviewChart.Name = "stockPreviewChart";
-            this.stockPreviewChart.Size = new System.Drawing.Size(802, 258);
-            this.stockPreviewChart.TabIndex = 22;
-            this.stockPreviewChart.Text = "cartesianChart1";
             // 
             // cartesianChart3
             // 
@@ -257,49 +203,16 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1174, 257);
             this.tableLayoutPanel2.TabIndex = 122;
             // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Date";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 73;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Stock Out";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 111;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Stock In";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 96;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Item Name";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 123;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Staff name";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 122;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
+            this.tableLayoutPanel1.Controls.Add(this.panel7, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
@@ -308,17 +221,72 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(802, 98);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1174, 98);
             this.tableLayoutPanel1.TabIndex = 120;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.gunaGroupBox7);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(879, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(295, 98);
+            this.panel7.TabIndex = 3;
+            // 
+            // gunaGroupBox7
+            // 
+            this.gunaGroupBox7.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox7.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox7.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox7.Controls.Add(this.productsCountLbl);
+            this.gunaGroupBox7.Controls.Add(this.gunaPictureBox4);
+            this.gunaGroupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox7.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox7.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(19)))), ((int)(((byte)(19)))));
+            this.gunaGroupBox7.LineLeft = 5;
+            this.gunaGroupBox7.LineTop = 0;
+            this.gunaGroupBox7.Location = new System.Drawing.Point(0, 0);
+            this.gunaGroupBox7.Margin = new System.Windows.Forms.Padding(10);
+            this.gunaGroupBox7.Name = "gunaGroupBox7";
+            this.gunaGroupBox7.Padding = new System.Windows.Forms.Padding(10);
+            this.gunaGroupBox7.Radius = 10;
+            this.gunaGroupBox7.Size = new System.Drawing.Size(295, 98);
+            this.gunaGroupBox7.TabIndex = 8;
+            this.gunaGroupBox7.Text = "Products";
+            this.gunaGroupBox7.TextLocation = new System.Drawing.Point(10, 8);
+            this.gunaGroupBox7.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // productsCountLbl
+            // 
+            this.productsCountLbl.AutoSize = true;
+            this.productsCountLbl.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productsCountLbl.Location = new System.Drawing.Point(13, 44);
+            this.productsCountLbl.Name = "productsCountLbl";
+            this.productsCountLbl.Size = new System.Drawing.Size(38, 34);
+            this.productsCountLbl.TabIndex = 4;
+            this.productsCountLbl.Text = "20";
+            // 
+            // gunaPictureBox4
+            // 
+            this.gunaPictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gunaPictureBox4.BaseColor = System.Drawing.Color.White;
+            this.gunaPictureBox4.Image = global::sims.Properties.Resources.boxes1;
+            this.gunaPictureBox4.Location = new System.Drawing.Point(220, 34);
+            this.gunaPictureBox4.Name = "gunaPictureBox4";
+            this.gunaPictureBox4.Size = new System.Drawing.Size(62, 51);
+            this.gunaPictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.gunaPictureBox4.TabIndex = 1;
+            this.gunaPictureBox4.TabStop = false;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.gunaGroupBox3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(534, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Location = new System.Drawing.Point(586, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(268, 98);
+            this.panel3.Size = new System.Drawing.Size(285, 98);
             this.panel3.TabIndex = 2;
             // 
             // gunaGroupBox3
@@ -326,7 +294,7 @@
             this.gunaGroupBox3.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox3.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox3.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox3.Controls.Add(this.categoriesCountTxt);
+            this.gunaGroupBox3.Controls.Add(this.categoriesCountLbl);
             this.gunaGroupBox3.Controls.Add(this.gunaPictureBox2);
             this.gunaGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -338,28 +306,28 @@
             this.gunaGroupBox3.Name = "gunaGroupBox3";
             this.gunaGroupBox3.Padding = new System.Windows.Forms.Padding(10);
             this.gunaGroupBox3.Radius = 10;
-            this.gunaGroupBox3.Size = new System.Drawing.Size(268, 98);
+            this.gunaGroupBox3.Size = new System.Drawing.Size(285, 98);
             this.gunaGroupBox3.TabIndex = 8;
             this.gunaGroupBox3.Text = "Categories";
             this.gunaGroupBox3.TextLocation = new System.Drawing.Point(10, 8);
             this.gunaGroupBox3.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
-            // categoriesCountTxt
+            // categoriesCountLbl
             // 
-            this.categoriesCountTxt.AutoSize = true;
-            this.categoriesCountTxt.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoriesCountTxt.Location = new System.Drawing.Point(13, 44);
-            this.categoriesCountTxt.Name = "categoriesCountTxt";
-            this.categoriesCountTxt.Size = new System.Drawing.Size(38, 34);
-            this.categoriesCountTxt.TabIndex = 4;
-            this.categoriesCountTxt.Text = "20";
+            this.categoriesCountLbl.AutoSize = true;
+            this.categoriesCountLbl.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoriesCountLbl.Location = new System.Drawing.Point(13, 44);
+            this.categoriesCountLbl.Name = "categoriesCountLbl";
+            this.categoriesCountLbl.Size = new System.Drawing.Size(38, 34);
+            this.categoriesCountLbl.TabIndex = 4;
+            this.categoriesCountLbl.Text = "20";
             // 
             // gunaPictureBox2
             // 
             this.gunaPictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.gunaPictureBox2.BaseColor = System.Drawing.Color.White;
             this.gunaPictureBox2.Image = global::sims.Properties.Resources.list;
-            this.gunaPictureBox2.Location = new System.Drawing.Point(193, 34);
+            this.gunaPictureBox2.Location = new System.Drawing.Point(210, 34);
             this.gunaPictureBox2.Name = "gunaPictureBox2";
             this.gunaPictureBox2.Size = new System.Drawing.Size(62, 51);
             this.gunaPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -371,9 +339,9 @@
             this.panel1.Controls.Add(this.gunaGroupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(257, 98);
+            this.panel1.Size = new System.Drawing.Size(285, 98);
             this.panel1.TabIndex = 0;
             // 
             // gunaGroupBox1
@@ -381,7 +349,7 @@
             this.gunaGroupBox1.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox1.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox1.Controls.Add(this.Label4);
+            this.gunaGroupBox1.Controls.Add(this.totalSalesLbl);
             this.gunaGroupBox1.Controls.Add(this.GunaPictureBox1);
             this.gunaGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox1.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -393,28 +361,28 @@
             this.gunaGroupBox1.Name = "gunaGroupBox1";
             this.gunaGroupBox1.Padding = new System.Windows.Forms.Padding(10);
             this.gunaGroupBox1.Radius = 10;
-            this.gunaGroupBox1.Size = new System.Drawing.Size(257, 98);
+            this.gunaGroupBox1.Size = new System.Drawing.Size(285, 98);
             this.gunaGroupBox1.TabIndex = 4;
             this.gunaGroupBox1.Text = "Total Sales";
             this.gunaGroupBox1.TextLocation = new System.Drawing.Point(10, 8);
             this.gunaGroupBox1.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
-            // Label4
+            // totalSalesLbl
             // 
-            this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(13, 44);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(107, 34);
-            this.Label4.TabIndex = 4;
-            this.Label4.Text = "₱ 100,000";
+            this.totalSalesLbl.AutoSize = true;
+            this.totalSalesLbl.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalSalesLbl.Location = new System.Drawing.Point(13, 44);
+            this.totalSalesLbl.Name = "totalSalesLbl";
+            this.totalSalesLbl.Size = new System.Drawing.Size(107, 34);
+            this.totalSalesLbl.TabIndex = 4;
+            this.totalSalesLbl.Text = "₱ 100,000";
             // 
             // GunaPictureBox1
             // 
             this.GunaPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GunaPictureBox1.BaseColor = System.Drawing.Color.White;
             this.GunaPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("GunaPictureBox1.Image")));
-            this.GunaPictureBox1.Location = new System.Drawing.Point(182, 34);
+            this.GunaPictureBox1.Location = new System.Drawing.Point(210, 34);
             this.GunaPictureBox1.Name = "GunaPictureBox1";
             this.GunaPictureBox1.Size = new System.Drawing.Size(62, 51);
             this.GunaPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -425,10 +393,10 @@
             // 
             this.panel2.Controls.Add(this.gunaGroupBox2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(267, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.panel2.Location = new System.Drawing.Point(293, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(257, 98);
+            this.panel2.Size = new System.Drawing.Size(285, 98);
             this.panel2.TabIndex = 1;
             // 
             // gunaGroupBox2
@@ -436,7 +404,7 @@
             this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox2.Controls.Add(this.itemsCountTxt);
+            this.gunaGroupBox2.Controls.Add(this.itemsCountLbl);
             this.gunaGroupBox2.Controls.Add(this.gunaPictureBox3);
             this.gunaGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -448,132 +416,120 @@
             this.gunaGroupBox2.Name = "gunaGroupBox2";
             this.gunaGroupBox2.Padding = new System.Windows.Forms.Padding(10);
             this.gunaGroupBox2.Radius = 10;
-            this.gunaGroupBox2.Size = new System.Drawing.Size(257, 98);
+            this.gunaGroupBox2.Size = new System.Drawing.Size(285, 98);
             this.gunaGroupBox2.TabIndex = 5;
             this.gunaGroupBox2.Text = "Items";
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 8);
             this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
-            // itemsCountTxt
+            // itemsCountLbl
             // 
-            this.itemsCountTxt.AutoSize = true;
-            this.itemsCountTxt.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemsCountTxt.Location = new System.Drawing.Point(13, 44);
-            this.itemsCountTxt.Name = "itemsCountTxt";
-            this.itemsCountTxt.Size = new System.Drawing.Size(38, 34);
-            this.itemsCountTxt.TabIndex = 4;
-            this.itemsCountTxt.Text = "30";
+            this.itemsCountLbl.AutoSize = true;
+            this.itemsCountLbl.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemsCountLbl.Location = new System.Drawing.Point(13, 44);
+            this.itemsCountLbl.Name = "itemsCountLbl";
+            this.itemsCountLbl.Size = new System.Drawing.Size(38, 34);
+            this.itemsCountLbl.TabIndex = 4;
+            this.itemsCountLbl.Text = "30";
             // 
             // gunaPictureBox3
             // 
             this.gunaPictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.gunaPictureBox3.BaseColor = System.Drawing.Color.White;
             this.gunaPictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("gunaPictureBox3.Image")));
-            this.gunaPictureBox3.Location = new System.Drawing.Point(182, 34);
+            this.gunaPictureBox3.Location = new System.Drawing.Point(210, 34);
             this.gunaPictureBox3.Name = "gunaPictureBox3";
             this.gunaPictureBox3.Size = new System.Drawing.Size(62, 51);
             this.gunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gunaPictureBox3.TabIndex = 1;
             this.gunaPictureBox3.TabStop = false;
             // 
-            // gunaGroupBox7
+            // tableLayoutPanel3
             // 
-            this.gunaGroupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaGroupBox7.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox7.BaseColor = System.Drawing.Color.White;
-            this.gunaGroupBox7.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox7.Controls.Add(this.panel7);
-            this.gunaGroupBox7.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox7.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
-            this.gunaGroupBox7.LineTop = 0;
-            this.gunaGroupBox7.Location = new System.Drawing.Point(822, 12);
-            this.gunaGroupBox7.Margin = new System.Windows.Forms.Padding(10);
-            this.gunaGroupBox7.Name = "gunaGroupBox7";
-            this.gunaGroupBox7.Padding = new System.Windows.Forms.Padding(10);
-            this.gunaGroupBox7.Radius = 10;
-            this.gunaGroupBox7.Size = new System.Drawing.Size(362, 407);
-            this.gunaGroupBox7.TabIndex = 121;
-            this.gunaGroupBox7.Text = "Activity Logs";
-            this.gunaGroupBox7.TextLocation = new System.Drawing.Point(10, 8);
-            this.gunaGroupBox7.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.64376F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.35623F));
+            this.tableLayoutPanel3.Controls.Add(this.gunaGroupBox8, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel6, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 121);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1174, 300);
+            this.tableLayoutPanel3.TabIndex = 124;
             // 
-            // panel7
+            // gunaGroupBox8
             // 
-            this.panel7.Controls.Add(this.itemStockDgv);
-            this.panel7.Location = new System.Drawing.Point(0, 34);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(362, 365);
-            this.panel7.TabIndex = 0;
+            this.gunaGroupBox8.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox8.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox8.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox8.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox8.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
+            this.gunaGroupBox8.LineTop = 0;
+            this.gunaGroupBox8.Location = new System.Drawing.Point(747, 0);
+            this.gunaGroupBox8.Margin = new System.Windows.Forms.Padding(0);
+            this.gunaGroupBox8.Name = "gunaGroupBox8";
+            this.gunaGroupBox8.Radius = 10;
+            this.gunaGroupBox8.Size = new System.Drawing.Size(427, 300);
+            this.gunaGroupBox8.TabIndex = 125;
+            this.gunaGroupBox8.Text = "Activity Logs";
+            this.gunaGroupBox8.TextLocation = new System.Drawing.Point(10, 8);
+            this.gunaGroupBox8.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
-            // itemStockDgv
+            // panel6
             // 
-            this.itemStockDgv.AllowUserToAddRows = false;
-            this.itemStockDgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.itemStockDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.itemStockDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.itemStockDgv.BackgroundColor = System.Drawing.Color.White;
-            this.itemStockDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.itemStockDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.itemStockDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemStockDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.itemStockDgv.ColumnHeadersHeight = 40;
-            this.itemStockDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemStockDgv.DefaultCellStyle = dataGridViewCellStyle3;
-            this.itemStockDgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemStockDgv.EnableHeadersVisualStyles = false;
-            this.itemStockDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.itemStockDgv.Location = new System.Drawing.Point(0, 0);
-            this.itemStockDgv.Name = "itemStockDgv";
-            this.itemStockDgv.ReadOnly = true;
-            this.itemStockDgv.RowHeadersVisible = false;
-            this.itemStockDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.itemStockDgv.RowTemplate.Height = 100;
-            this.itemStockDgv.RowTemplate.ReadOnly = true;
-            this.itemStockDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.itemStockDgv.Size = new System.Drawing.Size(362, 365);
-            this.itemStockDgv.TabIndex = 4;
-            this.itemStockDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
-            this.itemStockDgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.itemStockDgv.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.itemStockDgv.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.itemStockDgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.itemStockDgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.itemStockDgv.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.itemStockDgv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.itemStockDgv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.itemStockDgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.itemStockDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemStockDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.itemStockDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.itemStockDgv.ThemeStyle.HeaderStyle.Height = 40;
-            this.itemStockDgv.ThemeStyle.ReadOnly = true;
-            this.itemStockDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.itemStockDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.itemStockDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemStockDgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.itemStockDgv.ThemeStyle.RowsStyle.Height = 100;
-            this.itemStockDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.itemStockDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.panel6.Controls.Add(this.gunaGroupBox5);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(739, 300);
+            this.panel6.TabIndex = 124;
+            // 
+            // gunaGroupBox5
+            // 
+            this.gunaGroupBox5.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox5.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox5.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox5.Controls.Add(this.guna2Panel1);
+            this.gunaGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox5.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
+            this.gunaGroupBox5.LineTop = 0;
+            this.gunaGroupBox5.Location = new System.Drawing.Point(0, 0);
+            this.gunaGroupBox5.Margin = new System.Windows.Forms.Padding(0);
+            this.gunaGroupBox5.Name = "gunaGroupBox5";
+            this.gunaGroupBox5.Radius = 10;
+            this.gunaGroupBox5.Size = new System.Drawing.Size(739, 300);
+            this.gunaGroupBox5.TabIndex = 120;
+            this.gunaGroupBox5.Text = "Stock Overview";
+            this.gunaGroupBox5.TextLocation = new System.Drawing.Point(10, 8);
+            this.gunaGroupBox5.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel1.Controls.Add(this.stockPreviewChart);
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 33);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(739, 260);
+            this.guna2Panel1.TabIndex = 0;
+            // 
+            // stockPreviewChart
+            // 
+            this.stockPreviewChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stockPreviewChart.Location = new System.Drawing.Point(0, 0);
+            this.stockPreviewChart.Name = "stockPreviewChart";
+            this.stockPreviewChart.Size = new System.Drawing.Size(739, 260);
+            this.stockPreviewChart.TabIndex = 23;
+            this.stockPreviewChart.Text = "cartesianChart1";
             // 
             // Inventory_Dashboard
             // 
@@ -581,18 +537,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
             this.ClientSize = new System.Drawing.Size(1194, 700);
-            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.gunaGroupBox7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Inventory_Dashboard";
             this.Text = "Inventory_Dashboard";
             this.Load += new System.EventHandler(this.Inventory_Dashboard_Load);
-            this.panel6.ResumeLayout(false);
-            this.gunaGroupBox5.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.gunaGroupBox6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -601,6 +553,10 @@
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.gunaGroupBox7.ResumeLayout(false);
+            this.gunaGroupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox4)).EndInit();
             this.panel3.ResumeLayout(false);
             this.gunaGroupBox3.ResumeLayout(false);
             this.gunaGroupBox3.PerformLayout();
@@ -613,19 +569,15 @@
             this.gunaGroupBox2.ResumeLayout(false);
             this.gunaGroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox3)).EndInit();
-            this.gunaGroupBox7.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.itemStockDgv)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.gunaGroupBox5.ResumeLayout(false);
+            this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel6;
-        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox5;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private LiveCharts.WinForms.CartesianChart stockPreviewChart;
         private LiveCharts.WinForms.CartesianChart cartesianChart3;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox6;
@@ -635,26 +587,28 @@
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel3;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox3;
         internal Guna.UI.WinForms.GunaPictureBox gunaPictureBox2;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox1;
-        internal System.Windows.Forms.Label Label4;
+        internal System.Windows.Forms.Label totalSalesLbl;
         internal Guna.UI.WinForms.GunaPictureBox GunaPictureBox1;
         private System.Windows.Forms.Panel panel2;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox2;
-        internal System.Windows.Forms.Label itemsCountTxt;
+        internal System.Windows.Forms.Label itemsCountLbl;
         internal Guna.UI.WinForms.GunaPictureBox gunaPictureBox3;
-        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox7;
+        public System.Windows.Forms.Label categoriesCountLbl;
         private System.Windows.Forms.Panel panel7;
-        private Guna.UI.WinForms.GunaDataGridView itemStockDgv;
-        public System.Windows.Forms.Label categoriesCountTxt;
+        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox7;
+        public System.Windows.Forms.Label productsCountLbl;
+        internal Guna.UI.WinForms.GunaPictureBox gunaPictureBox4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Panel panel6;
+        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox5;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private LiveCharts.WinForms.CartesianChart stockPreviewChart;
+        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox8;
     }
 }

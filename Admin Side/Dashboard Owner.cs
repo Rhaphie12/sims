@@ -31,7 +31,6 @@ namespace sims
         private Manage_Items manageItemsInstance;
         private Manage_Stockk manageStockInstance;
         private Inventory_Report inventoryReportInstance;
-        private Manage_Saless manageSalesProductsInstance;
         private Product_Saless productSalesInstance;
         private Manage_Sales_Report manageSalesReportInstance;
         private Manage_User_Staff manageUserStaffInstance;
@@ -55,8 +54,7 @@ namespace sims
             manageItemsInstance = new Manage_Items(dashboardInventoryInstance);
             manageStockInstance = new Manage_Stockk(dashboardInventoryInstance);
             inventoryReportInstance = new Inventory_Report();
-            manageSalesProductsInstance = new Manage_Saless(dashboardInventoryInstance, manageStockInstance, productSalesInstance);
-            productSalesInstance = new Product_Saless();
+            productSalesInstance = new Product_Saless(dashboardInventoryInstance, manageStockInstance);
             manageSalesReportInstance = new Manage_Sales_Report();
             manageUserStaffInstance = new Manage_User_Staff();
 
@@ -278,11 +276,6 @@ namespace sims
             showSubMenu(salesPanelSubMenu);
         }
 
-        private void productsBtn_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(manageSalesProductsInstance);
-        }
         private void productSalesBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
