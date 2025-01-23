@@ -50,6 +50,7 @@
             this.NewStockBtn = new Guna.UI.WinForms.GunaButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
+            this.UpdateStockBtn = new Guna.UI.WinForms.GunaButton();
             this.lowStocksBtn = new Guna.UI.WinForms.GunaButton();
             this.searchCategoryTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -81,7 +82,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.itemStockDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.itemStockDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemStockDgv.ColumnHeadersHeight = 30;
             this.itemStockDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Item_Image,
             this.Stock_ID,
@@ -126,7 +127,7 @@
             this.itemStockDgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.itemStockDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemStockDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.itemStockDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemStockDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.itemStockDgv.ThemeStyle.HeaderStyle.Height = 30;
             this.itemStockDgv.ThemeStyle.ReadOnly = true;
             this.itemStockDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
@@ -253,7 +254,7 @@
             this.NewStockBtn.ForeColor = System.Drawing.Color.White;
             this.NewStockBtn.Image = null;
             this.NewStockBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.NewStockBtn.Location = new System.Drawing.Point(860, 552);
+            this.NewStockBtn.Location = new System.Drawing.Point(707, 552);
             this.NewStockBtn.Name = "NewStockBtn";
             this.NewStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.NewStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -288,6 +289,7 @@
             this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox2.Controls.Add(this.UpdateStockBtn);
             this.gunaGroupBox2.Controls.Add(this.lowStocksBtn);
             this.gunaGroupBox2.Controls.Add(this.searchCategoryTxt);
             this.gunaGroupBox2.Controls.Add(this.DeleteStockBtn);
@@ -304,6 +306,37 @@
             this.gunaGroupBox2.Text = "Item Stocks";
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 15);
             this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // UpdateStockBtn
+            // 
+            this.UpdateStockBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.UpdateStockBtn.AnimationHoverSpeed = 0.07F;
+            this.UpdateStockBtn.AnimationSpeed = 0.03F;
+            this.UpdateStockBtn.BackColor = System.Drawing.Color.Transparent;
+            this.UpdateStockBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.UpdateStockBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.UpdateStockBtn.BorderSize = 2;
+            this.UpdateStockBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UpdateStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.UpdateStockBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.UpdateStockBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateStockBtn.ForeColor = System.Drawing.Color.White;
+            this.UpdateStockBtn.Image = null;
+            this.UpdateStockBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.UpdateStockBtn.Location = new System.Drawing.Point(860, 552);
+            this.UpdateStockBtn.Name = "UpdateStockBtn";
+            this.UpdateStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.UpdateStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.UpdateStockBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.UpdateStockBtn.OnHoverImage = null;
+            this.UpdateStockBtn.OnPressedColor = System.Drawing.Color.White;
+            this.UpdateStockBtn.Radius = 4;
+            this.UpdateStockBtn.Size = new System.Drawing.Size(147, 35);
+            this.UpdateStockBtn.TabIndex = 39;
+            this.UpdateStockBtn.Text = "Re-Stock";
+            this.UpdateStockBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UpdateStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.UpdateStockBtn.Click += new System.EventHandler(this.UpdateStockBtn_Click);
             // 
             // lowStocksBtn
             // 
@@ -490,5 +523,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date_Added;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_Total;
+        private Guna.UI.WinForms.GunaButton UpdateStockBtn;
     }
 }

@@ -1,6 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using sims.Admin_Side.Items;
-using sims.Admin_Side.Sales;
 using sims.Notification.Stock_notification;
 using System;
 using System.Data;
@@ -14,6 +12,7 @@ namespace sims.Admin_Side.Stocks
     {
         private Inventory_Dashboard _inventoryDashboard;
         private Add_Stock _addStock;
+
         public Manage_Stockk(Inventory_Dashboard inventoryDashboard)
         {
             InitializeComponent();
@@ -88,6 +87,18 @@ namespace sims.Admin_Side.Stocks
             if (_inventoryDashboard != null)
             {
                 _inventoryDashboard.StockPreview();
+            }
+            else
+            {
+                MessageBox.Show("Inventory Dashboard is not available.");
+            }
+        }
+
+        private void TotalSales()
+        {
+            if (_inventoryDashboard != null)
+            {
+                _inventoryDashboard.TotalSalesItems();
             }
             else
             {
@@ -179,6 +190,7 @@ namespace sims.Admin_Side.Stocks
                         this.Alert("Stock successfully deleted.");
                         ViewStock();
                         previewStock();
+                        TotalSales();
                     }
                     else
                     {
@@ -378,6 +390,33 @@ namespace sims.Admin_Side.Stocks
         {
             var lowStock = new Low_Stocks();
             lowStock.Show();
+        }
+
+        private void UpdateStockBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to update this record?", "Update Item!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    int selectedRowIndex = itemStockDgv.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = itemStockDgv.Rows[selectedRowIndex];
+                    string itemID = selectedRow.Cells["Item_ID"]?.Value?.ToString();
+                    if (!string.IsNullOrEmpty(itemID))
+                    {
+                        Edit_Stock updateProductForm = new Edit_Stock(itemID);
+                        updateProductForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Item_ID. Unable to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
