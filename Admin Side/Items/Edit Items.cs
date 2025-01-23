@@ -1,14 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sims.Admin_Side.Items
@@ -209,7 +203,7 @@ namespace sims.Admin_Side.Items
                     categoryCmb.SelectedIndex = -1;
                     itemDescTxt.Clear();
                     itemImagePic.Image = null;
-                    Populate(); 
+                    Populate();
                 }
                 else
                 {
