@@ -32,7 +32,7 @@
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.continueBtn = new Guna.UI.WinForms.GunaButton();
-            this.ownerTxt = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gunaPictureBox1 = new Guna.UI.WinForms.GunaPictureBox();
             this.gunaPictureBox2 = new Guna.UI.WinForms.GunaPictureBox();
@@ -77,15 +77,15 @@
             this.continueBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.continueBtn.Click += new System.EventHandler(this.continueBtn_Click);
             // 
-            // ownerTxt
+            // label2
             // 
-            this.ownerTxt.AutoSize = true;
-            this.ownerTxt.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ownerTxt.Location = new System.Drawing.Point(398, 200);
-            this.ownerTxt.Name = "ownerTxt";
-            this.ownerTxt.Size = new System.Drawing.Size(105, 34);
-            this.ownerTxt.TabIndex = 24;
-            this.ownerTxt.Text = "As Owner";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(398, 200);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 34);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "As Owner";
             // 
             // label1
             // 
@@ -129,7 +129,7 @@
             this.ClientSize = new System.Drawing.Size(625, 344);
             this.Controls.Add(this.gunaPictureBox1);
             this.Controls.Add(this.continueBtn);
-            this.Controls.Add(this.ownerTxt);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gunaPictureBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -148,7 +148,7 @@
         private Guna.UI.WinForms.GunaElipse gunaElipse1;
         private Guna.UI.WinForms.GunaPictureBox gunaPictureBox1;
         private Guna.UI.WinForms.GunaButton continueBtn;
-        private System.Windows.Forms.Label ownerTxt;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private Guna.UI.WinForms.GunaPictureBox gunaPictureBox2;
         private Guna.UI.WinForms.GunaDragControl gunaDragControl1;

@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manage_Items_Staff));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties17 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.Item_Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +49,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.refreshBtn = new FontAwesome.Sharp.IconButton();
+            this.searchItemTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.searchCategoryCmb = new Guna.UI.WinForms.GunaComboBox();
             this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
@@ -56,13 +58,11 @@
             this.itemCountTxt = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.GunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
+            this.GunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.refreshBtn = new FontAwesome.Sharp.IconButton();
-            this.searchItemTxt = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.GunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.itemsDgv)).BeginInit();
             this.panel5.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
@@ -71,10 +71,10 @@
             this.gunaGroupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.GunaGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // Item_Image
@@ -87,7 +87,7 @@
             this.Item_Image.ReadOnly = true;
             this.Item_Image.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Item_Image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Item_Image.Width = 150;
+            this.Item_Image.Width = 127;
             // 
             // Column3
             // 
@@ -115,21 +115,21 @@
             // 
             this.itemsDgv.AllowUserToAddRows = false;
             this.itemsDgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.itemsDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.itemsDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.itemsDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.itemsDgv.BackgroundColor = System.Drawing.Color.White;
             this.itemsDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.itemsDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.itemsDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.itemsDgv.ColumnHeadersHeight = 40;
             this.itemsDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Item_ID,
@@ -137,14 +137,14 @@
             this.Column3,
             this.Column7,
             this.Item_Image});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemsDgv.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemsDgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.itemsDgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.itemsDgv.EnableHeadersVisualStyles = false;
             this.itemsDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -168,14 +168,14 @@
             this.itemsDgv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.itemsDgv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.itemsDgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.itemsDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemsDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemsDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.itemsDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.itemsDgv.ThemeStyle.HeaderStyle.Height = 40;
             this.itemsDgv.ThemeStyle.ReadOnly = true;
             this.itemsDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.itemsDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.itemsDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemsDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemsDgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.itemsDgv.ThemeStyle.RowsStyle.Height = 100;
             this.itemsDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -318,6 +318,99 @@
             this.panel6.Size = new System.Drawing.Size(786, 118);
             this.panel6.TabIndex = 1;
             // 
+            // refreshBtn
+            // 
+            this.refreshBtn.BackColor = System.Drawing.Color.White;
+            this.refreshBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.refreshBtn.FlatAppearance.BorderSize = 2;
+            this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshBtn.IconChar = FontAwesome.Sharp.IconChar.Redo;
+            this.refreshBtn.IconColor = System.Drawing.Color.Black;
+            this.refreshBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.refreshBtn.IconSize = 20;
+            this.refreshBtn.Location = new System.Drawing.Point(279, 24);
+            this.refreshBtn.Name = "refreshBtn";
+            this.refreshBtn.Size = new System.Drawing.Size(28, 26);
+            this.refreshBtn.TabIndex = 74;
+            this.refreshBtn.UseVisualStyleBackColor = false;
+            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
+            // 
+            // searchItemTxt
+            // 
+            this.searchItemTxt.AcceptsReturn = false;
+            this.searchItemTxt.AcceptsTab = false;
+            this.searchItemTxt.AnimationSpeed = 200;
+            this.searchItemTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.searchItemTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.searchItemTxt.BackColor = System.Drawing.Color.Transparent;
+            this.searchItemTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("searchItemTxt.BackgroundImage")));
+            this.searchItemTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.searchItemTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.searchItemTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.searchItemTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.searchItemTxt.BorderRadius = 10;
+            this.searchItemTxt.BorderThickness = 2;
+            this.searchItemTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.searchItemTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchItemTxt.DefaultFont = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchItemTxt.DefaultText = "";
+            this.searchItemTxt.FillColor = System.Drawing.Color.White;
+            this.searchItemTxt.HideSelection = true;
+            this.searchItemTxt.IconLeft = null;
+            this.searchItemTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchItemTxt.IconPadding = 10;
+            this.searchItemTxt.IconRight = null;
+            this.searchItemTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchItemTxt.Lines = new string[0];
+            this.searchItemTxt.Location = new System.Drawing.Point(376, 53);
+            this.searchItemTxt.MaximumSize = new System.Drawing.Size(233, 40);
+            this.searchItemTxt.MaxLength = 32767;
+            this.searchItemTxt.MinimumSize = new System.Drawing.Size(233, 40);
+            this.searchItemTxt.Modified = false;
+            this.searchItemTxt.Multiline = false;
+            this.searchItemTxt.Name = "searchItemTxt";
+            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchItemTxt.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.searchItemTxt.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchItemTxt.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchItemTxt.OnIdleState = stateProperties4;
+            this.searchItemTxt.Padding = new System.Windows.Forms.Padding(3);
+            this.searchItemTxt.PasswordChar = '\0';
+            this.searchItemTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.searchItemTxt.PlaceholderText = "Search by Item Name";
+            this.searchItemTxt.ReadOnly = false;
+            this.searchItemTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.searchItemTxt.SelectedText = "";
+            this.searchItemTxt.SelectionLength = 0;
+            this.searchItemTxt.SelectionStart = 0;
+            this.searchItemTxt.ShortcutsEnabled = true;
+            this.searchItemTxt.Size = new System.Drawing.Size(233, 40);
+            this.searchItemTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.searchItemTxt.TabIndex = 71;
+            this.searchItemTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.searchItemTxt.TextMarginBottom = 0;
+            this.searchItemTxt.TextMarginLeft = 3;
+            this.searchItemTxt.TextMarginTop = 0;
+            this.searchItemTxt.TextPlaceholder = "Search by Item Name";
+            this.searchItemTxt.UseSystemPasswordChar = false;
+            this.searchItemTxt.WordWrap = true;
+            this.searchItemTxt.TextChanged += new System.EventHandler(this.searchItemTxt_TextChanged);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -351,6 +444,7 @@
             this.searchCategoryCmb.Size = new System.Drawing.Size(233, 37);
             this.searchCategoryCmb.TabIndex = 72;
             this.searchCategoryCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.searchCategoryCmb.SelectedIndexChanged += new System.EventHandler(this.searchCategoryCmb_SelectedIndexChanged);
             // 
             // gunaGroupBox3
             // 
@@ -420,6 +514,17 @@
             this.GunaGroupBox1.TextLocation = new System.Drawing.Point(10, 8);
             this.GunaGroupBox1.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAliasGridFit;
             // 
+            // GunaPictureBox3
+            // 
+            this.GunaPictureBox3.BaseColor = System.Drawing.Color.White;
+            this.GunaPictureBox3.Image = global::sims.Properties.Resources.grocery_bag;
+            this.GunaPictureBox3.Location = new System.Drawing.Point(31, 15);
+            this.GunaPictureBox3.Name = "GunaPictureBox3";
+            this.GunaPictureBox3.Size = new System.Drawing.Size(50, 50);
+            this.GunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.GunaPictureBox3.TabIndex = 4;
+            this.GunaPictureBox3.TabStop = false;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.GunaGroupBox1);
@@ -463,108 +568,6 @@
             this.panel1.Size = new System.Drawing.Size(1170, 53);
             this.panel1.TabIndex = 49;
             // 
-            // refreshBtn
-            // 
-            this.refreshBtn.BackColor = System.Drawing.Color.White;
-            this.refreshBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.refreshBtn.FlatAppearance.BorderSize = 2;
-            this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.refreshBtn.IconChar = FontAwesome.Sharp.IconChar.Redo;
-            this.refreshBtn.IconColor = System.Drawing.Color.Black;
-            this.refreshBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.refreshBtn.IconSize = 20;
-            this.refreshBtn.Location = new System.Drawing.Point(279, 24);
-            this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(28, 26);
-            this.refreshBtn.TabIndex = 74;
-            this.refreshBtn.UseVisualStyleBackColor = false;
-            // 
-            // searchItemTxt
-            // 
-            this.searchItemTxt.AcceptsReturn = false;
-            this.searchItemTxt.AcceptsTab = false;
-            this.searchItemTxt.AnimationSpeed = 200;
-            this.searchItemTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.searchItemTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.searchItemTxt.BackColor = System.Drawing.Color.Transparent;
-            this.searchItemTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("searchItemTxt.BackgroundImage")));
-            this.searchItemTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.searchItemTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.searchItemTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.searchItemTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.searchItemTxt.BorderRadius = 10;
-            this.searchItemTxt.BorderThickness = 2;
-            this.searchItemTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.searchItemTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchItemTxt.DefaultFont = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchItemTxt.DefaultText = "";
-            this.searchItemTxt.FillColor = System.Drawing.Color.White;
-            this.searchItemTxt.HideSelection = true;
-            this.searchItemTxt.IconLeft = null;
-            this.searchItemTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchItemTxt.IconPadding = 10;
-            this.searchItemTxt.IconRight = null;
-            this.searchItemTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchItemTxt.Lines = new string[0];
-            this.searchItemTxt.Location = new System.Drawing.Point(376, 53);
-            this.searchItemTxt.MaximumSize = new System.Drawing.Size(233, 40);
-            this.searchItemTxt.MaxLength = 32767;
-            this.searchItemTxt.MinimumSize = new System.Drawing.Size(233, 40);
-            this.searchItemTxt.Modified = false;
-            this.searchItemTxt.Multiline = false;
-            this.searchItemTxt.Name = "searchItemTxt";
-            stateProperties17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties17.FillColor = System.Drawing.Color.Empty;
-            stateProperties17.ForeColor = System.Drawing.Color.Empty;
-            stateProperties17.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchItemTxt.OnActiveState = stateProperties17;
-            stateProperties18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties18.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.searchItemTxt.OnDisabledState = stateProperties18;
-            stateProperties19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties19.FillColor = System.Drawing.Color.Empty;
-            stateProperties19.ForeColor = System.Drawing.Color.Empty;
-            stateProperties19.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchItemTxt.OnHoverState = stateProperties19;
-            stateProperties20.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties20.FillColor = System.Drawing.Color.White;
-            stateProperties20.ForeColor = System.Drawing.Color.Empty;
-            stateProperties20.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchItemTxt.OnIdleState = stateProperties20;
-            this.searchItemTxt.Padding = new System.Windows.Forms.Padding(3);
-            this.searchItemTxt.PasswordChar = '\0';
-            this.searchItemTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.searchItemTxt.PlaceholderText = "Search by Item Name";
-            this.searchItemTxt.ReadOnly = false;
-            this.searchItemTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.searchItemTxt.SelectedText = "";
-            this.searchItemTxt.SelectionLength = 0;
-            this.searchItemTxt.SelectionStart = 0;
-            this.searchItemTxt.ShortcutsEnabled = true;
-            this.searchItemTxt.Size = new System.Drawing.Size(233, 40);
-            this.searchItemTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.searchItemTxt.TabIndex = 71;
-            this.searchItemTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.searchItemTxt.TextMarginBottom = 0;
-            this.searchItemTxt.TextMarginLeft = 3;
-            this.searchItemTxt.TextMarginTop = 0;
-            this.searchItemTxt.TextPlaceholder = "Search by Item Name";
-            this.searchItemTxt.UseSystemPasswordChar = false;
-            this.searchItemTxt.WordWrap = true;
-            // 
-            // GunaPictureBox3
-            // 
-            this.GunaPictureBox3.BaseColor = System.Drawing.Color.White;
-            this.GunaPictureBox3.Image = global::sims.Properties.Resources.grocery_bag;
-            this.GunaPictureBox3.Location = new System.Drawing.Point(31, 15);
-            this.GunaPictureBox3.Name = "GunaPictureBox3";
-            this.GunaPictureBox3.Size = new System.Drawing.Size(50, 50);
-            this.GunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.GunaPictureBox3.TabIndex = 4;
-            this.GunaPictureBox3.TabStop = false;
-            // 
             // Manage_Items_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -576,6 +579,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Manage_Items_Staff";
             this.Size = new System.Drawing.Size(1194, 700);
+            this.Load += new System.EventHandler(this.Manage_Items_Staff_Load);
             ((System.ComponentModel.ISupportInitialize)(this.itemsDgv)).EndInit();
             this.panel5.ResumeLayout(false);
             this.gunaGroupBox2.ResumeLayout(false);
@@ -586,11 +590,11 @@
             this.panel2.ResumeLayout(false);
             this.GunaGroupBox1.ResumeLayout(false);
             this.GunaGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.gunaElipsePanel2.ResumeLayout(false);
             this.gunaElipsePanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }

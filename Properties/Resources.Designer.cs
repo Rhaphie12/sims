@@ -113,6 +113,16 @@ namespace sims.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AVOCADO {
+            get {
+                object obj = ResourceManager.GetObject("AVOCADO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bell__1_ {
             get {
                 object obj = ResourceManager.GetObject("bell (1)", resourceCulture);
@@ -133,6 +143,16 @@ namespace sims.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap box {
+            get {
+                object obj = ResourceManager.GetObject("box", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap boxes {
             get {
                 object obj = ResourceManager.GetObject("boxes", resourceCulture);
@@ -146,6 +166,16 @@ namespace sims.Properties {
         internal static System.Drawing.Bitmap boxes_brown {
             get {
                 object obj = ResourceManager.GetObject("boxes-brown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boxes1 {
+            get {
+                object obj = ResourceManager.GetObject("boxes1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

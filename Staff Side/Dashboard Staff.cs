@@ -41,7 +41,7 @@ namespace sims.Staff_Side
             ShowUsernameWithGreeting();
 
             dashboardInventoryInstance = new Dashboard_Inventory_Staff();
-            manageItemsStaffInstance = new Manage_Items_Staff();
+            manageItemsStaffInstance = new Manage_Items_Staff(dashboardInventoryInstance);
             manageStocksStaffInstance = new Manage_Stocks_Staff();
             LoadView(dashboardInventoryInstance);
             ActivateButton(DashboardBtn, Color.White);
