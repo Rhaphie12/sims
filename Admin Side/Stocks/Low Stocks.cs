@@ -13,10 +13,19 @@ namespace sims.Admin_Side.Stocks
 {
     public partial class Low_Stocks : Form
     {
-        public Low_Stocks()
+        private Inventory_Dashboard _inventoryDashboard;
+        private Manage_Stockk dashboard;
+
+        public Low_Stocks(Inventory_Dashboard _inventoryDashboard, Manage_Stockk dashboard)
         {
             InitializeComponent();
+            this.dashboard = dashboard;
         }
+        public DataGridView ItemsLowStockDgv
+        {
+            get { return itemStockDgv; }
+        }
+
         private void Low_Stocks_Load(object sender, EventArgs e)
         {
             ViewStock();
@@ -70,10 +79,10 @@ namespace sims.Admin_Side.Stocks
                 {
                     int selectedRowIndex = itemStockDgv.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedRow = itemStockDgv.Rows[selectedRowIndex];
-                    string itemID = selectedRow.Cells["Item_ID"]?.Value?.ToString();
+                    string itemID = selectedRow.Cells["Stock_ID"]?.Value?.ToString();
                     if (!string.IsNullOrEmpty(itemID))
                     {
-                        Edit_Stock updateProductForm = new Edit_Stock(itemID);
+                        Edit_Low_Stocks updateProductForm = new Edit_Low_Stocks(itemID, _inventoryDashboard, dashboard, this);
                         updateProductForm.Show();
                     }
                     else

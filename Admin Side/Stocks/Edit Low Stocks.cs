@@ -1,21 +1,26 @@
 ﻿using MySql.Data.MySqlClient;
+using sims.Notification.Stock_notification;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Web.UI.WebControls;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 
 namespace sims.Admin_Side.Stocks
 {
-    public partial class Edit_Stock : Form
+    public partial class Edit_Low_Stocks : Form
     {
         private string _itemID;
         private Inventory_Dashboard _inventoryDashboard;
         private Manage_Stockk dashboard;
+        private Low_Stocks lowStocks;
 
-        public Edit_Stock(string itemID, Inventory_Dashboard inventoryDashboard, Manage_Stockk dashboard)
+        public Edit_Low_Stocks(string itemID, Inventory_Dashboard inventoryDashboard, Manage_Stockk dashboard, Low_Stocks lowStocks)
         {
             InitializeComponent();
             _itemID = itemID;
@@ -25,6 +30,7 @@ namespace sims.Admin_Side.Stocks
 
             _inventoryDashboard = inventoryDashboard;
             this.dashboard = dashboard;
+            this.lowStocks = lowStocks;
         }
 
         private void previewStock()
@@ -51,10 +57,15 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
-        private void Edit_Stock_Load(object sender, EventArgs e)
+        public void Alert(string msg)
+        {
+            Stock_Added frm = new Stock_Added();
+            frm.showalert(msg);
+        }
+
+        private void Edit_Low_Stocks_Load(object sender, EventArgs e)
         {
             LoadProductDetails(_itemID);
-            previewStock();
             Populate();
             UnitType();
             dateAddedDtp.Value = DateTime.Now;
@@ -75,6 +86,29 @@ namespace sims.Admin_Side.Stocks
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
                     dashboard.ItemsStockDgv.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void PopulateLowStocks()
+        {
+            dbModule db = new dbModule();
+            MySqlDataAdapter adapter = db.GetAdapter();
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM lowstocks";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    adapter.SelectCommand = command;
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    lowStocks.ItemsLowStockDgv.DataSource = dt;
                 }
                 catch (Exception ex)
                 {
@@ -146,7 +180,7 @@ namespace sims.Admin_Side.Stocks
         {
             dbModule db = new dbModule();
             string query = "SELECT Item_ID, Item_Name, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image " +
-                           "FROM stocks WHERE Stock_ID = @Stock_ID";
+                           "FROM lowstocks WHERE Stock_ID = @Stock_ID";
 
             using (MySqlConnection conn = db.GetConnection())
             {
@@ -217,10 +251,10 @@ namespace sims.Admin_Side.Stocks
 
         private void updateStockBtn_Click(object sender, EventArgs e)
         {
-            UpdateItemStock();
+            reStockItems();
         }
 
-        private void UpdateItemStock()
+        private void reStockItems()
         {
             dbModule db = new dbModule();
             MySqlConnection conn = db.GetConnection();
@@ -245,8 +279,10 @@ namespace sims.Admin_Side.Stocks
             {
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "UPDATE stocks SET Item_Name = @Item_Name, Stock_In = @Stock_In, Unit_Type = @Unit_Type, Date_Added = @Date_Added, " +
-                                  "Item_Price = @Item_Price, Item_Total = @Item_Total, Item_Image = @Item_Image WHERE Item_ID = @Item_ID";
+
+                // Insert into stocks table
+                cmd.CommandText = "INSERT INTO stocks (Item_ID, Item_Name, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image) " +
+                                  "VALUES (@Item_ID, @Item_Name, @Stock_In, @Unit_Type, @Date_Added, @Item_Price, @Item_Total, @Item_Image)";
 
                 cmd.Parameters.AddWithValue("@Item_ID", itemID);
                 cmd.Parameters.AddWithValue("@Item_Name", itemName);
@@ -258,11 +294,17 @@ namespace sims.Admin_Side.Stocks
 
                 byte[] imageBytes = itemImage != null ? ImageToByteArray(ResizeImage(itemImage, 300, 300)) : null;
                 cmd.Parameters.AddWithValue("@Item_Image", imageBytes ?? (object)DBNull.Value);
-
                 int rowsAffected = cmd.ExecuteNonQuery();
 
                 if (rowsAffected > 0)
                 {
+                    // Delete from lowstocks table after successful insertion
+                    cmd.CommandText = "DELETE FROM lowstocks WHERE Item_ID = @Item_ID";
+                    cmd.Parameters.Clear(); // Clear the existing parameters
+                    cmd.Parameters.AddWithValue("@Item_ID", itemID);
+                    cmd.ExecuteNonQuery();
+
+                    // Reset form fields
                     selectItemNameCmb.SelectedIndex = -1;
                     itemQuantityTxt.Clear();
                     unitTypeCmb.SelectedIndex = -1;
@@ -271,12 +313,14 @@ namespace sims.Admin_Side.Stocks
                     itemTotalTxt.Clear();
                     itemImagePic.Image = null;
                     this.Close();
+                    this.Alert("Stock Added Successfully");
                     Populate();
                     previewStock();
+                    PopulateLowStocks();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to update item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to add item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -321,11 +365,6 @@ namespace sims.Admin_Side.Stocks
         private void backNewStockBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
-
-        private void totalInfoBtn_Click(object sender, EventArgs e)
-        {
-            _ = MessageBox.Show("Item Total is calculated by multiplying Item Quantity and Item Price", "Item Total of Item Quantity and Item Price", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

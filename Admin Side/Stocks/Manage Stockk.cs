@@ -13,7 +13,7 @@ namespace sims.Admin_Side.Stocks
         private Inventory_Dashboard _inventoryDashboard;
         private Add_Stock _addStock;
 
-        public Manage_Stockk(Inventory_Dashboard inventoryDashboard)
+        public Manage_Stockk(Inventory_Dashboard inventoryDashboard, Add_Stock _addStock)
         {
             InitializeComponent();
             itemStockDgv.CellFormatting += itemStockDgv_CellFormatting;
@@ -388,7 +388,7 @@ namespace sims.Admin_Side.Stocks
 
         private void lowStocksBtn_Click(object sender, EventArgs e)
         {
-            var lowStock = new Low_Stocks();
+            var lowStock = new Low_Stocks(_inventoryDashboard, this);
             lowStock.Show();
         }
 
@@ -401,10 +401,10 @@ namespace sims.Admin_Side.Stocks
                 {
                     int selectedRowIndex = itemStockDgv.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedRow = itemStockDgv.Rows[selectedRowIndex];
-                    string itemID = selectedRow.Cells["Item_ID"]?.Value?.ToString();
+                    string itemID = selectedRow.Cells["Stock_ID"]?.Value?.ToString();
                     if (!string.IsNullOrEmpty(itemID))
                     {
-                        Edit_Stock updateProductForm = new Edit_Stock(itemID);
+                        Edit_Stock updateProductForm = new Edit_Stock(itemID, _inventoryDashboard, this);
                         updateProductForm.Show();
                     }
                     else
