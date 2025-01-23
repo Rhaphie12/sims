@@ -216,10 +216,6 @@ namespace sims.Admin_Side
                         Title = "Item Stocks"
                     });
 
-                    // Enable zooming and scrolling
-                    stockPreviewChart.Zoom = ZoomingOptions.X;
-                    stockPreviewChart.ScrollMode = ScrollMode.X;
-
                     // Set dynamic range for X-axis
                     stockPreviewChart.AxisX[0].MinValue = 0;
                     stockPreviewChart.AxisX[0].MaxValue = 10; // Initially display 10 items

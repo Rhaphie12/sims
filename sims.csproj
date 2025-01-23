@@ -278,6 +278,12 @@
     <Compile Include="Admin Side\Stocks\Add Stock.Designer.cs">
       <DependentUpon>Add Stock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin Side\Stocks\Edit Low Stocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Stocks\Edit Low Stocks.Designer.cs">
+      <DependentUpon>Edit Low Stocks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin Side\Stocks\Edit Stock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -494,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Add Stock.resx">
       <DependentUpon>Add Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Stocks\Edit Low Stocks.resx">
+      <DependentUpon>Edit Low Stocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Edit Stock.resx">
       <DependentUpon>Edit Stock.cs</DependentUpon>
