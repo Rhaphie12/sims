@@ -212,7 +212,7 @@ namespace sims.Admin_Side.Items
                     itemDescTxt.Clear();
                     itemImagePic.Image = null;
                     this.Alert("Item Added Successfully");
-                    this.Hide();
+                    this.Close();
                     Populate();
                     previewItems();
                 }

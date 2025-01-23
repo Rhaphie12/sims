@@ -328,7 +328,6 @@ namespace sims.Admin_Side.Items
             itemsDgv.DataSource = filteredData;
         }
 
-
         private void ResetFilters()
         {
             searchCategoryCmb.SelectedIndex = -1; // Reset category filter
