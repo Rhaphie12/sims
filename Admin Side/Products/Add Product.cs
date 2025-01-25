@@ -96,7 +96,6 @@ namespace sims.Admin_Side.Sales
         }
 
         private List<string> allStockItems = new List<string>();
-        private bool isUpdatingComboBoxes = false;
 
         private void stocks()
         {

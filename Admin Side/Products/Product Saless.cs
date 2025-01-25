@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using sims.Admin_Side.Inventory_Report;
 using sims.Admin_Side.Stocks;
 using System;
 using System.Data;
@@ -14,11 +15,13 @@ namespace sims.Admin_Side.Sales
         private Manage_Stockk _stock;
         private Add_Product _addProductForm;
         private Add_Stock _addStock;
-        public Product_Saless(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock, Add_Stock _addStock)
+        private Inventory_Reportt _inventoryReport;
+        public Product_Saless(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock, Add_Stock _addStock, Inventory_Reportt inventory_Reportt)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
             _stock = stock;
+            _inventoryReport = inventory_Reportt;
         }
 
         public FlowLayoutPanel CoffeeLayoutPanel
@@ -134,7 +137,7 @@ namespace sims.Admin_Side.Sales
 
         private void NewProductBtn_Click(object sender, EventArgs e)
         {
-            _stock = new Manage_Stockk(_inventoryDashboard, _addStock);
+            _stock = new Manage_Stockk(_inventoryDashboard, _addStock, _inventoryReport);
             _addProductForm = new Add_Product(this, _stock, _inventoryDashboard);
             _addProductForm.Show();
         }

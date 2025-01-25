@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace sims.Admin_Side.Sales
 {
@@ -22,6 +23,10 @@ namespace sims.Admin_Side.Sales
             _stock = stock;
             _inventoryDashboard = inventoryDashboard;
             _productID = productID;
+
+            quantityStockTxt.TextChanged += (s, e) => CalculateTotalProductSale();
+            productPriceTxt.TextChanged += (s, e) => CalculateTotalProductSale();
+            //categoryCmb.SelectedIndexChanged += categoryCmb_SelectedIndexChanged;
         }
 
         private void previewStock()
@@ -47,6 +52,7 @@ namespace sims.Admin_Side.Sales
                 MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
+
         private void previewItemSales()
         {
             if (_inventoryDashboard != null)
@@ -74,43 +80,98 @@ namespace sims.Admin_Side.Sales
         private void Sales_Form_Load(object sender, EventArgs e)
         {
             LoadProductDetails(_productID);
+            RetrieveCoffeeProductDetails(_productID);
             previewStock();
             stocks();
-            LoadCategoriesProducts();
 
             Timer timer = new Timer();
             timer.Tick += timer1_Tick;
             timer.Start();
 
             DateLbl.Text = DateTime.Now.ToString("ddd, d MMMM yyyy");
+            CalculateTotalProductSale();
+            TotalSalesCoffee();
         }
 
-        private void LoadCategoriesProducts()
+        public void TotalSalesCoffee()
         {
-            string query = "SELECT Category_Name FROM categoriesproducts";
             dbModule db = new dbModule();
+            MySqlConnection conn = db.GetConnection();
+            MySqlCommand cmd = db.GetCommand();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable dataTable = new DataTable();
 
             try
             {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
+                conn.Open();
+                cmd.Connection = conn;
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                // Query to get all stocks and calculate the total of Item_Total
+                cmd.CommandText = "SELECT *, SUM(Total_Product_Sale) AS TotalSalesCoffee FROM productsales_coffee";
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+
+                // Check if the TotalSales column is present in the result
+                if (dataTable.Rows.Count > 0 && dataTable.Columns.Contains("TotalSalesCoffee"))
+                {
+                    object totalSalesValue = dataTable.Rows[0]["TotalSalesCoffee"];
+                    if (decimal.TryParse(totalSalesValue?.ToString(), out decimal totalSales))
                     {
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                categoryCmb.Items.Add(reader["Category_Name"].ToString());
-                            }
-                        }
+                        // Format the total sales value with a peso sign
+                        totalSalesLbl.Text = $"₱ {totalSales:0.00}";
+                    }
+                    else
+                    {
+                        totalSalesLbl.Text = "₱ 0.00";
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Failed to populate stock data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                cmd.Dispose();
+                conn.Dispose();
+            }
+        }
+
+        private void CalculateTotalProductSale()
+        {
+            try
+            {
+                // Parse quantity and price
+                if (int.TryParse(quantityStockTxt.Text, out int quantity) &&
+                    decimal.TryParse(productPriceTxt.Text, out decimal price))
+                {
+                    decimal totalValue = quantity * price;
+
+                    // Store the numeric value in the Tag property
+                    totalSaleTxt.Tag = totalValue;
+
+                    // Display the formatted value with a peso sign
+                    totalSaleTxt.Text = $"₱ {totalValue:0.00}";
+                }
+                else
+                {
+                    // Clear the total sale field if inputs are invalid
+                    totalSaleTxt.Text = string.Empty;
+                    totalSaleTxt.Tag = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show an error message in case of unexpected issues
+                MessageBox.Show($"An error occurred: {ex.Message}",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
 
@@ -276,6 +337,104 @@ namespace sims.Admin_Side.Sales
             }
         }
 
+        public void RetrieveCoffeeProductDetails(string productID)
+        {
+            dbModule db = new dbModule();
+            MySqlConnection conn = db.GetConnection();
+            MySqlCommand cmd = db.GetCommand();
+
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+
+                // Query to retrieve product details from productsales_coffee
+                cmd.CommandText = @"
+            SELECT Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Stock_Needed
+            FROM productsales_coffee
+            WHERE Product_ID = @ProductID";
+
+                cmd.Parameters.AddWithValue("@ProductID", productID);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        // Populate the textboxes with the retrieved data
+                        productIDTxt.Text = reader["Product_ID"]?.ToString() ?? string.Empty;
+                        productNameTxt.Text = reader["Product_Name"]?.ToString() ?? string.Empty;
+                        categoryCmb.SelectedItem = reader["Category"]?.ToString();
+                        productPriceTxt.Text = reader["Product_Price"]?.ToString() ?? "0.00";
+                        quantityStockTxt.Text = reader["Stock_Quantity"]?.ToString() ?? "0";
+                        quantitySoldTxt.Text = reader["Quantity_Sold"]?.ToString() ?? "0";
+
+                        // Retrieve the 'Stock_Needed' column, which contains the stock items
+                        string stockNeeded = reader["Stock_Needed"]?.ToString();
+
+                        if (!string.IsNullOrEmpty(stockNeeded))
+                        {
+                            // Split the 'Stock_Needed' value into separate items based on a delimiter (e.g., comma)
+                            string[] stockItems = stockNeeded.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                            // Clear existing items in combo boxes to avoid duplicates
+                            stockCmb.Items.Clear();
+                            stock2Cmb.Items.Clear();
+                            stock3Cmb.Items.Clear();
+                            stock4Cmb.Items.Clear();
+                            stock5Cmb.Items.Clear();
+                            stock6Cmb.Items.Clear();
+
+                            // Optionally, add the items to the ComboBoxes if they are not already in the items list
+                            foreach (var stockItem in stockItems)
+                            {
+                                if (!stockCmb.Items.Contains(stockItem)) stockCmb.Items.Add(stockItem);
+                                if (!stock2Cmb.Items.Contains(stockItem)) stock2Cmb.Items.Add(stockItem);
+                                if (!stock3Cmb.Items.Contains(stockItem)) stock3Cmb.Items.Add(stockItem);
+                                if (!stock4Cmb.Items.Contains(stockItem)) stock4Cmb.Items.Add(stockItem);
+                                if (!stock5Cmb.Items.Contains(stockItem)) stock5Cmb.Items.Add(stockItem);
+                                if (!stock6Cmb.Items.Contains(stockItem)) stock6Cmb.Items.Add(stockItem);
+                            }
+
+                            // Assign each item to the corresponding ComboBox (ensure stockItems has enough values)
+                            if (stockItems.Length >= 1) stockCmb.SelectedItem = stockItems[0];
+                            if (stockItems.Length >= 2) stock2Cmb.SelectedItem = stockItems[1];
+                            if (stockItems.Length >= 3) stock3Cmb.SelectedItem = stockItems[2];
+                            if (stockItems.Length >= 4) stock4Cmb.SelectedItem = stockItems[3];
+                            if (stockItems.Length >= 5) stock5Cmb.SelectedItem = stockItems[4];
+                            if (stockItems.Length >= 6) stock6Cmb.SelectedItem = stockItems[5];
+
+                            // Log to check the values (for debugging)
+                            Console.WriteLine("Stock Items: " + string.Join(", ", stockItems));
+                            Console.WriteLine("ComboBox 1: " + stockCmb.SelectedItem);
+                            Console.WriteLine("ComboBox 2: " + stock2Cmb.SelectedItem);
+                            Console.WriteLine("ComboBox 3: " + stock3Cmb.SelectedItem);
+                            Console.WriteLine("ComboBox 4: " + stock4Cmb.SelectedItem);
+                            Console.WriteLine("ComboBox 5: " + stock5Cmb.SelectedItem);
+                            Console.WriteLine("ComboBox 6: " + stock6Cmb.SelectedItem);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Product not found in productsales_coffee table.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to retrieve product details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                cmd.Dispose();
+                conn.Dispose();
+            }
+        }
+
+
         private void addProductBtn_Click(object sender, EventArgs e)
         {
             addProduct();
@@ -289,7 +448,7 @@ namespace sims.Admin_Side.Sales
 
             string productID = productIDTxt.Text.Trim();
             string productName = productNameTxt.Text.Trim();
-            string category = categoryCmb.SelectedItem?.ToString() ?? string.Empty;
+            string category = categoryCmb.SelectedItem?.ToString().Trim() ?? string.Empty;
             string productPrice = productPriceTxt.Text.Trim();
             string stockQuantity = quantityStockTxt.Text.Trim();
             string quantitySold = quantitySoldTxt.Text.Trim();
@@ -301,6 +460,7 @@ namespace sims.Admin_Side.Sales
             if (!string.IsNullOrEmpty(stock4Cmb.SelectedItem?.ToString())) stockItems.Add(stock4Cmb.SelectedItem.ToString());
             if (!string.IsNullOrEmpty(stock5Cmb.SelectedItem?.ToString())) stockItems.Add(stock5Cmb.SelectedItem.ToString());
             if (!string.IsNullOrEmpty(stock6Cmb.SelectedItem?.ToString())) stockItems.Add(stock6Cmb.SelectedItem.ToString());
+
             // Add more stock items if necessary...
 
             string stockNeeded = string.Join(", ", stockItems);
@@ -324,25 +484,61 @@ namespace sims.Admin_Side.Sales
                 return;
             }
 
+            // Dynamically determine the table name based on category
+            string tableName = string.Empty;
+
+            if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                tableName = "productsales_coffee";
+                TotalSalesCoffee();
+            }
+            else if (category.Equals("Non-Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                tableName = "productsales_noncoffee";
+            }
+            else if (category.Equals("Hot", StringComparison.OrdinalIgnoreCase))
+            {
+                tableName = "productsales_hotcoffee";
+            }
+            else
+            {
+                MessageBox.Show($"Invalid {category}. Please select a valid category.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Convert DateLbl.Text to a DateTime object
+            if (!DateTime.TryParse(DateLbl.Text, out DateTime saleDate))
+            {
+                MessageBox.Show("Invalid date format in DateLbl. Please check the value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Format the date for MySQL
+            string formattedDate = saleDate.ToString("yyyy-MM-dd");
+
+            // Format the current time for MySQL
+            string formattedTime = DateTime.Now.ToString("HH:mm:ss");
+
             try
             {
                 conn.Open();
                 cmd.Connection = conn;
 
-                // Insert into productsales
-                cmd.CommandText = "INSERT INTO productsales (Sales_ID, Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Stock_Needed, Sale_Date, Sale_Time) " +
-                                  "VALUES (@Sales_ID, @Product_ID, @Product_Name, @Category, @Product_Price, @Stock_Quantity, @Quantity_Sold, @Stock_Needed, @Sale_Date, @Sale_Time)";
+                // Use dynamic table name in the INSERT statement
+                cmd.CommandText = $"INSERT INTO {tableName} (Sales_ID, Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Total_Product_Sale, Stock_Needed, Sale_Date, Sale_Time) " +
+                                  "VALUES (@Sales_ID, @Product_ID, @Product_Name, @Category, @Product_Price, @Stock_Quantity, @Quantity_Sold, @Total_Product_Sale, @Stock_Needed, @Sale_Date, @Sale_Time)";
 
                 cmd.Parameters.AddWithValue("@Sales_ID", Guid.NewGuid().ToString()); // Generate a unique Sales ID
                 cmd.Parameters.AddWithValue("@Product_ID", productID);
                 cmd.Parameters.AddWithValue("@Product_Name", productName);
                 cmd.Parameters.AddWithValue("@Category", category);
-                cmd.Parameters.AddWithValue("@Product_Price", productPrice);
+                cmd.Parameters.AddWithValue("@Product_Price", decimal.TryParse(productPrice, out var price) ? price : 0);
                 cmd.Parameters.AddWithValue("@Stock_Quantity", stockQuantity);
-                cmd.Parameters.AddWithValue("@Quantity_Sold", quantitySold);
+                cmd.Parameters.AddWithValue("@Quantity_Sold", int.TryParse(quantitySold, out var stock) ? stock : 0);
+                cmd.Parameters.AddWithValue("@Total_Product_Sale", totalSaleTxt.Tag?.ToString() ?? "0");
                 cmd.Parameters.AddWithValue("@Stock_Needed", stockNeeded);
-                cmd.Parameters.AddWithValue("@Sale_Date", DateLbl);
-                cmd.Parameters.AddWithValue("@Sale_Time", TimeLbl);
+                cmd.Parameters.AddWithValue("@Sale_Date", formattedDate);
+                cmd.Parameters.AddWithValue("@Sale_Time", formattedTime);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
 
@@ -351,8 +547,8 @@ namespace sims.Admin_Side.Sales
                     foreach (var stockItem in stockItems)
                     {
                         // Update query to reduce both Stock_In and Item_Total
-                        cmd.CommandText = @"UPDATE stocks SET Stock_In = Stock_In - @Stock_In, Item_Total = Item_Total - (@Stock_In * Product_Price) 
-                                WHERE Item_Name = @ItemName";
+                        cmd.CommandText = @"UPDATE stocks SET Stock_In = Stock_In - @Stock_In, Item_Total = Item_Total - (@Stock_In * Item_Price) 
+                            WHERE Item_Name = @ItemName";
 
                         cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@Stock_In", parsedStockQuantity);  // Quantity sold
@@ -365,7 +561,6 @@ namespace sims.Admin_Side.Sales
                         previewItemSales();
                     }
 
-
                     MessageBox.Show("Product added successfully, and stock quantities updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Reset the form
@@ -375,10 +570,6 @@ namespace sims.Admin_Side.Sales
                     quantitySoldTxt.Clear();
                     stockCmb.SelectedIndex = -1;
                     stock2Cmb.SelectedIndex = -1;
-                    stock3Cmb.SelectedIndex = -1;
-                    stock4Cmb.SelectedIndex = -1;
-                    stock5Cmb.SelectedIndex = -1;
-                    stock6Cmb.SelectedIndex = -1;
                     this.Hide();
                     previewProductsDashboard();
                 }
@@ -405,28 +596,6 @@ namespace sims.Admin_Side.Sales
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
-
-        private decimal parsedPrice;
-        private void productPriceTxt_Leave(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(productPriceTxt.Text))
-            {
-                // Remove peso sign and other formatting for processing
-                string rawInput = productPriceTxt.Text.Replace("₱", "").Trim();
-
-                if (decimal.TryParse(rawInput, out parsedPrice))
-                {
-                    // Format the input with the peso sign and two decimal places for display
-                    productPriceTxt.Text = $"₱{parsedPrice:0.00}";
-                }
-                else
-                {
-                    MessageBox.Show("Invalid input. Please enter a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    productPriceTxt.Clear();
-                    parsedPrice = 0; // Reset the parsed value to ensure no invalid data is stored
-                }
-            }
         }
 
         private void ValidateTextBoxForNumbersOnly(BunifuTextBox textBox)
@@ -501,6 +670,140 @@ namespace sims.Admin_Side.Sales
             stock4Cmb.SelectedIndex = -1;
             stock5Cmb.SelectedIndex = -1;
             stock6Cmb.SelectedIndex = -1;
+        }
+        private void UpdateProduct(string productID, string productName, string category, decimal productPrice, int stockQuantity, int quantitySold, string stockNeeded, string tableName, DateTime saleDate)
+        {
+            dbModule db = new dbModule();
+            MySqlConnection conn = db.GetConnection();
+            MySqlCommand cmd = db.GetCommand();
+
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+
+                // Update query
+                cmd.CommandText = $"UPDATE {tableName} " +
+                                  "SET Product_Name = @Product_Name, Category = @Category, Product_Price = @Product_Price, " +
+                                  "Stock_Quantity = @Stock_Quantity, Quantity_Sold = @Quantity_Sold, Total_Product_Sale = @Total_Product_Sale, " +
+                                  "Stock_Needed = @Stock_Needed, Sale_Date = @Sale_Date, Sale_Time = @Sale_Time " +
+                                  "WHERE Product_ID = @Product_ID";
+
+                cmd.Parameters.AddWithValue("@Product_ID", productID);
+                cmd.Parameters.AddWithValue("@Product_Name", productName);
+                cmd.Parameters.AddWithValue("@Category", category);
+                cmd.Parameters.AddWithValue("@Product_Price", productPrice);
+                cmd.Parameters.AddWithValue("@Stock_Quantity", stockQuantity);
+                cmd.Parameters.AddWithValue("@Quantity_Sold", quantitySold);
+                cmd.Parameters.AddWithValue("@Total_Product_Sale", quantitySold * productPrice);
+                cmd.Parameters.AddWithValue("@Stock_Needed", stockNeeded);
+                cmd.Parameters.AddWithValue("@Sale_Date", saleDate.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@Sale_Time", DateTime.Now.ToString("HH:mm:ss"));
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Product updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    previewProductsDashboard();
+                    TotalSalesCoffee();
+                }
+                else
+                {
+                    MessageBox.Show("No changes were made to the product.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (MySqlException sqlEx)
+            {
+                MessageBox.Show($"MySQL Error: {sqlEx.Message}", "SQL Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                cmd.Dispose();
+                conn.Dispose();
+            }
+        }
+
+        private void UpdateProductBtn_Click(object sender, EventArgs e)
+        {
+            string productID = productIDTxt.Text.Trim();
+            string productName = productNameTxt.Text.Trim();
+            string category = categoryCmb.SelectedItem?.ToString().Trim() ?? string.Empty;
+            string productPriceText = productPriceTxt.Text.Trim();
+            string stockQuantityText = quantityStockTxt.Text.Trim();
+            string quantitySoldText = quantitySoldTxt.Text.Trim();
+
+            if (string.IsNullOrEmpty(productID) || string.IsNullOrEmpty(productName) || string.IsNullOrEmpty(category) ||
+                string.IsNullOrEmpty(stockQuantityText) || string.IsNullOrEmpty(quantitySoldText))
+            {
+                new Field_Required().Show();
+                return;
+            }
+
+            if (!decimal.TryParse(productPriceText, out var productPrice))
+            {
+                MessageBox.Show("Invalid product price. Please enter a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(stockQuantityText, out var stockQuantity))
+            {
+                MessageBox.Show("Invalid stock quantity. Please enter a valid integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(quantitySoldText, out var quantitySold))
+            {
+                MessageBox.Show("Invalid quantity sold. Please enter a valid integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!DateTime.TryParse(DateLbl.Text, out var saleDate))
+            {
+                MessageBox.Show("Invalid sale date format. Please check the DateLbl value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Determine the table name
+            string tableName = string.Empty;
+            if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                tableName = "productsales_coffee";
+            }
+            else if (category.Equals("Non-Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                tableName = "productsales_noncoffee";
+            }
+            else if (category.Equals("Hot", StringComparison.OrdinalIgnoreCase))
+            {
+                tableName = "productsales_hotcoffee";
+            }
+            else
+            {
+                MessageBox.Show("Invalid category. Please select a valid category.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Prepare stock needed
+            List<string> stockItems = new List<string>();
+            if (!string.IsNullOrEmpty(stockCmb.SelectedItem?.ToString())) stockItems.Add(stockCmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock2Cmb.SelectedItem?.ToString())) stockItems.Add(stock2Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock3Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock4Cmb.SelectedItem?.ToString())) stockItems.Add(stock4Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock5Cmb.SelectedItem?.ToString())) stockItems.Add(stock5Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock6Cmb.SelectedItem?.ToString())) stockItems.Add(stock6Cmb.SelectedItem.ToString());
+            string stockNeeded = string.Join(", ", stockItems);
+
+            // Call the update function
+            UpdateProduct(productID, productName, category, productPrice, stockQuantity, quantitySold, stockNeeded, tableName, saleDate);
         }
     }
 }
