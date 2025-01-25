@@ -22,7 +22,7 @@ namespace sims.Staff_Side
         private IconButton currentBtn;
         private GunaPanel leftBorderBtn;
 
-        private Dashboard_Inventory_Staff dashboardInventoryInstance;
+        private Inventory_Dashboard_Staff dashboardInventoryInstance;
         private Manage_Items_Staff manageItemsStaffInstance;
         private Manage_Stocks_Staff manageStocksStaffInstance;
 
@@ -40,7 +40,7 @@ namespace sims.Staff_Side
         {
             ShowUsernameWithGreeting();
 
-            dashboardInventoryInstance = new Dashboard_Inventory_Staff();
+            dashboardInventoryInstance = new Inventory_Dashboard_Staff();
             manageItemsStaffInstance = new Manage_Items_Staff(dashboardInventoryInstance);
             manageStocksStaffInstance = new Manage_Stocks_Staff();
             LoadView(dashboardInventoryInstance);

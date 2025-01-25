@@ -14,9 +14,9 @@ namespace sims.Staff_Side.Items
 {
     public partial class Manage_Items_Staff : UserControl
     {
-        private Dashboard_Inventory_Staff _inventoryDashboard;
+        private Inventory_Dashboard_Staff _inventoryDashboard;
 
-        public Manage_Items_Staff(Dashboard_Inventory_Staff inventoryDashboard)
+        public Manage_Items_Staff(Inventory_Dashboard_Staff inventoryDashboard)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
@@ -61,6 +61,7 @@ namespace sims.Staff_Side.Items
                 }
             }
         }
+
         private void previewStock()
         {
             if (_inventoryDashboard != null)

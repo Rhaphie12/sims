@@ -1,5 +1,5 @@
-﻿using LiveCharts.Wpf;
-using LiveCharts;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -13,14 +13,15 @@ using System.Windows.Forms;
 
 namespace sims.Staff_Side
 {
-    public partial class Dashboard_Inventory_Staff : UserControl
+    public partial class Inventory_Dashboard_Staff : Form
     {
-        public Dashboard_Inventory_Staff()
+        public Inventory_Dashboard_Staff()
         {
             InitializeComponent();
+
         }
 
-        private void Dashboard_Inventory_Staff_Load(object sender, EventArgs e)
+        private void Inventory_Dashboard_Staff_Load(object sender, EventArgs e)
         {
             ItemsCount();
             ProductsCount();
@@ -140,10 +141,6 @@ namespace sims.Staff_Side
                     {
                         Title = "Item Stocks"
                     });
-
-                    // Enable zooming and scrolling
-                    stockPreviewChart.Zoom = ZoomingOptions.X;
-                    stockPreviewChart.ScrollMode = ScrollMode.X;
 
                     // Set dynamic range for X-axis
                     stockPreviewChart.AxisX[0].MinValue = 0;

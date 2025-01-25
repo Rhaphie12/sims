@@ -71,8 +71,6 @@
             // 
             // panel6
             // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.Controls.Add(this.gunaGroupBox5);
             this.panel6.Location = new System.Drawing.Point(13, 13);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
@@ -381,7 +379,7 @@
             this.stockPreviewChart.Location = new System.Drawing.Point(0, 0);
             this.stockPreviewChart.Name = "stockPreviewChart";
             this.stockPreviewChart.Size = new System.Drawing.Size(762, 304);
-            this.stockPreviewChart.TabIndex = 23;
+            this.stockPreviewChart.TabIndex = 24;
             this.stockPreviewChart.Text = "cartesianChart1";
             // 
             // Dashboard_Inventory_Staff
