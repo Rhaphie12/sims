@@ -33,9 +33,15 @@
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.gunaGroupBox6 = new Guna.UI.WinForms.GunaGroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.cartesianChart2 = new LiveCharts.WinForms.CartesianChart();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.gunaGroupBox4 = new Guna.UI.WinForms.GunaGroupBox();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.coffeeSalesChart = new LiveCharts.WinForms.PieChart();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CoffeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NonCoffeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HotCoffeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -61,11 +67,15 @@
             this.gunaGroupBox5 = new Guna.UI.WinForms.GunaGroupBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.stockPreviewChart = new LiveCharts.WinForms.CartesianChart();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2Panel3.SuspendLayout();
             this.gunaGroupBox6.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
             this.gunaGroupBox4.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.MenuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -136,31 +146,13 @@
             this.panel5.Size = new System.Drawing.Size(587, 257);
             this.panel5.TabIndex = 1;
             // 
-            // cartesianChart2
-            // 
-            this.cartesianChart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cartesianChart2.Location = new System.Drawing.Point(0, 0);
-            this.cartesianChart2.Name = "cartesianChart2";
-            this.cartesianChart2.Size = new System.Drawing.Size(577, 210);
-            this.cartesianChart2.TabIndex = 23;
-            this.cartesianChart2.Text = "cartesianChart2";
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.Controls.Add(this.cartesianChart2);
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 39);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
-            this.guna2Panel2.Size = new System.Drawing.Size(577, 210);
-            this.guna2Panel2.TabIndex = 1;
-            // 
             // gunaGroupBox4
             // 
             this.gunaGroupBox4.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox4.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox4.BorderColor = System.Drawing.Color.Gainsboro;
             this.gunaGroupBox4.Controls.Add(this.guna2Panel2);
+            this.gunaGroupBox4.Controls.Add(this.panel8);
             this.gunaGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox4.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
@@ -174,6 +166,73 @@
             this.gunaGroupBox4.Text = "Daily Sales";
             this.gunaGroupBox4.TextLocation = new System.Drawing.Point(10, 8);
             this.gunaGroupBox4.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.Controls.Add(this.coffeeSalesChart);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 39);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
+            this.guna2Panel2.Size = new System.Drawing.Size(577, 210);
+            this.guna2Panel2.TabIndex = 3;
+            // 
+            // coffeeSalesChart
+            // 
+            this.coffeeSalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.coffeeSalesChart.Location = new System.Drawing.Point(0, 0);
+            this.coffeeSalesChart.Margin = new System.Windows.Forms.Padding(0);
+            this.coffeeSalesChart.Name = "coffeeSalesChart";
+            this.coffeeSalesChart.Size = new System.Drawing.Size(577, 210);
+            this.coffeeSalesChart.TabIndex = 1;
+            this.coffeeSalesChart.Text = "pieChart2";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.MenuStrip1);
+            this.panel8.Location = new System.Drawing.Point(365, 6);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(204, 24);
+            this.panel8.TabIndex = 0;
+            // 
+            // MenuStrip1
+            // 
+            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ProductsToolStripMenuItem,
+            this.toolStripMenuItem1});
+            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip1.Name = "MenuStrip1";
+            this.MenuStrip1.Size = new System.Drawing.Size(204, 24);
+            this.MenuStrip1.TabIndex = 1;
+            this.MenuStrip1.Text = "MenuStrip1";
+            // 
+            // ProductsToolStripMenuItem
+            // 
+            this.ProductsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CoffeeToolStripMenuItem,
+            this.NonCoffeeToolStripMenuItem,
+            this.HotCoffeeToolStripMenuItem});
+            this.ProductsToolStripMenuItem.Name = "ProductsToolStripMenuItem";
+            this.ProductsToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.ProductsToolStripMenuItem.Text = "Products";
+            // 
+            // CoffeeToolStripMenuItem
+            // 
+            this.CoffeeToolStripMenuItem.Name = "CoffeeToolStripMenuItem";
+            this.CoffeeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.CoffeeToolStripMenuItem.Text = "Coffee";
+            // 
+            // NonCoffeeToolStripMenuItem
+            // 
+            this.NonCoffeeToolStripMenuItem.Name = "NonCoffeeToolStripMenuItem";
+            this.NonCoffeeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.NonCoffeeToolStripMenuItem.Text = "Non Coffee";
+            // 
+            // HotCoffeeToolStripMenuItem
+            // 
+            this.HotCoffeeToolStripMenuItem.Name = "HotCoffeeToolStripMenuItem";
+            this.HotCoffeeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.HotCoffeeToolStripMenuItem.Text = "Hot Coffee";
             // 
             // panel4
             // 
@@ -531,6 +590,20 @@
             this.stockPreviewChart.TabIndex = 23;
             this.stockPreviewChart.Text = "cartesianChart1";
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dateToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
+            this.toolStripMenuItem1.Text = "Filter by";
+            // 
+            // dateToolStripMenuItem
+            // 
+            this.dateToolStripMenuItem.Name = "dateToolStripMenuItem";
+            this.dateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dateToolStripMenuItem.Text = "Date";
+            // 
             // Inventory_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,8 +621,12 @@
             this.guna2Panel3.ResumeLayout(false);
             this.gunaGroupBox6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
             this.gunaGroupBox4.ResumeLayout(false);
+            this.guna2Panel2.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.MenuStrip1.ResumeLayout(false);
+            this.MenuStrip1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -582,8 +659,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox6;
         private System.Windows.Forms.Panel panel5;
-        private LiveCharts.WinForms.CartesianChart cartesianChart2;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -610,5 +685,15 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private LiveCharts.WinForms.CartesianChart stockPreviewChart;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox8;
+        private System.Windows.Forms.Panel panel8;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private LiveCharts.WinForms.PieChart coffeeSalesChart;
+        internal System.Windows.Forms.MenuStrip MenuStrip1;
+        internal System.Windows.Forms.ToolStripMenuItem ProductsToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem CoffeeToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem NonCoffeeToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem HotCoffeeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem dateToolStripMenuItem;
     }
 }

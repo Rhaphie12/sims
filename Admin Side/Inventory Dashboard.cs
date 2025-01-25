@@ -22,7 +22,7 @@ namespace sims.Admin_Side
             CategoriesCount();
             TotalSalesItems();
             ProductsCount();
-            stockPreviewChart.Zoom = ZoomingOptions.None; // Disable all zooming
+            TotalSalesCoffeePreview();
         }
 
         public void CategoriesCount()
@@ -244,6 +244,60 @@ namespace sims.Admin_Side
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+        public void TotalSalesCoffeePreview()
+        {
+            dbModule db = new dbModule();
+            SeriesCollection series = new SeriesCollection();
+
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT Product_Name, SUM(Total_Product_Sale) AS TotalSales FROM productsales_coffee GROUP BY Product_Name";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string productName = reader["Product_Name"]?.ToString() ?? "Unknown Product";
+                            if (decimal.TryParse(reader["TotalSales"]?.ToString(), out decimal totalSales))
+                            {
+                                series.Add(new PieSeries
+                                {
+                                    Title = productName,
+                                    Values = new ChartValues<decimal> { totalSales },
+                                    DataLabels = true
+                                });
+                            }
+                        }
+                    }
+                }
+
+                if (coffeeSalesChart != null)
+                {
+                    // Clear and set the pie chart series
+                    coffeeSalesChart.Series.Clear();
+                    coffeeSalesChart.Series = series;
+
+                    // Optionally update chart properties
+                    coffeeSalesChart.LegendLocation = LegendLocation.Bottom;
+                    coffeeSalesChart.Width = 700; // Increase chart width
+                    coffeeSalesChart.Height = 700; // Increase chart height
+                    coffeeSalesChart.Update(true, true);
+                }
+                else
+                {
+                    MessageBox.Show("Pie chart is not initialized!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

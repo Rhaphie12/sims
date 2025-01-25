@@ -30,9 +30,9 @@ namespace sims
         private Manage_Categoryy manageCategoryInstance;
         private Manage_Items manageItemsInstance;
         private Manage_Stockk manageStockInstance;
-        private Inventory_Report inventoryReportInstance;
+        private Inventory_Reportt inventoryReportInstance;
         private Product_Saless productSalesInstance;
-        private Manage_Sales_Report manageSalesReportInstance;
+        private Sales_Report manageSalesReportInstance;
         private Manage_User_Staff manageUserStaffInstance;
         private Add_Stock addStockInstance;
 
@@ -53,10 +53,10 @@ namespace sims
             dashboardInventoryInstance = new Inventory_Dashboard();
             manageCategoryInstance = new Manage_Categoryy(dashboardInventoryInstance);
             manageItemsInstance = new Manage_Items(dashboardInventoryInstance);
-            manageStockInstance = new Manage_Stockk(dashboardInventoryInstance, addStockInstance);
-            inventoryReportInstance = new Inventory_Report();
-            productSalesInstance = new Product_Saless(dashboardInventoryInstance, manageStockInstance, addStockInstance);
-            manageSalesReportInstance = new Manage_Sales_Report();
+            manageStockInstance = new Manage_Stockk(dashboardInventoryInstance, addStockInstance, inventoryReportInstance);
+            inventoryReportInstance = new Inventory_Reportt();
+            productSalesInstance = new Product_Saless(dashboardInventoryInstance, manageStockInstance, addStockInstance, inventoryReportInstance);
+            manageSalesReportInstance = new Sales_Report();
             manageUserStaffInstance = new Manage_User_Staff();
 
             LoadView(dashboardInventoryInstance);
