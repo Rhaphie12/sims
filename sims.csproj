@@ -79,6 +79,10 @@
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>..\..\..\Downloads\BACKUP\.net\.net frameworks\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -183,6 +187,7 @@
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -224,11 +229,17 @@
     <Compile Include="Admin Side\Inventory Dashboard.Designer.cs">
       <DependentUpon>Inventory Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Inventory Report\Inventory Report.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Admin Side\Inventory Report\Inventory Reportt.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin Side\Inventory Report\Inventory Report.Designer.cs">
-      <DependentUpon>Inventory Report.cs</DependentUpon>
+    <Compile Include="Admin Side\Inventory Report\Inventory Reportt.Designer.cs">
+      <DependentUpon>Inventory Reportt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Inventory Report\Stocks Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stocks Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Admin Side\Items\Edit Items.cs">
       <SubType>Form</SubType>
@@ -248,12 +259,6 @@
     <Compile Include="Admin Side\Items\New Items.Designer.cs">
       <DependentUpon>New Items.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Sales Report\Manage Sales Report.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Admin Side\Sales Report\Manage Sales Report.Designer.cs">
-      <DependentUpon>Manage Sales Report.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin Side\Products\Add Product.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +276,12 @@
     </Compile>
     <Compile Include="Admin Side\Products\Sales Form.Designer.cs">
       <DependentUpon>Sales Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Sales Report\Sales Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Sales Report\Sales Report.Designer.cs">
+      <DependentUpon>Sales Report.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Stocks\Add Stock.cs">
       <SubType>Form</SubType>
@@ -411,6 +422,12 @@
     <Compile Include="Notification\Stock notification\Stock Added.Designer.cs">
       <DependentUpon>Stock Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notification\Stock notification\Stock Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification\Stock notification\Stock Update.Designer.cs">
+      <DependentUpon>Stock Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Notification\Stock notification\Stock_Deleted.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -432,17 +449,17 @@
       <DependentUpon>Splash page.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="Staff Side\Dashboard Inventory Staff.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Staff Side\Dashboard Inventory Staff.Designer.cs">
-      <DependentUpon>Dashboard Inventory Staff.cs</DependentUpon>
-    </Compile>
     <Compile Include="Staff Side\Dashboard Staff.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Staff Side\Dashboard Staff.Designer.cs">
       <DependentUpon>Dashboard Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Inventory Dashboard Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Inventory Dashboard Staff.Designer.cs">
+      <DependentUpon>Inventory Dashboard Staff.cs</DependentUpon>
     </Compile>
     <Compile Include="Staff Side\Items\Manage_Items_Staff.cs">
       <SubType>UserControl</SubType>
@@ -462,6 +479,12 @@
     <Compile Include="Staff Side\Stocks\Stock Item.Designer.cs">
       <DependentUpon>Stock Item.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stocks Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stocks Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Admin Side\Category\Edit Category.resx">
       <DependentUpon>Edit Category.cs</DependentUpon>
     </EmbeddedResource>
@@ -474,8 +497,12 @@
     <EmbeddedResource Include="Admin Side\Inventory Dashboard.resx">
       <DependentUpon>Inventory Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Inventory Report\Inventory Report.resx">
-      <DependentUpon>Inventory Report.cs</DependentUpon>
+    <EmbeddedResource Include="Admin Side\Inventory Report\Inventory Reportt.resx">
+      <DependentUpon>Inventory Reportt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Inventory Report\Stocks Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Stocks Report.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Items\Edit Items.resx">
       <DependentUpon>Edit Items.cs</DependentUpon>
@@ -486,9 +513,6 @@
     <EmbeddedResource Include="Admin Side\Items\New Items.resx">
       <DependentUpon>New Items.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Sales Report\Manage Sales Report.resx">
-      <DependentUpon>Manage Sales Report.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Products\Add Product.resx">
       <DependentUpon>Add Product.cs</DependentUpon>
     </EmbeddedResource>
@@ -497,6 +521,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Products\Sales Form.resx">
       <DependentUpon>Sales Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Sales Report\Sales Report.resx">
+      <DependentUpon>Sales Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Add Stock.resx">
       <DependentUpon>Add Stock.cs</DependentUpon>
@@ -567,6 +594,9 @@
     <EmbeddedResource Include="Notification\Stock notification\Stock Added.resx">
       <DependentUpon>Stock Added.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Notification\Stock notification\Stock Update.resx">
+      <DependentUpon>Stock Update.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Notification\Stock notification\Stock_Deleted.resx">
       <DependentUpon>Stock_Deleted.cs</DependentUpon>
     </EmbeddedResource>
@@ -587,11 +617,11 @@
     <EmbeddedResource Include="Splash page and Loading Screen\Splash page.resx">
       <DependentUpon>Splash page.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Staff Side\Dashboard Inventory Staff.resx">
-      <DependentUpon>Dashboard Inventory Staff.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Staff Side\Dashboard Staff.resx">
       <DependentUpon>Dashboard Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Inventory Dashboard Staff.resx">
+      <DependentUpon>Inventory Dashboard Staff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Staff Side\Items\Manage_Items_Staff.resx">
       <DependentUpon>Manage_Items_Staff.cs</DependentUpon>
@@ -601,6 +631,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Staff Side\Stocks\Stock Item.resx">
       <DependentUpon>Stock Item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stocks Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Stocks Report.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -761,6 +795,9 @@
     <None Include="Resources\add.png" />
     <Content Include="Resources\delete.png" />
     <None Include="Resources\delete1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
