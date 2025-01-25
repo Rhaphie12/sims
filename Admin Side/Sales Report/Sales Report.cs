@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace sims.Admin_Side.Sales_Report
 {
-    public partial class Manage_Sales_Report : UserControl
+    public partial class Sales_Report : Form
     {
-        public Manage_Sales_Report()
+        public Sales_Report()
         {
             InitializeComponent();
         }
