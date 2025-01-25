@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Data;
+using sims.Notification.Stock_notification;
 
 namespace sims.Admin_Side.Stocks
 {
@@ -25,6 +26,11 @@ namespace sims.Admin_Side.Stocks
 
             _inventoryDashboard = inventoryDashboard;
             this.dashboard = dashboard;
+        }
+        public void Alert(string msg)
+        {
+            Stock_Update frm = new Stock_Update();
+            frm.showalert(msg);
         }
 
         private void previewStock()
@@ -272,6 +278,7 @@ namespace sims.Admin_Side.Stocks
                     itemImagePic.Image = null;
                     this.Close();
                     Populate();
+                    this.Alert("Stock Updated Successfully");
                     previewStock();
                 }
                 else

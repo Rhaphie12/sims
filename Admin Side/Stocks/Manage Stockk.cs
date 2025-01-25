@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using sims.Admin_Side.Inventory_Report;
 using sims.Notification.Stock_notification;
 using System;
 using System.Data;
@@ -12,12 +13,14 @@ namespace sims.Admin_Side.Stocks
     {
         private Inventory_Dashboard _inventoryDashboard;
         private Add_Stock _addStock;
+        private Inventory_Reportt _inventoryReport;
 
-        public Manage_Stockk(Inventory_Dashboard inventoryDashboard, Add_Stock _addStock)
+        public Manage_Stockk(Inventory_Dashboard inventoryDashboard, Add_Stock _addStock, Inventory_Reportt inventory_Reportt)
         {
             InitializeComponent();
             itemStockDgv.CellFormatting += itemStockDgv_CellFormatting;
             _inventoryDashboard = inventoryDashboard;
+            _inventoryReport = inventory_Reportt;
         }
 
         public DataGridView ItemsStockDgv
@@ -105,6 +108,17 @@ namespace sims.Admin_Side.Stocks
                 MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
+        private void stocksReport()
+        {
+            if (_inventoryReport != null)
+            {
+                _inventoryReport.PopulateStocks();
+            }
+            else
+            {
+                MessageBox.Show("Inventory Report is not available.");
+            }
+        }
 
         private DataTable SearchInDatabase(string searchTerm)
         {
@@ -151,7 +165,7 @@ namespace sims.Admin_Side.Stocks
             // Check if the form is already open
             if (_addStock == null || _addStock.IsDisposed)
             {
-                _addStock = new Add_Stock(this, _inventoryDashboard);
+                _addStock = new Add_Stock(this, _inventoryDashboard, _inventoryReport);
                 _addStock.Show();
             }
             else
@@ -191,6 +205,7 @@ namespace sims.Admin_Side.Stocks
                         ViewStock();
                         previewStock();
                         TotalSales();
+                        stocksReport();
                     }
                     else
                     {
