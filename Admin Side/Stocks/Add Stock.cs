@@ -135,8 +135,12 @@ namespace sims.Admin_Side.Stocks
 
         private void SelectItemID()
         {
-            string query = "SELECT Item_ID, Item_Name, Category, Item_Image FROM items"; // Include the image column
+            string query = "SELECT Item_ID, Item_Name, Category, Item_Image FROM items " +
+                           "WHERE Item_Name NOT IN (SELECT Item_Name FROM stocks)"; // Exclude items already in stocks
+
             dbModule db = new dbModule();
+            itemData.Clear(); // Clear the dictionary to refresh it
+            selectItemNameCmb.Items.Clear(); // Clear existing items in ComboBox
 
             try
             {
@@ -156,7 +160,8 @@ namespace sims.Admin_Side.Stocks
                                 byte[] itemImage = !reader.IsDBNull(reader.GetOrdinal("Item_Image"))
                                     ? (byte[])reader["Item_Image"]
                                     : null;
-                                selectItemNameCmb.Items.Add(itemName);
+
+                                selectItemNameCmb.Items.Add(itemName); // Add only items that are NOT in stock
                                 itemData[itemName] = (itemID, itemName, category, itemImage);
                             }
                         }
@@ -168,6 +173,7 @@ namespace sims.Admin_Side.Stocks
                 MessageBox.Show($"Error loading items: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void UnitType()
         {
@@ -290,7 +296,9 @@ namespace sims.Admin_Side.Stocks
 
                 if (rowsAffected > 0)
                 {
+                    selectItemNameCmb.Items.Remove(selectItemNameCmb.SelectedItem);
                     selectItemNameCmb.SelectedIndex = -1;
+
                     categoryCmb.SelectedIndex = -1;
                     itemQuantityTxt.Clear();
                     unitTypeCmb.SelectedIndex = -1;
@@ -298,6 +306,7 @@ namespace sims.Admin_Side.Stocks
                     itemPriceTxt.Clear();
                     itemTotalTxt.Clear();
                     itemImagePic.Image = null;
+
                     this.Close();
                     this.Alert("Stock Added Successfully");
                     Populate();
