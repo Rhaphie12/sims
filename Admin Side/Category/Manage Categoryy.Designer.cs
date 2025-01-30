@@ -41,11 +41,11 @@
             this.Category_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.newCategoryBtn = new Guna.UI.WinForms.GunaButton();
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
             this.searchCategoryTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.DeleteCategoryBtn = new Guna.UI.WinForms.GunaButton();
             this.editCategoryBtn = new Guna.UI.WinForms.GunaButton();
+            this.newCategoryBtn = new Guna.UI.WinForms.GunaButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             this.panel1.Controls.Add(this.recentlyAddedDgv);
             this.panel1.Location = new System.Drawing.Point(16, 59);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1145, 487);
+            this.panel1.Size = new System.Drawing.Size(1145, 470);
             this.panel1.TabIndex = 28;
             // 
             // recentlyAddedDgv
@@ -110,8 +110,8 @@
             this.recentlyAddedDgv.RowHeadersVisible = false;
             this.recentlyAddedDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.recentlyAddedDgv.RowTemplate.Height = 35;
-            this.recentlyAddedDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.recentlyAddedDgv.Size = new System.Drawing.Size(1143, 485);
+            this.recentlyAddedDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.recentlyAddedDgv.Size = new System.Drawing.Size(1143, 468);
             this.recentlyAddedDgv.TabIndex = 30;
             this.recentlyAddedDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.recentlyAddedDgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -135,6 +135,7 @@
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.Height = 35;
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.recentlyAddedDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.recentlyAddedDgv_DataBindingComplete);
             // 
             // Category_ID
             // 
@@ -156,37 +157,6 @@
             this.Category_Description.HeaderText = "Category Description";
             this.Category_Description.Name = "Category_Description";
             this.Category_Description.ReadOnly = true;
-            // 
-            // newCategoryBtn
-            // 
-            this.newCategoryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.newCategoryBtn.AnimationHoverSpeed = 0.07F;
-            this.newCategoryBtn.AnimationSpeed = 0.03F;
-            this.newCategoryBtn.BackColor = System.Drawing.Color.Transparent;
-            this.newCategoryBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.newCategoryBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.newCategoryBtn.BorderSize = 2;
-            this.newCategoryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.newCategoryBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.newCategoryBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.newCategoryBtn.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newCategoryBtn.ForeColor = System.Drawing.Color.White;
-            this.newCategoryBtn.Image = null;
-            this.newCategoryBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.newCategoryBtn.Location = new System.Drawing.Point(708, 557);
-            this.newCategoryBtn.Name = "newCategoryBtn";
-            this.newCategoryBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.newCategoryBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.newCategoryBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.newCategoryBtn.OnHoverImage = null;
-            this.newCategoryBtn.OnPressedColor = System.Drawing.Color.White;
-            this.newCategoryBtn.Radius = 6;
-            this.newCategoryBtn.Size = new System.Drawing.Size(147, 35);
-            this.newCategoryBtn.TabIndex = 25;
-            this.newCategoryBtn.Text = "New Category";
-            this.newCategoryBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.newCategoryBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.newCategoryBtn.Click += new System.EventHandler(this.newCategoryBtn_Click);
             // 
             // gunaGroupBox1
             // 
@@ -306,7 +276,7 @@
             this.DeleteCategoryBtn.ForeColor = System.Drawing.Color.Black;
             this.DeleteCategoryBtn.Image = null;
             this.DeleteCategoryBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.DeleteCategoryBtn.Location = new System.Drawing.Point(1014, 557);
+            this.DeleteCategoryBtn.Location = new System.Drawing.Point(686, 541);
             this.DeleteCategoryBtn.Name = "DeleteCategoryBtn";
             this.DeleteCategoryBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
             this.DeleteCategoryBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
@@ -314,7 +284,7 @@
             this.DeleteCategoryBtn.OnHoverImage = null;
             this.DeleteCategoryBtn.OnPressedColor = System.Drawing.Color.White;
             this.DeleteCategoryBtn.Radius = 6;
-            this.DeleteCategoryBtn.Size = new System.Drawing.Size(147, 35);
+            this.DeleteCategoryBtn.Size = new System.Drawing.Size(147, 50);
             this.DeleteCategoryBtn.TabIndex = 32;
             this.DeleteCategoryBtn.Text = "Delete Category";
             this.DeleteCategoryBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -335,9 +305,9 @@
             this.editCategoryBtn.FocusedColor = System.Drawing.Color.Empty;
             this.editCategoryBtn.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editCategoryBtn.ForeColor = System.Drawing.Color.White;
-            this.editCategoryBtn.Image = null;
+            this.editCategoryBtn.Image = global::sims.Properties.Resources.edit_white;
             this.editCategoryBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.editCategoryBtn.Location = new System.Drawing.Point(861, 557);
+            this.editCategoryBtn.Location = new System.Drawing.Point(517, 541);
             this.editCategoryBtn.Name = "editCategoryBtn";
             this.editCategoryBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.editCategoryBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -345,12 +315,41 @@
             this.editCategoryBtn.OnHoverImage = null;
             this.editCategoryBtn.OnPressedColor = System.Drawing.Color.White;
             this.editCategoryBtn.Radius = 6;
-            this.editCategoryBtn.Size = new System.Drawing.Size(147, 35);
+            this.editCategoryBtn.Size = new System.Drawing.Size(163, 50);
             this.editCategoryBtn.TabIndex = 25;
             this.editCategoryBtn.Text = "Edit Category";
-            this.editCategoryBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.editCategoryBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.editCategoryBtn.Click += new System.EventHandler(this.editCategoryBtn_Click);
+            // 
+            // newCategoryBtn
+            // 
+            this.newCategoryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.newCategoryBtn.AnimationHoverSpeed = 0.07F;
+            this.newCategoryBtn.AnimationSpeed = 0.03F;
+            this.newCategoryBtn.BackColor = System.Drawing.Color.Transparent;
+            this.newCategoryBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.newCategoryBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.newCategoryBtn.BorderSize = 2;
+            this.newCategoryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.newCategoryBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.newCategoryBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.newCategoryBtn.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newCategoryBtn.ForeColor = System.Drawing.Color.White;
+            this.newCategoryBtn.Image = global::sims.Properties.Resources.add_white;
+            this.newCategoryBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.newCategoryBtn.Location = new System.Drawing.Point(350, 541);
+            this.newCategoryBtn.Name = "newCategoryBtn";
+            this.newCategoryBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.newCategoryBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.newCategoryBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.newCategoryBtn.OnHoverImage = null;
+            this.newCategoryBtn.OnPressedColor = System.Drawing.Color.White;
+            this.newCategoryBtn.Radius = 6;
+            this.newCategoryBtn.Size = new System.Drawing.Size(161, 50);
+            this.newCategoryBtn.TabIndex = 25;
+            this.newCategoryBtn.Text = "New Category";
+            this.newCategoryBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.newCategoryBtn.Click += new System.EventHandler(this.newCategoryBtn_Click);
             // 
             // panel2
             // 

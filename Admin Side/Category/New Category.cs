@@ -9,14 +9,16 @@ namespace sims.Admin_Side.Category
     public partial class New_Category : Form
     {
         private Manage_Categoryy dashboardForm;
-        private Inventory_Dashboard _inventoryDashboard;
+        private Dashboard_Inventory _inventoryDashboard;
+        private DashboardOwner _dashboardOwner;
 
-        public New_Category(Manage_Categoryy dashboardForm, Inventory_Dashboard inventoryDashboard)
+        public New_Category(Manage_Categoryy dashboardForm, Dashboard_Inventory inventoryDashboard, DashboardOwner dashboardOwner)
         {
             InitializeComponent();
             this.dashboardForm = dashboardForm;
 
             _inventoryDashboard = inventoryDashboard;
+            _dashboardOwner = dashboardOwner;
         }
 
         public class Categories
@@ -80,6 +82,40 @@ namespace sims.Admin_Side.Category
             }
         }
 
+        public void Notification(bool hasNotification)
+        {
+            if (_dashboardOwner == null)
+            {
+                MessageBox.Show("Dashboard owner is not set!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (_dashboardOwner.bellIcon == null)
+            {
+                MessageBox.Show("Bell icon is not set!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Update the bell icon based on the notification state
+            _dashboardOwner.bellIcon.Image = hasNotification
+                ? Properties.Resources.Active_white // Set active icon
+                : Properties.Resources.bell__1____white; // Set default icon
+
+            if (hasNotification)
+            {
+                // Set a timer to reset the icon after 1 second
+                Timer timer = new Timer();
+                timer.Interval = 1000; // 1 second
+                timer.Tick += (sender, e) =>
+                {
+                    _dashboardOwner.bellIcon.Image = Properties.Resources.bell__1____white; // Set default icon
+                    timer.Stop(); // Stop the timer after it ticks
+                };
+                timer.Start();
+            }
+        }
+
+
         private void addCategoryBtn_Click(object sender, EventArgs e)
         {
             addCategory();
@@ -119,6 +155,7 @@ namespace sims.Admin_Side.Category
                         this.Alert("Category Added Successfully");
                         Populate();
                         CategoryCount();
+                        Notification(true);
                     }
                 }
                 catch (Exception ex)

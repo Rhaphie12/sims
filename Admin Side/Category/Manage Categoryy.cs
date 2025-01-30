@@ -19,13 +19,16 @@ namespace sims.Admin_Side.Category
 {
     public partial class Manage_Categoryy : Form
     {
-        private Inventory_Dashboard _inventoryDashboard;
+        private Dashboard_Inventory _inventoryDashboard;
         private New_Category _newCategory;
+        private DashboardOwner _dashboardOwner;
 
-        public Manage_Categoryy(Inventory_Dashboard inventoryDashboard)
+        public Manage_Categoryy(Dashboard_Inventory inventoryDashboard, DashboardOwner dashboardOwner)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
+            _dashboardOwner = dashboardOwner;
+            recentlyAddedDgv.DataBindingComplete += recentlyAddedDgv_DataBindingComplete;
         }
 
         public DataGridView RecentlyAddedDgv
@@ -133,7 +136,7 @@ namespace sims.Admin_Side.Category
             // Check if the form is already open
             if (_newCategory == null || _newCategory.IsDisposed)
             {
-                _newCategory = new New_Category(this, _inventoryDashboard);
+                _newCategory = new New_Category(this, _inventoryDashboard, _dashboardOwner);
                 _newCategory.Show();
             }
             else
@@ -145,6 +148,12 @@ namespace sims.Admin_Side.Category
 
         private void editCategoryBtn_Click(object sender, EventArgs e)
         {
+            if (recentlyAddedDgv.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("Please select a record to update.", "Notice!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             DialogResult result = MessageBox.Show("Are you sure you want to update this record?", "Update Category?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
@@ -207,6 +216,7 @@ namespace sims.Admin_Side.Category
                 }
             }
         }
+
         private void DeleteRecord(string categoryID)
         {
             dbModule db = new dbModule();
@@ -228,6 +238,11 @@ namespace sims.Admin_Side.Category
                     MessageBox.Show($"Error while deleting the record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void recentlyAddedDgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            recentlyAddedDgv.ClearSelection();
         }
     }
 }
