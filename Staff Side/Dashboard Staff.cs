@@ -1,9 +1,12 @@
-﻿using FontAwesome.Sharp;
+﻿    using FontAwesome.Sharp;
 using Guna.UI.WinForms;
 using MySql.Data.MySqlClient;
 using sims.Admin_Side;
 using sims.Admin_Side.Items;
+using sims.Admin_Side.Stocks;
 using sims.Staff_Side.Items;
+using sims.Staff_Side.Sales_Report_Staff;
+using sims.Staff_Side.Sales_Staff;
 using sims.Staff_Side.Stocks;
 using System;
 using System.Collections.Generic;
@@ -25,6 +28,9 @@ namespace sims.Staff_Side
         private Inventory_Dashboard_Staff dashboardInventoryInstance;
         private Manage_Items_Staff manageItemsStaffInstance;
         private Manage_Stocks_Staff manageStocksStaffInstance;
+        private Product_Sales_Staff productSalesStaffInstance;
+        private Add_Stocks_Staff addStockInstance;
+        private Report_Sales_Staff salesReportStaffInstance;
 
         public Dashboard_Staff()
         {
@@ -42,7 +48,9 @@ namespace sims.Staff_Side
 
             dashboardInventoryInstance = new Inventory_Dashboard_Staff();
             manageItemsStaffInstance = new Manage_Items_Staff(dashboardInventoryInstance);
-            manageStocksStaffInstance = new Manage_Stocks_Staff();
+            manageStocksStaffInstance = new Manage_Stocks_Staff(dashboardInventoryInstance, addStockInstance);
+            productSalesStaffInstance = new Product_Sales_Staff(dashboardInventoryInstance, manageStocksStaffInstance, addStockInstance);
+            salesReportStaffInstance = new Report_Sales_Staff();
             LoadView(dashboardInventoryInstance);
             ActivateButton(DashboardBtn, Color.White);
         }
@@ -202,19 +210,16 @@ namespace sims.Staff_Side
             OpeninPanel(manageStocksStaffInstance);
         }
 
-        private void inventoryReport_Click(object sender, EventArgs e)
+        private void productSalesBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-        }
-
-        private void SalesBtn_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, Color.FromArgb(255, 255, 255));
+            OpeninPanel(productSalesStaffInstance);
         }
 
         private void salesReportBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
+            OpeninPanel(salesReportStaffInstance);
         }
 
         private void SignoutBtn_Click(object sender, EventArgs e)
@@ -231,5 +236,6 @@ namespace sims.Staff_Side
                 new Login_Form().Show();
             }
         }
+
     }
 }

@@ -26,6 +26,10 @@ namespace sims.Staff_Side
             ItemsCount();
             ProductsCount();
             StockPreview();
+            TotalSalesItems();
+
+            TotalSalesPreview("Coffee");
+            MonthlySalesPreview("Coffee");
         }
 
         public void ItemsCount()
@@ -79,6 +83,56 @@ namespace sims.Staff_Side
                 {
                     conn.Close();
                 }
+            }
+        }
+        public void TotalSalesItems()
+        {
+            dbModule db = new dbModule();
+            MySqlConnection conn = db.GetConnection();
+            MySqlCommand cmd = db.GetCommand();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+
+                // Query to get all stocks and calculate the total of Item_Total
+                cmd.CommandText = "SELECT *, SUM(Item_Total) AS TotalSales FROM stocks";
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+
+                //activityLogsBtn.DataSource = dataTable;
+
+                // Check if the TotalSales column is present in the result
+                if (dataTable.Rows.Count > 0 && dataTable.Columns.Contains("TotalSales"))
+                {
+                    object totalSalesValue = dataTable.Rows[0]["TotalSales"];
+                    if (decimal.TryParse(totalSalesValue?.ToString(), out decimal totalSales))
+                    {
+                        // Format the total sales value with a peso sign
+                        totalSalesLbl.Text = $"₱ {totalSales:0.00}";
+                    }
+                    else
+                    {
+                        totalSalesLbl.Text = "₱ 0.00";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to populate stock data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                cmd.Dispose();
+                conn.Dispose();
             }
         }
 
@@ -171,6 +225,201 @@ namespace sims.Staff_Side
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
+        }
+
+        public void TotalSalesPreview(string category)
+        {
+            dbModule db = new dbModule();
+            SeriesCollection series = new SeriesCollection();
+            decimal totalSales = 0;
+
+            try
+            {
+                // Determine the table name based on the category
+                string tableName = DetermineTableName(category);
+                if (string.IsNullOrEmpty(tableName))
+                {
+                    MessageBox.Show($"Invalid category: {category}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    // Get total sales for the category
+                    string totalSalesQuery = $"SELECT SUM(Total_Product_Sale) AS TotalSales FROM {tableName}";
+                    MySqlCommand totalSalesCmd = new MySqlCommand(totalSalesQuery, conn);
+                    totalSales = Convert.ToDecimal(totalSalesCmd.ExecuteScalar());
+
+                    // Get sales and quantity per product
+                    string query = $@"
+                SELECT 
+                    Product_Name, 
+                    SUM(Total_Product_Sale) AS TotalSales, 
+                    SUM(Quantity_Sold) AS TotalQuantity 
+                FROM {tableName} 
+                GROUP BY Product_Name";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string productName = reader["Product_Name"]?.ToString() ?? "Unknown Product";
+                            decimal productSales = reader["TotalSales"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["TotalSales"]);
+                            int productQuantity = reader["TotalQuantity"] == DBNull.Value ? 0 : Convert.ToInt32(reader["TotalQuantity"]);
+
+                            // Add the product data to the chart
+                            series.Add(new PieSeries
+                            {
+                                Title = $"{productName} ({productQuantity} sold)", // Include quantity in the label
+                                Values = new ChartValues<decimal> { productSales },
+                                DataLabels = true
+                            });
+                        }
+                    }
+                }
+
+                if (DailySalesChart != null)
+                {
+                    // Clear and set the pie chart series
+                    DailySalesChart.Series.Clear();
+                    DailySalesChart.Series = series;
+
+                    // Update chart properties
+                    DailySalesChart.LegendLocation = LegendLocation.Bottom;
+                    DailySalesChart.Update(true, true);
+
+                    // Update the title label
+                    chartTitleLabel.Text = $"{category} Sales";
+                    chartTitleLabel.Font = new Font("Poppins", 11);
+                    chartTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
+                }
+                else
+                {
+                    MessageBox.Show("Pie chart is not initialized!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void MonthlySalesPreview(string category)
+        {
+            dbModule db = new dbModule();
+            SeriesCollection series = new SeriesCollection();
+            decimal totalSales = 0;
+
+            try
+            {
+                // Determine the table name based on the category
+                string tableName = DetermineTableName(category);
+                if (string.IsNullOrEmpty(tableName))
+                {
+                    MessageBox.Show($"Invalid category: {category}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    // Get total sales for the category
+                    string totalSalesQuery = $"SELECT SUM(Total_Product_Sale) AS TotalSales FROM {tableName}";
+                    MySqlCommand totalSalesCmd = new MySqlCommand(totalSalesQuery, conn);
+                    totalSales = Convert.ToDecimal(totalSalesCmd.ExecuteScalar());
+
+                    // Get sales per product
+                    string query = $"SELECT Product_Name, SUM(Total_Product_Sale) AS TotalSales FROM {tableName} GROUP BY Product_Name";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string productName = reader["Product_Name"]?.ToString() ?? "Unknown Product";
+                            if (decimal.TryParse(reader["TotalSales"]?.ToString(), out decimal productSales))
+                            {
+                                series.Add(new PieSeries
+                                {
+                                    Title = productName,
+                                    Values = new ChartValues<decimal> { productSales },
+                                    DataLabels = true
+                                });
+                            }
+                        }
+                    }
+                }
+
+                if (MonthlySalesChart != null)
+                {
+                    // Clear and set the pie chart series
+                    MonthlySalesChart.Series.Clear();
+                    MonthlySalesChart.Series = series;
+
+                    // Update chart properties
+                    MonthlySalesChart.LegendLocation = LegendLocation.Bottom;
+                    MonthlySalesChart.Update(true, true);
+                }
+                else
+                {
+                    MessageBox.Show("Pie chart is not initialized!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private string DetermineTableName(string category)
+        {
+            if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsales_coffee";
+            }
+            else if (category.Equals("Non-Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsales_noncoffee";
+            }
+            else if (category.Equals("Hot Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsales_hotcoffee";
+            }
+
+            return string.Empty;
+        }
+
+        private void CoffeeMenuItem_Click(object sender, EventArgs e)
+        {
+            TotalSalesPreview("Coffee");
+        }
+
+        private void NonCoffeeMenuItem_Click(object sender, EventArgs e)
+        {
+            TotalSalesPreview("Non-Coffee");
+        }
+
+        private void HotCoffeeMenuItem_Click(object sender, EventArgs e)
+        {
+            TotalSalesPreview("Hot Coffee");
+        }
+
+        private void CoffeeMonthlyChart_Click(object sender, EventArgs e)
+        {
+            MonthlySalesPreview("Coffee");
+        }
+
+        private void NonCoffeeMonthlyChart_Click(object sender, EventArgs e)
+        {
+            MonthlySalesPreview("Non-Coffee");
+        }
+
+        private void HotCoffeeMonthlyChart_Click(object sender, EventArgs e)
+        {
+            MonthlySalesPreview("Hot Coffee");
         }
     }
 }

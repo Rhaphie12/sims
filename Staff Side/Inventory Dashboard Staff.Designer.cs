@@ -35,42 +35,71 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.stockPreviewChart = new LiveCharts.WinForms.CartesianChart();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.gunaGroupBox4 = new Guna.UI.WinForms.GunaGroupBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.gunaGroupBox6 = new Guna.UI.WinForms.GunaGroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
+            this.productsCountTxt = new System.Windows.Forms.Label();
+            this.gunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
             this.itemsCountTxt = new System.Windows.Forms.Label();
             this.gunaPictureBox2 = new Guna.UI.WinForms.GunaPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
-            this.Label4 = new System.Windows.Forms.Label();
+            this.totalSalesLbl = new System.Windows.Forms.Label();
             this.GunaPictureBox1 = new Guna.UI.WinForms.GunaPictureBox();
-            this.gunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
-            this.productsCountTxt = new System.Windows.Forms.Label();
-            this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.gunaGroupBox4 = new Guna.UI.WinForms.GunaGroupBox();
+            this.gunaGroupBox7 = new Guna.UI.WinForms.GunaGroupBox();
+            this.chartTitleLabel = new System.Windows.Forms.Label();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.DailySalesChart = new LiveCharts.WinForms.PieChart();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.CoffeeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NonCoffeeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HotCoffeeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.gunaGroupBox6 = new Guna.UI.WinForms.GunaGroupBox();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.CoffeeMonthlyChart = new System.Windows.Forms.ToolStripMenuItem();
+            this.NonCoffeeMonthlyChart = new System.Windows.Forms.ToolStripMenuItem();
+            this.HotCoffeeMonthlyChart = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.MonthlySalesChart = new LiveCharts.WinForms.PieChart();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.gunaGroupBox5.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.gunaGroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.gunaGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox3)).BeginInit();
-            this.gunaGroupBox3.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.gunaGroupBox4.SuspendLayout();
+            this.gunaGroupBox7.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.gunaGroupBox6.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
+            this.guna2Panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -152,82 +181,6 @@
             this.panel5.Size = new System.Drawing.Size(359, 364);
             this.panel5.TabIndex = 1;
             // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.panel6, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.panel7, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(9, 383);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1119, 308);
-            this.tableLayoutPanel3.TabIndex = 124;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.gunaGroupBox4);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(549, 308);
-            this.panel6.TabIndex = 2;
-            // 
-            // gunaGroupBox4
-            // 
-            this.gunaGroupBox4.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox4.BaseColor = System.Drawing.Color.White;
-            this.gunaGroupBox4.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gunaGroupBox4.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
-            this.gunaGroupBox4.LineTop = 0;
-            this.gunaGroupBox4.Location = new System.Drawing.Point(0, 0);
-            this.gunaGroupBox4.Margin = new System.Windows.Forms.Padding(0);
-            this.gunaGroupBox4.Name = "gunaGroupBox4";
-            this.gunaGroupBox4.Radius = 10;
-            this.gunaGroupBox4.Size = new System.Drawing.Size(549, 308);
-            this.gunaGroupBox4.TabIndex = 117;
-            this.gunaGroupBox4.Text = "Daily Sales";
-            this.gunaGroupBox4.TextLocation = new System.Drawing.Point(10, 8);
-            this.gunaGroupBox4.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.gunaGroupBox6);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(559, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(560, 308);
-            this.panel7.TabIndex = 1;
-            // 
-            // gunaGroupBox6
-            // 
-            this.gunaGroupBox6.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox6.BaseColor = System.Drawing.Color.White;
-            this.gunaGroupBox6.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gunaGroupBox6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
-            this.gunaGroupBox6.LineTop = 0;
-            this.gunaGroupBox6.Location = new System.Drawing.Point(0, 0);
-            this.gunaGroupBox6.Margin = new System.Windows.Forms.Padding(0);
-            this.gunaGroupBox6.Name = "gunaGroupBox6";
-            this.gunaGroupBox6.Radius = 10;
-            this.gunaGroupBox6.Size = new System.Drawing.Size(560, 308);
-            this.gunaGroupBox6.TabIndex = 116;
-            this.gunaGroupBox6.Text = "Monthly Sales";
-            this.gunaGroupBox6.TextLocation = new System.Drawing.Point(10, 8);
-            this.gunaGroupBox6.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -257,6 +210,51 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(359, 122);
             this.panel3.TabIndex = 2;
+            // 
+            // gunaGroupBox3
+            // 
+            this.gunaGroupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox3.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox3.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox3.Controls.Add(this.productsCountTxt);
+            this.gunaGroupBox3.Controls.Add(this.gunaPictureBox3);
+            this.gunaGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
+            this.gunaGroupBox3.LineLeft = 5;
+            this.gunaGroupBox3.LineTop = 0;
+            this.gunaGroupBox3.Location = new System.Drawing.Point(0, 0);
+            this.gunaGroupBox3.Margin = new System.Windows.Forms.Padding(10);
+            this.gunaGroupBox3.Name = "gunaGroupBox3";
+            this.gunaGroupBox3.Padding = new System.Windows.Forms.Padding(10);
+            this.gunaGroupBox3.Radius = 10;
+            this.gunaGroupBox3.Size = new System.Drawing.Size(359, 122);
+            this.gunaGroupBox3.TabIndex = 9;
+            this.gunaGroupBox3.Text = "Products";
+            this.gunaGroupBox3.TextLocation = new System.Drawing.Point(10, 8);
+            this.gunaGroupBox3.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // productsCountTxt
+            // 
+            this.productsCountTxt.AutoSize = true;
+            this.productsCountTxt.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productsCountTxt.Location = new System.Drawing.Point(13, 44);
+            this.productsCountTxt.Name = "productsCountTxt";
+            this.productsCountTxt.Size = new System.Drawing.Size(38, 34);
+            this.productsCountTxt.TabIndex = 4;
+            this.productsCountTxt.Text = "20";
+            // 
+            // gunaPictureBox3
+            // 
+            this.gunaPictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gunaPictureBox3.BaseColor = System.Drawing.Color.White;
+            this.gunaPictureBox3.Image = global::sims.Properties.Resources.boxes;
+            this.gunaPictureBox3.Location = new System.Drawing.Point(284, 58);
+            this.gunaPictureBox3.Name = "gunaPictureBox3";
+            this.gunaPictureBox3.Size = new System.Drawing.Size(62, 51);
+            this.gunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.gunaPictureBox3.TabIndex = 1;
+            this.gunaPictureBox3.TabStop = false;
             // 
             // panel2
             // 
@@ -328,7 +326,7 @@
             this.gunaGroupBox1.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox1.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox1.Controls.Add(this.Label4);
+            this.gunaGroupBox1.Controls.Add(this.totalSalesLbl);
             this.gunaGroupBox1.Controls.Add(this.GunaPictureBox1);
             this.gunaGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox1.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -346,15 +344,15 @@
             this.gunaGroupBox1.TextLocation = new System.Drawing.Point(10, 8);
             this.gunaGroupBox1.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
-            // Label4
+            // totalSalesLbl
             // 
-            this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(13, 41);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(107, 34);
-            this.Label4.TabIndex = 4;
-            this.Label4.Text = "₱ 100,000";
+            this.totalSalesLbl.AutoSize = true;
+            this.totalSalesLbl.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalSalesLbl.Location = new System.Drawing.Point(13, 41);
+            this.totalSalesLbl.Name = "totalSalesLbl";
+            this.totalSalesLbl.Size = new System.Drawing.Size(107, 34);
+            this.totalSalesLbl.TabIndex = 4;
+            this.totalSalesLbl.Text = "₱ 100,000";
             // 
             // GunaPictureBox1
             // 
@@ -368,50 +366,278 @@
             this.GunaPictureBox1.TabIndex = 1;
             this.GunaPictureBox1.TabStop = false;
             // 
-            // gunaPictureBox3
+            // tableLayoutPanel3
             // 
-            this.gunaPictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaPictureBox3.BaseColor = System.Drawing.Color.White;
-            this.gunaPictureBox3.Image = global::sims.Properties.Resources.boxes;
-            this.gunaPictureBox3.Location = new System.Drawing.Point(284, 58);
-            this.gunaPictureBox3.Name = "gunaPictureBox3";
-            this.gunaPictureBox3.Size = new System.Drawing.Size(62, 51);
-            this.gunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.gunaPictureBox3.TabIndex = 1;
-            this.gunaPictureBox3.TabStop = false;
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.panel6, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel7, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(9, 383);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1119, 308);
+            this.tableLayoutPanel3.TabIndex = 124;
             // 
-            // productsCountTxt
+            // panel6
             // 
-            this.productsCountTxt.AutoSize = true;
-            this.productsCountTxt.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productsCountTxt.Location = new System.Drawing.Point(13, 44);
-            this.productsCountTxt.Name = "productsCountTxt";
-            this.productsCountTxt.Size = new System.Drawing.Size(38, 34);
-            this.productsCountTxt.TabIndex = 4;
-            this.productsCountTxt.Text = "20";
+            this.panel6.Controls.Add(this.gunaGroupBox4);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(549, 308);
+            this.panel6.TabIndex = 2;
             // 
-            // gunaGroupBox3
+            // gunaGroupBox4
             // 
-            this.gunaGroupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox3.BaseColor = System.Drawing.Color.White;
-            this.gunaGroupBox3.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox3.Controls.Add(this.productsCountTxt);
-            this.gunaGroupBox3.Controls.Add(this.gunaPictureBox3);
-            this.gunaGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gunaGroupBox3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
-            this.gunaGroupBox3.LineLeft = 5;
-            this.gunaGroupBox3.LineTop = 0;
-            this.gunaGroupBox3.Location = new System.Drawing.Point(0, 0);
-            this.gunaGroupBox3.Margin = new System.Windows.Forms.Padding(10);
-            this.gunaGroupBox3.Name = "gunaGroupBox3";
-            this.gunaGroupBox3.Padding = new System.Windows.Forms.Padding(10);
-            this.gunaGroupBox3.Radius = 10;
-            this.gunaGroupBox3.Size = new System.Drawing.Size(359, 122);
-            this.gunaGroupBox3.TabIndex = 9;
-            this.gunaGroupBox3.Text = "Products";
-            this.gunaGroupBox3.TextLocation = new System.Drawing.Point(10, 8);
-            this.gunaGroupBox3.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.gunaGroupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox4.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox4.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox4.Controls.Add(this.gunaGroupBox7);
+            this.gunaGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox4.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
+            this.gunaGroupBox4.LineTop = 0;
+            this.gunaGroupBox4.Location = new System.Drawing.Point(0, 0);
+            this.gunaGroupBox4.Margin = new System.Windows.Forms.Padding(0);
+            this.gunaGroupBox4.Name = "gunaGroupBox4";
+            this.gunaGroupBox4.Radius = 10;
+            this.gunaGroupBox4.Size = new System.Drawing.Size(549, 308);
+            this.gunaGroupBox4.TabIndex = 117;
+            this.gunaGroupBox4.Text = "Daily Sales";
+            this.gunaGroupBox4.TextLocation = new System.Drawing.Point(10, 8);
+            this.gunaGroupBox4.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // gunaGroupBox7
+            // 
+            this.gunaGroupBox7.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox7.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox7.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox7.Controls.Add(this.chartTitleLabel);
+            this.gunaGroupBox7.Controls.Add(this.guna2Panel2);
+            this.gunaGroupBox7.Controls.Add(this.panel9);
+            this.gunaGroupBox7.Controls.Add(this.panel8);
+            this.gunaGroupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox7.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox7.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
+            this.gunaGroupBox7.LineTop = 0;
+            this.gunaGroupBox7.Location = new System.Drawing.Point(0, 0);
+            this.gunaGroupBox7.Margin = new System.Windows.Forms.Padding(0);
+            this.gunaGroupBox7.Name = "gunaGroupBox7";
+            this.gunaGroupBox7.Radius = 10;
+            this.gunaGroupBox7.Size = new System.Drawing.Size(549, 308);
+            this.gunaGroupBox7.TabIndex = 118;
+            this.gunaGroupBox7.TextLocation = new System.Drawing.Point(10, 8);
+            this.gunaGroupBox7.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // chartTitleLabel
+            // 
+            this.chartTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartTitleLabel.AutoSize = true;
+            this.chartTitleLabel.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chartTitleLabel.Location = new System.Drawing.Point(395, 6);
+            this.chartTitleLabel.Name = "chartTitleLabel";
+            this.chartTitleLabel.Size = new System.Drawing.Size(135, 26);
+            this.chartTitleLabel.TabIndex = 4;
+            this.chartTitleLabel.Text = "Hot Coffee Sales";
+            this.chartTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel2.Controls.Add(this.DailySalesChart);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 39);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
+            this.guna2Panel2.Size = new System.Drawing.Size(549, 252);
+            this.guna2Panel2.TabIndex = 3;
+            // 
+            // DailySalesChart
+            // 
+            this.DailySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DailySalesChart.Location = new System.Drawing.Point(0, 0);
+            this.DailySalesChart.Margin = new System.Windows.Forms.Padding(0);
+            this.DailySalesChart.Name = "DailySalesChart";
+            this.DailySalesChart.Size = new System.Drawing.Size(549, 252);
+            this.DailySalesChart.TabIndex = 3;
+            this.DailySalesChart.Text = "pieChart2";
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.menuStrip1);
+            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(132, 33);
+            this.panel9.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(132, 34);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "MenuStrip1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CoffeeMenuItem,
+            this.NonCoffeeMenuItem,
+            this.HotCoffeeMenuItem});
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(105, 30);
+            this.toolStripMenuItem1.Text = "Daily Sales";
+            // 
+            // CoffeeMenuItem
+            // 
+            this.CoffeeMenuItem.Name = "CoffeeMenuItem";
+            this.CoffeeMenuItem.Size = new System.Drawing.Size(169, 30);
+            this.CoffeeMenuItem.Text = "Coffee";
+            this.CoffeeMenuItem.Click += new System.EventHandler(this.CoffeeMenuItem_Click);
+            // 
+            // NonCoffeeMenuItem
+            // 
+            this.NonCoffeeMenuItem.Name = "NonCoffeeMenuItem";
+            this.NonCoffeeMenuItem.Size = new System.Drawing.Size(169, 30);
+            this.NonCoffeeMenuItem.Text = "Non Coffee";
+            this.NonCoffeeMenuItem.Click += new System.EventHandler(this.NonCoffeeMenuItem_Click);
+            // 
+            // HotCoffeeMenuItem
+            // 
+            this.HotCoffeeMenuItem.Name = "HotCoffeeMenuItem";
+            this.HotCoffeeMenuItem.Size = new System.Drawing.Size(169, 30);
+            this.HotCoffeeMenuItem.Text = "Hot Coffee";
+            this.HotCoffeeMenuItem.Click += new System.EventHandler(this.HotCoffeeMenuItem_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(3, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(132, 33);
+            this.panel8.TabIndex = 0;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.gunaGroupBox6);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(559, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(560, 308);
+            this.panel7.TabIndex = 1;
+            // 
+            // gunaGroupBox6
+            // 
+            this.gunaGroupBox6.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox6.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox6.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox6.Controls.Add(this.panel11);
+            this.gunaGroupBox6.Controls.Add(this.panel12);
+            this.gunaGroupBox6.Controls.Add(this.guna2Panel3);
+            this.gunaGroupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(25)))));
+            this.gunaGroupBox6.LineTop = 0;
+            this.gunaGroupBox6.Location = new System.Drawing.Point(0, 0);
+            this.gunaGroupBox6.Margin = new System.Windows.Forms.Padding(0);
+            this.gunaGroupBox6.Name = "gunaGroupBox6";
+            this.gunaGroupBox6.Radius = 10;
+            this.gunaGroupBox6.Size = new System.Drawing.Size(560, 308);
+            this.gunaGroupBox6.TabIndex = 118;
+            this.gunaGroupBox6.TextLocation = new System.Drawing.Point(10, 8);
+            this.gunaGroupBox6.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.menuStrip2);
+            this.panel11.Location = new System.Drawing.Point(3, 3);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(188, 33);
+            this.panel11.TabIndex = 5;
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(188, 34);
+            this.menuStrip2.TabIndex = 1;
+            this.menuStrip2.Text = "MenuStrip1";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CoffeeMonthlyChart,
+            this.NonCoffeeMonthlyChart,
+            this.HotCoffeeMonthlyChart});
+            this.toolStripMenuItem5.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(128, 30);
+            this.toolStripMenuItem5.Text = "Monthly Sales";
+            // 
+            // CoffeeMonthlyChart
+            // 
+            this.CoffeeMonthlyChart.Name = "CoffeeMonthlyChart";
+            this.CoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
+            this.CoffeeMonthlyChart.Text = "Coffee";
+            this.CoffeeMonthlyChart.Click += new System.EventHandler(this.CoffeeMonthlyChart_Click);
+            // 
+            // NonCoffeeMonthlyChart
+            // 
+            this.NonCoffeeMonthlyChart.Name = "NonCoffeeMonthlyChart";
+            this.NonCoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
+            this.NonCoffeeMonthlyChart.Text = "Non Coffee";
+            this.NonCoffeeMonthlyChart.Click += new System.EventHandler(this.NonCoffeeMonthlyChart_Click);
+            // 
+            // HotCoffeeMonthlyChart
+            // 
+            this.HotCoffeeMonthlyChart.Name = "HotCoffeeMonthlyChart";
+            this.HotCoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
+            this.HotCoffeeMonthlyChart.Text = "Hot Coffee";
+            this.HotCoffeeMonthlyChart.Click += new System.EventHandler(this.HotCoffeeMonthlyChart_Click);
+            // 
+            // panel12
+            // 
+            this.panel12.Location = new System.Drawing.Point(3, 3);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(188, 33);
+            this.panel12.TabIndex = 6;
+            // 
+            // guna2Panel3
+            // 
+            this.guna2Panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel3.Controls.Add(this.MonthlySalesChart);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 39);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.guna2Panel3.Name = "guna2Panel3";
+            this.guna2Panel3.ShadowDecoration.Parent = this.guna2Panel3;
+            this.guna2Panel3.Size = new System.Drawing.Size(560, 261);
+            this.guna2Panel3.TabIndex = 2;
+            // 
+            // MonthlySalesChart
+            // 
+            this.MonthlySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MonthlySalesChart.Location = new System.Drawing.Point(0, 0);
+            this.MonthlySalesChart.Margin = new System.Windows.Forms.Padding(0);
+            this.MonthlySalesChart.Name = "MonthlySalesChart";
+            this.MonthlySalesChart.Size = new System.Drawing.Size(560, 261);
+            this.MonthlySalesChart.TabIndex = 2;
+            this.MonthlySalesChart.Text = "pieChart2";
             // 
             // Inventory_Dashboard_Staff
             // 
@@ -430,11 +656,11 @@
             this.gunaGroupBox5.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.gunaGroupBox3.ResumeLayout(false);
+            this.gunaGroupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.gunaGroupBox2.ResumeLayout(false);
             this.gunaGroupBox2.PerformLayout();
@@ -443,9 +669,23 @@
             this.gunaGroupBox1.ResumeLayout(false);
             this.gunaGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox3)).EndInit();
-            this.gunaGroupBox3.ResumeLayout(false);
-            this.gunaGroupBox3.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.gunaGroupBox4.ResumeLayout(false);
+            this.gunaGroupBox7.ResumeLayout(false);
+            this.gunaGroupBox7.PerformLayout();
+            this.guna2Panel2.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.gunaGroupBox6.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
+            this.guna2Panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -462,7 +702,6 @@
         private System.Windows.Forms.Panel panel6;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox4;
         private System.Windows.Forms.Panel panel7;
-        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel3;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox3;
@@ -474,7 +713,28 @@
         internal Guna.UI.WinForms.GunaPictureBox gunaPictureBox2;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox1;
-        internal System.Windows.Forms.Label Label4;
+        internal System.Windows.Forms.Label totalSalesLbl;
         internal Guna.UI.WinForms.GunaPictureBox GunaPictureBox1;
+        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox7;
+        private System.Windows.Forms.Label chartTitleLabel;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private System.Windows.Forms.Panel panel9;
+        internal System.Windows.Forms.MenuStrip menuStrip1;
+        internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        internal System.Windows.Forms.ToolStripMenuItem CoffeeMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem NonCoffeeMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem HotCoffeeMenuItem;
+        private System.Windows.Forms.Panel panel8;
+        private LiveCharts.WinForms.PieChart DailySalesChart;
+        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox6;
+        private System.Windows.Forms.Panel panel11;
+        internal System.Windows.Forms.MenuStrip menuStrip2;
+        internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        internal System.Windows.Forms.ToolStripMenuItem CoffeeMonthlyChart;
+        internal System.Windows.Forms.ToolStripMenuItem NonCoffeeMonthlyChart;
+        internal System.Windows.Forms.ToolStripMenuItem HotCoffeeMonthlyChart;
+        private System.Windows.Forms.Panel panel12;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private LiveCharts.WinForms.PieChart MonthlySalesChart;
     }
 }

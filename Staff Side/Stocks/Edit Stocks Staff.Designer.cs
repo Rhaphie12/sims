@@ -1,6 +1,6 @@
 ﻿namespace sims.Staff_Side.Stocks
 {
-    partial class Stock_Item
+    partial class Edit_Stocks_Staff
     {
         /// <summary>
         /// Required designer variable.
@@ -29,30 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Stock_Item));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties81 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties82 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties83 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties84 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties85 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties86 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties87 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties88 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties89 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties90 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties91 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties92 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties93 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties94 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties95 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties96 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
-            this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Edit_Stocks_Staff));
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.dateAddedDtp = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.itemPriceTxt = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.addStockBtn = new Guna.UI.WinForms.GunaButton();
+            this.updateStockBtn = new Guna.UI.WinForms.GunaButton();
             this.backNewStockBtn = new Guna.UI.WinForms.GunaButton();
             this.itemImagePic = new Guna.UI.WinForms.GunaPictureBox();
             this.totalInfoBtn = new Bunifu.Framework.UI.BunifuImageButton();
@@ -67,23 +65,16 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.itemTotalTxt = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.label4 = new System.Windows.Forms.Label();
-            this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.gunaElipsePanel1 = new Guna.UI.WinForms.GunaElipsePanel();
+            this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
+            this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.itemImagePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.totalInfoBtn)).BeginInit();
-            this.gunaElipsePanel2.SuspendLayout();
             this.gunaElipsePanel1.SuspendLayout();
+            this.gunaElipsePanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // gunaElipse1
-            // 
-            this.gunaElipse1.Radius = 12;
-            this.gunaElipse1.TargetControl = this;
-            // 
-            // gunaDragControl1
-            // 
-            this.gunaDragControl1.TargetControl = null;
             // 
             // dateAddedDtp
             // 
@@ -101,7 +92,8 @@
             this.dateAddedDtp.ShadowDecoration.Parent = this.dateAddedDtp;
             this.dateAddedDtp.Size = new System.Drawing.Size(200, 37);
             this.dateAddedDtp.TabIndex = 109;
-            this.dateAddedDtp.Value = new System.DateTime(2025, 1, 14, 0, 31, 40, 562);
+            this.dateAddedDtp.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.dateAddedDtp.Value = new System.DateTime(2025, 1, 19, 0, 0, 0, 0);
             // 
             // label10
             // 
@@ -158,26 +150,26 @@
             this.itemPriceTxt.Modified = false;
             this.itemPriceTxt.Multiline = false;
             this.itemPriceTxt.Name = "itemPriceTxt";
-            stateProperties81.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties81.FillColor = System.Drawing.Color.Empty;
-            stateProperties81.ForeColor = System.Drawing.Color.Empty;
-            stateProperties81.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemPriceTxt.OnActiveState = stateProperties81;
-            stateProperties82.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties82.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties82.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties82.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.itemPriceTxt.OnDisabledState = stateProperties82;
-            stateProperties83.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties83.FillColor = System.Drawing.Color.Empty;
-            stateProperties83.ForeColor = System.Drawing.Color.Empty;
-            stateProperties83.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemPriceTxt.OnHoverState = stateProperties83;
-            stateProperties84.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties84.FillColor = System.Drawing.Color.White;
-            stateProperties84.ForeColor = System.Drawing.Color.Empty;
-            stateProperties84.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemPriceTxt.OnIdleState = stateProperties84;
+            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemPriceTxt.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.itemPriceTxt.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemPriceTxt.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemPriceTxt.OnIdleState = stateProperties4;
             this.itemPriceTxt.Padding = new System.Windows.Forms.Padding(3);
             this.itemPriceTxt.PasswordChar = '\0';
             this.itemPriceTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -199,34 +191,34 @@
             this.itemPriceTxt.UseSystemPasswordChar = false;
             this.itemPriceTxt.WordWrap = true;
             // 
-            // addStockBtn
+            // updateStockBtn
             // 
-            this.addStockBtn.AnimationHoverSpeed = 0.07F;
-            this.addStockBtn.AnimationSpeed = 0.03F;
-            this.addStockBtn.BackColor = System.Drawing.Color.Transparent;
-            this.addStockBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.addStockBtn.BorderColor = System.Drawing.Color.Black;
-            this.addStockBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.addStockBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.addStockBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addStockBtn.ForeColor = System.Drawing.Color.White;
-            this.addStockBtn.Image = null;
-            this.addStockBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.addStockBtn.Location = new System.Drawing.Point(552, 264);
-            this.addStockBtn.Name = "addStockBtn";
-            this.addStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.addStockBtn.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.addStockBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.addStockBtn.OnHoverImage = null;
-            this.addStockBtn.OnPressedColor = System.Drawing.Color.Black;
-            this.addStockBtn.Radius = 5;
-            this.addStockBtn.Size = new System.Drawing.Size(147, 31);
-            this.addStockBtn.TabIndex = 7;
-            this.addStockBtn.Text = "Add Stock";
-            this.addStockBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.addStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.addStockBtn.Click += new System.EventHandler(this.addStockBtn_Click);
+            this.updateStockBtn.AnimationHoverSpeed = 0.07F;
+            this.updateStockBtn.AnimationSpeed = 0.03F;
+            this.updateStockBtn.BackColor = System.Drawing.Color.Transparent;
+            this.updateStockBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.updateStockBtn.BorderColor = System.Drawing.Color.Black;
+            this.updateStockBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.updateStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.updateStockBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.updateStockBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateStockBtn.ForeColor = System.Drawing.Color.White;
+            this.updateStockBtn.Image = null;
+            this.updateStockBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.updateStockBtn.Location = new System.Drawing.Point(552, 264);
+            this.updateStockBtn.Name = "updateStockBtn";
+            this.updateStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.updateStockBtn.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.updateStockBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.updateStockBtn.OnHoverImage = null;
+            this.updateStockBtn.OnPressedColor = System.Drawing.Color.Black;
+            this.updateStockBtn.Radius = 5;
+            this.updateStockBtn.Size = new System.Drawing.Size(147, 31);
+            this.updateStockBtn.TabIndex = 7;
+            this.updateStockBtn.Text = "Update Stock";
+            this.updateStockBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.updateStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.updateStockBtn.Click += new System.EventHandler(this.updateStockBtn_Click);
             // 
             // backNewStockBtn
             // 
@@ -282,6 +274,7 @@
             this.totalInfoBtn.TabIndex = 97;
             this.totalInfoBtn.TabStop = false;
             this.totalInfoBtn.Zoom = 10;
+            this.totalInfoBtn.Click += new System.EventHandler(this.totalInfoBtn_Click);
             // 
             // label1
             // 
@@ -349,26 +342,26 @@
             this.itemIDTxt.Modified = false;
             this.itemIDTxt.Multiline = false;
             this.itemIDTxt.Name = "itemIDTxt";
-            stateProperties85.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties85.FillColor = System.Drawing.Color.Empty;
-            stateProperties85.ForeColor = System.Drawing.Color.Empty;
-            stateProperties85.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemIDTxt.OnActiveState = stateProperties85;
-            stateProperties86.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties86.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties86.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.itemIDTxt.OnDisabledState = stateProperties86;
-            stateProperties87.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties87.FillColor = System.Drawing.Color.Empty;
-            stateProperties87.ForeColor = System.Drawing.Color.Empty;
-            stateProperties87.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemIDTxt.OnHoverState = stateProperties87;
-            stateProperties88.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties88.FillColor = System.Drawing.Color.White;
-            stateProperties88.ForeColor = System.Drawing.Color.Empty;
-            stateProperties88.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemIDTxt.OnIdleState = stateProperties88;
+            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties5.FillColor = System.Drawing.Color.Empty;
+            stateProperties5.ForeColor = System.Drawing.Color.Empty;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemIDTxt.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.itemIDTxt.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemIDTxt.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties8.FillColor = System.Drawing.Color.White;
+            stateProperties8.ForeColor = System.Drawing.Color.Empty;
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemIDTxt.OnIdleState = stateProperties8;
             this.itemIDTxt.Padding = new System.Windows.Forms.Padding(3);
             this.itemIDTxt.PasswordChar = '\0';
             this.itemIDTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -423,26 +416,26 @@
             this.itemQuantityTxt.Modified = false;
             this.itemQuantityTxt.Multiline = false;
             this.itemQuantityTxt.Name = "itemQuantityTxt";
-            stateProperties89.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties89.FillColor = System.Drawing.Color.Empty;
-            stateProperties89.ForeColor = System.Drawing.Color.Empty;
-            stateProperties89.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemQuantityTxt.OnActiveState = stateProperties89;
-            stateProperties90.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties90.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties90.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties90.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.itemQuantityTxt.OnDisabledState = stateProperties90;
-            stateProperties91.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties91.FillColor = System.Drawing.Color.Empty;
-            stateProperties91.ForeColor = System.Drawing.Color.Empty;
-            stateProperties91.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemQuantityTxt.OnHoverState = stateProperties91;
-            stateProperties92.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties92.FillColor = System.Drawing.Color.White;
-            stateProperties92.ForeColor = System.Drawing.Color.Empty;
-            stateProperties92.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemQuantityTxt.OnIdleState = stateProperties92;
+            stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties9.FillColor = System.Drawing.Color.Empty;
+            stateProperties9.ForeColor = System.Drawing.Color.Empty;
+            stateProperties9.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemQuantityTxt.OnActiveState = stateProperties9;
+            stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties10.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.itemQuantityTxt.OnDisabledState = stateProperties10;
+            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties11.FillColor = System.Drawing.Color.Empty;
+            stateProperties11.ForeColor = System.Drawing.Color.Empty;
+            stateProperties11.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemQuantityTxt.OnHoverState = stateProperties11;
+            stateProperties12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties12.FillColor = System.Drawing.Color.White;
+            stateProperties12.ForeColor = System.Drawing.Color.Empty;
+            stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemQuantityTxt.OnIdleState = stateProperties12;
             this.itemQuantityTxt.Padding = new System.Windows.Forms.Padding(3);
             this.itemQuantityTxt.PasswordChar = '\0';
             this.itemQuantityTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -463,6 +456,7 @@
             this.itemQuantityTxt.TextPlaceholder = "";
             this.itemQuantityTxt.UseSystemPasswordChar = false;
             this.itemQuantityTxt.WordWrap = true;
+            this.itemQuantityTxt.TextChanged += new System.EventHandler(this.itemQuantityTxt_TextChanged);
             // 
             // selectItemNameCmb
             // 
@@ -570,26 +564,26 @@
             this.itemTotalTxt.Modified = false;
             this.itemTotalTxt.Multiline = false;
             this.itemTotalTxt.Name = "itemTotalTxt";
-            stateProperties93.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties93.FillColor = System.Drawing.Color.Empty;
-            stateProperties93.ForeColor = System.Drawing.Color.Empty;
-            stateProperties93.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemTotalTxt.OnActiveState = stateProperties93;
-            stateProperties94.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties94.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties94.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties94.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.itemTotalTxt.OnDisabledState = stateProperties94;
-            stateProperties95.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties95.FillColor = System.Drawing.Color.Empty;
-            stateProperties95.ForeColor = System.Drawing.Color.Empty;
-            stateProperties95.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemTotalTxt.OnHoverState = stateProperties95;
-            stateProperties96.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties96.FillColor = System.Drawing.Color.White;
-            stateProperties96.ForeColor = System.Drawing.Color.Empty;
-            stateProperties96.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.itemTotalTxt.OnIdleState = stateProperties96;
+            stateProperties13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties13.FillColor = System.Drawing.Color.Empty;
+            stateProperties13.ForeColor = System.Drawing.Color.Empty;
+            stateProperties13.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemTotalTxt.OnActiveState = stateProperties13;
+            stateProperties14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties14.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties14.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.itemTotalTxt.OnDisabledState = stateProperties14;
+            stateProperties15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties15.FillColor = System.Drawing.Color.Empty;
+            stateProperties15.ForeColor = System.Drawing.Color.Empty;
+            stateProperties15.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemTotalTxt.OnHoverState = stateProperties15;
+            stateProperties16.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties16.FillColor = System.Drawing.Color.White;
+            stateProperties16.ForeColor = System.Drawing.Color.Empty;
+            stateProperties16.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.itemTotalTxt.OnIdleState = stateProperties16;
             this.itemTotalTxt.Padding = new System.Windows.Forms.Padding(3);
             this.itemTotalTxt.PasswordChar = '\0';
             this.itemTotalTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -611,6 +605,11 @@
             this.itemTotalTxt.UseSystemPasswordChar = false;
             this.itemTotalTxt.WordWrap = true;
             // 
+            // gunaElipse1
+            // 
+            this.gunaElipse1.Radius = 12;
+            this.gunaElipse1.TargetControl = this;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -618,20 +617,9 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(8, 10);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(317, 34);
+            this.label4.Size = new System.Drawing.Size(349, 34);
             this.label4.TabIndex = 22;
-            this.label4.Text = "Dashboard / Stocks / Add Stock\r\n";
-            // 
-            // gunaElipsePanel2
-            // 
-            this.gunaElipsePanel2.BackColor = System.Drawing.Color.Transparent;
-            this.gunaElipsePanel2.BaseColor = System.Drawing.Color.White;
-            this.gunaElipsePanel2.Controls.Add(this.label4);
-            this.gunaElipsePanel2.Location = new System.Drawing.Point(12, 12);
-            this.gunaElipsePanel2.Name = "gunaElipsePanel2";
-            this.gunaElipsePanel2.Radius = 7;
-            this.gunaElipsePanel2.Size = new System.Drawing.Size(776, 52);
-            this.gunaElipsePanel2.TabIndex = 37;
+            this.label4.Text = "Dashboard / Stocks / Update Stock\r\n";
             // 
             // gunaElipsePanel1
             // 
@@ -641,7 +629,7 @@
             this.gunaElipsePanel1.Controls.Add(this.label10);
             this.gunaElipsePanel1.Controls.Add(this.label11);
             this.gunaElipsePanel1.Controls.Add(this.itemPriceTxt);
-            this.gunaElipsePanel1.Controls.Add(this.addStockBtn);
+            this.gunaElipsePanel1.Controls.Add(this.updateStockBtn);
             this.gunaElipsePanel1.Controls.Add(this.backNewStockBtn);
             this.gunaElipsePanel1.Controls.Add(this.itemImagePic);
             this.gunaElipsePanel1.Controls.Add(this.totalInfoBtn);
@@ -656,46 +644,57 @@
             this.gunaElipsePanel1.Controls.Add(this.label9);
             this.gunaElipsePanel1.Controls.Add(this.label2);
             this.gunaElipsePanel1.Controls.Add(this.itemTotalTxt);
-            this.gunaElipsePanel1.Location = new System.Drawing.Point(12, 70);
+            this.gunaElipsePanel1.Location = new System.Drawing.Point(11, 68);
             this.gunaElipsePanel1.Name = "gunaElipsePanel1";
             this.gunaElipsePanel1.Radius = 7;
             this.gunaElipsePanel1.Size = new System.Drawing.Size(776, 368);
-            this.gunaElipsePanel1.TabIndex = 38;
+            this.gunaElipsePanel1.TabIndex = 39;
             // 
-            // Stock_Item
+            // gunaElipsePanel2
+            // 
+            this.gunaElipsePanel2.BackColor = System.Drawing.Color.Transparent;
+            this.gunaElipsePanel2.BaseColor = System.Drawing.Color.White;
+            this.gunaElipsePanel2.Controls.Add(this.label4);
+            this.gunaElipsePanel2.Location = new System.Drawing.Point(11, 10);
+            this.gunaElipsePanel2.Name = "gunaElipsePanel2";
+            this.gunaElipsePanel2.Radius = 7;
+            this.gunaElipsePanel2.Size = new System.Drawing.Size(776, 52);
+            this.gunaElipsePanel2.TabIndex = 38;
+            // 
+            // gunaDragControl1
+            // 
+            this.gunaDragControl1.TargetControl = this.gunaElipsePanel2;
+            // 
+            // Edit_Stocks_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.gunaElipsePanel2);
             this.Controls.Add(this.gunaElipsePanel1);
+            this.Controls.Add(this.gunaElipsePanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Stock_Item";
+            this.Name = "Edit_Stocks_Staff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Stock_Item";
+            this.Text = "Edit_Stocks_Staff";
+            this.Load += new System.EventHandler(this.Edit_Stocks_Staff_Load);
             ((System.ComponentModel.ISupportInitialize)(this.itemImagePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.totalInfoBtn)).EndInit();
-            this.gunaElipsePanel2.ResumeLayout(false);
-            this.gunaElipsePanel2.PerformLayout();
             this.gunaElipsePanel1.ResumeLayout(false);
             this.gunaElipsePanel1.PerformLayout();
+            this.gunaElipsePanel2.ResumeLayout(false);
+            this.gunaElipsePanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI.WinForms.GunaElipse gunaElipse1;
-        private Guna.UI.WinForms.GunaDragControl gunaDragControl1;
-        private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel2;
-        internal System.Windows.Forms.Label label4;
-        private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel1;
         private Guna.UI2.WinForms.Guna2DateTimePicker dateAddedDtp;
         internal System.Windows.Forms.Label label10;
         internal System.Windows.Forms.Label label11;
         private Bunifu.UI.WinForms.BunifuTextBox itemPriceTxt;
-        private Guna.UI.WinForms.GunaButton addStockBtn;
+        private Guna.UI.WinForms.GunaButton updateStockBtn;
         private Guna.UI.WinForms.GunaButton backNewStockBtn;
         private Guna.UI.WinForms.GunaPictureBox itemImagePic;
         private Bunifu.Framework.UI.BunifuImageButton totalInfoBtn;
@@ -710,5 +709,10 @@
         internal System.Windows.Forms.Label label9;
         internal System.Windows.Forms.Label label2;
         private Bunifu.UI.WinForms.BunifuTextBox itemTotalTxt;
+        private Guna.UI.WinForms.GunaElipse gunaElipse1;
+        private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel1;
+        private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel2;
+        internal System.Windows.Forms.Label label4;
+        private Guna.UI.WinForms.GunaDragControl gunaDragControl1;
     }
 }

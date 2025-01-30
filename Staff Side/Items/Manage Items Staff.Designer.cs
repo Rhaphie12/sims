@@ -2,12 +2,12 @@
 {
     partial class Manage_Items_Staff
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,10 +20,10 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -42,23 +42,24 @@
             this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemsDgv = new Guna.UI.WinForms.GunaDataGridView();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteItemBtn = new Guna.UI.WinForms.GunaButton();
             this.UpdateItemBtn = new Guna.UI.WinForms.GunaButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
             this.NewItemBtn = new Guna.UI.WinForms.GunaButton();
+            this.refreshBtn = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.refreshBtn = new FontAwesome.Sharp.IconButton();
             this.searchItemTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.searchCategoryCmb = new Guna.UI.WinForms.GunaComboBox();
             this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.GunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
             this.itemCountTxt = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.GunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
-            this.GunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
@@ -70,8 +71,8 @@
             this.panel6.SuspendLayout();
             this.gunaGroupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.GunaGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox3)).BeginInit();
+            this.GunaGroupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -130,7 +131,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.itemsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.itemsDgv.ColumnHeadersHeight = 40;
+            this.itemsDgv.ColumnHeadersHeight = 30;
             this.itemsDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Item_ID,
             this.Column2,
@@ -155,6 +156,7 @@
             this.itemsDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.itemsDgv.RowTemplate.Height = 100;
             this.itemsDgv.RowTemplate.ReadOnly = true;
+            this.itemsDgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.itemsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.itemsDgv.Size = new System.Drawing.Size(1147, 351);
             this.itemsDgv.TabIndex = 3;
@@ -171,7 +173,7 @@
             this.itemsDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemsDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.itemsDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.itemsDgv.ThemeStyle.HeaderStyle.Height = 40;
+            this.itemsDgv.ThemeStyle.HeaderStyle.Height = 30;
             this.itemsDgv.ThemeStyle.ReadOnly = true;
             this.itemsDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.itemsDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -180,6 +182,7 @@
             this.itemsDgv.ThemeStyle.RowsStyle.Height = 100;
             this.itemsDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.itemsDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.itemsDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemsDgv_DataBindingComplete);
             // 
             // Column7
             // 
@@ -187,6 +190,38 @@
             this.Column7.HeaderText = "Item Description";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
+            // 
+            // DeleteItemBtn
+            // 
+            this.DeleteItemBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteItemBtn.AnimationHoverSpeed = 0.07F;
+            this.DeleteItemBtn.AnimationSpeed = 0.03F;
+            this.DeleteItemBtn.BackColor = System.Drawing.Color.Transparent;
+            this.DeleteItemBtn.BaseColor = System.Drawing.Color.Transparent;
+            this.DeleteItemBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.DeleteItemBtn.BorderSize = 2;
+            this.DeleteItemBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteItemBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.DeleteItemBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.DeleteItemBtn.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteItemBtn.ForeColor = System.Drawing.Color.Black;
+            this.DeleteItemBtn.Image = null;
+            this.DeleteItemBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.DeleteItemBtn.Location = new System.Drawing.Point(1011, 426);
+            this.DeleteItemBtn.Name = "DeleteItemBtn";
+            this.DeleteItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.DeleteItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.DeleteItemBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.DeleteItemBtn.OnHoverImage = null;
+            this.DeleteItemBtn.OnPressedColor = System.Drawing.Color.White;
+            this.DeleteItemBtn.Radius = 6;
+            this.DeleteItemBtn.Size = new System.Drawing.Size(147, 35);
+            this.DeleteItemBtn.TabIndex = 33;
+            this.DeleteItemBtn.Text = "Delete Item";
+            this.DeleteItemBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DeleteItemBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.DeleteItemBtn.Visible = false;
+            this.DeleteItemBtn.Click += new System.EventHandler(this.DeleteItemBtn_Click);
             // 
             // UpdateItemBtn
             // 
@@ -202,9 +237,9 @@
             this.UpdateItemBtn.FocusedColor = System.Drawing.Color.Empty;
             this.UpdateItemBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateItemBtn.ForeColor = System.Drawing.Color.White;
-            this.UpdateItemBtn.Image = null;
+            this.UpdateItemBtn.Image = global::sims.Properties.Resources.edit_white;
             this.UpdateItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.UpdateItemBtn.Location = new System.Drawing.Point(1011, 426);
+            this.UpdateItemBtn.Location = new System.Drawing.Point(578, 415);
             this.UpdateItemBtn.Name = "UpdateItemBtn";
             this.UpdateItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.UpdateItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -212,11 +247,11 @@
             this.UpdateItemBtn.OnHoverImage = null;
             this.UpdateItemBtn.OnPressedColor = System.Drawing.Color.White;
             this.UpdateItemBtn.Radius = 4;
-            this.UpdateItemBtn.Size = new System.Drawing.Size(147, 35);
+            this.UpdateItemBtn.Size = new System.Drawing.Size(130, 50);
             this.UpdateItemBtn.TabIndex = 32;
             this.UpdateItemBtn.Text = "Edit Item";
-            this.UpdateItemBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.UpdateItemBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.UpdateItemBtn.Click += new System.EventHandler(this.UpdateItemBtn_Click);
             // 
             // panel5
             // 
@@ -238,6 +273,7 @@
             this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox2.Controls.Add(this.DeleteItemBtn);
             this.gunaGroupBox2.Controls.Add(this.UpdateItemBtn);
             this.gunaGroupBox2.Controls.Add(this.NewItemBtn);
             this.gunaGroupBox2.Controls.Add(this.panel5);
@@ -267,9 +303,9 @@
             this.NewItemBtn.FocusedColor = System.Drawing.Color.Empty;
             this.NewItemBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewItemBtn.ForeColor = System.Drawing.Color.White;
-            this.NewItemBtn.Image = null;
+            this.NewItemBtn.Image = global::sims.Properties.Resources.add_white;
             this.NewItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.NewItemBtn.Location = new System.Drawing.Point(858, 426);
+            this.NewItemBtn.Location = new System.Drawing.Point(439, 414);
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.NewItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -277,11 +313,28 @@
             this.NewItemBtn.OnHoverImage = null;
             this.NewItemBtn.OnPressedColor = System.Drawing.Color.White;
             this.NewItemBtn.Radius = 5;
-            this.NewItemBtn.Size = new System.Drawing.Size(147, 35);
+            this.NewItemBtn.Size = new System.Drawing.Size(133, 50);
             this.NewItemBtn.TabIndex = 32;
             this.NewItemBtn.Text = "New Item";
-            this.NewItemBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.NewItemBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.NewItemBtn.Click += new System.EventHandler(this.NewItemBtn_Click);
+            // 
+            // refreshBtn
+            // 
+            this.refreshBtn.BackColor = System.Drawing.Color.White;
+            this.refreshBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.refreshBtn.FlatAppearance.BorderSize = 2;
+            this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshBtn.IconChar = FontAwesome.Sharp.IconChar.Redo;
+            this.refreshBtn.IconColor = System.Drawing.Color.Black;
+            this.refreshBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.refreshBtn.IconSize = 20;
+            this.refreshBtn.Location = new System.Drawing.Point(279, 24);
+            this.refreshBtn.Name = "refreshBtn";
+            this.refreshBtn.Size = new System.Drawing.Size(28, 26);
+            this.refreshBtn.TabIndex = 74;
+            this.refreshBtn.UseVisualStyleBackColor = false;
+            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
             // 
             // label1
             // 
@@ -317,23 +370,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(786, 118);
             this.panel6.TabIndex = 1;
-            // 
-            // refreshBtn
-            // 
-            this.refreshBtn.BackColor = System.Drawing.Color.White;
-            this.refreshBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.refreshBtn.FlatAppearance.BorderSize = 2;
-            this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.refreshBtn.IconChar = FontAwesome.Sharp.IconChar.Redo;
-            this.refreshBtn.IconColor = System.Drawing.Color.Black;
-            this.refreshBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.refreshBtn.IconSize = 20;
-            this.refreshBtn.Location = new System.Drawing.Point(279, 24);
-            this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(28, 26);
-            this.refreshBtn.TabIndex = 74;
-            this.refreshBtn.UseVisualStyleBackColor = false;
-            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
             // 
             // searchItemTxt
             // 
@@ -474,6 +510,17 @@
             this.panel2.Size = new System.Drawing.Size(819, 118);
             this.panel2.TabIndex = 52;
             // 
+            // GunaPictureBox3
+            // 
+            this.GunaPictureBox3.BaseColor = System.Drawing.Color.White;
+            this.GunaPictureBox3.Image = global::sims.Properties.Resources.grocery_bag;
+            this.GunaPictureBox3.Location = new System.Drawing.Point(31, 15);
+            this.GunaPictureBox3.Name = "GunaPictureBox3";
+            this.GunaPictureBox3.Size = new System.Drawing.Size(50, 50);
+            this.GunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.GunaPictureBox3.TabIndex = 4;
+            this.GunaPictureBox3.TabStop = false;
+            // 
             // itemCountTxt
             // 
             this.itemCountTxt.AutoSize = true;
@@ -513,17 +560,6 @@
             this.GunaGroupBox1.TabIndex = 48;
             this.GunaGroupBox1.TextLocation = new System.Drawing.Point(10, 8);
             this.GunaGroupBox1.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAliasGridFit;
-            // 
-            // GunaPictureBox3
-            // 
-            this.GunaPictureBox3.BaseColor = System.Drawing.Color.White;
-            this.GunaPictureBox3.Image = global::sims.Properties.Resources.grocery_bag;
-            this.GunaPictureBox3.Location = new System.Drawing.Point(31, 15);
-            this.GunaPictureBox3.Name = "GunaPictureBox3";
-            this.GunaPictureBox3.Size = new System.Drawing.Size(50, 50);
-            this.GunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.GunaPictureBox3.TabIndex = 4;
-            this.GunaPictureBox3.TabStop = false;
             // 
             // panel3
             // 
@@ -573,12 +609,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.ClientSize = new System.Drawing.Size(1194, 700);
             this.Controls.Add(this.gunaGroupBox2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Manage_Items_Staff";
-            this.Size = new System.Drawing.Size(1194, 700);
+            this.Text = "Manage_Items_Staff";
             this.Load += new System.EventHandler(this.Manage_Items_Staff_Load);
             ((System.ComponentModel.ISupportInitialize)(this.itemsDgv)).EndInit();
             this.panel5.ResumeLayout(false);
@@ -588,9 +626,9 @@
             this.panel6.PerformLayout();
             this.gunaGroupBox3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox3)).EndInit();
             this.GunaGroupBox1.ResumeLayout(false);
             this.GunaGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.gunaElipsePanel2.ResumeLayout(false);
             this.gunaElipsePanel2.PerformLayout();
@@ -607,6 +645,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_ID;
         private Guna.UI.WinForms.GunaDataGridView itemsDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private Guna.UI.WinForms.GunaButton DeleteItemBtn;
         private Guna.UI.WinForms.GunaButton UpdateItemBtn;
         private System.Windows.Forms.Panel panel5;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox2;
