@@ -527,12 +527,6 @@
     <Compile Include="Staff Side\Items\New Items Staff.Designer.cs">
       <DependentUpon>New Items Staff.cs</DependentUpon>
     </Compile>
-    <Compile Include="Staff Side\Sales Report Staff\Report Sales Staff.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Staff Side\Sales Report Staff\Report Sales Staff.Designer.cs">
-      <DependentUpon>Report Sales Staff.cs</DependentUpon>
-    </Compile>
     <Compile Include="Staff Side\Sales Staff\Add Products Staff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -753,9 +747,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Staff Side\Items\New Items Staff.resx">
       <DependentUpon>New Items Staff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Staff Side\Sales Report Staff\Report Sales Staff.resx">
-      <DependentUpon>Report Sales Staff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Staff Side\Sales Staff\Add Products Staff.resx">
       <DependentUpon>Add Products Staff.cs</DependentUpon>
