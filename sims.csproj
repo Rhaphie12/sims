@@ -32,7 +32,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
@@ -223,11 +223,17 @@
     <Compile Include="Admin Side\Category\New Category.Designer.cs">
       <DependentUpon>New Category.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Inventory Dashboard.cs">
+    <Compile Include="Admin Side\Dashboard Inventory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin Side\Inventory Dashboard.Designer.cs">
-      <DependentUpon>Inventory Dashboard.cs</DependentUpon>
+    <Compile Include="Admin Side\Dashboard Inventory.Designer.cs">
+      <DependentUpon>Dashboard Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Database\Database Backup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Database\Database Backup.Designer.cs">
+      <DependentUpon>Database Backup.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Inventory Report\Inventory Reportt.cs">
       <SubType>Form</SubType>
@@ -277,11 +283,35 @@
     <Compile Include="Admin Side\Products\Sales Form.Designer.cs">
       <DependentUpon>Sales Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Sales Report\Sales Report.cs">
+    <Compile Include="Admin Side\Sales Report Owner\CoffeeSales.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoffeeSales.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Sales Report Owner\HotCoffeeSales.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotCoffeeSales.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Sales Report Owner\NonCoffeeSales.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NonCoffeeSales.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Sales Report Owner\Pastries.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pastries.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Sales Report Owner\Product Sales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin Side\Sales Report\Sales Report.Designer.cs">
-      <DependentUpon>Sales Report.cs</DependentUpon>
+    <Compile Include="Admin Side\Sales Report Owner\Product Sales.Designer.cs">
+      <DependentUpon>Product Sales.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Stocks\Add Stock.cs">
       <SubType>Form</SubType>
@@ -289,23 +319,11 @@
     <Compile Include="Admin Side\Stocks\Add Stock.Designer.cs">
       <DependentUpon>Add Stock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Stocks\Edit Low Stocks.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin Side\Stocks\Edit Low Stocks.Designer.cs">
-      <DependentUpon>Edit Low Stocks.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin Side\Stocks\Edit Stock.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Admin Side\Stocks\Edit Stock.Designer.cs">
       <DependentUpon>Edit Stock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Admin Side\Stocks\Low Stocks.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin Side\Stocks\Low Stocks.Designer.cs">
-      <DependentUpon>Low Stocks.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Stocks\Manage Stockk.cs">
       <SubType>Form</SubType>
@@ -325,6 +343,12 @@
     <Compile Include="Admin Side\Users\New Staff.Designer.cs">
       <DependentUpon>New Staff.cs</DependentUpon>
     </Compile>
+    <Compile Include="CoffeeSales.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoffeeSales.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="dbModule.cs" />
     <Compile Include="Admin Side\Dashboard Owner.cs">
       <SubType>Form</SubType>
@@ -343,6 +367,12 @@
     </Compile>
     <Compile Include="Forgot Password\New Password.Designer.cs">
       <DependentUpon>New Password.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HotCoffeeSales.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotCoffeeSales.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Login Form.cs">
       <SubType>Form</SubType>
@@ -392,6 +422,12 @@
     <Compile Include="Messages Boxes\Staff Login.Designer.cs">
       <DependentUpon>Staff Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="NonCoffeeSales.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NonCoffeeSales.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Notification\Category notification\Category_Added.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -434,6 +470,12 @@
     <Compile Include="Notification\Stock notification\Stock_Deleted.Designer.cs">
       <DependentUpon>Stock_Deleted.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pastries.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pastries.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Splash page and Loading Screen\Loading Screen.cs">
@@ -461,23 +503,71 @@
     <Compile Include="Staff Side\Inventory Dashboard Staff.Designer.cs">
       <DependentUpon>Inventory Dashboard Staff.cs</DependentUpon>
     </Compile>
-    <Compile Include="Staff Side\Items\Manage_Items_Staff.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Staff Side\Items\Manage_Items_Staff.Designer.cs">
-      <DependentUpon>Manage_Items_Staff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Staff Side\Stocks\Manage_Stocks_Staff.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Staff Side\Stocks\Manage_Stocks_Staff.Designer.cs">
-      <DependentUpon>Manage_Stocks_Staff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Staff Side\Stocks\Stock Item.cs">
+    <Compile Include="Staff Side\Inventory Report Staff\Reports Inventory Staff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Staff Side\Stocks\Stock Item.Designer.cs">
-      <DependentUpon>Stock Item.cs</DependentUpon>
+    <Compile Include="Staff Side\Inventory Report Staff\Reports Inventory Staff.Designer.cs">
+      <DependentUpon>Reports Inventory Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Items\Edit Items Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Items\Edit Items Staff.Designer.cs">
+      <DependentUpon>Edit Items Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Items\Manage Items Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Items\Manage Items Staff.Designer.cs">
+      <DependentUpon>Manage Items Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Items\New Items Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Items\New Items Staff.Designer.cs">
+      <DependentUpon>New Items Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Sales Report Staff\Report Sales Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Sales Report Staff\Report Sales Staff.Designer.cs">
+      <DependentUpon>Report Sales Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Sales Staff\Add Products Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Sales Staff\Add Products Staff.Designer.cs">
+      <DependentUpon>Add Products Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Sales Staff\Product Sales Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Sales Staff\Product Sales Staff.Designer.cs">
+      <DependentUpon>Product Sales Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Sales Staff\Sales Form Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Sales Staff\Sales Form Staff.Designer.cs">
+      <DependentUpon>Sales Form Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Stocks\Add Stocks Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Stocks\Add Stocks Staff.Designer.cs">
+      <DependentUpon>Add Stocks Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Stocks\Edit Stocks Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Stocks\Edit Stocks Staff.Designer.cs">
+      <DependentUpon>Edit Stocks Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff Side\Stocks\Manage Stocks Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff Side\Stocks\Manage Stocks Staff.Designer.cs">
+      <DependentUpon>Manage Stocks Staff.cs</DependentUpon>
     </Compile>
     <Compile Include="Stocks Report.cs">
       <AutoGen>True</AutoGen>
@@ -494,8 +584,11 @@
     <EmbeddedResource Include="Admin Side\Category\New Category.resx">
       <DependentUpon>New Category.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Inventory Dashboard.resx">
-      <DependentUpon>Inventory Dashboard.cs</DependentUpon>
+    <EmbeddedResource Include="Admin Side\Dashboard Inventory.resx">
+      <DependentUpon>Dashboard Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Database\Database Backup.resx">
+      <DependentUpon>Database Backup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Inventory Report\Inventory Reportt.resx">
       <DependentUpon>Inventory Reportt.cs</DependentUpon>
@@ -522,20 +615,30 @@
     <EmbeddedResource Include="Admin Side\Products\Sales Form.resx">
       <DependentUpon>Sales Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Sales Report\Sales Report.resx">
-      <DependentUpon>Sales Report.cs</DependentUpon>
+    <EmbeddedResource Include="Admin Side\Sales Report Owner\CoffeeSales.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CoffeeSales.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Sales Report Owner\HotCoffeeSales.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HotCoffeeSales.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Sales Report Owner\NonCoffeeSales.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NonCoffeeSales.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Sales Report Owner\Pastries.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Pastries.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Sales Report Owner\Product Sales.resx">
+      <DependentUpon>Product Sales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Add Stock.resx">
       <DependentUpon>Add Stock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Stocks\Edit Low Stocks.resx">
-      <DependentUpon>Edit Low Stocks.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Edit Stock.resx">
       <DependentUpon>Edit Stock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Admin Side\Stocks\Low Stocks.resx">
-      <DependentUpon>Low Stocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Stocks\Manage Stockk.resx">
       <DependentUpon>Manage Stockk.cs</DependentUpon>
@@ -549,11 +652,19 @@
     <EmbeddedResource Include="Admin Side\Dashboard Owner.resx">
       <DependentUpon>Dashboard Owner.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CoffeeSales.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CoffeeSales.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forgot Password\Forgot Password.resx">
       <DependentUpon>Forgot Password.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forgot Password\New Password.resx">
       <DependentUpon>New Password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HotCoffeeSales.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HotCoffeeSales.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Login Form.resx">
       <DependentUpon>Login Form.cs</DependentUpon>
@@ -579,6 +690,10 @@
     <EmbeddedResource Include="Messages Boxes\Staff Login.resx">
       <DependentUpon>Staff Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NonCoffeeSales.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NonCoffeeSales.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Notification\Category notification\Category_Added.resx">
       <DependentUpon>Category_Added.cs</DependentUpon>
     </EmbeddedResource>
@@ -599,6 +714,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Notification\Stock notification\Stock_Deleted.resx">
       <DependentUpon>Stock_Deleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pastries.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Pastries.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -623,14 +742,38 @@
     <EmbeddedResource Include="Staff Side\Inventory Dashboard Staff.resx">
       <DependentUpon>Inventory Dashboard Staff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Staff Side\Items\Manage_Items_Staff.resx">
-      <DependentUpon>Manage_Items_Staff.cs</DependentUpon>
+    <EmbeddedResource Include="Staff Side\Inventory Report Staff\Reports Inventory Staff.resx">
+      <DependentUpon>Reports Inventory Staff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Staff Side\Stocks\Manage_Stocks_Staff.resx">
-      <DependentUpon>Manage_Stocks_Staff.cs</DependentUpon>
+    <EmbeddedResource Include="Staff Side\Items\Edit Items Staff.resx">
+      <DependentUpon>Edit Items Staff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Staff Side\Stocks\Stock Item.resx">
-      <DependentUpon>Stock Item.cs</DependentUpon>
+    <EmbeddedResource Include="Staff Side\Items\Manage Items Staff.resx">
+      <DependentUpon>Manage Items Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Items\New Items Staff.resx">
+      <DependentUpon>New Items Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Sales Report Staff\Report Sales Staff.resx">
+      <DependentUpon>Report Sales Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Sales Staff\Add Products Staff.resx">
+      <DependentUpon>Add Products Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Sales Staff\Product Sales Staff.resx">
+      <DependentUpon>Product Sales Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Sales Staff\Sales Form Staff.resx">
+      <DependentUpon>Sales Form Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Stocks\Add Stocks Staff.resx">
+      <DependentUpon>Add Stocks Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Stocks\Edit Stocks Staff.resx">
+      <DependentUpon>Edit Stocks Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff Side\Stocks\Manage Stocks Staff.resx">
+      <DependentUpon>Manage Stocks Staff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stocks Report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -749,11 +892,7 @@
   <ItemGroup>
     <None Include="Resources\warning-sign-icon-transparent-ba.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Staff Side\Inventory Report Staff\" />
-    <Folder Include="Staff Side\Sales Report Staff\" />
-    <Folder Include="Staff Side\Sales Staff\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
@@ -775,6 +914,16 @@
     <None Include="Resources\box.png" />
     <None Include="Resources\boxes1.png" />
     <None Include="Resources\AVOCADO.png" />
+    <None Include="Resources\newspaper-white.png" />
+    <None Include="Resources\add-white.png" />
+    <None Include="Resources\down-white.png" />
+    <None Include="Resources\redo-white.png" />
+    <None Include="Resources\edit-white.png" />
+    <None Include="Resources\bell %281%291.png" />
+    <None Include="Resources\Active.png" />
+    <None Include="Resources\Active-white.png" />
+    <None Include="Resources\bell %281%29 - white.png" />
+    <None Include="Resources\all.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

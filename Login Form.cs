@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using sims.Admin_Side;
 using sims.Admin_Side.Items;
 using sims.Messages_Boxes;
 using sims.Staff_Side;
@@ -22,6 +23,7 @@ namespace sims
             ConfirmPasswordTextBox();
             showPasswordChk.OnChange += new EventHandler(showPasswordChk_OnChange);
         }
+
         private void ConfirmPasswordTextBox()
         {
             passwordTxt.PlaceholderText = "Password";
@@ -62,8 +64,8 @@ namespace sims
                 return;
             }
 
-            string userQuery = "SELECT COUNT(*) FROM users WHERE BINARY username = @Username AND BINARY password = @Password";
-            string staffQuery = "SELECT COUNT(*) FROM staff WHERE BINARY username = @Username AND BINARY password = @Password";
+            string userQuery = "SELECT Staff_Name FROM users WHERE BINARY username = @Username AND BINARY password = @Password";
+            string staffQuery = "SELECT Staff_Name FROM staff WHERE BINARY username = @Username AND BINARY password = @Password";
 
             try
             {
@@ -72,23 +74,29 @@ namespace sims
                     using (MySqlCommand cmd = new MySqlCommand(userQuery, conn))
                     {
                         conn.Open();
-                        cmd.Parameters.AddWithValue("@Username", usernameTxt.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Password", passwordTxt.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
 
-                        int isOwner = Convert.ToInt32(cmd.ExecuteScalar());
+                        // Check if the user is an owner
+                        string ownerName = cmd.ExecuteScalar()?.ToString();
 
-                        if (isOwner > 0)
+                        if (!string.IsNullOrEmpty(ownerName))
                         {
+                            // Log owner activity
+                            AddLoginActivity(ownerName, "Owner");
                             new ownerLogin().Show();
                             this.Hide();
                         }
                         else
                         {
+                            // Check if the user is staff
                             cmd.CommandText = staffQuery;
-                            int isStaff = Convert.ToInt32(cmd.ExecuteScalar());
+                            string staffName = cmd.ExecuteScalar()?.ToString();
 
-                            if (isStaff > 0)
+                            if (!string.IsNullOrEmpty(staffName))
                             {
+                                // Log staff activity
+                                AddLoginActivity(staffName, "Staff");
                                 new Staff_Login().Show();
                                 this.Hide();
                             }
@@ -109,6 +117,34 @@ namespace sims
             }
         }
 
+        private void AddLoginActivity(string staffName, string role)
+        {
+            dbModule db = new dbModule();
+
+            string query = "INSERT INTO activitylogs (Staff_Name, Role, Activity, Date_Logged_In) VALUES (@StaffName, @Role, @Activity, @DateLoggedIn)";
+
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@StaffName", staffName);
+                        cmd.Parameters.AddWithValue("@Role", role);
+                        cmd.Parameters.AddWithValue("@Activity", "Logged In");
+                        cmd.Parameters.AddWithValue("@DateLoggedIn", DateTime.Now);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void showPasswordChk_OnChange(object sender, EventArgs e)
         {
