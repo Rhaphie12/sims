@@ -43,9 +43,9 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
-            this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label4 = new System.Windows.Forms.Label();
+            this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.itemIDTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.itemNameTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.itemDescTxt = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -70,11 +70,6 @@
             // 
             this.gunaDragControl1.TargetControl = this.gunaElipsePanel2;
             // 
-            // gunaElipse1
-            // 
-            this.gunaElipse1.Radius = 12;
-            this.gunaElipse1.TargetControl = this;
-            // 
             // gunaElipsePanel2
             // 
             this.gunaElipsePanel2.BackColor = System.Drawing.Color.Transparent;
@@ -96,6 +91,11 @@
             this.label4.Size = new System.Drawing.Size(346, 34);
             this.label4.TabIndex = 22;
             this.label4.Text = "Dashboard / Items / Add new Item\r\n";
+            // 
+            // gunaElipse1
+            // 
+            this.gunaElipse1.Radius = 12;
+            this.gunaElipse1.TargetControl = this;
             // 
             // itemIDTxt
             // 

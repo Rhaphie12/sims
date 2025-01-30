@@ -230,11 +230,6 @@ namespace sims.Admin_Side.Items
             this.Hide();
         }
 
-        private void totalInfoBtn_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Item Total is calculated by multiplying Item Quantity and Item Price", "Item Total of Item Quantity and Item Price", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void browseImageBtn_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())

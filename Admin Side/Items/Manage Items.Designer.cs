@@ -377,9 +377,9 @@
             this.NewItemBtn.FocusedColor = System.Drawing.Color.Empty;
             this.NewItemBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewItemBtn.ForeColor = System.Drawing.Color.White;
-            this.NewItemBtn.Image = null;
+            this.NewItemBtn.Image = global::sims.Properties.Resources.add_white;
             this.NewItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.NewItemBtn.Location = new System.Drawing.Point(705, 426);
+            this.NewItemBtn.Location = new System.Drawing.Point(377, 413);
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.NewItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -387,10 +387,9 @@
             this.NewItemBtn.OnHoverImage = null;
             this.NewItemBtn.OnPressedColor = System.Drawing.Color.White;
             this.NewItemBtn.Radius = 5;
-            this.NewItemBtn.Size = new System.Drawing.Size(147, 35);
+            this.NewItemBtn.Size = new System.Drawing.Size(132, 50);
             this.NewItemBtn.TabIndex = 32;
             this.NewItemBtn.Text = "New Item";
-            this.NewItemBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.NewItemBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.NewItemBtn.Click += new System.EventHandler(this.NewItemBtn_Click);
             // 
@@ -406,7 +405,7 @@
             this.gunaGroupBox2.Controls.Add(this.UpdateItemBtn);
             this.gunaGroupBox2.Controls.Add(this.NewItemBtn);
             this.gunaGroupBox2.Controls.Add(this.panel5);
-            this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox2.LineColor = System.Drawing.Color.White;
             this.gunaGroupBox2.LineTop = 0;
             this.gunaGroupBox2.Location = new System.Drawing.Point(11, 208);
@@ -434,7 +433,7 @@
             this.DeleteItemBtn.ForeColor = System.Drawing.Color.Black;
             this.DeleteItemBtn.Image = null;
             this.DeleteItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.DeleteItemBtn.Location = new System.Drawing.Point(1011, 426);
+            this.DeleteItemBtn.Location = new System.Drawing.Point(648, 413);
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.DeleteItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -442,7 +441,7 @@
             this.DeleteItemBtn.OnHoverImage = null;
             this.DeleteItemBtn.OnPressedColor = System.Drawing.Color.White;
             this.DeleteItemBtn.Radius = 6;
-            this.DeleteItemBtn.Size = new System.Drawing.Size(147, 35);
+            this.DeleteItemBtn.Size = new System.Drawing.Size(147, 50);
             this.DeleteItemBtn.TabIndex = 33;
             this.DeleteItemBtn.Text = "Delete Item";
             this.DeleteItemBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -463,9 +462,9 @@
             this.UpdateItemBtn.FocusedColor = System.Drawing.Color.Empty;
             this.UpdateItemBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateItemBtn.ForeColor = System.Drawing.Color.White;
-            this.UpdateItemBtn.Image = null;
+            this.UpdateItemBtn.Image = global::sims.Properties.Resources.edit_white;
             this.UpdateItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.UpdateItemBtn.Location = new System.Drawing.Point(858, 426);
+            this.UpdateItemBtn.Location = new System.Drawing.Point(515, 413);
             this.UpdateItemBtn.Name = "UpdateItemBtn";
             this.UpdateItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.UpdateItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -473,10 +472,9 @@
             this.UpdateItemBtn.OnHoverImage = null;
             this.UpdateItemBtn.OnPressedColor = System.Drawing.Color.White;
             this.UpdateItemBtn.Radius = 4;
-            this.UpdateItemBtn.Size = new System.Drawing.Size(147, 35);
+            this.UpdateItemBtn.Size = new System.Drawing.Size(127, 50);
             this.UpdateItemBtn.TabIndex = 32;
             this.UpdateItemBtn.Text = "Edit Item";
-            this.UpdateItemBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.UpdateItemBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.UpdateItemBtn.Click += new System.EventHandler(this.UpdateItemBtn_Click);
             // 
@@ -489,7 +487,7 @@
             this.panel5.Controls.Add(this.itemsDgv);
             this.panel5.Location = new System.Drawing.Point(9, 56);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1149, 353);
+            this.panel5.Size = new System.Drawing.Size(1149, 347);
             this.panel5.TabIndex = 30;
             // 
             // itemsDgv
@@ -511,7 +509,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.itemsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.itemsDgv.ColumnHeadersHeight = 40;
+            this.itemsDgv.ColumnHeadersHeight = 30;
             this.itemsDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Item_ID,
             this.Column2,
@@ -537,8 +535,8 @@
             this.itemsDgv.RowTemplate.Height = 100;
             this.itemsDgv.RowTemplate.ReadOnly = true;
             this.itemsDgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.itemsDgv.Size = new System.Drawing.Size(1147, 351);
+            this.itemsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.itemsDgv.Size = new System.Drawing.Size(1147, 345);
             this.itemsDgv.TabIndex = 3;
             this.itemsDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.itemsDgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -553,7 +551,7 @@
             this.itemsDgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemsDgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.itemsDgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.itemsDgv.ThemeStyle.HeaderStyle.Height = 40;
+            this.itemsDgv.ThemeStyle.HeaderStyle.Height = 30;
             this.itemsDgv.ThemeStyle.ReadOnly = true;
             this.itemsDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.itemsDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -562,6 +560,7 @@
             this.itemsDgv.ThemeStyle.RowsStyle.Height = 100;
             this.itemsDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.itemsDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.itemsDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemsDgv_DataBindingComplete);
             // 
             // Item_ID
             // 

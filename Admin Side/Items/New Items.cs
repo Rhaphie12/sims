@@ -19,9 +19,9 @@ namespace sims.Admin_Side.Items
     {
         private Manage_Items count;
         private Manage_Items dashboard;
-        private Inventory_Dashboard _inventoryDashboard;
+        private Dashboard_Inventory _inventoryDashboard;
 
-        public New_Items(Manage_Items dashboard, Manage_Items count, Inventory_Dashboard inventoryDashboard)
+        public New_Items(Manage_Items dashboard, Manage_Items count, Dashboard_Inventory inventoryDashboard)
         {
             InitializeComponent();
             this.dashboard = dashboard;
@@ -235,7 +235,6 @@ namespace sims.Admin_Side.Items
                 conn.Dispose();
             }
         }
-
 
         private Image ResizeImage(Image image, int width, int height)
         {

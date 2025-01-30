@@ -19,13 +19,14 @@ namespace sims.Admin_Side.Items
 {
     public partial class Manage_Items : UserControl
     {
-        private Inventory_Dashboard _inventoryDashboard;
+        private Dashboard_Inventory _inventoryDashboard;
         private New_Items _newItems;
 
-        public Manage_Items(Inventory_Dashboard inventoryDashboard)
+        public Manage_Items(Dashboard_Inventory inventoryDashboard)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
+            itemsDgv.DataBindingComplete += itemsDgv_DataBindingComplete;
         }
 
         public DataGridView ItemsDgv
@@ -160,6 +161,12 @@ namespace sims.Admin_Side.Items
 
         private void UpdateItemBtn_Click(object sender, EventArgs e)
         {
+            if (itemsDgv.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("Please select a record to update.", "Notice!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             DialogResult result = MessageBox.Show("Are you sure you want to update this record?", "Update Item!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
@@ -338,6 +345,11 @@ namespace sims.Admin_Side.Items
         private void refreshBtn_Click(object sender, EventArgs e)
         {
             ResetFilters();
+        }
+
+        private void itemsDgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            itemsDgv.ClearSelection();
         }
     }
 }

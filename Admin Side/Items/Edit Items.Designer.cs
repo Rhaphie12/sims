@@ -297,7 +297,7 @@
             this.itemDescTxt.SelectionLength = 0;
             this.itemDescTxt.SelectionStart = 0;
             this.itemDescTxt.ShortcutsEnabled = true;
-            this.itemDescTxt.Size = new System.Drawing.Size(295, 60);
+            this.itemDescTxt.Size = new System.Drawing.Size(295, 70);
             this.itemDescTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.itemDescTxt.TabIndex = 4;
             this.itemDescTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
