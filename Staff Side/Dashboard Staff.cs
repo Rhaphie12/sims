@@ -3,9 +3,9 @@ using Guna.UI.WinForms;
 using MySql.Data.MySqlClient;
 using sims.Admin_Side;
 using sims.Admin_Side.Items;
+using sims.Admin_Side.Sales_Report_Owner;
 using sims.Admin_Side.Stocks;
 using sims.Staff_Side.Items;
-using sims.Staff_Side.Sales_Report_Staff;
 using sims.Staff_Side.Sales_Staff;
 using sims.Staff_Side.Stocks;
 using System;
@@ -30,7 +30,7 @@ namespace sims.Staff_Side
         private Manage_Stocks_Staff manageStocksStaffInstance;
         private Product_Sales_Staff productSalesStaffInstance;
         private Add_Stocks_Staff addStockInstance;
-        private Report_Sales_Staff salesReportStaffInstance;
+        private Product_Sales salesReportStaffInstance;
 
         public Dashboard_Staff()
         {
@@ -50,7 +50,7 @@ namespace sims.Staff_Side
             manageItemsStaffInstance = new Manage_Items_Staff(dashboardInventoryInstance);
             manageStocksStaffInstance = new Manage_Stocks_Staff(dashboardInventoryInstance, addStockInstance);
             productSalesStaffInstance = new Product_Sales_Staff(dashboardInventoryInstance, manageStocksStaffInstance, addStockInstance);
-            salesReportStaffInstance = new Report_Sales_Staff();
+            salesReportStaffInstance = new Product_Sales();
             LoadView(dashboardInventoryInstance);
             ActivateButton(DashboardBtn, Color.White);
         }
