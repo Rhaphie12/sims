@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using sims.Admin_Side.Inventory_Report;
+using sims.Admin_Side.Sales_Report_Owner;
 using sims.Admin_Side.Stocks;
 using System;
 using System.Data;
@@ -11,17 +12,21 @@ namespace sims.Admin_Side.Sales
 {
     public partial class Product_Saless : Form
     {
-        private Inventory_Dashboard _inventoryDashboard;
+        private Dashboard_Inventory _inventoryDashboard;
         private Manage_Stockk _stock;
         private Add_Product _addProductForm;
         private Add_Stock _addStock;
-        private Inventory_Reportt _inventoryReport;
-        public Product_Saless(Inventory_Dashboard inventoryDashboard, Manage_Stockk stock, Add_Stock _addStock, Inventory_Reportt inventory_Reportt)
+        private Inventory_Reportt _reportt;
+        private DashboardOwner _dashboardOwner;
+        private Product_Sales _sales;
+        public Product_Saless(Dashboard_Inventory inventoryDashboard, Manage_Stockk stock, Add_Stock addStock, Inventory_Reportt reportt, Product_Sales sales)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
             _stock = stock;
-            _inventoryReport = inventory_Reportt;
+            _reportt = reportt;
+            _sales = sales;
+
         }
 
         public FlowLayoutPanel CoffeeLayoutPanel
@@ -37,6 +42,11 @@ namespace sims.Admin_Side.Sales
         public FlowLayoutPanel HotCoffeeLayoutPanel
         {
             get { return hotCoffeeLayoutPanel; }
+        }
+
+        public FlowLayoutPanel PastriesLayoutPanel
+        {
+            get { return pastriesLayoutPanel; }
         }
 
         private void Product_Saless_Load(object sender, EventArgs e)
@@ -56,6 +66,7 @@ namespace sims.Admin_Side.Sales
                 {
                     ProductID = productID,
                     ProductName = productName,
+                    category = category
                 },
                 BackColor = Color.FromArgb(222, 196, 125),
                 Font = new Font("Poppins", 12),
@@ -74,8 +85,11 @@ namespace sims.Admin_Side.Sales
                 case "non-coffee":
                     NonCoffeeLayoutPanel.Controls.Add(productButton);
                     break;
-                case "hot":
+                case "hot coffee":
                     HotCoffeeLayoutPanel.Controls.Add(productButton);
+                    break;
+                case "pastries":
+                    PastriesLayoutPanel.Controls.Add(productButton);
                     break;
                 default:
                     // Optionally, handle unknown categories
@@ -89,11 +103,13 @@ namespace sims.Admin_Side.Sales
             if (sender is Button button && button.Tag is ProductDetails productDetails)
             {
                 string productID = productDetails.ProductID;
-                Sales_Form detailsForm = new Sales_Form(productID, _stock, _inventoryDashboard);
+                string category = productDetails.category; // Retrieve the category
+
+                // Pass both productID and category to the Sales_Form
+                Sales_Form detailsForm = new Sales_Form(productID, _stock, _inventoryDashboard, category, _sales);
                 detailsForm.Show();
             }
         }
-
 
         private void LoadProductButtons()
         {
@@ -137,7 +153,7 @@ namespace sims.Admin_Side.Sales
 
         private void NewProductBtn_Click(object sender, EventArgs e)
         {
-            _stock = new Manage_Stockk(_inventoryDashboard, _addStock, _inventoryReport);
+            _stock = new Manage_Stockk(_inventoryDashboard, _addStock, _dashboardOwner, _reportt);
             _addProductForm = new Add_Product(this, _stock, _inventoryDashboard);
             _addProductForm.Show();
         }

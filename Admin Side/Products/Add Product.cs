@@ -1,10 +1,8 @@
-﻿using Bunifu.UI.WinForms;
-using Guna.UI.WinForms;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using sims.Admin_Side.Sales_Report_Owner;
 using sims.Admin_Side.Stocks;
 using sims.Messages_Boxes;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -17,9 +15,10 @@ namespace sims.Admin_Side.Sales
     {
         private Product_Saless _product_Saless;
         private Manage_Stockk _stock;
-        private Inventory_Dashboard _inventoryDashboard;
+        private Dashboard_Inventory _inventoryDashboard;
+        private Product_Sales _sales;
 
-        public Add_Product(Product_Saless product_Saless, Manage_Stockk stock, Inventory_Dashboard inventoryDashboard)
+        public Add_Product(Product_Saless product_Saless, Manage_Stockk stock, Dashboard_Inventory inventoryDashboard)
         {
             InitializeComponent();
             _product_Saless = product_Saless;
@@ -34,6 +33,7 @@ namespace sims.Admin_Side.Sales
             public string ProductPrice { get; set; }
             public string category { get; set; }
         }
+
         private byte[] ImageToByteArray(Image image)
         {
             if (image == null)
@@ -148,6 +148,7 @@ namespace sims.Admin_Side.Sales
                 {
                     ProductID = productID,
                     ProductName = productName,
+                    category = category
                 },
                 BackColor = Color.FromArgb(222, 196, 125),
                 Font = new Font("Poppins", 12),
@@ -164,8 +165,11 @@ namespace sims.Admin_Side.Sales
                 case "non-coffee":
                     _product_Saless.NonCoffeeLayoutPanel.Controls.Add(productButton);
                     break;
-                case "hot":
+                case "hot coffee":
                     _product_Saless.HotCoffeeLayoutPanel.Controls.Add(productButton);
+                    break;
+                case "pastries":
+                    _product_Saless.PastriesLayoutPanel.Controls.Add(productButton);
                     break;
                 default:
                     // Optionally, handle unknown categories
@@ -179,7 +183,10 @@ namespace sims.Admin_Side.Sales
             if (sender is Button button && button.Tag is ProductDetails productDetails)
             {
                 string productID = productDetails.ProductID;
-                Sales_Form detailsForm = new Sales_Form(productID, _stock, _inventoryDashboard);
+                string category = productDetails.category; // Retrieve the category
+
+                // Pass both productID and category to the Sales_Form
+                Sales_Form detailsForm = new Sales_Form(productID, _stock, _inventoryDashboard, category, _sales);
                 detailsForm.Show();
             }
         }
@@ -202,6 +209,7 @@ namespace sims.Admin_Side.Sales
                 _product_Saless.CoffeeLayoutPanel.Controls.Clear();
                 _product_Saless.NonCoffeeLayoutPanel.Controls.Clear();
                 _product_Saless.HotCoffeeLayoutPanel.Controls.Clear();
+                _product_Saless.PastriesLayoutPanel.Controls.Clear();
 
                 while (reader.Read())
                 {
@@ -324,18 +332,6 @@ namespace sims.Admin_Side.Sales
                 }
             }
             return destImage;
-        }
-
-        private void ValidateTextBoxForNumbersOnly(BunifuTextBox textBox)
-        {
-            string newText = textBox.Text;
-
-            if (System.Text.RegularExpressions.Regex.IsMatch(newText, @"[a-zA-Z]"))
-            {
-                MessageBox.Show("Letters are not allowed!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox.Text = System.Text.RegularExpressions.Regex.Replace(newText, @"[a-zA-Z]", "");
-                textBox.SelectionStart = textBox.Text.Length;
-            }
         }
 
         private void productNameTxt_TextChanged(object sender, EventArgs e)

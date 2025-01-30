@@ -1,23 +1,25 @@
 ﻿using Bunifu.UI.WinForms;
 using Guna.UI.WinForms;
 using MySql.Data.MySqlClient;
+using sims.Admin_Side.Sales_Report_Owner;
 using sims.Admin_Side.Stocks;
 using sims.Messages_Boxes;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace sims.Admin_Side.Sales
 {
     public partial class Sales_Form : Form
     {
         private string _productID;
+        private string _category;
         private Manage_Stockk _stock;
-        private Inventory_Dashboard _inventoryDashboard;
+        private Dashboard_Inventory _inventoryDashboard;
+        private Product_Sales _sales;
 
-        public Sales_Form(string productID, Manage_Stockk stock, Inventory_Dashboard inventoryDashboard)
+        public Sales_Form(string productID, Manage_Stockk stock, Dashboard_Inventory inventoryDashboard, string category, Product_Sales sales)
         {
             InitializeComponent();
             _stock = stock;
@@ -26,7 +28,8 @@ namespace sims.Admin_Side.Sales
 
             quantityStockTxt.TextChanged += (s, e) => CalculateTotalProductSale();
             productPriceTxt.TextChanged += (s, e) => CalculateTotalProductSale();
-            //categoryCmb.SelectedIndexChanged += categoryCmb_SelectedIndexChanged;
+            _category = category;
+            _sales = sales;
         }
 
         private void previewStock()
@@ -77,10 +80,61 @@ namespace sims.Admin_Side.Sales
             }
         }
 
+        private void previewDailySalesChart(string _category)
+        {
+            if (_inventoryDashboard != null)
+            {
+                _inventoryDashboard.TotalSalesPreview(_category);
+            }
+            else
+            {
+                MessageBox.Show("Inventory Dashboard is not available.");
+            }
+        }
+
+        private void previewMonthlySalesChart(string _category)
+        {
+            if (_inventoryDashboard != null)
+            {
+                _inventoryDashboard.MonthlySalesPreview(_category);
+            }
+            else
+            {
+                MessageBox.Show("Inventory Dashboard is not available.");
+            }
+        }
+
+        private void previewSalesCoffee()
+        {
+            if (_sales != null)
+            {
+                _sales.CoffeeSales();
+            }
+            else
+            {
+                MessageBox.Show("Sales Report is not available.");
+            }
+        }
+
         private void Sales_Form_Load(object sender, EventArgs e)
         {
             LoadProductDetails(_productID);
-            RetrieveCoffeeProductDetails(_productID);
+
+            // Dynamically determine the correct table name based on the category
+            string tableName = DetermineTableName(_category);
+
+            if (!string.IsNullOrEmpty(tableName))
+            {
+                // Call RetrieveProductDetails with the correct table
+                RetrieveProductDetails(_productID, tableName);
+            }
+            else
+            {
+                MessageBox.Show("Invalid category. Cannot determine the table name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            TotalSales(tableName, _category);
+
             previewStock();
             stocks();
 
@@ -90,89 +144,42 @@ namespace sims.Admin_Side.Sales
 
             DateLbl.Text = DateTime.Now.ToString("ddd, d MMMM yyyy");
             CalculateTotalProductSale();
-            TotalSalesCoffee();
+            LoadProductDetails();
         }
 
-        public void TotalSalesCoffee()
+        private void LoadProductDetails()
         {
-            dbModule db = new dbModule();
-            MySqlConnection conn = db.GetConnection();
-            MySqlCommand cmd = db.GetCommand();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            DataTable dataTable = new DataTable();
-
-            try
+            string tableName = DetermineTableName(_category);
+            if (!string.IsNullOrEmpty(tableName))
             {
-                conn.Open();
-                cmd.Connection = conn;
-
-                // Query to get all stocks and calculate the total of Item_Total
-                cmd.CommandText = "SELECT *, SUM(Total_Product_Sale) AS TotalSalesCoffee FROM productsales_coffee";
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-
-                // Check if the TotalSales column is present in the result
-                if (dataTable.Rows.Count > 0 && dataTable.Columns.Contains("TotalSalesCoffee"))
-                {
-                    object totalSalesValue = dataTable.Rows[0]["TotalSalesCoffee"];
-                    if (decimal.TryParse(totalSalesValue?.ToString(), out decimal totalSales))
-                    {
-                        // Format the total sales value with a peso sign
-                        totalSalesLbl.Text = $"₱ {totalSales:0.00}";
-                    }
-                    else
-                    {
-                        totalSalesLbl.Text = "₱ 0.00";
-                    }
-                }
+                RetrieveProductDetails(_productID, tableName);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Failed to populate stock data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-                cmd.Dispose();
-                conn.Dispose();
+                MessageBox.Show("Invalid category. Cannot determine table name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void CalculateTotalProductSale()
+        private string DetermineTableName(string category)
         {
-            try
+            if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
             {
-                // Parse quantity and price
-                if (int.TryParse(quantityStockTxt.Text, out int quantity) &&
-                    decimal.TryParse(productPriceTxt.Text, out decimal price))
-                {
-                    decimal totalValue = quantity * price;
-
-                    // Store the numeric value in the Tag property
-                    totalSaleTxt.Tag = totalValue;
-
-                    // Display the formatted value with a peso sign
-                    totalSaleTxt.Text = $"₱ {totalValue:0.00}";
-                }
-                else
-                {
-                    // Clear the total sale field if inputs are invalid
-                    totalSaleTxt.Text = string.Empty;
-                    totalSaleTxt.Tag = null;
-                }
+                return "productsales_coffee";
             }
-            catch (Exception ex)
+            else if (category.Equals("Non-Coffee", StringComparison.OrdinalIgnoreCase))
             {
-                // Show an error message in case of unexpected issues
-                MessageBox.Show($"An error occurred: {ex.Message}",
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                return "productsales_noncoffee";
             }
+            else if (category.Equals("Hot Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsales_hotcoffee";
+            }
+            else if (category.Equals("Pastries", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsales_pastries";
+            }
+
+            return string.Empty;
         }
 
         private List<string> allStockItems = new List<string>();
@@ -290,6 +297,89 @@ namespace sims.Admin_Side.Sales
             }
         }
 
+        public void TotalSales(string tableName, string category)
+        {
+            dbModule db = new dbModule();
+            MySqlConnection conn = db.GetConnection();
+            MySqlCommand cmd = db.GetCommand();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+
+                // Use the provided table name in the query
+                cmd.CommandText = $"SELECT SUM(Total_Product_Sale) AS TotalSales FROM {tableName}";
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+
+                // Set the category label
+                categoryLbl.Text = $"Total Sale of {category}: ";
+
+                if (dataTable.Rows.Count > 0 && dataTable.Columns.Contains("TotalSales"))
+                {
+                    object totalSalesValue = dataTable.Rows[0]["TotalSales"];
+                    if (decimal.TryParse(totalSalesValue?.ToString(), out decimal totalSales))
+                    {
+                        totalSalesLbl.Text = $"₱ {totalSales:0.00}";
+                    }
+                    else
+                    {
+                        totalSalesLbl.Text = "₱ 0.00";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to populate sales data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                cmd.Dispose();
+                conn.Dispose();
+            }
+        }
+
+        private void CalculateTotalProductSale()
+        {
+            try
+            {
+                // Parse quantity and price
+                if (int.TryParse(quantityStockTxt.Text, out int quantity) &&
+                    decimal.TryParse(productPriceTxt.Text, out decimal price))
+                {
+                    decimal totalValue = quantity * price;
+
+                    // Store the numeric value in the Tag property
+                    totalSaleTxt.Tag = totalValue;
+
+                    // Display the formatted value with a peso sign
+                    totalSaleTxt.Text = $"₱ {totalValue:0.00}";
+                }
+                else
+                {
+                    // Clear the total sale field if inputs are invalid
+                    totalSaleTxt.Text = string.Empty;
+                    totalSaleTxt.Tag = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show an error message in case of unexpected issues
+                MessageBox.Show($"An error occurred: {ex.Message}",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
         private void LoadProductDetails(string productID)
         {
             dbModule db = new dbModule();
@@ -323,10 +413,6 @@ namespace sims.Admin_Side.Sales
                                     }
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("Product not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
                         }
                     }
                     catch (Exception ex)
@@ -337,7 +423,7 @@ namespace sims.Admin_Side.Sales
             }
         }
 
-        public void RetrieveCoffeeProductDetails(string productID)
+        public void RetrieveProductDetails(string productID, string tableName)
         {
             dbModule db = new dbModule();
             MySqlConnection conn = db.GetConnection();
@@ -348,11 +434,11 @@ namespace sims.Admin_Side.Sales
                 conn.Open();
                 cmd.Connection = conn;
 
-                // Query to retrieve product details from productsales_coffee
-                cmd.CommandText = @"
-            SELECT Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Stock_Needed
-            FROM productsales_coffee
-            WHERE Product_ID = @ProductID";
+                // Use the provided table name in the query
+                cmd.CommandText = $@"
+    SELECT Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Stock_Needed
+    FROM {tableName}
+    WHERE Product_ID = @ProductID";
 
                 cmd.Parameters.AddWithValue("@ProductID", productID);
 
@@ -402,20 +488,7 @@ namespace sims.Admin_Side.Sales
                             if (stockItems.Length >= 4) stock4Cmb.SelectedItem = stockItems[3];
                             if (stockItems.Length >= 5) stock5Cmb.SelectedItem = stockItems[4];
                             if (stockItems.Length >= 6) stock6Cmb.SelectedItem = stockItems[5];
-
-                            // Log to check the values (for debugging)
-                            Console.WriteLine("Stock Items: " + string.Join(", ", stockItems));
-                            Console.WriteLine("ComboBox 1: " + stockCmb.SelectedItem);
-                            Console.WriteLine("ComboBox 2: " + stock2Cmb.SelectedItem);
-                            Console.WriteLine("ComboBox 3: " + stock3Cmb.SelectedItem);
-                            Console.WriteLine("ComboBox 4: " + stock4Cmb.SelectedItem);
-                            Console.WriteLine("ComboBox 5: " + stock5Cmb.SelectedItem);
-                            Console.WriteLine("ComboBox 6: " + stock6Cmb.SelectedItem);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Product not found in productsales_coffee table.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -433,7 +506,6 @@ namespace sims.Admin_Side.Sales
                 conn.Dispose();
             }
         }
-
 
         private void addProductBtn_Click(object sender, EventArgs e)
         {
@@ -490,21 +562,27 @@ namespace sims.Admin_Side.Sales
             if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
             {
                 tableName = "productsales_coffee";
-                TotalSalesCoffee();
             }
             else if (category.Equals("Non-Coffee", StringComparison.OrdinalIgnoreCase))
             {
                 tableName = "productsales_noncoffee";
             }
-            else if (category.Equals("Hot", StringComparison.OrdinalIgnoreCase))
+            else if (category.Equals("Hot Coffee", StringComparison.OrdinalIgnoreCase))
             {
                 tableName = "productsales_hotcoffee";
             }
+            else if (category.Equals("Pastries", StringComparison.OrdinalIgnoreCase))
+            {
+                tableName = "productsales_pastries";
+            }
             else
             {
-                MessageBox.Show($"Invalid {category}. Please select a valid category.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Invalid category: {category}. Please select a valid category.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            // Call TotalSales with the correct table name
+            TotalSales(tableName, _category);
 
             // Convert DateLbl.Text to a DateTime object
             if (!DateTime.TryParse(DateLbl.Text, out DateTime saleDate))
@@ -559,6 +637,9 @@ namespace sims.Admin_Side.Sales
                         previewStock();
                         previewStockDashboard();
                         previewItemSales();
+                        previewDailySalesChart(_category);
+                        previewMonthlySalesChart(_category);
+
                     }
 
                     MessageBox.Show("Product added successfully, and stock quantities updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -572,6 +653,7 @@ namespace sims.Admin_Side.Sales
                     stock2Cmb.SelectedIndex = -1;
                     this.Hide();
                     previewProductsDashboard();
+                    previewSalesCoffee();
                 }
                 else
                 {
@@ -612,7 +694,7 @@ namespace sims.Admin_Side.Sales
         private void quantitySoldTxt_TextChanged(object sender, EventArgs e)
         {
             ValidateTextBoxForNumbersOnly(quantitySoldTxt);
-            
+
         }
 
         private void productPriceTxt_TextChanged(object sender, EventArgs e)
@@ -671,6 +753,7 @@ namespace sims.Admin_Side.Sales
             stock5Cmb.SelectedIndex = -1;
             stock6Cmb.SelectedIndex = -1;
         }
+
         private void UpdateProduct(string productID, string productName, string category, decimal productPrice, int stockQuantity, int quantitySold, string stockNeeded, string tableName, DateTime saleDate)
         {
             dbModule db = new dbModule();
@@ -706,7 +789,23 @@ namespace sims.Admin_Side.Sales
                 {
                     MessageBox.Show("Product updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     previewProductsDashboard();
-                    TotalSalesCoffee();
+                    TotalSales(tableName, _category);
+                    previewDailySalesChart(_category);
+                    previewMonthlySalesChart(_category);
+                    previewSalesCoffee();
+
+                    //productNameTxt.Clear();
+                    //categoryCmb.SelectedIndex = -1;
+                    //productPriceTxt.Clear();
+                    //quantitySoldTxt.Clear();
+                    //this.Hide();
+                    //stockCmb.SelectedIndex = -1;
+                    //stock2Cmb.SelectedIndex = -1;
+                    //stock3Cmb.SelectedIndex = -1;
+                    //stock4Cmb.SelectedIndex = -1;
+                    //stock5Cmb.SelectedIndex = -1;
+                    //stock6Cmb.SelectedIndex = -1;
+
                 }
                 else
                 {
@@ -782,9 +881,13 @@ namespace sims.Admin_Side.Sales
             {
                 tableName = "productsales_noncoffee";
             }
-            else if (category.Equals("Hot", StringComparison.OrdinalIgnoreCase))
+            else if (category.Equals("Hot Coffee", StringComparison.OrdinalIgnoreCase))
             {
                 tableName = "productsales_hotcoffee";
+            }
+            else if (category.Equals("Pastries", StringComparison.OrdinalIgnoreCase))
+            {
+                tableName = "productsales_pastries";
             }
             else
             {
