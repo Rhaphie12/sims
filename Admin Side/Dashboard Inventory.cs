@@ -1,28 +1,78 @@
-﻿using LiveCharts;
-using LiveCharts.Wpf;
+﻿using LiveCharts.Wpf;
+using LiveCharts;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sims.Admin_Side
 {
-    public partial class Inventory_Dashboard : Form
+    public partial class Dashboard_Inventory : Form
     {
-        public Inventory_Dashboard()
+        private string _category;
+
+        public Dashboard_Inventory(string category)
         {
             InitializeComponent();
+            _category = category;
+            activityLogsDgv.DataBindingComplete += activityLogsDgv_DataBindingComplete;
         }
 
-        private void Inventory_Dashboard_Load(object sender, EventArgs e)
+        public DataGridView ActivityLogsDgvRecentlyAddedDgv
         {
+            get { return activityLogsDgv; }
+        }
+
+        private void Dashboard_Inventory_Load(object sender, EventArgs e)
+        {
+
             StockPreview();
             ItemsCount();
             CategoriesCount();
             TotalSalesItems();
             ProductsCount();
-            TotalSalesCoffeePreview();
+
+            TotalSalesPreview("Coffee");
+            MonthlySalesPreview("Coffee");
+            ActivityLogs();
+        }
+
+        private void ActivityLogs()
+        {
+            dbModule db = new dbModule();
+            MySqlDataAdapter adapter = db.GetAdapter();
+
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT Staff_Name, Role, Activity, Date_Logged_In FROM activitylogs";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        // Use the adapter to fill the DataTable
+                        DataTable dataTable = new DataTable();
+                        adapter.SelectCommand = cmd; // Set the command to the adapter
+                        adapter.Fill(dataTable);     // Fill the DataTable
+
+                        activityLogsDgv.DataSource = dataTable;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
         public void CategoriesCount()
@@ -247,17 +297,39 @@ namespace sims.Admin_Side
             }
         }
 
-        public void TotalSalesCoffeePreview()
+        public void TotalSalesPreview(string category)
         {
             dbModule db = new dbModule();
             SeriesCollection series = new SeriesCollection();
+            decimal totalSales = 0;
 
             try
             {
+                // Determine the table name based on the category
+                string tableName = DetermineTableName(category);
+                if (string.IsNullOrEmpty(tableName))
+                {
+                    MessageBox.Show($"Invalid category: {category}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 using (MySqlConnection conn = db.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT Product_Name, SUM(Total_Product_Sale) AS TotalSales FROM productsales_coffee GROUP BY Product_Name";
+
+                    // Get total sales for the category
+                    string totalSalesQuery = $"SELECT SUM(Total_Product_Sale) AS TotalSales FROM {tableName}";
+                    MySqlCommand totalSalesCmd = new MySqlCommand(totalSalesQuery, conn);
+                    totalSales = Convert.ToDecimal(totalSalesCmd.ExecuteScalar());
+
+                    // Get sales and quantity per product
+                    string query = $@"
+                SELECT 
+                    Product_Name, 
+                    SUM(Total_Product_Sale) AS TotalSales, 
+                    SUM(Quantity_Sold) AS TotalQuantity 
+                FROM {tableName} 
+                GROUP BY Product_Name";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -265,12 +337,128 @@ namespace sims.Admin_Side
                         while (reader.Read())
                         {
                             string productName = reader["Product_Name"]?.ToString() ?? "Unknown Product";
-                            if (decimal.TryParse(reader["TotalSales"]?.ToString(), out decimal totalSales))
+                            decimal productSales = reader["TotalSales"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["TotalSales"]);
+                            int productQuantity = reader["TotalQuantity"] == DBNull.Value ? 0 : Convert.ToInt32(reader["TotalQuantity"]);
+
+                            // Add the product data to the chart
+                            series.Add(new PieSeries
+                            {
+                                Title = $"{productName} ({productQuantity} sold)", // Include quantity in the label
+                                Values = new ChartValues<decimal> { productSales },
+                                DataLabels = true
+                            });
+                        }
+                    }
+                }
+
+                if (DailySalesChart != null)
+                {
+                    // Clear and set the pie chart series
+                    DailySalesChart.Series.Clear();
+                    DailySalesChart.Series = series;
+
+                    // Update chart properties
+                    DailySalesChart.LegendLocation = LegendLocation.Bottom;
+                    DailySalesChart.Update(true, true);
+
+                    // Update the title label
+                    chartTitleLabel.Text = $"{category} Sales";
+                    chartTitleLabel.Font = new Font("Poppins", 11);
+                    chartTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
+                }
+                else
+                {
+                    MessageBox.Show("Pie chart is not initialized!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private string DetermineTableName(string category)
+        {
+            if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsales_coffee";
+            }
+            else if (category.Equals("Non-Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsales_noncoffee";
+            }
+            else if (category.Equals("Hot Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsales_hotcoffee";
+            }
+            else if (category.Equals("Pastries", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsales_pastries";
+            }
+            return string.Empty;
+        }
+
+        private void CoffeeMenuItem2_Click(object sender, EventArgs e)
+        {
+            TotalSalesPreview("Coffee");
+        }
+
+        private void NonCoffeeMenuItem3_Click(object sender, EventArgs e)
+        {
+            TotalSalesPreview("Non-Coffee");
+        }
+
+        private void HotCoffeeMenuItem4_Click(object sender, EventArgs e)
+        {
+            TotalSalesPreview("Hot Coffee");
+        }
+
+        private void pastriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TotalSalesPreview("Pastries");
+        }
+
+        public void MonthlySalesPreview(string category)
+        {
+            dbModule db = new dbModule();
+            SeriesCollection series = new SeriesCollection();
+            decimal totalSales = 0;
+
+            try
+            {
+                // Determine the table name based on the category
+                string tableName = DetermineTableName(category);
+                if (string.IsNullOrEmpty(tableName))
+                {
+                    MessageBox.Show($"Invalid category: {category}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    // Get total sales for the category
+                    string totalSalesQuery = $"SELECT SUM(Total_Product_Sale) AS TotalSales FROM {tableName}";
+                    MySqlCommand totalSalesCmd = new MySqlCommand(totalSalesQuery, conn);
+                    totalSales = Convert.ToDecimal(totalSalesCmd.ExecuteScalar());
+
+                    // Get sales per product
+                    string query = $"SELECT Product_Name, SUM(Total_Product_Sale) AS TotalSales FROM {tableName} GROUP BY Product_Name";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string productName = reader["Product_Name"]?.ToString() ?? "Unknown Product";
+                            if (decimal.TryParse(reader["TotalSales"]?.ToString(), out decimal productSales))
                             {
                                 series.Add(new PieSeries
                                 {
                                     Title = productName,
-                                    Values = new ChartValues<decimal> { totalSales },
+                                    Values = new ChartValues<decimal> { productSales },
                                     DataLabels = true
                                 });
                             }
@@ -278,27 +466,45 @@ namespace sims.Admin_Side
                     }
                 }
 
-                if (coffeeSalesChart != null)
+                if (MonthlySalesChart != null)
                 {
                     // Clear and set the pie chart series
-                    coffeeSalesChart.Series.Clear();
-                    coffeeSalesChart.Series = series;
+                    MonthlySalesChart.Series.Clear();
+                    MonthlySalesChart.Series = series;
 
-                    // Optionally update chart properties
-                    coffeeSalesChart.LegendLocation = LegendLocation.Bottom;
-                    coffeeSalesChart.Width = 700; // Increase chart width
-                    coffeeSalesChart.Height = 700; // Increase chart height
-                    coffeeSalesChart.Update(true, true);
+                    // Update chart properties
+                    MonthlySalesChart.LegendLocation = LegendLocation.Bottom;
+                    MonthlySalesChart.Update(true, true);
                 }
                 else
                 {
-                    MessageBox.Show("Pie chart is not initialized!");
+                    MessageBox.Show("Pie chart is not initialized!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CoffeeMonthlyChart_Click(object sender, EventArgs e)
+        {
+            MonthlySalesPreview("Coffee");
+        }
+
+        private void NonCoffeeMonthlyChart_Click(object sender, EventArgs e)
+        {
+            MonthlySalesPreview("Non-Coffee");
+        }
+
+        private void HotCoffeeMonthlyChart_Click(object sender, EventArgs e)
+        {
+            MonthlySalesPreview("Hot Coffee");
+        }
+
+        private void activityLogsDgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            activityLogsDgv.ClearSelection();
         }
     }
 }

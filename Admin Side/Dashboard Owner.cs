@@ -1,23 +1,19 @@
 ﻿using FontAwesome.Sharp;
 using Guna.UI.WinForms;
+using Bunifu.UI.WinForms;
 using MySql.Data.MySqlClient;
 using sims.Admin_Side;
 using sims.Admin_Side.Category;
+using sims.Admin_Side.Database;
 using sims.Admin_Side.Inventory_Report;
 using sims.Admin_Side.Items;
 using sims.Admin_Side.Sales;
-using sims.Admin_Side.Sales_Report;
 using sims.Admin_Side.Stocks;
 using sims.Admin_Side.Users;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using sims.Admin_Side.Sales_Report_Owner;
 
 namespace sims
 {
@@ -26,15 +22,22 @@ namespace sims
         private IconButton currentBtn;
         private GunaPanel leftBorderBtn;
 
-        private Inventory_Dashboard dashboardInventoryInstance;
+        private readonly string _category;
+        private Dashboard_Inventory dashboardInventoryInstance;
         private Manage_Categoryy manageCategoryInstance;
         private Manage_Items manageItemsInstance;
         private Manage_Stockk manageStockInstance;
         private Inventory_Reportt inventoryReportInstance;
         private Product_Saless productSalesInstance;
-        private Sales_Report manageSalesReportInstance;
+        private Product_Sales manageSalesReportInstance;
         private Manage_User_Staff manageUserStaffInstance;
-        private Add_Stock addStockInstance;
+        private Database_Backup databaseBackupInstance;
+        private readonly Add_Stock addStockInstance;
+
+        public PictureBox bellIcon
+        {
+            get { return pictureBox1; }
+        }
 
         public DashboardOwner()
         {
@@ -50,14 +53,15 @@ namespace sims
 
         private void DashboardOwner_Load(object sender, EventArgs e)
         {
-            dashboardInventoryInstance = new Inventory_Dashboard();
-            manageCategoryInstance = new Manage_Categoryy(dashboardInventoryInstance);
+            dashboardInventoryInstance = new Dashboard_Inventory(_category);
+            manageCategoryInstance = new Manage_Categoryy(dashboardInventoryInstance, this);
             manageItemsInstance = new Manage_Items(dashboardInventoryInstance);
-            manageStockInstance = new Manage_Stockk(dashboardInventoryInstance, addStockInstance, inventoryReportInstance);
-            inventoryReportInstance = new Inventory_Reportt();
-            productSalesInstance = new Product_Saless(dashboardInventoryInstance, manageStockInstance, addStockInstance, inventoryReportInstance);
-            manageSalesReportInstance = new Sales_Report();
+            manageStockInstance = new Manage_Stockk(dashboardInventoryInstance, addStockInstance, this, inventoryReportInstance);
+            inventoryReportInstance = new Inventory_Reportt(manageStockInstance);
+            productSalesInstance = new Product_Saless(dashboardInventoryInstance, manageStockInstance, addStockInstance, inventoryReportInstance, manageSalesReportInstance);
+            manageSalesReportInstance = new Product_Sales();
             manageUserStaffInstance = new Manage_User_Staff();
+            databaseBackupInstance = new Database_Backup();
 
             LoadView(dashboardInventoryInstance);
             ActivateButton(DashboardBtn, Color.White);
@@ -68,7 +72,7 @@ namespace sims
         private void ShowUsernameWithGreeting()
         {
             dbModule db = new dbModule();
-            string query = "SELECT username FROM users LIMIT 1";
+            string query = "SELECT Staff_Name FROM users LIMIT 1";
 
             using (MySqlConnection conn = db.GetConnection())
             {
@@ -143,6 +147,7 @@ namespace sims
             if (InventoryPanelSubMenu.Visible == true)
                 InventoryPanelSubMenu.Visible = false;
         }
+
         private void hideSubMenu2()
         {
             if (salesPanelSubMenu.Visible == true)
@@ -168,10 +173,10 @@ namespace sims
             currentBtn = (IconButton)senderBtn;
             currentBtn.BackColor = Color.FromArgb(222, 196, 125);
             currentBtn.ForeColor = customColor;
-            currentBtn.IconColor = customColor;                  
-            currentBtn.TextAlign = ContentAlignment.MiddleCenter; 
-            currentBtn.ImageAlign = ContentAlignment.MiddleRight; 
-            currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage; 
+            currentBtn.IconColor = customColor;
+            currentBtn.TextAlign = ContentAlignment.MiddleCenter;
+            currentBtn.ImageAlign = ContentAlignment.MiddleRight;
+            currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
             leftBorderBtn.BackColor = customColor;
             leftBorderBtn.Size = new Size(7, currentBtn.Height);
             leftBorderBtn.Location = new Point(0, currentBtn.Location.Y);
@@ -269,7 +274,7 @@ namespace sims
         private void inventoryReport_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(inventoryReportInstance);
+            //OpeninPanel(inventoryReportInstance);
         }
 
         private void SalesBtn_Click(object sender, EventArgs e)
@@ -294,6 +299,12 @@ namespace sims
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
             OpeninPanel(manageUserStaffInstance);
             customizeDesign();
+        }
+
+        private void backupDbBtn_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, Color.FromArgb(255, 255, 255));
+            OpeninPanel(databaseBackupInstance);
         }
 
         private void SignoutBtn_Click(object sender, EventArgs e)
