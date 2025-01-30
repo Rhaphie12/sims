@@ -92,7 +92,7 @@
             // 
             this.GunaPictureBox1.BaseColor = System.Drawing.Color.White;
             this.GunaPictureBox1.Image = global::sims.Properties.Resources.sales_and_inventory;
-            this.GunaPictureBox1.Location = new System.Drawing.Point(497, 63);
+            this.GunaPictureBox1.Location = new System.Drawing.Point(491, 63);
             this.GunaPictureBox1.Name = "GunaPictureBox1";
             this.GunaPictureBox1.Size = new System.Drawing.Size(359, 311);
             this.GunaPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
