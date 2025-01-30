@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
+            this.BackBtn = new Guna.UI.WinForms.GunaButton();
             this.label4 = new System.Windows.Forms.Label();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.Stocks_Report1 = new sims.Stocks_Report();
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
@@ -56,6 +59,7 @@
             // 
             this.gunaElipsePanel2.BackColor = System.Drawing.Color.Transparent;
             this.gunaElipsePanel2.BaseColor = System.Drawing.Color.White;
+            this.gunaElipsePanel2.Controls.Add(this.BackBtn);
             this.gunaElipsePanel2.Controls.Add(this.label4);
             this.gunaElipsePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaElipsePanel2.Location = new System.Drawing.Point(0, 0);
@@ -64,6 +68,37 @@
             this.gunaElipsePanel2.Radius = 7;
             this.gunaElipsePanel2.Size = new System.Drawing.Size(1170, 53);
             this.gunaElipsePanel2.TabIndex = 46;
+            // 
+            // BackBtn
+            // 
+            this.BackBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackBtn.AnimationHoverSpeed = 0.07F;
+            this.BackBtn.AnimationSpeed = 0.03F;
+            this.BackBtn.BackColor = System.Drawing.Color.Transparent;
+            this.BackBtn.BaseColor = System.Drawing.Color.Transparent;
+            this.BackBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.BackBtn.BorderSize = 2;
+            this.BackBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.BackBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.BackBtn.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackBtn.ForeColor = System.Drawing.Color.Black;
+            this.BackBtn.Image = null;
+            this.BackBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.BackBtn.Location = new System.Drawing.Point(1030, 9);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.BackBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.BackBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.BackBtn.OnHoverImage = null;
+            this.BackBtn.OnPressedColor = System.Drawing.Color.White;
+            this.BackBtn.Radius = 6;
+            this.BackBtn.Size = new System.Drawing.Size(130, 35);
+            this.BackBtn.TabIndex = 37;
+            this.BackBtn.Text = "Back";
+            this.BackBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BackBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
             // label4
             // 
@@ -101,7 +136,6 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.crystalReportViewer1);
             this.panel5.Location = new System.Drawing.Point(11, 14);
             this.panel5.Name = "panel5";
@@ -118,9 +152,14 @@
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.ReportSource = this.Stocks_Report1;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1147, 575);
-            this.crystalReportViewer1.TabIndex = 0;
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1149, 577);
+            this.crystalReportViewer1.TabIndex = 1;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
+            // gunaElipse1
+            // 
+            this.gunaElipse1.Radius = 12;
+            this.gunaElipse1.TargetControl = this;
             // 
             // Inventory_Reportt
             // 
@@ -132,6 +171,7 @@
             this.Controls.Add(this.gunaGroupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Inventory_Reportt";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory_Reportt";
             this.Load += new System.EventHandler(this.Inventory_Reportt_Load);
             this.panel1.ResumeLayout(false);
@@ -150,6 +190,8 @@
         internal System.Windows.Forms.Label label4;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox2;
         private System.Windows.Forms.Panel panel5;
+        private Guna.UI.WinForms.GunaButton BackBtn;
+        private Guna.UI.WinForms.GunaElipse gunaElipse1;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private sims.Stocks_Report Stocks_Report1;
     }

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using sims.Admin_Side.Stocks;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,12 @@ namespace sims.Admin_Side.Inventory_Report
 {
     public partial class Inventory_Reportt : Form
     {
-        public Inventory_Reportt()
+        private Manage_Stockk dashboard;
+
+        public Inventory_Reportt(Manage_Stockk dashboard)
         {
             InitializeComponent();
+            this.dashboard = dashboard;
         }
 
         private void Inventory_Reportt_Load(object sender, EventArgs e)
@@ -25,37 +29,93 @@ namespace sims.Admin_Side.Inventory_Report
 
         public void PopulateStocks()
         {
-            dbModule db = new dbModule();
-            MySqlDataAdapter adapter = db.GetAdapter();
-            using (MySqlConnection conn = db.GetConnection())
+            // Confirm the user's action to generate the report for the selected items
+            DialogResult result = MessageBox.Show("Are you sure you want to generate a report for the selected items?",
+                                                  "Generate Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
                 try
                 {
-                    conn.Open();
-                    string query = "SELECT * FROM stocks";
-                    MySqlCommand command = new MySqlCommand(query, conn);
-                    adapter.SelectCommand = command;
+                    // Ensure that at least one row is selected
+                    if (dashboard.ItemsStockDgv.SelectedCells.Count > 0)
+                    {
+                        List<string> selectedStockIDs = new List<string>();
 
-                    // Fill the DataTable with data from the "stocks" table
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                        // Loop through selected rows
+                        foreach (DataGridViewRow row in dashboard.ItemsStockDgv.SelectedRows)
+                        {
+                            string stockID = row.Cells["Stock_ID"]?.Value?.ToString();
+                            if (string.IsNullOrEmpty(stockID))
+                            {
+                                MessageBox.Show("One or more selected rows have an invalid Stock_ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            selectedStockIDs.Add(stockID);
+                        }
 
-                    // Use the embedded Crystal Report
-                    sims.Stocks_Report stocksReport = new sims.Stocks_Report();
+                        if (selectedStockIDs.Count > 0)
+                        {
+                            // Initialize database connection and fetch the selected stock details
+                            dbModule db = new dbModule();
+                            DataTable dt = new DataTable();
 
-                    // Set the DataTable as the data source for the report
-                    stocksReport.SetDataSource(dt);
+                            using (MySqlConnection conn = db.GetConnection())
+                            {
+                                conn.Open();
 
-                    // Assign the report to the CrystalReportViewer
-                    crystalReportViewer1.ReportSource = stocksReport;
-                    crystalReportViewer1.Refresh();
+                                // Prepare a query with multiple stock IDs
+                                string stockIds = string.Join(",", selectedStockIDs.Select(id => $"'{id}'"));
+                                Console.WriteLine("Generated Stock IDs: " + stockIds);  // Debugging output
+
+                                string query = $"SELECT * FROM stocks WHERE Stock_ID IN ({stockIds})";
+                                using (MySqlCommand command = new MySqlCommand(query, conn))
+                                {
+                                    // Use MySqlDataAdapter to fill the DataTable
+                                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                                    {
+                                        adapter.Fill(dt);
+                                    }
+                                }
+                            }
+
+                            // Check if data exists for the selected Stock_IDs
+                            if (dt.Rows.Count > 0)
+                            {
+                                sims.Stocks_Report stocksReport = new sims.Stocks_Report();
+                                stocksReport.SetDataSource(dt);
+
+                                crystalReportViewer1.ReportSource = stocksReport;
+                                crystalReportViewer1.Refresh();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No data found for the selected items.", "Information",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No valid Stock_ID(s) selected. Unable to generate the report.",
+                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select at least one row to generate a report.",
+                                        "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }
