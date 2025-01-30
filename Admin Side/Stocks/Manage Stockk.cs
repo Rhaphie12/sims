@@ -11,16 +11,19 @@ namespace sims.Admin_Side.Stocks
 {
     public partial class Manage_Stockk : Form
     {
-        private Inventory_Dashboard _inventoryDashboard;
+        private Dashboard_Inventory _inventoryDashboard;
         private Add_Stock _addStock;
-        private Inventory_Reportt _inventoryReport;
+        private DashboardOwner _dashboardOwner;
+        private Inventory_Reportt _reportt;
 
-        public Manage_Stockk(Inventory_Dashboard inventoryDashboard, Add_Stock _addStock, Inventory_Reportt inventory_Reportt)
+        public Manage_Stockk(Dashboard_Inventory inventoryDashboard, Add_Stock _addStock, DashboardOwner dashboardOwner, Inventory_Reportt reportt)
         {
             InitializeComponent();
             itemStockDgv.CellFormatting += itemStockDgv_CellFormatting;
             _inventoryDashboard = inventoryDashboard;
-            _inventoryReport = inventory_Reportt;
+            _dashboardOwner = dashboardOwner;
+            _reportt = reportt;
+            itemStockDgv.DataBindingComplete += itemStockDgv_DataBindingComplete;
         }
 
         public DataGridView ItemsStockDgv
@@ -108,18 +111,15 @@ namespace sims.Admin_Side.Stocks
                 MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
-        private void stocksReport()
+
+        private void StocksReport()
         {
-            if (_inventoryReport != null)
+            if (_reportt != null)
             {
-                _inventoryReport.PopulateStocks();
-            }
-            else
-            {
-                MessageBox.Show("Inventory Report is not available.");
+                _reportt.PopulateStocks();
             }
         }
-
+        
         private DataTable SearchInDatabase(string searchTerm)
         {
             DataTable dataTable = new DataTable();
@@ -129,7 +129,7 @@ namespace sims.Admin_Side.Stocks
             {
                 conn.Open();
 
-                string query = "SELECT Stock_ID, Item_ID, Item_Name, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image " +
+                string query = "SELECT Stock_ID, Item_ID, Item_Name, Category, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image " +
                                "FROM stocks WHERE Item_Name LIKE @SearchTerm";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -165,7 +165,7 @@ namespace sims.Admin_Side.Stocks
             // Check if the form is already open
             if (_addStock == null || _addStock.IsDisposed)
             {
-                _addStock = new Add_Stock(this, _inventoryDashboard, _inventoryReport);
+                _addStock = new Add_Stock(this, _inventoryDashboard, _dashboardOwner, _reportt);
                 _addStock.Show();
             }
             else
@@ -205,7 +205,7 @@ namespace sims.Admin_Side.Stocks
                         ViewStock();
                         previewStock();
                         TotalSales();
-                        stocksReport();
+                        StocksReport();
                     }
                     else
                     {
@@ -247,6 +247,39 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
+        public void Notification(bool hasNotification)
+        {
+            if (_dashboardOwner == null)
+            {
+                MessageBox.Show("Dashboard owner is not set!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (_dashboardOwner.bellIcon == null)
+            {
+                MessageBox.Show("Bell icon is not set!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Update the bell icon based on the notification state
+            _dashboardOwner.bellIcon.Image = hasNotification
+                ? Properties.Resources.Active_white // Set active icon
+                : Properties.Resources.bell__1____white; // Set default icon
+
+            if (hasNotification)
+            {
+                // Set a timer to reset the icon after 1 second
+                Timer timer = new Timer();
+                timer.Interval = 6000; // 6 seconds
+                timer.Tick += (sender, e) =>
+                {
+                    _dashboardOwner.bellIcon.Image = Properties.Resources.bell__1____white; // Set default icon
+                    timer.Stop(); // Stop the timer after it ticks
+                };
+                timer.Start();
+            }
+        }
+
         private void itemStockDgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             int stockColumnIndex = itemStockDgv.Columns["Stock_In"].Index;
@@ -256,7 +289,7 @@ namespace sims.Admin_Side.Stocks
                 int stockLevel = Convert.ToInt32(e.Value);
 
                 // Define stock level thresholds
-                int lowStockThreshold = 0;    // Stock is low if ≤ 0
+                int lowStockThreshold = 5;    // Stock is low if ≤ 0
                 int normalStockThreshold = 30; // Stock is normal if > 5 and ≤ 30
 
                 // Set the background color based on stock level
@@ -264,28 +297,7 @@ namespace sims.Admin_Side.Stocks
                 {
                     e.CellStyle.BackColor = Color.Red;
                     e.CellStyle.ForeColor = Color.White;
-
-                    // Get the item details from the DataGridView
-                    int itemID = Convert.ToInt32(itemStockDgv.Rows[e.RowIndex].Cells["Item_ID"].Value);
-                    string itemName = itemStockDgv.Rows[e.RowIndex].Cells["Item_Name"].Value.ToString();
-                    string unitType = itemStockDgv.Rows[e.RowIndex].Cells["Unit_Type"].Value.ToString();
-                    decimal itemPrice = Convert.ToDecimal(itemStockDgv.Rows[e.RowIndex].Cells["Item_Price"].Value);
-                    decimal itemTotal = Convert.ToDecimal(itemStockDgv.Rows[e.RowIndex].Cells["Item_Total"].Value);
-
-                    // Convert byte[] to Image for Item_Image
-                    byte[] imageBytes = (byte[])itemStockDgv.Rows[e.RowIndex].Cells["Item_Image"].Value;
-                    System.Drawing.Image itemImage = null;
-
-                    if (imageBytes != null && imageBytes.Length > 0)
-                    {
-                        using (var ms = new MemoryStream(imageBytes))
-                        {
-                            itemImage = System.Drawing.Image.FromStream(ms);
-                        }
-                    }
-
-                    // Insert the low stock data into the lowstocks table
-                    InsertLowStockItem(itemID, itemName, stockLevel, unitType, itemPrice, itemTotal, itemImage);
+                    Notification(true);
                 }
                 else if (stockLevel <= normalStockThreshold)
                 {
@@ -300,116 +312,15 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
-        private void InsertLowStockItem(int itemID, string itemName, int stockLevel, string unitType, decimal itemPrice, decimal itemTotal, System.Drawing.Image itemImage)
-        {
-            dbModule db = new dbModule();
-            MySqlConnection conn = db.GetConnection();
-            MySqlCommand cmd = db.GetCommand();
-
-            try
-            {
-                conn.Open();
-                cmd.Connection = conn;
-
-                // Check if the item already exists in the lowstocks table
-                cmd.CommandText = "SELECT COUNT(*) FROM lowstocks WHERE Item_Name = @Item_Name";
-                cmd.Parameters.AddWithValue("@Item_Name", itemName);
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                if (count == 0)
-                {
-                    // Insert the low stock item into the lowstocks table
-                    cmd.CommandText = "INSERT INTO lowstocks (Item_ID, Item_Name, Stock_In, Unit_Type, Item_Price, Item_Total, Item_Image, Date_Added) " +
-                                      "VALUES (@Item_ID, @Item_Name, @Stock_In, @Unit_Type, @Item_Price, @Item_Total, @Item_Image, @Date_Added)";
-
-                    cmd.Parameters.Clear(); // Clear parameters to avoid conflicts
-                    cmd.Parameters.AddWithValue("@Item_ID", itemID);
-                    cmd.Parameters.AddWithValue("@Item_Name", itemName);
-                    cmd.Parameters.AddWithValue("@Stock_In", stockLevel);
-                    cmd.Parameters.AddWithValue("@Unit_Type", unitType);
-                    cmd.Parameters.AddWithValue("@Item_Price", itemPrice);
-                    cmd.Parameters.AddWithValue("@Item_Total", itemTotal);
-
-                    // Convert the image to a byte array
-                    byte[] imageBytes = itemImage != null ? ImageToByteArray(ResizeImage(itemImage, 300, 300)) : null;
-                    cmd.Parameters.AddWithValue("@Item_Image", imageBytes ?? (object)DBNull.Value);
-
-                    cmd.Parameters.AddWithValue("@Date_Added", DateTime.Now.ToString("yyyy-MM-dd"));
-
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
-                    {
-                        // Successfully added to lowstocks, delete from stocks table
-                        cmd.CommandText = "DELETE FROM stocks WHERE Item_ID = @Item_ID";
-                        cmd.Parameters.Clear(); // Clear parameters to avoid conflicts
-                        cmd.Parameters.AddWithValue("@Item_ID", itemID);
-
-                        int deleteRows = cmd.ExecuteNonQuery();
-
-                        if (deleteRows > 0)
-                        {
-                            MessageBox.Show($"Item '{itemName}' moved to low stocks and removed from stocks.",
-                                "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ViewStock();
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Failed to delete item '{itemName}' from stocks.",
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to process low stock item: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-                cmd.Dispose();
-                conn.Dispose();
-            }
-        }
-
-        private System.Drawing.Image ResizeImage(System.Drawing.Image image, int width, int height)
-        {
-            var destRect = new System.Drawing.Rectangle(0, 0, width, height);
-            var destImage = new System.Drawing.Bitmap(width, height);
-
-            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-            using (var graphics = System.Drawing.Graphics.FromImage(destImage))
-            {
-                graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-
-                using (var wrapMode = new System.Drawing.Imaging.ImageAttributes())
-                {
-                    wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, System.Drawing.GraphicsUnit.Pixel, wrapMode);
-                }
-            }
-
-            return destImage;
-        }
-
-        private void lowStocksBtn_Click(object sender, EventArgs e)
-        {
-            var lowStock = new Low_Stocks(_inventoryDashboard, this);
-            lowStock.Show();
-        }
-
         private void UpdateStockBtn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to update this record?", "Update Item!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (itemStockDgv.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("Please select a item to re-stock.", "Notice!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("Are you sure you want to re-stock this item?", "Update Item!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
                 try
@@ -432,6 +343,29 @@ namespace sims.Admin_Side.Stocks
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void StocksReportBtn_Click(object sender, EventArgs e)
+        {
+            var inventoryReport = new Inventory_Reportt(this);
+            inventoryReport.Show();
+        }
+
+        private void selectAllBtn_Click(object sender, EventArgs e)
+        {
+            // Check if all rows are already selected
+            bool allSelected = itemStockDgv.SelectedRows.Count == itemStockDgv.Rows.Count;
+
+            // Loop through all rows and toggle the selection
+            foreach (DataGridViewRow row in itemStockDgv.Rows)
+            {
+                row.Selected = !allSelected;
+            }
+        }
+
+        private void itemStockDgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            itemStockDgv.ClearSelection();
         }
     }
 }

@@ -14,10 +14,11 @@ namespace sims.Admin_Side.Stocks
     public partial class Add_Stock : Form
     {
         private Manage_Stockk dashboard;
-        private Inventory_Dashboard _inventoryDashboard;
-        private Inventory_Reportt _inventoryReport;
+        private Dashboard_Inventory _inventoryDashboard;
+        private DashboardOwner _dashboardOwner;
+        private Inventory_Reportt _reportt;
 
-        public Add_Stock(Manage_Stockk dashboard, Inventory_Dashboard inventoryDashboard, Inventory_Reportt inventory_Reportt)
+        public Add_Stock(Manage_Stockk dashboard, Dashboard_Inventory inventoryDashboard, DashboardOwner dashboardOwner, Inventory_Reportt reportt)
         {
             InitializeComponent();
             this.dashboard = dashboard;
@@ -25,7 +26,8 @@ namespace sims.Admin_Side.Stocks
             itemQuantityTxt.TextChanged += (s, e) => CalculateTotalValue();
             itemPriceTxt.TextChanged += (s, e) => CalculateTotalValue();
             _inventoryDashboard = inventoryDashboard;
-            _inventoryReport = inventory_Reportt;
+            _dashboardOwner = dashboardOwner;
+            _reportt = reportt;
         }
 
         public class ComboBoxItem
@@ -70,7 +72,7 @@ namespace sims.Admin_Side.Stocks
             SelectItemID();
             UnitType();
             previewStock();
-            stocksReport();
+            TotalSales();
         }
 
         private void previewStock()
@@ -85,15 +87,23 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
-        private void stocksReport()
+        private void TotalSales()
         {
-            if (_inventoryReport != null)
+            if (_inventoryDashboard != null)
             {
-                _inventoryReport.PopulateStocks();
+                _inventoryDashboard.TotalSalesItems();
             }
             else
             {
-                MessageBox.Show("Inventory Reports is not available.");
+                MessageBox.Show("Inventory Dashboard is not available.");
+            }
+        }
+
+        private void StocksReport()
+        {
+            if (_reportt != null)
+            {
+                _reportt.PopulateStocks();
             }
         }
 
@@ -120,12 +130,12 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
-        private Dictionary<string, (int ItemID, string ItemName, byte[] ItemImage)> itemData =
-    new Dictionary<string, (int, string, byte[])>();
+        private Dictionary<string, (int ItemID, string ItemName, string Category, byte[] ItemImage)> itemData =
+    new Dictionary<string, (int, string, string, byte[])>();
 
         private void SelectItemID()
         {
-            string query = "SELECT Item_ID, Item_Name, Item_Image FROM items"; // Include the image column
+            string query = "SELECT Item_ID, Item_Name, Category, Item_Image FROM items"; // Include the image column
             dbModule db = new dbModule();
 
             try
@@ -142,11 +152,12 @@ namespace sims.Admin_Side.Stocks
                             {
                                 int itemID = Convert.ToInt32(reader["Item_ID"]);
                                 string itemName = reader["Item_Name"].ToString();
+                                string category = reader["Category"].ToString();
                                 byte[] itemImage = !reader.IsDBNull(reader.GetOrdinal("Item_Image"))
                                     ? (byte[])reader["Item_Image"]
                                     : null;
                                 selectItemNameCmb.Items.Add(itemName);
-                                itemData[itemName] = (itemID, itemName, itemImage);
+                                itemData[itemName] = (itemID, itemName, category, itemImage);
                             }
                         }
                     }
@@ -242,6 +253,7 @@ namespace sims.Admin_Side.Stocks
 
             string itemID = itemIDTxt.Text.Trim();
             string itemName = selectItemNameCmb.SelectedItem?.ToString() ?? string.Empty;
+            string category = categoryCmb.SelectedItem?.ToString() ?? string.Empty;
             string stockIn = itemQuantityTxt.Text.Trim();
             string unitType = unitTypeCmb.SelectedItem?.ToString() ?? string.Empty;
             string dateAdded = dateAddedDtp.Value.ToString("yyyy-MM-dd");
@@ -260,11 +272,12 @@ namespace sims.Admin_Side.Stocks
             {
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "INSERT INTO stocks (Item_ID, Item_Name, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image) " +
-                                  "VALUES (@Item_ID, @Item_Name, @Stock_In, @Unit_Type, @Date_Added, @Item_Price, @Item_Total, @Item_Image)";
+                cmd.CommandText = "INSERT INTO stocks (Item_ID, Item_Name, Category, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image) " +
+                                  "VALUES (@Item_ID, @Item_Name, @Category, @Stock_In, @Unit_Type, @Date_Added, @Item_Price, @Item_Total, @Item_Image)";
 
                 cmd.Parameters.AddWithValue("@Item_ID", itemID);
                 cmd.Parameters.AddWithValue("@Item_Name", itemName);
+                cmd.Parameters.AddWithValue("@Category", category);
                 cmd.Parameters.AddWithValue("@Stock_In", int.TryParse(stockIn, out var stock) ? stock : 0); // Convert to integer
                 cmd.Parameters.AddWithValue("@Unit_Type", unitType);
                 cmd.Parameters.AddWithValue("@Date_Added", dateAdded);
@@ -278,6 +291,7 @@ namespace sims.Admin_Side.Stocks
                 if (rowsAffected > 0)
                 {
                     selectItemNameCmb.SelectedIndex = -1;
+                    categoryCmb.SelectedIndex = -1;
                     itemQuantityTxt.Clear();
                     unitTypeCmb.SelectedIndex = -1;
                     dateAddedDtp.Value = DateTime.Now;
@@ -288,7 +302,8 @@ namespace sims.Admin_Side.Stocks
                     this.Alert("Stock Added Successfully");
                     Populate();
                     previewStock();
-                    stocksReport();
+                    StocksReport();
+                    TotalSales();
                 }
                 else
                 {
@@ -348,6 +363,13 @@ namespace sims.Admin_Side.Stocks
                 if (itemData.TryGetValue(selectedItem, out var itemInfo))
                 {
                     itemIDTxt.Text = itemInfo.ItemID.ToString();
+
+                    // Ensure the category exists in categoryCmb
+                    categoryCmb.Items.Clear(); // Clear previous selection
+                    categoryCmb.Items.Add(itemInfo.Category);
+                    categoryCmb.SelectedIndex = 0; // Automatically select the category
+
+                    // Load item image
                     byte[] imageBytes = itemInfo.ItemImage;
                     if (imageBytes != null && imageBytes.Length > 0)
                     {
@@ -365,12 +387,14 @@ namespace sims.Admin_Side.Stocks
                 {
                     MessageBox.Show("Item not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     itemIDTxt.Clear();
+                    categoryCmb.Items.Clear();
                     itemImagePic.Image = null;
                 }
             }
             else
             {
                 itemIDTxt.Clear();
+                categoryCmb.Items.Clear();
                 itemImagePic.Image = null;
             }
         }

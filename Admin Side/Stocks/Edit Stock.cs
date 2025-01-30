@@ -7,16 +7,17 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Data;
 using sims.Notification.Stock_notification;
+using Bunifu.UI.WinForms;
 
 namespace sims.Admin_Side.Stocks
 {
     public partial class Edit_Stock : Form
     {
         private string _itemID;
-        private Inventory_Dashboard _inventoryDashboard;
+        private Dashboard_Inventory _inventoryDashboard;
         private Manage_Stockk dashboard;
 
-        public Edit_Stock(string itemID, Inventory_Dashboard inventoryDashboard, Manage_Stockk dashboard)
+        public Edit_Stock(string itemID, Dashboard_Inventory inventoryDashboard, Manage_Stockk dashboard)
         {
             InitializeComponent();
             _itemID = itemID;
@@ -333,6 +334,32 @@ namespace sims.Admin_Side.Stocks
         private void totalInfoBtn_Click(object sender, EventArgs e)
         {
             _ = MessageBox.Show("Item Total is calculated by multiplying Item Quantity and Item Price", "Item Total of Item Quantity and Item Price", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ValidateTextBoxForNumbersOnly(BunifuTextBox textBox)
+        {
+            string newText = textBox.Text;
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(newText, @"[a-zA-Z]"))
+            {
+                MessageBox.Show("Letters are not allowed!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox.Text = System.Text.RegularExpressions.Regex.Replace(newText, @"[a-zA-Z]", "");
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
+        private void itemQuantityTxt_TextChanged(object sender, EventArgs e)
+        {
+            ValidateTextBoxForNumbersOnly(itemQuantityTxt);
+
+            if (int.TryParse(itemQuantityTxt.Text, out int quantity))
+            {
+                if (quantity > 20)
+                {
+                    MessageBox.Show("The maximum stock quantity is 20.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    itemQuantityTxt.Clear();
+                }
+            }
         }
     }
 }

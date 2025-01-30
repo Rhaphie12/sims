@@ -70,6 +70,8 @@
             this.itemTotalTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
+            this.categoryCmb = new Guna.UI.WinForms.GunaComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.gunaElipsePanel2.SuspendLayout();
             this.gunaElipsePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemImagePic)).BeginInit();
@@ -102,6 +104,8 @@
             // 
             this.gunaElipsePanel1.BackColor = System.Drawing.Color.Transparent;
             this.gunaElipsePanel1.BaseColor = System.Drawing.Color.White;
+            this.gunaElipsePanel1.Controls.Add(this.categoryCmb);
+            this.gunaElipsePanel1.Controls.Add(this.label12);
             this.gunaElipsePanel1.Controls.Add(this.dateAddedDtp);
             this.gunaElipsePanel1.Controls.Add(this.label10);
             this.gunaElipsePanel1.Controls.Add(this.label11);
@@ -137,7 +141,7 @@
             this.dateAddedDtp.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateAddedDtp.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateAddedDtp.HoverState.Parent = this.dateAddedDtp;
-            this.dateAddedDtp.Location = new System.Drawing.Point(46, 217);
+            this.dateAddedDtp.Location = new System.Drawing.Point(275, 213);
             this.dateAddedDtp.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.dateAddedDtp.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
             this.dateAddedDtp.Name = "dateAddedDtp";
@@ -151,7 +155,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(41, 186);
+            this.label10.Location = new System.Drawing.Point(270, 182);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(108, 28);
             this.label10.TabIndex = 107;
@@ -162,7 +166,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(270, 186);
+            this.label11.Location = new System.Drawing.Point(41, 270);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(91, 28);
             this.label11.TabIndex = 105;
@@ -195,7 +199,7 @@
             this.itemPriceTxt.IconRight = null;
             this.itemPriceTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.itemPriceTxt.Lines = new string[0];
-            this.itemPriceTxt.Location = new System.Drawing.Point(275, 217);
+            this.itemPriceTxt.Location = new System.Drawing.Point(46, 301);
             this.itemPriceTxt.MaxLength = 32767;
             this.itemPriceTxt.MinimumSize = new System.Drawing.Size(1, 1);
             this.itemPriceTxt.Modified = false;
@@ -319,7 +323,7 @@
             this.totalInfoBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.totalInfoBtn.Image = global::sims.Properties.Resources.blue_round_information_icon_butt;
             this.totalInfoBtn.ImageActive = null;
-            this.totalInfoBtn.Location = new System.Drawing.Point(261, 272);
+            this.totalInfoBtn.Location = new System.Drawing.Point(359, 272);
             this.totalInfoBtn.Name = "totalInfoBtn";
             this.totalInfoBtn.Size = new System.Drawing.Size(20, 20);
             this.totalInfoBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -355,7 +359,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(41, 96);
+            this.label6.Location = new System.Drawing.Point(270, 99);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 28);
             this.label6.TabIndex = 96;
@@ -463,7 +467,7 @@
             this.itemQuantityTxt.IconRight = null;
             this.itemQuantityTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.itemQuantityTxt.Lines = new string[0];
-            this.itemQuantityTxt.Location = new System.Drawing.Point(46, 127);
+            this.itemQuantityTxt.Location = new System.Drawing.Point(275, 130);
             this.itemQuantityTxt.MaxLength = 32767;
             this.itemQuantityTxt.MinimumSize = new System.Drawing.Size(1, 1);
             this.itemQuantityTxt.Modified = false;
@@ -543,7 +547,7 @@
             this.unitTypeCmb.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unitTypeCmb.ForeColor = System.Drawing.Color.Black;
             this.unitTypeCmb.FormattingEnabled = true;
-            this.unitTypeCmb.Location = new System.Drawing.Point(275, 130);
+            this.unitTypeCmb.Location = new System.Drawing.Point(46, 218);
             this.unitTypeCmb.Name = "unitTypeCmb";
             this.unitTypeCmb.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
             this.unitTypeCmb.OnHoverItemForeColor = System.Drawing.Color.White;
@@ -557,7 +561,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(270, 99);
+            this.label3.Location = new System.Drawing.Point(41, 187);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 28);
             this.label3.TabIndex = 95;
@@ -579,7 +583,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(172, 270);
+            this.label2.Location = new System.Drawing.Point(270, 270);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 28);
             this.label2.TabIndex = 93;
@@ -612,7 +616,7 @@
             this.itemTotalTxt.IconRight = null;
             this.itemTotalTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.itemTotalTxt.Lines = new string[0];
-            this.itemTotalTxt.Location = new System.Drawing.Point(177, 301);
+            this.itemTotalTxt.Location = new System.Drawing.Point(275, 301);
             this.itemTotalTxt.MaxLength = 32767;
             this.itemTotalTxt.MinimumSize = new System.Drawing.Size(1, 1);
             this.itemTotalTxt.Modified = false;
@@ -668,6 +672,37 @@
             // 
             this.gunaDragControl1.TargetControl = this.gunaElipsePanel2;
             // 
+            // categoryCmb
+            // 
+            this.categoryCmb.BackColor = System.Drawing.Color.Transparent;
+            this.categoryCmb.BaseColor = System.Drawing.Color.White;
+            this.categoryCmb.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.categoryCmb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.categoryCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.categoryCmb.FocusedColor = System.Drawing.Color.Empty;
+            this.categoryCmb.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryCmb.ForeColor = System.Drawing.Color.Black;
+            this.categoryCmb.FormattingEnabled = true;
+            this.categoryCmb.Location = new System.Drawing.Point(46, 130);
+            this.categoryCmb.Name = "categoryCmb";
+            this.categoryCmb.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.categoryCmb.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.categoryCmb.Radius = 4;
+            this.categoryCmb.Size = new System.Drawing.Size(200, 32);
+            this.categoryCmb.TabIndex = 110;
+            this.categoryCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(41, 99);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(87, 28);
+            this.label12.TabIndex = 111;
+            this.label12.Text = "Category";
+            // 
             // Add_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -717,5 +752,7 @@
         private Bunifu.UI.WinForms.BunifuTextBox itemIDTxt;
         internal System.Windows.Forms.Label label10;
         private Guna.UI2.WinForms.Guna2DateTimePicker dateAddedDtp;
+        private Guna.UI.WinForms.GunaComboBox categoryCmb;
+        internal System.Windows.Forms.Label label12;
     }
 }
