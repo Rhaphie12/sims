@@ -2,6 +2,7 @@
 using sims.Admin_Side.Inventory_Report;
 using sims.Notification.Stock_notification;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -24,6 +25,8 @@ namespace sims.Admin_Side.Stocks
             _dashboardOwner = dashboardOwner;
             _reportt = reportt;
             itemStockDgv.DataBindingComplete += itemStockDgv_DataBindingComplete;
+
+            _dashboardOwner.bellIcon.Click += BellIcon_Click;
         }
 
         public DataGridView ItemsStockDgv
@@ -129,8 +132,8 @@ namespace sims.Admin_Side.Stocks
             {
                 conn.Open();
 
-                string query = "SELECT Stock_ID, Item_ID, Item_Name, Category, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image " +
-                               "FROM stocks WHERE Item_Name LIKE @SearchTerm";
+                string query = @"SELECT Stock_ID, Item_ID, Item_Name, Category, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image 
+                         FROM stocks WHERE Item_Name LIKE @SearchTerm OR Category LIKE @SearchTerm";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -247,6 +250,8 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
+        private bool hasLowStockNotification = false; // Class-level variable
+
         public void Notification(bool hasNotification)
         {
             if (_dashboardOwner == null)
@@ -261,6 +266,8 @@ namespace sims.Admin_Side.Stocks
                 return;
             }
 
+            hasLowStockNotification = hasNotification; // Store notification state
+
             // Update the bell icon based on the notification state
             _dashboardOwner.bellIcon.Image = hasNotification
                 ? Properties.Resources.Active_white // Set active icon
@@ -268,17 +275,57 @@ namespace sims.Admin_Side.Stocks
 
             if (hasNotification)
             {
-                // Set a timer to reset the icon after 1 second
+                // Set a timer to reset the icon after 6 seconds
                 Timer timer = new Timer();
                 timer.Interval = 6000; // 6 seconds
                 timer.Tick += (sender, e) =>
                 {
-                    _dashboardOwner.bellIcon.Image = Properties.Resources.bell__1____white; // Set default icon
-                    timer.Stop(); // Stop the timer after it ticks
+                    _dashboardOwner.bellIcon.Image = Properties.Resources.bell__1____white; // Reset icon
+                    hasLowStockNotification = false; // Reset notification state
+                    timer.Stop();
                 };
                 timer.Start();
             }
         }
+
+        private void BellIcon_Click(object sender, EventArgs e)
+        {
+            if (hasLowStockNotification)
+            {
+                // List to store low-stock item IDs
+                List<string> lowStockItemIDs = new List<string>();
+
+                // Iterate through DataGridView to find low-stock items
+                foreach (DataGridViewRow row in itemStockDgv.Rows)
+                {
+                    if (row.Cells["Stock_In"].Value != null && row.Cells["Stock_ID"].Value != null)
+                    {
+                        int stockLevel = Convert.ToInt32(row.Cells["Stock_In"].Value);
+                        if (stockLevel <= 5) // Threshold for low stock
+                        {
+                            lowStockItemIDs.Add(row.Cells["Stock_ID"].Value.ToString());
+                        }
+                    }
+                }
+
+                if (lowStockItemIDs.Count > 0)
+                {
+                    // Open Edit_Stock with the first low-stock item's ID
+                    string firstLowStockID = lowStockItemIDs[0];
+                    Edit_Stock editStockForm = new Edit_Stock(firstLowStockID, _inventoryDashboard, this);
+                    editStockForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No low-stock items found!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No low-stock items currently!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
         private void itemStockDgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -289,15 +336,20 @@ namespace sims.Admin_Side.Stocks
                 int stockLevel = Convert.ToInt32(e.Value);
 
                 // Define stock level thresholds
-                int lowStockThreshold = 5;    // Stock is low if ≤ 0
-                int normalStockThreshold = 30; // Stock is normal if > 5 and ≤ 30
+                int lowStockThreshold = 5;
+                int normalStockThreshold = 30;
 
-                // Set the background color based on stock level
+                // Check and update the cell color
                 if (stockLevel <= lowStockThreshold)
                 {
                     e.CellStyle.BackColor = Color.Red;
                     e.CellStyle.ForeColor = Color.White;
-                    Notification(true);
+
+                    // Trigger notification only if it's not already active
+                    if (!hasLowStockNotification)
+                    {
+                        Notification(true);
+                    }
                 }
                 else if (stockLevel <= normalStockThreshold)
                 {
@@ -347,6 +399,13 @@ namespace sims.Admin_Side.Stocks
 
         private void StocksReportBtn_Click(object sender, EventArgs e)
         {
+            // Assuming you have a DataGridView named 'stocksDataGridView'
+            if (ItemsStockDgv.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("Please select a column before generating the inventory report.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var inventoryReport = new Inventory_Reportt(this);
             inventoryReport.Show();
         }
