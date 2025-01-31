@@ -58,7 +58,7 @@ namespace sims
             manageItemsInstance = new Manage_Items(dashboardInventoryInstance);
             manageStockInstance = new Manage_Stockk(dashboardInventoryInstance, addStockInstance, this, inventoryReportInstance);
             inventoryReportInstance = new Inventory_Reportt(manageStockInstance);
-            productSalesInstance = new Product_Saless(dashboardInventoryInstance, manageStockInstance, addStockInstance, inventoryReportInstance, manageSalesReportInstance);
+            productSalesInstance = new Product_Saless(dashboardInventoryInstance, manageStockInstance, addStockInstance, inventoryReportInstance, this, manageSalesReportInstance);
             manageSalesReportInstance = new Product_Sales();
             manageUserStaffInstance = new Manage_User_Staff();
             databaseBackupInstance = new Database_Backup();
