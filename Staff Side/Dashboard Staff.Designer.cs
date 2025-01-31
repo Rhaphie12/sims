@@ -41,18 +41,18 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.profilePicBox = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Label3 = new System.Windows.Forms.Label();
             this.greetingNameTxt = new System.Windows.Forms.Label();
             this.DashboardPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelMenu.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePicBox)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelMenu
@@ -259,29 +259,12 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.profilePicBox);
+            this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(1004, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(141, 79);
             this.panel3.TabIndex = 4;
-            // 
-            // profilePicBox
-            // 
-            this.profilePicBox.AllowFocused = false;
-            this.profilePicBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.profilePicBox.AutoSizeHeight = true;
-            this.profilePicBox.BorderRadius = 29;
-            this.profilePicBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.profilePicBox.Image = global::sims.Properties.Resources.account;
-            this.profilePicBox.IsCircle = true;
-            this.profilePicBox.Location = new System.Drawing.Point(71, 9);
-            this.profilePicBox.Name = "profilePicBox";
-            this.profilePicBox.Size = new System.Drawing.Size(58, 58);
-            this.profilePicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.profilePicBox.TabIndex = 13;
-            this.profilePicBox.TabStop = false;
-            this.profilePicBox.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
             // 
             // panel5
             // 
@@ -324,6 +307,17 @@
             this.DashboardPanel.Size = new System.Drawing.Size(1145, 700);
             this.DashboardPanel.TabIndex = 93;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::sims.Properties.Resources.bell__1____white;
+            this.pictureBox1.Location = new System.Drawing.Point(79, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // Dashboard_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,9 +338,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.profilePicBox)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,8 +361,8 @@
         internal FontAwesome.Sharp.IconButton ItemsBtn;
         internal FontAwesome.Sharp.IconButton StocksBtn;
         private System.Windows.Forms.Panel panel3;
-        internal Bunifu.UI.WinForms.BunifuPictureBox profilePicBox;
         internal FontAwesome.Sharp.IconButton salesReportBtn;
         internal FontAwesome.Sharp.IconButton productSalesBtn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

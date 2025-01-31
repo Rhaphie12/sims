@@ -1,18 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
-using sims.Admin_Side;
-using sims.Admin_Side.Sales;
-using sims.Admin_Side.Stocks;
 using sims.Messages_Boxes;
 using sims.Staff_Side.Stocks;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sims.Staff_Side.Sales_Staff
@@ -190,9 +183,9 @@ namespace sims.Staff_Side.Sales_Staff
                 string productID = productDetails.ProductID;
                 string category = productDetails.category; // Retrieve the category
 
-                // Pass both productID and category to the Sales_Form
-                //Sales_Form detailsForm = new Sales_Form(productID, _stock, _inventoryDashboard, category);
-                //detailsForm.Show();
+                //Pass both productID and category to the Sales_Form
+                Sales_Form_Staff detailsForm = new Sales_Form_Staff(productID, _stock, _inventoryDashboard, category);
+                detailsForm.Show();
             }
         }
 
@@ -375,7 +368,7 @@ namespace sims.Staff_Side.Sales_Staff
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
     }
 }

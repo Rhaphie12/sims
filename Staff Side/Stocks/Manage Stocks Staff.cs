@@ -21,14 +21,19 @@ namespace sims.Staff_Side.Stocks
     {
         private Inventory_Dashboard_Staff _inventoryDashboard;
         private Add_Stocks_Staff _addStock;
+        private Dashboard_Staff _dashboardStaff;
 
-        public Manage_Stocks_Staff(Inventory_Dashboard_Staff inventoryDashboard, Add_Stocks_Staff _addStock)
+        public Manage_Stocks_Staff(Inventory_Dashboard_Staff inventoryDashboard, Add_Stocks_Staff _addStock, Dashboard_Staff dashboard)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
             itemStockDgv.CellFormatting += itemStockDgv_CellFormatting;
             itemStockDgv.DataBindingComplete += itemStockDgv_DataBindingComplete;
+            _dashboardStaff = dashboard;
+
+            _dashboardStaff.bellIcon.Click += BellIcon_Click;
         }
+
         public DataGridView ItemsStockDgv
         {
             get { return itemStockDgv; }
@@ -225,6 +230,82 @@ namespace sims.Staff_Side.Stocks
             }
         }
 
+        private bool hasLowStockNotification = false; // Class-level variable
+
+        public void Notification(bool hasNotification)
+        {
+            if (_dashboardStaff == null)
+            {
+                MessageBox.Show("Dashboard owner is not set!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (_dashboardStaff.bellIcon == null)
+            {
+                MessageBox.Show("Bell icon is not set!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            hasLowStockNotification = hasNotification; // Store notification state
+
+            // Update the bell icon based on the notification state
+            _dashboardStaff.bellIcon.Image = hasNotification
+                ? Properties.Resources.Active_white // Set active icon
+                : Properties.Resources.bell__1____white; // Set default icon
+
+            if (hasNotification)
+            {
+                // Set a timer to reset the icon after 6 seconds
+                Timer timer = new Timer();
+                timer.Interval = 6000; // 6 seconds
+                timer.Tick += (sender, e) =>
+                {
+                    _dashboardStaff.bellIcon.Image = Properties.Resources.bell__1____white; // Reset icon
+                    hasLowStockNotification = false; // Reset notification state
+                    timer.Stop();
+                };
+                timer.Start();
+            }
+        }
+
+        private void BellIcon_Click(object sender, EventArgs e)
+        {
+            if (hasLowStockNotification)
+            {
+                // List to store low-stock item IDs
+                List<string> lowStockItemIDs = new List<string>();
+
+                // Iterate through DataGridView to find low-stock items
+                foreach (DataGridViewRow row in itemStockDgv.Rows)
+                {
+                    if (row.Cells["Stock_In"].Value != null && row.Cells["Stock_ID"].Value != null)
+                    {
+                        int stockLevel = Convert.ToInt32(row.Cells["Stock_In"].Value);
+                        if (stockLevel <= 5) // Threshold for low stock
+                        {
+                            lowStockItemIDs.Add(row.Cells["Stock_ID"].Value.ToString());
+                        }
+                    }
+                }
+
+                if (lowStockItemIDs.Count > 0)
+                {
+                    // Open Edit_Stock with the first low-stock item's ID
+                    string firstLowStockID = lowStockItemIDs[0];
+                    Edit_Stocks_Staff editStockForm = new Edit_Stocks_Staff(firstLowStockID, _inventoryDashboard, this);
+                    editStockForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No low-stock items found!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No low-stock items currently!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void itemStockDgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             int stockColumnIndex = itemStockDgv.Columns["Stock_In"].Index;
@@ -234,14 +315,20 @@ namespace sims.Staff_Side.Stocks
                 int stockLevel = Convert.ToInt32(e.Value);
 
                 // Define stock level thresholds
-                int lowStockThreshold = 5;    // Stock is low if ≤ 0
-                int normalStockThreshold = 30; // Stock is normal if > 5 and ≤ 30
+                int lowStockThreshold = 5;
+                int normalStockThreshold = 30;
 
-                // Set the background color based on stock level
+                // Check and update the cell color
                 if (stockLevel <= lowStockThreshold)
                 {
                     e.CellStyle.BackColor = Color.Red;
                     e.CellStyle.ForeColor = Color.White;
+
+                    // Trigger notification only if it's not already active
+                    if (!hasLowStockNotification)
+                    {
+                        Notification(true);
+                    }
                 }
                 else if (stockLevel <= normalStockThreshold)
                 {
@@ -306,6 +393,12 @@ namespace sims.Staff_Side.Stocks
 
         private void StocksReportBtn_Click(object sender, EventArgs e)
         {
+            if (ItemsStockDgv.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("Please select a column before generating the inventory report.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var inventoryReport = new Reports_Inventory_Staff(this);
             inventoryReport.Show();
         }

@@ -42,14 +42,19 @@ namespace sims.Staff_Side
             PanelMenu.Controls.Add(leftBorderBtn);
         }
 
+        public PictureBox bellIcon
+        {
+            get { return pictureBox1; }
+        }
+
         private void Dashboard_Staff_Load(object sender, EventArgs e)
         {
             ShowUsernameWithGreeting();
 
             dashboardInventoryInstance = new Inventory_Dashboard_Staff();
             manageItemsStaffInstance = new Manage_Items_Staff(dashboardInventoryInstance);
-            manageStocksStaffInstance = new Manage_Stocks_Staff(dashboardInventoryInstance, addStockInstance);
-            productSalesStaffInstance = new Product_Sales_Staff(dashboardInventoryInstance, manageStocksStaffInstance, addStockInstance);
+            manageStocksStaffInstance = new Manage_Stocks_Staff(dashboardInventoryInstance, addStockInstance, this);
+            productSalesStaffInstance = new Product_Sales_Staff(dashboardInventoryInstance, manageStocksStaffInstance, addStockInstance, this);
             salesReportStaffInstance = new Product_Sales();
             LoadView(dashboardInventoryInstance);
             ActivateButton(DashboardBtn, Color.White);

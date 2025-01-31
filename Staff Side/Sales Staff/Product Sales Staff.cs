@@ -1,5 +1,7 @@
 ﻿
 using MySql.Data.MySqlClient;
+using sims.Admin_Side.Sales;
+using sims.Admin_Side.Stocks;
 using sims.Staff_Side.Stocks;
 using System;
 using System.Drawing;
@@ -14,12 +16,14 @@ namespace sims.Staff_Side.Sales_Staff
         private Manage_Stocks_Staff _stock;
         private Add_Products_Staff _addProductForm;
         private Add_Stocks_Staff _addStock;
+        private Dashboard_Staff _dashboardStaff;
 
-        public Product_Sales_Staff(Inventory_Dashboard_Staff inventoryDashboard, Manage_Stocks_Staff stock, Add_Stocks_Staff _addStock)
+        public Product_Sales_Staff(Inventory_Dashboard_Staff inventoryDashboard, Manage_Stocks_Staff stock, Add_Stocks_Staff _addStock, Dashboard_Staff dashboardStaff)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
             _stock = stock;
+            _dashboardStaff = dashboardStaff;
         }
 
         public FlowLayoutPanel CoffeeLayoutPanel
@@ -146,9 +150,18 @@ namespace sims.Staff_Side.Sales_Staff
 
         private void NewProductBtn_Click(object sender, EventArgs e)
         {
-            _stock = new Manage_Stocks_Staff(_inventoryDashboard, _addStock);
-            _addProductForm = new Add_Products_Staff(this, _stock, _inventoryDashboard);
-            _addProductForm.Show();
+            // Check if the form is already open
+            if (_addProductForm == null || _addProductForm.IsDisposed)
+            {
+                _stock = new Manage_Stocks_Staff(_inventoryDashboard, _addStock, _dashboardStaff);
+                _addProductForm = new Add_Products_Staff(this, _stock, _inventoryDashboard);
+                _addProductForm.Show();
+            }
+            else
+            {
+                // If the form is already open, bring it to the front
+                _addProductForm.BringToFront();
+            }
         }
     }
 }
