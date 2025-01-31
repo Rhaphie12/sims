@@ -638,7 +638,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(30, 230);
+            this.label14.Location = new System.Drawing.Point(221, 230);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(128, 28);
             this.label14.TabIndex = 113;
@@ -649,7 +649,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(221, 230);
+            this.label2.Location = new System.Drawing.Point(30, 230);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 28);
             this.label2.TabIndex = 114;
@@ -757,7 +757,7 @@
             this.quantityStockTxt.IconRight = null;
             this.quantityStockTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.quantityStockTxt.Lines = new string[0];
-            this.quantityStockTxt.Location = new System.Drawing.Point(35, 261);
+            this.quantityStockTxt.Location = new System.Drawing.Point(226, 261);
             this.quantityStockTxt.MaxLength = 32767;
             this.quantityStockTxt.MinimumSize = new System.Drawing.Size(1, 1);
             this.quantityStockTxt.Modified = false;
@@ -832,7 +832,7 @@
             this.quantitySoldTxt.IconRight = null;
             this.quantitySoldTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.quantitySoldTxt.Lines = new string[0];
-            this.quantitySoldTxt.Location = new System.Drawing.Point(226, 261);
+            this.quantitySoldTxt.Location = new System.Drawing.Point(35, 261);
             this.quantitySoldTxt.MaxLength = 32767;
             this.quantitySoldTxt.MinimumSize = new System.Drawing.Size(1, 1);
             this.quantitySoldTxt.Modified = false;

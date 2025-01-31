@@ -7,6 +7,7 @@ using sims.Messages_Boxes;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace sims.Admin_Side.Sales
@@ -436,9 +437,9 @@ namespace sims.Admin_Side.Sales
 
                 // Use the provided table name in the query
                 cmd.CommandText = $@"
-    SELECT Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Stock_Needed
-    FROM {tableName}
-    WHERE Product_ID = @ProductID";
+                SELECT Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Stock_Needed
+                FROM {tableName}
+                WHERE Product_ID = @ProductID";
 
                 cmd.Parameters.AddWithValue("@ProductID", productID);
 
@@ -460,34 +461,27 @@ namespace sims.Admin_Side.Sales
                         if (!string.IsNullOrEmpty(stockNeeded))
                         {
                             // Split the 'Stock_Needed' value into separate items based on a delimiter (e.g., comma)
-                            string[] stockItems = stockNeeded.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                            string[] stockItems = stockNeeded.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                                             .Select(s => s.Trim()) // Trim any extra spaces
+                                                             .ToArray();
 
-                            // Clear existing items in combo boxes to avoid duplicates
-                            stockCmb.Items.Clear();
-                            stock2Cmb.Items.Clear();
-                            stock3Cmb.Items.Clear();
-                            stock4Cmb.Items.Clear();
-                            stock5Cmb.Items.Clear();
-                            stock6Cmb.Items.Clear();
-
-                            // Optionally, add the items to the ComboBoxes if they are not already in the items list
-                            foreach (var stockItem in stockItems)
-                            {
-                                if (!stockCmb.Items.Contains(stockItem)) stockCmb.Items.Add(stockItem);
-                                if (!stock2Cmb.Items.Contains(stockItem)) stock2Cmb.Items.Add(stockItem);
-                                if (!stock3Cmb.Items.Contains(stockItem)) stock3Cmb.Items.Add(stockItem);
-                                if (!stock4Cmb.Items.Contains(stockItem)) stock4Cmb.Items.Add(stockItem);
-                                if (!stock5Cmb.Items.Contains(stockItem)) stock5Cmb.Items.Add(stockItem);
-                                if (!stock6Cmb.Items.Contains(stockItem)) stock6Cmb.Items.Add(stockItem);
-                            }
-
-                            // Assign each item to the corresponding ComboBox (ensure stockItems has enough values)
+                            // Assign each item to the corresponding ComboBox if available
                             if (stockItems.Length >= 1) stockCmb.SelectedItem = stockItems[0];
                             if (stockItems.Length >= 2) stock2Cmb.SelectedItem = stockItems[1];
                             if (stockItems.Length >= 3) stock3Cmb.SelectedItem = stockItems[2];
                             if (stockItems.Length >= 4) stock4Cmb.SelectedItem = stockItems[3];
                             if (stockItems.Length >= 5) stock5Cmb.SelectedItem = stockItems[4];
                             if (stockItems.Length >= 6) stock6Cmb.SelectedItem = stockItems[5];
+                        }
+                        else
+                        {
+                            // Clear selections if no stock items are available
+                            stockCmb.SelectedIndex = -1;
+                            stock2Cmb.SelectedIndex = -1;
+                            stock3Cmb.SelectedIndex = -1;
+                            stock4Cmb.SelectedIndex = -1;
+                            stock5Cmb.SelectedIndex = -1;
+                            stock6Cmb.SelectedIndex = -1;
                         }
                     }
                 }
@@ -654,10 +648,12 @@ namespace sims.Admin_Side.Sales
                     this.Hide();
                     previewProductsDashboard();
                     previewSalesCoffee();
+                    previewDailySalesChart(_category);
+                    previewMonthlySalesChart(_category);
                 }
                 else
                 {
-                    MessageBox.Show("Failed to add product.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Already added in the coffee sales table.", "Can't add product", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -694,6 +690,7 @@ namespace sims.Admin_Side.Sales
         private void quantitySoldTxt_TextChanged(object sender, EventArgs e)
         {
             ValidateTextBoxForNumbersOnly(quantitySoldTxt);
+            quantityStockTxt.Text = quantitySoldTxt.Text;
 
         }
 
@@ -705,8 +702,6 @@ namespace sims.Admin_Side.Sales
         private void quantityStockTxt_TextChanged(object sender, EventArgs e)
         {
             ValidateTextBoxForNumbersOnly(quantityStockTxt);
-
-            quantitySoldTxt.Text = quantityStockTxt.Text;
         }
 
         private void stockCmb_SelectedIndexChanged(object sender, EventArgs e)
@@ -754,91 +749,30 @@ namespace sims.Admin_Side.Sales
             stock6Cmb.SelectedIndex = -1;
         }
 
-        private void UpdateProduct(string productID, string productName, string category, decimal productPrice, int stockQuantity, int quantitySold, string stockNeeded, string tableName, DateTime saleDate)
+        private void UpdateProductBtn_Click(object sender, EventArgs e)
         {
             dbModule db = new dbModule();
             MySqlConnection conn = db.GetConnection();
             MySqlCommand cmd = db.GetCommand();
 
-            try
-            {
-                conn.Open();
-                cmd.Connection = conn;
-
-                // Update query
-                cmd.CommandText = $"UPDATE {tableName} " +
-                                  "SET Product_Name = @Product_Name, Category = @Category, Product_Price = @Product_Price, " +
-                                  "Stock_Quantity = @Stock_Quantity, Quantity_Sold = @Quantity_Sold, Total_Product_Sale = @Total_Product_Sale, " +
-                                  "Stock_Needed = @Stock_Needed, Sale_Date = @Sale_Date, Sale_Time = @Sale_Time " +
-                                  "WHERE Product_ID = @Product_ID";
-
-                cmd.Parameters.AddWithValue("@Product_ID", productID);
-                cmd.Parameters.AddWithValue("@Product_Name", productName);
-                cmd.Parameters.AddWithValue("@Category", category);
-                cmd.Parameters.AddWithValue("@Product_Price", productPrice);
-                cmd.Parameters.AddWithValue("@Stock_Quantity", stockQuantity);
-                cmd.Parameters.AddWithValue("@Quantity_Sold", quantitySold);
-                cmd.Parameters.AddWithValue("@Total_Product_Sale", quantitySold * productPrice);
-                cmd.Parameters.AddWithValue("@Stock_Needed", stockNeeded);
-                cmd.Parameters.AddWithValue("@Sale_Date", saleDate.ToString("yyyy-MM-dd"));
-                cmd.Parameters.AddWithValue("@Sale_Time", DateTime.Now.ToString("HH:mm:ss"));
-
-                int rowsAffected = cmd.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
-                {
-                    MessageBox.Show("Product updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    previewProductsDashboard();
-                    TotalSales(tableName, _category);
-                    previewDailySalesChart(_category);
-                    previewMonthlySalesChart(_category);
-                    previewSalesCoffee();
-
-                    //productNameTxt.Clear();
-                    //categoryCmb.SelectedIndex = -1;
-                    //productPriceTxt.Clear();
-                    //quantitySoldTxt.Clear();
-                    //this.Hide();
-                    //stockCmb.SelectedIndex = -1;
-                    //stock2Cmb.SelectedIndex = -1;
-                    //stock3Cmb.SelectedIndex = -1;
-                    //stock4Cmb.SelectedIndex = -1;
-                    //stock5Cmb.SelectedIndex = -1;
-                    //stock6Cmb.SelectedIndex = -1;
-
-                }
-                else
-                {
-                    MessageBox.Show("No changes were made to the product.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (MySqlException sqlEx)
-            {
-                MessageBox.Show($"MySQL Error: {sqlEx.Message}", "SQL Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-                cmd.Dispose();
-                conn.Dispose();
-            }
-        }
-
-        private void UpdateProductBtn_Click(object sender, EventArgs e)
-        {
             string productID = productIDTxt.Text.Trim();
             string productName = productNameTxt.Text.Trim();
             string category = categoryCmb.SelectedItem?.ToString().Trim() ?? string.Empty;
             string productPriceText = productPriceTxt.Text.Trim();
             string stockQuantityText = quantityStockTxt.Text.Trim();
             string quantitySoldText = quantitySoldTxt.Text.Trim();
+
+            List<string> stockItems = new List<string>();
+            if (!string.IsNullOrEmpty(stockCmb.SelectedItem?.ToString())) stockItems.Add(stockCmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock2Cmb.SelectedItem?.ToString())) stockItems.Add(stock2Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock3Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock4Cmb.SelectedItem?.ToString())) stockItems.Add(stock4Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock5Cmb.SelectedItem?.ToString())) stockItems.Add(stock5Cmb.SelectedItem.ToString());
+            if (!string.IsNullOrEmpty(stock6Cmb.SelectedItem?.ToString())) stockItems.Add(stock6Cmb.SelectedItem.ToString());
+
+            // Add more stock items if necessary...
+
+            string stockNeeded = string.Join(", ", stockItems);
 
             if (string.IsNullOrEmpty(productID) || string.IsNullOrEmpty(productName) || string.IsNullOrEmpty(category) ||
                 string.IsNullOrEmpty(stockQuantityText) || string.IsNullOrEmpty(quantitySoldText))
@@ -895,18 +829,95 @@ namespace sims.Admin_Side.Sales
                 return;
             }
 
-            // Prepare stock needed
-            List<string> stockItems = new List<string>();
-            if (!string.IsNullOrEmpty(stockCmb.SelectedItem?.ToString())) stockItems.Add(stockCmb.SelectedItem.ToString());
-            if (!string.IsNullOrEmpty(stock2Cmb.SelectedItem?.ToString())) stockItems.Add(stock2Cmb.SelectedItem.ToString());
-            if (!string.IsNullOrEmpty(stock3Cmb.SelectedItem?.ToString())) stockItems.Add(stock3Cmb.SelectedItem.ToString());
-            if (!string.IsNullOrEmpty(stock4Cmb.SelectedItem?.ToString())) stockItems.Add(stock4Cmb.SelectedItem.ToString());
-            if (!string.IsNullOrEmpty(stock5Cmb.SelectedItem?.ToString())) stockItems.Add(stock5Cmb.SelectedItem.ToString());
-            if (!string.IsNullOrEmpty(stock6Cmb.SelectedItem?.ToString())) stockItems.Add(stock6Cmb.SelectedItem.ToString());
-            string stockNeeded = string.Join(", ", stockItems);
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
 
-            // Call the update function
-            UpdateProduct(productID, productName, category, productPrice, stockQuantity, quantitySold, stockNeeded, tableName, saleDate);
+                // Update query
+                cmd.CommandText = $"UPDATE {tableName} " +
+                                  "SET Product_Name = @Product_Name, Category = @Category, Product_Price = @Product_Price, " +
+                                  "Stock_Quantity = @Stock_Quantity, Quantity_Sold = @Quantity_Sold, Total_Product_Sale = @Total_Product_Sale, " +
+                                  "Stock_Needed = @Stock_Needed, Sale_Date = @Sale_Date, Sale_Time = @Sale_Time " +
+                                  "WHERE Product_ID = @Product_ID";
+
+                cmd.Parameters.AddWithValue("@Product_ID", productID);
+                cmd.Parameters.AddWithValue("@Product_Name", productName);
+                cmd.Parameters.AddWithValue("@Category", category);
+                cmd.Parameters.AddWithValue("@Product_Price", productPrice);
+                cmd.Parameters.AddWithValue("@Stock_Quantity", stockQuantity);
+                cmd.Parameters.AddWithValue("@Quantity_Sold", quantitySold);
+                cmd.Parameters.AddWithValue("@Total_Product_Sale", quantitySold * productPrice);
+                cmd.Parameters.AddWithValue("@Stock_Needed", stockNeeded);
+                cmd.Parameters.AddWithValue("@Sale_Date", saleDate.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@Sale_Time", DateTime.Now.ToString("HH:mm:ss"));
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    foreach (var stockItem in stockItems)
+                    {
+                        // Update query to reduce both Stock_In and Item_Total
+                        cmd.CommandText = @"UPDATE stocks SET Stock_In = Stock_In - @Stock_In, Item_Total = Item_Total - (@Stock_In * Item_Price) 
+                            WHERE Item_Name = @ItemName";
+
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@Stock_In", stockQuantity);  // Quantity sold
+                        cmd.Parameters.AddWithValue("@ItemName", stockItem);            // Item name
+
+                        cmd.ExecuteNonQuery();
+
+                        previewStock();
+                        previewStockDashboard();
+                        previewItemSales();
+                        previewDailySalesChart(_category);
+                        previewMonthlySalesChart(_category);
+
+                    }
+
+                    MessageBox.Show("Product updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    productNameTxt.Clear();
+                    categoryCmb.SelectedIndex = -1;
+                    productPriceTxt.Clear();
+                    quantitySoldTxt.Clear();
+                    stockCmb.SelectedIndex = -1;
+                    stock2Cmb.SelectedIndex = -1;
+                    stock3Cmb.SelectedIndex = -1;
+                    stock4Cmb.SelectedIndex = -1;
+                    stock5Cmb.SelectedIndex = -1;
+                    stock6Cmb.SelectedIndex = -1;
+
+                    previewProductsDashboard();
+                    TotalSales(tableName, _category);
+                    previewDailySalesChart(_category);
+                    previewMonthlySalesChart(_category);
+                    previewSalesCoffee();
+                }
+
+                else
+                {
+                    MessageBox.Show("No changes were made to the product.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (MySqlException sqlEx)
+            {
+                MessageBox.Show($"MySQL Error: {sqlEx.Message}", "SQL Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                cmd.Dispose();
+                conn.Dispose();
+            }
         }
     }
 }

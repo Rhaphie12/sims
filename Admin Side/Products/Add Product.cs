@@ -307,7 +307,7 @@ namespace sims.Admin_Side.Sales
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private Image ResizeImage(Image image, int width, int height)

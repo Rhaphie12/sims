@@ -19,13 +19,14 @@ namespace sims.Admin_Side.Sales
         private Inventory_Reportt _reportt;
         private DashboardOwner _dashboardOwner;
         private Product_Sales _sales;
-        public Product_Saless(Dashboard_Inventory inventoryDashboard, Manage_Stockk stock, Add_Stock addStock, Inventory_Reportt reportt, Product_Sales sales)
+        public Product_Saless(Dashboard_Inventory inventoryDashboard, Manage_Stockk stock, Add_Stock addStock, Inventory_Reportt reportt, DashboardOwner dashboardOwner, Product_Sales sales)
         {
             InitializeComponent();
             _inventoryDashboard = inventoryDashboard;
             _stock = stock;
             _reportt = reportt;
             _sales = sales;
+            _dashboardOwner = dashboardOwner;
 
         }
 
@@ -153,9 +154,18 @@ namespace sims.Admin_Side.Sales
 
         private void NewProductBtn_Click(object sender, EventArgs e)
         {
-            _stock = new Manage_Stockk(_inventoryDashboard, _addStock, _dashboardOwner, _reportt);
-            _addProductForm = new Add_Product(this, _stock, _inventoryDashboard);
-            _addProductForm.Show();
+            // Check if the form is already open
+            if (_addProductForm == null || _addProductForm.IsDisposed)
+            {
+                _stock = new Manage_Stockk(_inventoryDashboard, _addStock, _dashboardOwner, _reportt);
+                _addProductForm = new Add_Product(this, _stock, _inventoryDashboard);
+                _addProductForm.Show();
+            }
+            else
+            {
+                // If the form is already open, bring it to the front
+                _addProductForm.BringToFront();
+            }
         }
     }
 }
