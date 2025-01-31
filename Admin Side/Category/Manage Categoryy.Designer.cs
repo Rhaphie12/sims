@@ -284,9 +284,9 @@
             this.DeleteCategoryBtn.OnHoverImage = null;
             this.DeleteCategoryBtn.OnPressedColor = System.Drawing.Color.White;
             this.DeleteCategoryBtn.Radius = 6;
-            this.DeleteCategoryBtn.Size = new System.Drawing.Size(147, 50);
+            this.DeleteCategoryBtn.Size = new System.Drawing.Size(165, 50);
             this.DeleteCategoryBtn.TabIndex = 32;
-            this.DeleteCategoryBtn.Text = "Delete Category";
+            this.DeleteCategoryBtn.Text = "Remove Category";
             this.DeleteCategoryBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DeleteCategoryBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.DeleteCategoryBtn.Click += new System.EventHandler(this.DeleteCategoryBtn_Click);
