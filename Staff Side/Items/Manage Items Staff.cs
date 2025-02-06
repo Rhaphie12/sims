@@ -85,7 +85,7 @@ namespace sims.Staff_Side.Items
         {
             searchCategoryCmb.Items.Clear();
 
-            string query = "SELECT Category_Name FROM categories";
+            string query = "SELECT Category_Name FROM categories ORDER BY Category_Name";
             dbModule db = new dbModule();
 
             try

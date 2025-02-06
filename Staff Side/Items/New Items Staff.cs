@@ -127,7 +127,7 @@ namespace sims.Staff_Side.Items
         private Dictionary<string, (int CategoryID, string Description)> categoryData = new Dictionary<string, (int, string)>();
         private void LoadComboBoxData()
         {
-            string query = "SELECT Category_ID, Category_Name, Category_Description FROM categories";
+            string query = "SELECT Category_ID, Category_Name, Category_Description FROM categories ORDER BY Category_Name";
             dbModule db = new dbModule();
 
             try
