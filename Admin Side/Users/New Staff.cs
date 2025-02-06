@@ -85,6 +85,7 @@ namespace sims.Admin_Side.Users
             string staffName = staffNameTxt.Text.Trim();
             string username = usernameTxt.Text.Trim();
             string password = passwordTxt.Text.Trim();
+            string action = actionCmb.SelectedItem?.ToString() ?? string.Empty;
             //string hashedPassword = HashPassword(password);
 
             if (string.IsNullOrEmpty(staffName) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -96,13 +97,14 @@ namespace sims.Admin_Side.Users
             {
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "INSERT INTO staff (Staff_ID, Staff_Name, username, password) " +
-                                  "VALUES (@Staff_ID, @Staff_Name, @username, @password)";
+                cmd.CommandText = "INSERT INTO staff (Staff_ID, Staff_Name, username, password, Action) " +
+                                  "VALUES (@Staff_ID, @Staff_Name, @username, @password, @Action)";
 
                 cmd.Parameters.AddWithValue("@Staff_ID", staffID);
                 cmd.Parameters.AddWithValue("@Staff_Name", staffName);
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@Action", action);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
 
@@ -113,8 +115,9 @@ namespace sims.Admin_Side.Users
                     staffNameTxt.Clear();
                     usernameTxt.Clear();
                     passwordTxt.Clear();
-                    //this.Alert("Stock Added Successfully");
+                    actionCmb.SelectedIndex = -1;
                     Populate();
+                    this.Hide();
                 }
                 else
                 {

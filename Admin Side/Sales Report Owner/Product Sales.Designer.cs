@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Product_Sales));
             this.Pastries1 = new sims.Pastries();
             this.HotCoffeeSales1 = new sims.HotCoffeeSales();
             this.HotCoffeeSalesViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
@@ -275,6 +276,7 @@
             this.Controls.Add(this.gunaGroupBox2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Product_Sales";
             this.Text = "Product_Sales";
             this.Load += new System.EventHandler(this.Product_Sales_Load);

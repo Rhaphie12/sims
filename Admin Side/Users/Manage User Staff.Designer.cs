@@ -38,10 +38,12 @@
             this.NewStaffBtn = new Guna.UI.WinForms.GunaButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.staffsDgv = new Guna.UI.WinForms.GunaDataGridView();
+            this.deleteBtn = new Guna.UI.WinForms.GunaButton();
             this.Staff_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Staff_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
@@ -92,6 +94,7 @@
             this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox2.Controls.Add(this.deleteBtn);
             this.gunaGroupBox2.Controls.Add(this.NewStaffBtn);
             this.gunaGroupBox2.Controls.Add(this.panel5);
             this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -122,7 +125,7 @@
             this.NewStaffBtn.ForeColor = System.Drawing.Color.White;
             this.NewStaffBtn.Image = null;
             this.NewStaffBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.NewStaffBtn.Location = new System.Drawing.Point(1014, 559);
+            this.NewStaffBtn.Location = new System.Drawing.Point(860, 560);
             this.NewStaffBtn.Name = "NewStaffBtn";
             this.NewStaffBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.NewStaffBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -173,7 +176,8 @@
             this.Staff_ID,
             this.Staff_Name,
             this.username,
-            this.password});
+            this.password,
+            this.Action});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -192,7 +196,7 @@
             this.staffsDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.staffsDgv.RowTemplate.Height = 40;
             this.staffsDgv.RowTemplate.ReadOnly = true;
-            this.staffsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.staffsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.staffsDgv.Size = new System.Drawing.Size(1149, 482);
             this.staffsDgv.TabIndex = 3;
             this.staffsDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
@@ -217,6 +221,38 @@
             this.staffsDgv.ThemeStyle.RowsStyle.Height = 40;
             this.staffsDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.staffsDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.staffsDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.staffsDgv_DataBindingComplete);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteBtn.AnimationHoverSpeed = 0.07F;
+            this.deleteBtn.AnimationSpeed = 0.03F;
+            this.deleteBtn.BackColor = System.Drawing.Color.Transparent;
+            this.deleteBtn.BaseColor = System.Drawing.Color.Transparent;
+            this.deleteBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.deleteBtn.BorderSize = 2;
+            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.deleteBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.deleteBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteBtn.ForeColor = System.Drawing.Color.Black;
+            this.deleteBtn.Image = null;
+            this.deleteBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.deleteBtn.Location = new System.Drawing.Point(1013, 560);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.deleteBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.deleteBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.deleteBtn.OnHoverImage = null;
+            this.deleteBtn.OnPressedColor = System.Drawing.Color.White;
+            this.deleteBtn.Radius = 6;
+            this.deleteBtn.Size = new System.Drawing.Size(147, 35);
+            this.deleteBtn.TabIndex = 36;
+            this.deleteBtn.Text = "Remove Staff";
+            this.deleteBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.deleteBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // Staff_ID
             // 
@@ -247,6 +283,14 @@
             this.password.ReadOnly = true;
             this.password.Visible = false;
             // 
+            // Action
+            // 
+            this.Action.DataPropertyName = "Action";
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // Manage_User_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,9 +320,11 @@
         private System.Windows.Forms.Panel panel5;
         private Guna.UI.WinForms.GunaDataGridView staffsDgv;
         private Guna.UI.WinForms.GunaButton NewStaffBtn;
+        private Guna.UI.WinForms.GunaButton deleteBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Staff_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Staff_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
         private System.Windows.Forms.DataGridViewTextBoxColumn password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
     }
 }

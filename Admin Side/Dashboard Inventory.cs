@@ -297,6 +297,7 @@ namespace sims.Admin_Side
             }
         }
 
+        // DAILY SALES CHART
         public void TotalSalesPreview(string category)
         {
             dbModule db = new dbModule();
@@ -323,13 +324,12 @@ namespace sims.Admin_Side
                     totalSales = Convert.ToDecimal(totalSalesCmd.ExecuteScalar());
 
                     // Get sales and quantity per product
-                    string query = $@"
-                SELECT 
-                    Product_Name, 
-                    SUM(Total_Product_Sale) AS TotalSales, 
-                    SUM(Quantity_Sold) AS TotalQuantity 
-                FROM {tableName} 
-                GROUP BY Product_Name";
+                    string query = $@"SELECT Product_Name, 
+                        SUM(Total_Product_Sale) AS TotalSales, 
+                        SUM(Quantity_Sold) AS TotalQuantity 
+                        FROM {tableName} 
+                        GROUP BY Product_Name";
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -376,7 +376,6 @@ namespace sims.Admin_Side
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private string DetermineTableName(string category)
         {
@@ -445,7 +444,13 @@ namespace sims.Admin_Side
                     totalSales = Convert.ToDecimal(totalSalesCmd.ExecuteScalar());
 
                     // Get sales per product
-                    string query = $"SELECT Product_Name, SUM(Total_Product_Sale) AS TotalSales FROM {tableName} GROUP BY Product_Name";
+                    string query = $@"
+                SELECT 
+                    Product_Name, 
+                    SUM(Total_Product_Sale) AS TotalSales, 
+                    SUM(Quantity_Sold) AS TotalQuantity 
+                FROM {tableName} 
+                GROUP BY Product_Name";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -453,15 +458,15 @@ namespace sims.Admin_Side
                         while (reader.Read())
                         {
                             string productName = reader["Product_Name"]?.ToString() ?? "Unknown Product";
-                            if (decimal.TryParse(reader["TotalSales"]?.ToString(), out decimal productSales))
+                            decimal productSales = reader["TotalSales"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["TotalSales"]);
+                            int productQuantity = reader["TotalQuantity"] == DBNull.Value ? 0 : Convert.ToInt32(reader["TotalQuantity"]);
+
+                            series.Add(new PieSeries
                             {
-                                series.Add(new PieSeries
-                                {
-                                    Title = productName,
-                                    Values = new ChartValues<decimal> { productSales },
-                                    DataLabels = true
-                                });
-                            }
+                                Title = $"{productName} ({productQuantity} sold)", // Include quantity in the label
+                                Values = new ChartValues<decimal> { productSales },
+                                DataLabels = true
+                            });
                         }
                     }
                 }

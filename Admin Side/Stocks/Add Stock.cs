@@ -136,7 +136,7 @@ namespace sims.Admin_Side.Stocks
         private void SelectItemID()
         {
             string query = "SELECT Item_ID, Item_Name, Category, Item_Image FROM items " +
-                           "WHERE Item_Name NOT IN (SELECT Item_Name FROM stocks)"; // Exclude items already in stocks
+                           "WHERE Item_Name NOT IN (SELECT Item_Name FROM stocks) ORDER BY Item_Name"; // Exclude items already in stocks
 
             dbModule db = new dbModule();
             itemData.Clear(); // Clear the dictionary to refresh it
@@ -177,7 +177,7 @@ namespace sims.Admin_Side.Stocks
 
         private void UnitType()
         {
-            string query = "SELECT Unit_Type FROM unittype";
+            string query = "SELECT Unit_Type FROM unittype ORDER BY Unit_Type";
             dbModule db = new dbModule();
 
             try
@@ -248,7 +248,7 @@ namespace sims.Admin_Side.Stocks
 
         private void addStockBtn_Click(object sender, EventArgs e)
         {
-            AddItemStock();
+             AddItemStock();
         }
 
         private void AddItemStock()

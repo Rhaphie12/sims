@@ -1,6 +1,5 @@
 ﻿using FontAwesome.Sharp;
 using Guna.UI.WinForms;
-using Bunifu.UI.WinForms;
 using MySql.Data.MySqlClient;
 using sims.Admin_Side;
 using sims.Admin_Side.Category;
@@ -8,17 +7,18 @@ using sims.Admin_Side.Database;
 using sims.Admin_Side.Inventory_Report;
 using sims.Admin_Side.Items;
 using sims.Admin_Side.Sales;
+using sims.Admin_Side.Sales_Report_Owner;
 using sims.Admin_Side.Stocks;
 using sims.Admin_Side.Users;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using sims.Admin_Side.Sales_Report_Owner;
 
 namespace sims
 {
     public partial class DashboardOwner : Form
     {
+        // Stores the currently active button to apply highlighting and styling
         private IconButton currentBtn;
         private GunaPanel leftBorderBtn;
 
@@ -43,7 +43,9 @@ namespace sims
         {
             InitializeComponent();
             ShowUsernameWithGreeting();
+
             customizeDesign();
+
             leftBorderBtn = new GunaPanel
             {
                 Size = new Size(10, 58)
@@ -64,6 +66,7 @@ namespace sims
             databaseBackupInstance = new Database_Backup();
 
             LoadView(dashboardInventoryInstance);
+
             ActivateButton(DashboardBtn, Color.White);
 
             ShowUsernameWithGreeting();
@@ -127,6 +130,7 @@ namespace sims
                     form.Dock = DockStyle.Fill;
                     DashboardPanel.Controls.Add(form);
                 }
+                form.MouseDown += (s, e) => ((Form)s).Capture = false;
                 form.Visible = true;
                 form.BringToFront();
             }

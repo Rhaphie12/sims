@@ -326,7 +326,6 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
-
         private void itemStockDgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             int stockColumnIndex = itemStockDgv.Columns["Stock_In"].Index;

@@ -43,6 +43,10 @@
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label4 = new System.Windows.Forms.Label();
             this.gunaElipsePanel3 = new Guna.UI.WinForms.GunaElipsePanel();
+            this.itemImageLabel = new Guna.UI.WinForms.GunaLabel();
+            this.productImagePic = new Guna.UI.WinForms.GunaPictureBox();
+            this.browseImageBtn = new Guna.UI.WinForms.GunaButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.productNameTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -51,10 +55,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.addProductBtn = new Guna.UI.WinForms.GunaButton();
             this.backBtn = new Guna.UI.WinForms.GunaButton();
-            this.itemImageLabel = new Guna.UI.WinForms.GunaLabel();
-            this.productImagePic = new Guna.UI.WinForms.GunaPictureBox();
-            this.browseImageBtn = new Guna.UI.WinForms.GunaButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.gunaElipsePanel2.SuspendLayout();
             this.gunaElipsePanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productImagePic)).BeginInit();
@@ -117,6 +117,70 @@
             this.gunaElipsePanel3.Radius = 9;
             this.gunaElipsePanel3.Size = new System.Drawing.Size(573, 369);
             this.gunaElipsePanel3.TabIndex = 36;
+            // 
+            // itemImageLabel
+            // 
+            this.itemImageLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.itemImageLabel.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemImageLabel.ForeColor = System.Drawing.Color.Black;
+            this.itemImageLabel.Location = new System.Drawing.Point(311, 52);
+            this.itemImageLabel.Name = "itemImageLabel";
+            this.itemImageLabel.Padding = new System.Windows.Forms.Padding(50);
+            this.itemImageLabel.Size = new System.Drawing.Size(204, 174);
+            this.itemImageLabel.TabIndex = 125;
+            this.itemImageLabel.Text = "SELECT AN IMAGE";
+            this.itemImageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // productImagePic
+            // 
+            this.productImagePic.BaseColor = System.Drawing.Color.White;
+            this.productImagePic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.productImagePic.Location = new System.Drawing.Point(311, 52);
+            this.productImagePic.Name = "productImagePic";
+            this.productImagePic.Size = new System.Drawing.Size(204, 174);
+            this.productImagePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.productImagePic.TabIndex = 124;
+            this.productImagePic.TabStop = false;
+            // 
+            // browseImageBtn
+            // 
+            this.browseImageBtn.AnimationHoverSpeed = 0.07F;
+            this.browseImageBtn.AnimationSpeed = 0.03F;
+            this.browseImageBtn.BackColor = System.Drawing.Color.Transparent;
+            this.browseImageBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.browseImageBtn.BorderColor = System.Drawing.Color.Black;
+            this.browseImageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.browseImageBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.browseImageBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.browseImageBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.browseImageBtn.ForeColor = System.Drawing.Color.White;
+            this.browseImageBtn.Image = null;
+            this.browseImageBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.browseImageBtn.Location = new System.Drawing.Point(311, 232);
+            this.browseImageBtn.Name = "browseImageBtn";
+            this.browseImageBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.browseImageBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.browseImageBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.browseImageBtn.OnHoverImage = null;
+            this.browseImageBtn.OnPressedColor = System.Drawing.Color.Black;
+            this.browseImageBtn.Radius = 5;
+            this.browseImageBtn.Size = new System.Drawing.Size(204, 37);
+            this.browseImageBtn.TabIndex = 122;
+            this.browseImageBtn.Text = "Browse Image";
+            this.browseImageBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.browseImageBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.browseImageBtn.Click += new System.EventHandler(this.browseImageBtn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(361, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 28);
+            this.label1.TabIndex = 123;
+            this.label1.Text = "Item Image";
             // 
             // label9
             // 
@@ -381,70 +445,6 @@
             this.backBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // itemImageLabel
-            // 
-            this.itemImageLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemImageLabel.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemImageLabel.ForeColor = System.Drawing.Color.Black;
-            this.itemImageLabel.Location = new System.Drawing.Point(311, 52);
-            this.itemImageLabel.Name = "itemImageLabel";
-            this.itemImageLabel.Padding = new System.Windows.Forms.Padding(50);
-            this.itemImageLabel.Size = new System.Drawing.Size(204, 174);
-            this.itemImageLabel.TabIndex = 125;
-            this.itemImageLabel.Text = "SELECT AN IMAGE";
-            this.itemImageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // productImagePic
-            // 
-            this.productImagePic.BaseColor = System.Drawing.Color.White;
-            this.productImagePic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.productImagePic.Location = new System.Drawing.Point(311, 52);
-            this.productImagePic.Name = "productImagePic";
-            this.productImagePic.Size = new System.Drawing.Size(204, 174);
-            this.productImagePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.productImagePic.TabIndex = 124;
-            this.productImagePic.TabStop = false;
-            // 
-            // browseImageBtn
-            // 
-            this.browseImageBtn.AnimationHoverSpeed = 0.07F;
-            this.browseImageBtn.AnimationSpeed = 0.03F;
-            this.browseImageBtn.BackColor = System.Drawing.Color.Transparent;
-            this.browseImageBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.browseImageBtn.BorderColor = System.Drawing.Color.Black;
-            this.browseImageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.browseImageBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.browseImageBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.browseImageBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.browseImageBtn.ForeColor = System.Drawing.Color.White;
-            this.browseImageBtn.Image = null;
-            this.browseImageBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.browseImageBtn.Location = new System.Drawing.Point(311, 232);
-            this.browseImageBtn.Name = "browseImageBtn";
-            this.browseImageBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.browseImageBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.browseImageBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.browseImageBtn.OnHoverImage = null;
-            this.browseImageBtn.OnPressedColor = System.Drawing.Color.Black;
-            this.browseImageBtn.Radius = 5;
-            this.browseImageBtn.Size = new System.Drawing.Size(204, 37);
-            this.browseImageBtn.TabIndex = 122;
-            this.browseImageBtn.Text = "Browse Image";
-            this.browseImageBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.browseImageBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.browseImageBtn.Click += new System.EventHandler(this.browseImageBtn_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(361, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 28);
-            this.label1.TabIndex = 123;
-            this.label1.Text = "Item Image";
-            // 
             // Add_Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,6 +454,7 @@
             this.Controls.Add(this.gunaElipsePanel3);
             this.Controls.Add(this.gunaElipsePanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Add_Product";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add_Product";

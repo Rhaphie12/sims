@@ -433,7 +433,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(473, 79);
+            this.panel5.Size = new System.Drawing.Size(324, 79);
             this.panel5.TabIndex = 2;
             // 
             // Label3
@@ -443,9 +443,9 @@
             this.Label3.ForeColor = System.Drawing.Color.White;
             this.Label3.Location = new System.Drawing.Point(4, 38);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(439, 37);
+            this.Label3.Size = new System.Drawing.Size(300, 37);
             this.Label3.TabIndex = 8;
-            this.Label3.Text = "Welcome to Soothing Cafe - Dashboard";
+            this.Label3.Text = "Welcome to Soothing Cafe";
             // 
             // greetingNameTxt
             // 
@@ -517,12 +517,12 @@
         internal FontAwesome.Sharp.IconButton SalesBtn;
         internal FontAwesome.Sharp.IconButton inventoryBtn;
         private System.Windows.Forms.Panel salesPanelSubMenu;
-        internal FontAwesome.Sharp.IconButton salesReportBtn;
         internal FontAwesome.Sharp.IconButton productSalesBtn;
-        internal FontAwesome.Sharp.IconButton backupDbBtn;
-        internal FontAwesome.Sharp.IconButton UserBtn;
         private System.Windows.Forms.Panel DashboardPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        internal FontAwesome.Sharp.IconButton backupDbBtn;
+        internal FontAwesome.Sharp.IconButton UserBtn;
+        internal FontAwesome.Sharp.IconButton salesReportBtn;
     }
 }
 

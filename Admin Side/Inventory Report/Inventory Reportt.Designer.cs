@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inventory_Reportt));
             this.panel1 = new System.Windows.Forms.Panel();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.BackBtn = new Guna.UI.WinForms.GunaButton();
@@ -36,8 +37,8 @@
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.Stocks_Report1 = new sims.Stocks_Report();
+            this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
@@ -170,6 +171,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.gunaGroupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Inventory_Reportt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory_Reportt";

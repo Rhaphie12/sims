@@ -74,6 +74,7 @@ namespace sims.Admin_Side.Items
                 }
             }
         }
+
         private void previewStock()
         {
             if (_inventoryDashboard != null)
@@ -90,7 +91,7 @@ namespace sims.Admin_Side.Items
         {
             searchCategoryCmb.Items.Clear();
 
-            string query = "SELECT Category_Name FROM categories";
+            string query = "SELECT Category_Name FROM categories ORDER BY Category_Name";
             dbModule db = new dbModule();
 
             try

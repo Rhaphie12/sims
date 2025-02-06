@@ -14,54 +14,61 @@ namespace sims.Admin_Side.Sales
 {
     public partial class Sales_Form : Form
     {
-        private string _productID;
-        private string _category;
-        private Manage_Stockk _stock;
-        private Dashboard_Inventory _inventoryDashboard;
-        private Product_Sales _sales;
+        // Private fields for storing product and inventory-related information
+        private string _productID; // Stores the product ID
+        private string _category; // Stores the product category
+        private Manage_Stockk _stock; // Reference to the stock management module
+        private Dashboard_Inventory _inventoryDashboard; // Reference to the inventory dashboard
+        private Product_Sales _sales; // Reference to the sales report module
 
+        // Constructor for Sales_Form
         public Sales_Form(string productID, Manage_Stockk stock, Dashboard_Inventory inventoryDashboard, string category, Product_Sales sales)
         {
-            InitializeComponent();
-            _stock = stock;
-            _inventoryDashboard = inventoryDashboard;
-            _productID = productID;
+            InitializeComponent(); // Initialize UI components
+            _stock = stock; // Assign stock management reference
+            _inventoryDashboard = inventoryDashboard; // Assign inventory dashboard reference
+            _productID = productID; // Store the product ID
 
+            // Event handlers for real-time sales calculation when quantity or price changes
             quantityStockTxt.TextChanged += (s, e) => CalculateTotalProductSale();
             productPriceTxt.TextChanged += (s, e) => CalculateTotalProductSale();
-            _category = category;
-            _sales = sales;
+
+            _category = category; // Store category information
+            _sales = sales; // Assign sales reference
         }
 
+        // Method to preview stock availability
         private void previewStock()
         {
             if (_stock != null)
             {
-                _stock.ViewStock();
+                _stock.ViewStock(); // Calls method to view stock details
             }
             else
             {
-                MessageBox.Show("Inventory Dashboard is not available.");
+                MessageBox.Show("Inventory Dashboard is not available."); // Error message if stock module is missing
             }
         }
 
+        // Method to preview the number of products in inventory
         private void previewProductsDashboard()
         {
             if (_inventoryDashboard != null)
             {
-                _inventoryDashboard.ProductsCount();
+                _inventoryDashboard.ProductsCount(); // Calls method to get product count
             }
             else
             {
-                MessageBox.Show("Inventory Dashboard is not available.");
+                MessageBox.Show("Inventory Dashboard is not available."); // Error message if inventory module is missing
             }
         }
 
+        // Method to preview total item sales
         private void previewItemSales()
         {
             if (_inventoryDashboard != null)
             {
-                _inventoryDashboard.TotalSalesItems();
+                _inventoryDashboard.TotalSalesItems(); // Calls method to get total sales items
             }
             else
             {
@@ -69,11 +76,12 @@ namespace sims.Admin_Side.Sales
             }
         }
 
+        // Method to preview stock details on the inventory dashboard
         private void previewStockDashboard()
         {
             if (_inventoryDashboard != null)
             {
-                _inventoryDashboard.StockPreview();
+                _inventoryDashboard.StockPreview(); // Calls method to preview stock
             }
             else
             {
@@ -81,11 +89,12 @@ namespace sims.Admin_Side.Sales
             }
         }
 
+        // Method to preview daily sales chart based on category
         private void previewDailySalesChart(string _category)
         {
             if (_inventoryDashboard != null)
             {
-                _inventoryDashboard.TotalSalesPreview(_category);
+                _inventoryDashboard.TotalSalesPreview(_category); // Calls method to display total sales preview
             }
             else
             {
@@ -93,11 +102,12 @@ namespace sims.Admin_Side.Sales
             }
         }
 
+        // Method to preview monthly sales chart based on category
         private void previewMonthlySalesChart(string _category)
         {
             if (_inventoryDashboard != null)
             {
-                _inventoryDashboard.MonthlySalesPreview(_category);
+                _inventoryDashboard.MonthlySalesPreview(_category); // Calls method to display monthly sales preview
             }
             else
             {
@@ -105,17 +115,19 @@ namespace sims.Admin_Side.Sales
             }
         }
 
+        // Method to preview coffee sales
         private void previewSalesCoffee()
         {
             if (_sales != null)
             {
-                _sales.CoffeeSales();
+                _sales.CoffeeSales(); // Calls method to display coffee sales report
             }
             else
             {
                 MessageBox.Show("Sales Report is not available.");
             }
         }
+
 
         private void Sales_Form_Load(object sender, EventArgs e)
         {
@@ -148,19 +160,21 @@ namespace sims.Admin_Side.Sales
             LoadProductDetails();
         }
 
+        // Method to load product details based on category
         private void LoadProductDetails()
         {
-            string tableName = DetermineTableName(_category);
+            string tableName = DetermineTableName(_category); // Determine the table name based on category
             if (!string.IsNullOrEmpty(tableName))
             {
-                RetrieveProductDetails(_productID, tableName);
+                RetrieveProductDetails(_productID, tableName); // Retrieve product details from the determined table
             }
             else
             {
-                MessageBox.Show("Invalid category. Cannot determine table name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid category. Cannot determine table name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Error message for invalid category
             }
         }
 
+        // Method to determine the corresponding table name for a given category
         private string DetermineTableName(string category)
         {
             if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
@@ -180,44 +194,48 @@ namespace sims.Admin_Side.Sales
                 return "productsales_pastries";
             }
 
-            return string.Empty;
+            return string.Empty; // Return an empty string if the category does not match
         }
 
+        // List to store all stock item names
         private List<string> allStockItems = new List<string>();
+
+        // Flag to indicate if combo boxes are being updated
         private bool isUpdatingComboBoxes = false;
 
+        // Method to retrieve stock items from the database and populate combo boxes
         private void stocks()
         {
-            string query = "SELECT Item_Name FROM stocks";
-            dbModule db = new dbModule();
+            string query = "SELECT Item_Name FROM stocks ORDER BY Item_Name"; // SQL query to fetch stock items
+            dbModule db = new dbModule(); // Database module instance
 
             try
             {
-                using (MySqlConnection conn = db.GetConnection())
+                using (MySqlConnection conn = db.GetConnection()) // Establish database connection
                 {
                     conn.Open();
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn)) // Execute SQL command
                     {
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        using (MySqlDataReader reader = cmd.ExecuteReader()) // Read data from the database
                         {
-                            allStockItems.Clear();
+                            allStockItems.Clear(); // Clear existing stock item list
 
                             while (reader.Read())
                             {
-                                string itemName = reader["Item_Name"].ToString();
-                                allStockItems.Add(itemName);
+                                string itemName = reader["Item_Name"].ToString(); // Retrieve item name
+                                allStockItems.Add(itemName); // Add item name to the list
                             }
                         }
                     }
                 }
 
-                // Populate combo boxes
+                // Populate combo boxes with retrieved stock items
                 PopulateComboBoxes();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading stocks: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading stocks: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Display error message
             }
         }
 
@@ -385,7 +403,7 @@ namespace sims.Admin_Side.Sales
         {
             dbModule db = new dbModule();
             string query = "SELECT Product_ID, Product_Name, Category " +
-                           "FROM products WHERE Product_ID = @Product_ID";
+               "FROM products WHERE Product_ID = @Product_ID ORDER BY Product_Name";
 
             using (MySqlConnection conn = db.GetConnection())
             {

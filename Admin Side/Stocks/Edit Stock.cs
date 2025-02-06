@@ -153,7 +153,7 @@ namespace sims.Admin_Side.Stocks
         {
             dbModule db = new dbModule();
             string query = "SELECT Item_ID, Item_Name, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image " +
-                           "FROM stocks WHERE Stock_ID = @Stock_ID";
+                           "FROM stocks WHERE Stock_ID = @Stock_ID ORDER BY Item_Name";
 
             using (MySqlConnection conn = db.GetConnection())
             {

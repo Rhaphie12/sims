@@ -63,6 +63,8 @@
             this.addStaffBtn = new Guna.UI.WinForms.GunaButton();
             this.backStaffBtn = new Guna.UI.WinForms.GunaButton();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.actionCmb = new Guna.UI.WinForms.GunaComboBox();
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -77,7 +79,7 @@
             this.panel1.Location = new System.Drawing.Point(11, 10);
             this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(578, 53);
+            this.panel1.Size = new System.Drawing.Size(617, 53);
             this.panel1.TabIndex = 43;
             // 
             // gunaElipsePanel2
@@ -90,7 +92,7 @@
             this.gunaElipsePanel2.Margin = new System.Windows.Forms.Padding(0);
             this.gunaElipsePanel2.Name = "gunaElipsePanel2";
             this.gunaElipsePanel2.Radius = 7;
-            this.gunaElipsePanel2.Size = new System.Drawing.Size(578, 53);
+            this.gunaElipsePanel2.Size = new System.Drawing.Size(617, 53);
             this.gunaElipsePanel2.TabIndex = 46;
             // 
             // label4
@@ -106,13 +108,14 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.GunaGroupBox1);
-            this.panel2.Location = new System.Drawing.Point(11, 73);
+            this.panel2.Location = new System.Drawing.Point(11, 71);
             this.panel2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(578, 313);
+            this.panel2.Size = new System.Drawing.Size(617, 389);
             this.panel2.TabIndex = 44;
             // 
             // GunaGroupBox1
@@ -120,9 +123,11 @@
             this.GunaGroupBox1.BackColor = System.Drawing.Color.Transparent;
             this.GunaGroupBox1.BaseColor = System.Drawing.Color.White;
             this.GunaGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
+            this.GunaGroupBox1.Controls.Add(this.actionCmb);
             this.GunaGroupBox1.Controls.Add(this.showPasswordChk);
             this.GunaGroupBox1.Controls.Add(this.label1);
             this.GunaGroupBox1.Controls.Add(this.label2);
+            this.GunaGroupBox1.Controls.Add(this.label3);
             this.GunaGroupBox1.Controls.Add(this.label9);
             this.GunaGroupBox1.Controls.Add(this.label8);
             this.GunaGroupBox1.Controls.Add(this.passwordTxt);
@@ -138,7 +143,7 @@
             this.GunaGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.GunaGroupBox1.Name = "GunaGroupBox1";
             this.GunaGroupBox1.Radius = 10;
-            this.GunaGroupBox1.Size = new System.Drawing.Size(578, 313);
+            this.GunaGroupBox1.Size = new System.Drawing.Size(617, 389);
             this.GunaGroupBox1.TabIndex = 49;
             this.GunaGroupBox1.TextLocation = new System.Drawing.Point(10, 8);
             this.GunaGroupBox1.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAliasGridFit;
@@ -151,7 +156,7 @@
             this.showPasswordChk.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.showPasswordChk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.showPasswordChk.ForeColor = System.Drawing.Color.White;
-            this.showPasswordChk.Location = new System.Drawing.Point(469, 173);
+            this.showPasswordChk.Location = new System.Drawing.Point(496, 160);
             this.showPasswordChk.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.showPasswordChk.Name = "showPasswordChk";
             this.showPasswordChk.Size = new System.Drawing.Size(20, 20);
@@ -163,7 +168,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(291, 133);
+            this.label1.Location = new System.Drawing.Point(318, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 28);
             this.label1.TabIndex = 47;
@@ -174,7 +179,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(291, 32);
+            this.label2.Location = new System.Drawing.Point(318, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 28);
             this.label2.TabIndex = 47;
@@ -185,7 +190,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(72, 133);
+            this.label9.Location = new System.Drawing.Point(99, 120);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(134, 28);
             this.label9.TabIndex = 47;
@@ -196,7 +201,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(72, 32);
+            this.label8.Location = new System.Drawing.Point(99, 19);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 28);
             this.label8.TabIndex = 48;
@@ -229,7 +234,7 @@
             this.passwordTxt.IconRight = null;
             this.passwordTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.passwordTxt.Lines = new string[0];
-            this.passwordTxt.Location = new System.Drawing.Point(296, 164);
+            this.passwordTxt.Location = new System.Drawing.Point(323, 151);
             this.passwordTxt.MaximumSize = new System.Drawing.Size(200, 37);
             this.passwordTxt.MaxLength = 32767;
             this.passwordTxt.MinimumSize = new System.Drawing.Size(200, 37);
@@ -304,7 +309,7 @@
             this.staffNameTxt.IconRight = null;
             this.staffNameTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.staffNameTxt.Lines = new string[0];
-            this.staffNameTxt.Location = new System.Drawing.Point(296, 63);
+            this.staffNameTxt.Location = new System.Drawing.Point(323, 50);
             this.staffNameTxt.MaximumSize = new System.Drawing.Size(200, 37);
             this.staffNameTxt.MaxLength = 32767;
             this.staffNameTxt.MinimumSize = new System.Drawing.Size(200, 37);
@@ -334,7 +339,7 @@
             this.staffNameTxt.Padding = new System.Windows.Forms.Padding(3);
             this.staffNameTxt.PasswordChar = '\0';
             this.staffNameTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.staffNameTxt.PlaceholderText = "Antone vogart";
+            this.staffNameTxt.PlaceholderText = "";
             this.staffNameTxt.ReadOnly = false;
             this.staffNameTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.staffNameTxt.SelectedText = "";
@@ -348,7 +353,7 @@
             this.staffNameTxt.TextMarginBottom = 0;
             this.staffNameTxt.TextMarginLeft = 3;
             this.staffNameTxt.TextMarginTop = 0;
-            this.staffNameTxt.TextPlaceholder = "Antone vogart";
+            this.staffNameTxt.TextPlaceholder = "";
             this.staffNameTxt.UseSystemPasswordChar = false;
             this.staffNameTxt.WordWrap = true;
             this.staffNameTxt.TextChanged += new System.EventHandler(this.staffNameTxt_TextChanged);
@@ -380,7 +385,7 @@
             this.usernameTxt.IconRight = null;
             this.usernameTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.usernameTxt.Lines = new string[0];
-            this.usernameTxt.Location = new System.Drawing.Point(77, 164);
+            this.usernameTxt.Location = new System.Drawing.Point(104, 151);
             this.usernameTxt.MaximumSize = new System.Drawing.Size(200, 37);
             this.usernameTxt.MaxLength = 32767;
             this.usernameTxt.MinimumSize = new System.Drawing.Size(200, 37);
@@ -410,7 +415,7 @@
             this.usernameTxt.Padding = new System.Windows.Forms.Padding(3);
             this.usernameTxt.PasswordChar = '\0';
             this.usernameTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.usernameTxt.PlaceholderText = "owner123";
+            this.usernameTxt.PlaceholderText = "";
             this.usernameTxt.ReadOnly = false;
             this.usernameTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.usernameTxt.SelectedText = "";
@@ -424,7 +429,7 @@
             this.usernameTxt.TextMarginBottom = 0;
             this.usernameTxt.TextMarginLeft = 3;
             this.usernameTxt.TextMarginTop = 0;
-            this.usernameTxt.TextPlaceholder = "owner123";
+            this.usernameTxt.TextPlaceholder = "";
             this.usernameTxt.UseSystemPasswordChar = false;
             this.usernameTxt.WordWrap = true;
             // 
@@ -455,7 +460,7 @@
             this.staffIDTxt.IconRight = null;
             this.staffIDTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.staffIDTxt.Lines = new string[0];
-            this.staffIDTxt.Location = new System.Drawing.Point(77, 63);
+            this.staffIDTxt.Location = new System.Drawing.Point(104, 50);
             this.staffIDTxt.MaximumSize = new System.Drawing.Size(200, 37);
             this.staffIDTxt.MaxLength = 32767;
             this.staffIDTxt.MinimumSize = new System.Drawing.Size(200, 37);
@@ -517,7 +522,7 @@
             this.addStaffBtn.ForeColor = System.Drawing.Color.White;
             this.addStaffBtn.Image = null;
             this.addStaffBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.addStaffBtn.Location = new System.Drawing.Point(135, 234);
+            this.addStaffBtn.Location = new System.Drawing.Point(166, 322);
             this.addStaffBtn.Name = "addStaffBtn";
             this.addStaffBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.addStaffBtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -547,7 +552,7 @@
             this.backStaffBtn.ForeColor = System.Drawing.Color.Black;
             this.backStaffBtn.Image = null;
             this.backStaffBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.backStaffBtn.Location = new System.Drawing.Point(288, 234);
+            this.backStaffBtn.Location = new System.Drawing.Point(319, 322);
             this.backStaffBtn.Name = "backStaffBtn";
             this.backStaffBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.backStaffBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -567,12 +572,46 @@
             this.gunaElipse1.Radius = 7;
             this.gunaElipse1.TargetControl = this;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(212, 213);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 28);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Action";
+            // 
+            // actionCmb
+            // 
+            this.actionCmb.BackColor = System.Drawing.Color.Transparent;
+            this.actionCmb.BaseColor = System.Drawing.Color.White;
+            this.actionCmb.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.actionCmb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.actionCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.actionCmb.FocusedColor = System.Drawing.Color.Empty;
+            this.actionCmb.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.actionCmb.ForeColor = System.Drawing.Color.Black;
+            this.actionCmb.FormattingEnabled = true;
+            this.actionCmb.Items.AddRange(new object[] {
+            "Active ",
+            "Inactive"});
+            this.actionCmb.Location = new System.Drawing.Point(217, 244);
+            this.actionCmb.Name = "actionCmb";
+            this.actionCmb.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.actionCmb.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.actionCmb.Radius = 4;
+            this.actionCmb.Size = new System.Drawing.Size(200, 32);
+            this.actionCmb.TabIndex = 96;
+            this.actionCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
             // New_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.ClientSize = new System.Drawing.Size(598, 405);
+            this.ClientSize = new System.Drawing.Size(637, 474);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -609,5 +648,7 @@
         private Bunifu.Framework.UI.BunifuCheckbox showPasswordChk;
         internal System.Windows.Forms.Label label2;
         private Bunifu.UI.WinForms.BunifuTextBox staffNameTxt;
+        internal System.Windows.Forms.Label label3;
+        private Guna.UI.WinForms.GunaComboBox actionCmb;
     }
 }

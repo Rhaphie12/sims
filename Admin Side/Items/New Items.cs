@@ -127,7 +127,7 @@ namespace sims.Admin_Side.Items
         private Dictionary<string, (int CategoryID, string Description)> categoryData = new Dictionary<string, (int, string)>();
         private void LoadComboBoxData()
         {
-            string query = "SELECT Category_ID, Category_Name, Category_Description FROM categories";
+            string query = "SELECT Category_ID, Category_Name, Category_Description FROM categories ORDER BY Category_Name";
             dbModule db = new dbModule();
 
             try
@@ -163,70 +163,85 @@ namespace sims.Admin_Side.Items
             this.Close();
         }
 
+        // Event handler for the "Add Item" button click event
         private void addItemBtn_Click(object sender, EventArgs e)
         {
-            AddItem();
+            AddItem(); // Call the method to add an item to the database
         }
 
+        // Method to add an item to the database
         private void AddItem()
         {
+            // Initialize database module and retrieve database connection and command
             dbModule db = new dbModule();
             MySqlConnection conn = db.GetConnection();
             MySqlCommand cmd = db.GetCommand();
 
+            // Retrieve values from input fields
             string itemID = itemIDTxt.Text.Trim();
             string itemName = itemNameTxt.Text.Trim();
-            string category = categoryCmb.SelectedItem?.ToString() ?? string.Empty;
+            string category = categoryCmb.SelectedItem?.ToString() ?? string.Empty; // Handle null selection
             string itemDescription = itemDescTxt.Text.Trim();
             Image itemImage = itemImagePic.Image;
 
+            // Check if any required field is empty
             if (string.IsNullOrEmpty(itemID) || string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(itemDescription))
             {
-                new Messages_Boxes.Field_Required().Show();
+                new Messages_Boxes.Field_Required().Show(); // Show a message box indicating required fields
                 return;
             }
 
             try
             {
-                conn.Open();
+                conn.Open(); // Open database connection
                 cmd.Connection = conn;
+
+                // Prepare SQL command for inserting a new item into the database
                 cmd.CommandText = "INSERT INTO items (Item_ID, Item_Name, Category, Item_Description, Item_Image) " +
                                   "VALUES (@Item_ID, @Item_Name, @Category, @Item_Description, @Item_Image)";
+
+                // Add parameters to the SQL command
                 cmd.Parameters.AddWithValue("@Item_ID", itemID);
                 cmd.Parameters.AddWithValue("@Item_Name", itemName);
                 cmd.Parameters.AddWithValue("@Category", category);
                 cmd.Parameters.AddWithValue("@Item_Description", itemDescription);
 
-                // Resize and convert the image
+                // Convert the image to a byte array if an image is selected
                 byte[] imageBytes = itemImage != null ? ImageToByteArray(ResizeImage(itemImage, 300, 300)) : null;
-                cmd.Parameters.AddWithValue("@Item_Image", imageBytes ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Item_Image", imageBytes ?? (object)DBNull.Value); // Store null if no image
 
-                int rowsAffected = cmd.ExecuteNonQuery();
+                int rowsAffected = cmd.ExecuteNonQuery(); // Execute the query
 
                 if (rowsAffected > 0)
                 {
-                    GenerateRandomItemID();
-                    ItemsCount();
-                    itemNameTxt.Clear();
-                    categoryCmb.SelectedIndex = -1;
-                    itemDescTxt.Clear();
-                    itemImagePic.Image = null;
-                    this.Alert("Item Added Successfully");
-                    this.Close();
-                    Populate();
-                    previewItems();
+                    // Perform necessary UI and database updates after successful insertion
+                    GenerateRandomItemID(); // Generate a new random item ID
+                    ItemsCount(); // Update item count
+                    itemNameTxt.Clear(); // Clear item name input
+                    categoryCmb.SelectedIndex = -1; // Reset category selection
+                    itemDescTxt.Clear(); // Clear description input
+                    itemImagePic.Image = null; // Clear image selection
+
+                    this.Alert("Item Added Successfully"); // Show success alert
+                    this.Close(); // Close the form
+
+                    Populate(); // Refresh item list
+                    previewItems(); // Refresh item preview
                 }
                 else
                 {
+                    // Show an error message if the item could not be added
                     MessageBox.Show("Failed to add item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
+                // Handle unexpected errors and display an error message
                 MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
+                // Ensure the database connection is closed and resources are released
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
