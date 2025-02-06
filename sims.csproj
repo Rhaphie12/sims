@@ -349,6 +349,7 @@
       <DependentUpon>CoffeeSales.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DatabaseSetup.cs" />
     <Compile Include="dbModule.cs" />
     <Compile Include="Admin Side\Dashboard Owner.cs">
       <SubType>Form</SubType>

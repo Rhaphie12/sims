@@ -1,16 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using sims.Admin_Side;
-using sims.Admin_Side.Items;
 using sims.Messages_Boxes;
-using sims.Staff_Side;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sims
@@ -22,6 +12,9 @@ namespace sims
             InitializeComponent();
             ConfirmPasswordTextBox();
             showPasswordChk.OnChange += new EventHandler(showPasswordChk_OnChange);
+
+            usernameTxt.KeyDown += new KeyEventHandler(OnEnterKeyPress);
+            passwordTxt.KeyDown += new KeyEventHandler(OnEnterKeyPress);
         }
 
         private void ConfirmPasswordTextBox()
@@ -42,6 +35,15 @@ namespace sims
                     passwordTxt.PasswordChar = '●';
                 }
             };
+        }
+
+        private void OnEnterKeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Prevents the 'ding' sound
+                Login(); // Call the login method
+            }
         }
 
         private void LoginBtn_Click(object sender, EventArgs e)
@@ -65,7 +67,7 @@ namespace sims
             }
 
             string userQuery = "SELECT Staff_Name FROM users WHERE BINARY username = @Username AND BINARY password = @Password";
-            string staffQuery = "SELECT Staff_Name FROM staff WHERE BINARY username = @Username AND BINARY password = @Password";
+            string staffQuery = "SELECT Staff_Name, Action FROM staff WHERE BINARY username = @Username AND BINARY password = @Password";
 
             try
             {
@@ -89,23 +91,25 @@ namespace sims
                         }
                         else
                         {
-                            // Check if the user is staff
-                            cmd.CommandText = staffQuery;
-                            string staffName = cmd.ExecuteScalar()?.ToString();
+                            using (MySqlDataReader staffReader = cmd.ExecuteReader())
+                            {
+                                if (staffReader.Read())
+                                {
+                                    string staffName = staffReader["Staff_Name"].ToString();
+                                    string accountStatus = staffReader["Action"].ToString();
 
-                            if (!string.IsNullOrEmpty(staffName))
-                            {
-                                // Log staff activity
-                                AddLoginActivity(staffName, "Staff");
-                                new Staff_Login().Show();
-                                this.Hide();
-                            }
-                            else
-                            {
-                                usernameTxt.Focus();
-                                new Invalid_Account().Show();
-                                usernameTxt.Clear();
-                                passwordTxt.Clear();
+                                    if (accountStatus == "Inactive")
+                                    {
+                                        MessageBox.Show("This account is inactive. Please contact the administrator.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        return;
+                                    }
+
+                                    // Log staff activity
+                                    AddLoginActivity(staffName, "Staff");
+                                    new Staff_Login().Show();
+                                    this.Hide();
+                                    return;
+                                }
                             }
                         }
                     }
