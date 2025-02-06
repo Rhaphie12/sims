@@ -73,43 +73,48 @@ namespace sims
             {
                 using (MySqlConnection conn = db.GetConnection())
                 {
+                    conn.Open();
+
+                    // Checking Owner Account
                     using (MySqlCommand cmd = new MySqlCommand(userQuery, conn))
                     {
-                        conn.Open();
                         cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@Password", password);
 
-                        // Check if the user is an owner
                         string ownerName = cmd.ExecuteScalar()?.ToString();
 
                         if (!string.IsNullOrEmpty(ownerName))
                         {
-                            // Log owner activity
                             AddLoginActivity(ownerName, "Owner");
                             new ownerLogin().Show();
                             this.Hide();
+                            return;
                         }
-                        else
+                    }
+
+                    // Checking Staff Account
+                    using (MySqlCommand cmd = new MySqlCommand(staffQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
+
+                        using (MySqlDataReader staffReader = cmd.ExecuteReader())
                         {
-                            using (MySqlDataReader staffReader = cmd.ExecuteReader())
+                            if (staffReader.Read())
                             {
-                                if (staffReader.Read())
+                                string staffName = staffReader["Staff_Name"].ToString();
+                                string accountStatus = staffReader["Action"].ToString();
+
+                                if (accountStatus == "Inactive")
                                 {
-                                    string staffName = staffReader["Staff_Name"].ToString();
-                                    string accountStatus = staffReader["Action"].ToString();
-
-                                    if (accountStatus == "Inactive")
-                                    {
-                                        MessageBox.Show("This account is inactive. Please contact the administrator.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                        return;
-                                    }
-
-                                    // Log staff activity
-                                    AddLoginActivity(staffName, "Staff");
-                                    new Staff_Login().Show();
-                                    this.Hide();
+                                    MessageBox.Show("This account is inactive. Please contact the administrator.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return;
                                 }
+
+                                AddLoginActivity(staffName, "Staff");
+                                new Staff_Login().Show();
+                                this.Hide();
+                                return;
                             }
                         }
                     }
@@ -119,7 +124,14 @@ namespace sims
             {
                 MessageBox.Show($"Error: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            // If login fails
+            usernameTxt.Focus();
+            new Invalid_Account().Show();
+            usernameTxt.Clear();
+            passwordTxt.Clear();
         }
+
 
         private void AddLoginActivity(string staffName, string role)
         {
