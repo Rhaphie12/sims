@@ -381,6 +381,12 @@
     <Compile Include="Login Form.Designer.cs">
       <DependentUpon>Login Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Messages Boxes\Failed Attempts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messages Boxes\Failed Attempts.Designer.cs">
+      <DependentUpon>Failed Attempts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Messages Boxes\Field Required.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,6 +410,12 @@
     </Compile>
     <Compile Include="Messages Boxes\Forgot Password msgbox\UsernameRequired.Designer.cs">
       <DependentUpon>UsernameRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages Boxes\Inactive Account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messages Boxes\Inactive Account.Designer.cs">
+      <DependentUpon>Inactive Account.cs</DependentUpon>
     </Compile>
     <Compile Include="Messages Boxes\Invalid Account.cs">
       <SubType>Form</SubType>
@@ -664,6 +676,9 @@
     <EmbeddedResource Include="Login Form.resx">
       <DependentUpon>Login Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Messages Boxes\Failed Attempts.resx">
+      <DependentUpon>Failed Attempts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Messages Boxes\Field Required.resx">
       <DependentUpon>Field Required.cs</DependentUpon>
     </EmbeddedResource>
@@ -675,6 +690,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Messages Boxes\Forgot Password msgbox\UsernameRequired.resx">
       <DependentUpon>UsernameRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages Boxes\Inactive Account.resx">
+      <DependentUpon>Inactive Account.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Messages Boxes\Invalid Account.resx">
       <DependentUpon>Invalid Account.cs</DependentUpon>
@@ -916,6 +934,7 @@
     <None Include="Resources\Active-white.png" />
     <None Include="Resources\bell %281%29 - white.png" />
     <None Include="Resources\all.png" />
+    <None Include="Resources\inactive.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

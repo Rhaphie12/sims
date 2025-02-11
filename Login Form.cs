@@ -7,6 +7,11 @@ namespace sims
 {
     public partial class Login_Form : Form
     {
+        private int failedAttempts = 0;
+        private const int maxAttempts = 3;
+        private DateTime lockoutEndTime;
+        private System.Windows.Forms.Timer lockoutTimer;
+
         public Login_Form()
         {
             InitializeComponent();
@@ -53,6 +58,22 @@ namespace sims
 
         private void Login()
         {
+            if (failedAttempts >= maxAttempts)
+            {
+                if (DateTime.Now < lockoutEndTime)
+                {
+                    int remainingTime = (int)(lockoutEndTime - DateTime.Now).TotalSeconds;
+                    MessageBox.Show($"Too many failed attempts. Please wait {remainingTime} seconds before trying again.", "Login Locked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    failedAttempts = 0; // Reset attempts after timeout
+                    AttemptsLbl.Visible = true; // Show attempts again
+                    UpdateAttemptsLabel();
+                }
+            }
+
             dbModule db = new dbModule();
             string username = usernameTxt.Text.Trim();
             string password = passwordTxt.Text.Trim();
@@ -75,7 +96,6 @@ namespace sims
                 {
                     conn.Open();
 
-                    // Checking Owner Account
                     using (MySqlCommand cmd = new MySqlCommand(userQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("@Username", username);
@@ -85,6 +105,7 @@ namespace sims
 
                         if (!string.IsNullOrEmpty(ownerName))
                         {
+                            ResetLoginState();
                             AddLoginActivity(ownerName, "Owner");
                             new ownerLogin().Show();
                             this.Hide();
@@ -92,7 +113,6 @@ namespace sims
                         }
                     }
 
-                    // Checking Staff Account
                     using (MySqlCommand cmd = new MySqlCommand(staffQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("@Username", username);
@@ -107,10 +127,15 @@ namespace sims
 
                                 if (accountStatus == "Inactive")
                                 {
-                                    MessageBox.Show("This account is inactive. Please contact the administrator.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    //MessageBox.Show("This account is inactive. Please contact the administrator.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    usernameTxt.Focus();
+                                    new Inactive_Account().Show();
+                                    usernameTxt.Clear();
+                                    passwordTxt.Clear();
                                     return;
                                 }
 
+                                ResetLoginState();
                                 AddLoginActivity(staffName, "Staff");
                                 new Staff_Login().Show();
                                 this.Hide();
@@ -126,10 +151,36 @@ namespace sims
             }
 
             // If login fails
+            failedAttempts++;
+            if (failedAttempts >= maxAttempts)
+            {
+                lockoutEndTime = DateTime.Now.AddSeconds(20);
+                //MessageBox.Show("Too many failed attempts. Please wait 20 seconds before trying again.", "Login Locked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new Failed_Attempts().Show();
+                DisableLogin();
+            }
+            else
+            {
+                UpdateAttemptsLabel();
+            }
+
             usernameTxt.Focus();
             new Invalid_Account().Show();
             usernameTxt.Clear();
             passwordTxt.Clear();
+        }
+
+        // Disable login button and start lockout timer
+        private void DisableLogin()
+        {
+            LoginBtn.Enabled = false;
+            AttemptsLbl.Visible = false; // Hide attempts counter
+            lockoutLabel.Visible = true; // Show lockout countdown
+            lockoutTimer = new System.Windows.Forms.Timer();
+            lockoutTimer.Interval = 1000; // 1 second interval
+            lockoutTimer.Tick += LockoutTimer_Tick;
+            lockoutTimer.Start();
+            UpdateLockoutLabel();
         }
 
 
@@ -183,6 +234,47 @@ namespace sims
         private void gunaControlBox1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void LockoutTimer_Tick(object sender, EventArgs e)
+        {
+            if (DateTime.Now >= lockoutEndTime)
+            {
+                lockoutTimer.Stop();
+                lockoutTimer.Dispose();
+                LoginBtn.Enabled = true;
+                failedAttempts = 0; // Reset failed attempts
+                lockoutLabel.Visible = false; // Hide the label after the lockout period
+                AttemptsLbl.Visible = true; // Show attempts again
+                UpdateAttemptsLabel();
+            }
+            else
+            {
+                UpdateLockoutLabel();
+            }
+        }
+
+        // Update the label to show remaining time
+        private void UpdateLockoutLabel()
+        {
+            int remainingTime = (int)(lockoutEndTime - DateTime.Now).TotalSeconds;
+            lockoutLabel.Text = $"Try again in {remainingTime} seconds...";
+        }
+
+        // Update the label to show attempts left
+        private void UpdateAttemptsLabel()
+        {
+            int remainingAttempts = maxAttempts - failedAttempts;
+            AttemptsLbl.Text = $"Attempts left: {remainingAttempts}";
+        }
+
+        // Reset the login state after successful login
+        private void ResetLoginState()
+        {
+            failedAttempts = 0; // Reset attempts on successful login
+            lockoutLabel.Visible = false; // Hide countdown timer
+            AttemptsLbl.Visible = true; // Show attempts label
+            UpdateAttemptsLabel();
         }
     }
 }
