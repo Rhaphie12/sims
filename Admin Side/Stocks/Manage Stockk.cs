@@ -74,6 +74,15 @@ namespace sims.Admin_Side.Stocks
                 adapter.SelectCommand = cmd;
                 adapter.Fill(dataTable);
 
+                // Check for negative stock quantities and set them to zero
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    if (row["Stock_In"] != DBNull.Value && Convert.ToInt32(row["Stock_In"]) < 0)
+                    {
+                        row["Stock_In"] = 0;
+                    }
+                }
+
                 itemStockDgv.DataSource = dataTable;
             }
             catch (Exception ex)
@@ -90,6 +99,8 @@ namespace sims.Admin_Side.Stocks
                 conn.Dispose();
             }
         }
+
+
 
         private void previewStock()
         {
