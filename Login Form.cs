@@ -127,7 +127,6 @@ namespace sims
 
                                 if (accountStatus == "Inactive")
                                 {
-                                    //MessageBox.Show("This account is inactive. Please contact the administrator.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     usernameTxt.Focus();
                                     new Inactive_Account().Show();
                                     usernameTxt.Clear();
@@ -137,10 +136,15 @@ namespace sims
 
                                 ResetLoginState();
                                 AddLoginActivity(staffName, "Staff");
-                                new Staff_Login().Show();
+
+                                // Open the Dashboard Staff form and pass the staff name
+                                var dashboard = new Staff_Login(staffName);
+                                dashboard.Show();
+                                this.Hide();
                                 this.Hide();
                                 return;
                             }
+
                         }
                     }
                 }
@@ -155,9 +159,12 @@ namespace sims
             if (failedAttempts >= maxAttempts)
             {
                 lockoutEndTime = DateTime.Now.AddSeconds(20);
-                //MessageBox.Show("Too many failed attempts. Please wait 20 seconds before trying again.", "Login Locked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                new Failed_Attempts().Show();
+                Failed_Attempts failedForm = new Failed_Attempts();
+                failedForm.Owner = this;  // Set the login form as owner
+                failedForm.Show();
+
                 DisableLogin();
+                //MessageBox.Show("Too many failed attempts. Please wait 20 seconds before trying again.", "Login Locked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {

@@ -491,6 +491,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Splash page and Loading Screen\Loading Screen Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash page and Loading Screen\Loading Screen Staff.Designer.cs">
+      <DependentUpon>Loading Screen Staff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Splash page and Loading Screen\Loading Screen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -502,6 +508,12 @@
     </Compile>
     <Compile Include="Splash page and Loading Screen\Splash page.Designer.cs">
       <DependentUpon>Splash page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Splash page and Loading Screen\Staff Loading Screen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash page and Loading Screen\Staff Loading Screen.Designer.cs">
+      <DependentUpon>Staff Loading Screen.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Staff Side\Dashboard Staff.cs">
@@ -743,11 +755,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Splash page and Loading Screen\Loading Screen Staff.resx">
+      <DependentUpon>Loading Screen Staff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Splash page and Loading Screen\Loading Screen.resx">
       <DependentUpon>Loading Screen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Splash page and Loading Screen\Splash page.resx">
       <DependentUpon>Splash page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splash page and Loading Screen\Staff Loading Screen.resx">
+      <DependentUpon>Staff Loading Screen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Staff Side\Dashboard Staff.resx">
       <DependentUpon>Dashboard Staff.cs</DependentUpon>
