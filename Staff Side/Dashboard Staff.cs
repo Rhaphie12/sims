@@ -32,7 +32,9 @@ namespace sims.Staff_Side
         private Add_Stocks_Staff addStockInstance;
         private Product_Sales salesReportStaffInstance;
 
-        public Dashboard_Staff()
+        private string loggedInStaffName;
+
+        public Dashboard_Staff(string staffName)
         {
             InitializeComponent();
             leftBorderBtn = new GunaPanel
@@ -40,6 +42,7 @@ namespace sims.Staff_Side
                 Size = new Size(10, 58)
             };
             PanelMenu.Controls.Add(leftBorderBtn);
+            loggedInStaffName = staffName;
         }
 
         public PictureBox bellIcon
@@ -63,7 +66,7 @@ namespace sims.Staff_Side
         private void ShowUsernameWithGreeting()
         {
             dbModule db = new dbModule();
-            string query = "SELECT Staff_Name FROM staff LIMIT 1";
+            string query = "SELECT Staff_Name FROM staff";
 
             using (MySqlConnection conn = db.GetConnection())
             {
@@ -77,7 +80,7 @@ namespace sims.Staff_Side
                         if (result != null)
                         {
                             string username = result.ToString();
-                            greetingNameTxt.Text = $"HI! {username},";
+                            greetingNameTxt.Text = $"HI! {loggedInStaffName},";
                         }
                     }
                 }
