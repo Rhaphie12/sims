@@ -26,7 +26,7 @@ namespace sims.Splash_page_and_Loading_Screen
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
-            Loading_Screen Loading = new Loading_Screen();
+            Login_Form Loading = new Login_Form();
             this.Hide();
             Loading.Show();
             getStartedBtn.Enabled = true;

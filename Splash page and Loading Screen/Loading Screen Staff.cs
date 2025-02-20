@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sims.Staff_Side;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,16 +13,18 @@ using System.Windows.Forms;
 
 namespace sims.Splash_page_and_Loading_Screen
 {
-    public partial class Loading_Screen : Form
+    public partial class Loading_Screen_Staff : Form
     {
         private int counter;
+        private string loggedInStaffName;
 
-        public Loading_Screen()
+        public Loading_Screen_Staff(string staffName)
         {
             InitializeComponent();
+            loggedInStaffName = staffName;
         }
 
-        private void Loading_Screen_Load(object sender, EventArgs e)
+        private void Loading_Screen_Staff_Load(object sender, EventArgs e)
         {
             counter = 0;
             GunaProgressBar1.Value = 0;
@@ -29,6 +32,7 @@ namespace sims.Splash_page_and_Loading_Screen
             Thread workerThread = new Thread(new ThreadStart(PerformTask));
             workerThread.Start();
         }
+
         private void PerformTask()
         {
             while (counter < 105)
@@ -46,7 +50,8 @@ namespace sims.Splash_page_and_Loading_Screen
                     if (counter == 105)
                     {
                         this.Hide();
-                        new DashboardOwner().Show();
+                        Dashboard_Staff dashboard = new Dashboard_Staff(loggedInStaffName);
+                        dashboard.Show();
                     }
                 }));
             }
