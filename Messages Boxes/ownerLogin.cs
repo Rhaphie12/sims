@@ -1,4 +1,5 @@
-﻿using sims.Staff_Side;
+﻿using sims.Splash_page_and_Loading_Screen;
+using sims.Staff_Side;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ namespace sims.Messages_Boxes
         private void continueBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new DashboardOwner().Show();
+            new Loading_Screen().Show();
         }
     }
 }

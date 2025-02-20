@@ -1,4 +1,5 @@
-﻿using sims.Staff_Side;
+﻿using sims.Splash_page_and_Loading_Screen;
+using sims.Staff_Side;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,17 @@ namespace sims.Messages_Boxes
 {
     public partial class Staff_Login : Form
     {
-        public Staff_Login()
+        private string loggedInStaffName;
+
+        public Staff_Login(string staffName)
         {
             InitializeComponent();
+            this.loggedInStaffName = staffName;
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            new Dashboard_Staff().Show();
+            new Loading_Screen_Staff(loggedInStaffName).Show();
             this.Hide();
         }
     }
