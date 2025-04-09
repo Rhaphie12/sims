@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manage_Items));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties41 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties42 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties43 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties44 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,8 +55,12 @@
             this.searchCategoryCmb = new Guna.UI.WinForms.GunaComboBox();
             this.NewItemBtn = new Guna.UI.WinForms.GunaButton();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.DeleteItemBtn = new Guna.UI.WinForms.GunaButton();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.UpdateItemBtn = new Guna.UI.WinForms.GunaButton();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.itemsDgv = new Guna.UI.WinForms.GunaDataGridView();
             this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +68,13 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item_Image = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -74,8 +85,19 @@
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemsDgv)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -116,9 +138,10 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.GunaGroupBox1);
-            this.panel3.Location = new System.Drawing.Point(11, 77);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(340, 118);
+            this.panel3.Size = new System.Drawing.Size(400, 118);
             this.panel3.TabIndex = 42;
             // 
             // GunaGroupBox1
@@ -136,7 +159,7 @@
             this.GunaGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.GunaGroupBox1.Name = "GunaGroupBox1";
             this.GunaGroupBox1.Radius = 10;
-            this.GunaGroupBox1.Size = new System.Drawing.Size(340, 118);
+            this.GunaGroupBox1.Size = new System.Drawing.Size(400, 118);
             this.GunaGroupBox1.TabIndex = 48;
             this.GunaGroupBox1.TextLocation = new System.Drawing.Point(10, 8);
             this.GunaGroupBox1.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAliasGridFit;
@@ -145,7 +168,7 @@
             // 
             this.GunaPictureBox3.BaseColor = System.Drawing.Color.White;
             this.GunaPictureBox3.Image = global::sims.Properties.Resources.grocery_bag;
-            this.GunaPictureBox3.Location = new System.Drawing.Point(31, 15);
+            this.GunaPictureBox3.Location = new System.Drawing.Point(53, 17);
             this.GunaPictureBox3.Name = "GunaPictureBox3";
             this.GunaPictureBox3.Size = new System.Drawing.Size(50, 50);
             this.GunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -156,7 +179,7 @@
             // 
             this.itemCountTxt.AutoSize = true;
             this.itemCountTxt.Font = new System.Drawing.Font("Poppins", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemCountTxt.Location = new System.Drawing.Point(181, 55);
+            this.itemCountTxt.Location = new System.Drawing.Point(203, 57);
             this.itemCountTxt.Name = "itemCountTxt";
             this.itemCountTxt.Size = new System.Drawing.Size(52, 51);
             this.itemCountTxt.TabIndex = 3;
@@ -166,7 +189,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(97, 15);
+            this.label5.Location = new System.Drawing.Point(119, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(215, 34);
             this.label5.TabIndex = 3;
@@ -174,12 +197,13 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.gunaGroupBox3);
-            this.panel2.Location = new System.Drawing.Point(362, 77);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(819, 118);
+            this.panel2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.panel2.Size = new System.Drawing.Size(770, 118);
             this.panel2.TabIndex = 48;
             // 
             // gunaGroupBox3
@@ -192,10 +216,10 @@
             this.gunaGroupBox3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox3.LineColor = System.Drawing.Color.White;
             this.gunaGroupBox3.LineTop = 0;
-            this.gunaGroupBox3.Location = new System.Drawing.Point(0, 0);
+            this.gunaGroupBox3.Location = new System.Drawing.Point(10, 0);
             this.gunaGroupBox3.Name = "gunaGroupBox3";
             this.gunaGroupBox3.Radius = 10;
-            this.gunaGroupBox3.Size = new System.Drawing.Size(819, 118);
+            this.gunaGroupBox3.Size = new System.Drawing.Size(760, 118);
             this.gunaGroupBox3.TabIndex = 50;
             this.gunaGroupBox3.TextLocation = new System.Drawing.Point(10, 13);
             this.gunaGroupBox3.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
@@ -208,20 +232,16 @@
             this.panel4.Location = new System.Drawing.Point(10, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(786, 118);
+            this.panel4.Size = new System.Drawing.Size(727, 118);
             this.panel4.TabIndex = 0;
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.refreshBtn);
-            this.panel6.Controls.Add(this.label1);
-            this.panel6.Controls.Add(this.searchItemTxt);
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.searchCategoryCmb);
+            this.panel6.Controls.Add(this.tableLayoutPanel2);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(786, 118);
+            this.panel6.Size = new System.Drawing.Size(727, 118);
             this.panel6.TabIndex = 1;
             // 
             // refreshBtn
@@ -234,7 +254,7 @@
             this.refreshBtn.IconColor = System.Drawing.Color.Black;
             this.refreshBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.refreshBtn.IconSize = 20;
-            this.refreshBtn.Location = new System.Drawing.Point(279, 24);
+            this.refreshBtn.Location = new System.Drawing.Point(202, 22);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(28, 26);
             this.refreshBtn.TabIndex = 74;
@@ -246,7 +266,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(371, 22);
+            this.label1.Location = new System.Drawing.Point(30, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 28);
             this.label1.TabIndex = 73;
@@ -279,33 +299,33 @@
             this.searchItemTxt.IconRight = null;
             this.searchItemTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.searchItemTxt.Lines = new string[0];
-            this.searchItemTxt.Location = new System.Drawing.Point(376, 53);
+            this.searchItemTxt.Location = new System.Drawing.Point(35, 55);
             this.searchItemTxt.MaximumSize = new System.Drawing.Size(233, 40);
             this.searchItemTxt.MaxLength = 32767;
             this.searchItemTxt.MinimumSize = new System.Drawing.Size(233, 40);
             this.searchItemTxt.Modified = false;
             this.searchItemTxt.Multiline = false;
             this.searchItemTxt.Name = "searchItemTxt";
-            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchItemTxt.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.searchItemTxt.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchItemTxt.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            stateProperties4.FillColor = System.Drawing.Color.White;
-            stateProperties4.ForeColor = System.Drawing.Color.Empty;
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchItemTxt.OnIdleState = stateProperties4;
+            stateProperties41.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            stateProperties41.FillColor = System.Drawing.Color.Empty;
+            stateProperties41.ForeColor = System.Drawing.Color.Empty;
+            stateProperties41.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchItemTxt.OnActiveState = stateProperties41;
+            stateProperties42.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties42.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties42.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.searchItemTxt.OnDisabledState = stateProperties42;
+            stateProperties43.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            stateProperties43.FillColor = System.Drawing.Color.Empty;
+            stateProperties43.ForeColor = System.Drawing.Color.Empty;
+            stateProperties43.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchItemTxt.OnHoverState = stateProperties43;
+            stateProperties44.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            stateProperties44.FillColor = System.Drawing.Color.White;
+            stateProperties44.ForeColor = System.Drawing.Color.Empty;
+            stateProperties44.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchItemTxt.OnIdleState = stateProperties44;
             this.searchItemTxt.Padding = new System.Windows.Forms.Padding(3);
             this.searchItemTxt.PasswordChar = '\0';
             this.searchItemTxt.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -333,7 +353,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(106, 23);
+            this.label3.Location = new System.Drawing.Point(29, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(171, 28);
             this.label3.TabIndex = 73;
@@ -351,7 +371,7 @@
             this.searchCategoryCmb.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchCategoryCmb.ForeColor = System.Drawing.Color.Black;
             this.searchCategoryCmb.FormattingEnabled = true;
-            this.searchCategoryCmb.Location = new System.Drawing.Point(111, 55);
+            this.searchCategoryCmb.Location = new System.Drawing.Point(34, 53);
             this.searchCategoryCmb.MaximumSize = new System.Drawing.Size(233, 0);
             this.searchCategoryCmb.MinimumSize = new System.Drawing.Size(233, 0);
             this.searchCategoryCmb.Name = "searchCategoryCmb";
@@ -379,7 +399,7 @@
             this.NewItemBtn.ForeColor = System.Drawing.Color.White;
             this.NewItemBtn.Image = global::sims.Properties.Resources.add_white;
             this.NewItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.NewItemBtn.Location = new System.Drawing.Point(377, 413);
+            this.NewItemBtn.Location = new System.Drawing.Point(5, 8);
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.NewItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -401,14 +421,12 @@
             this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox2.Controls.Add(this.DeleteItemBtn);
-            this.gunaGroupBox2.Controls.Add(this.UpdateItemBtn);
-            this.gunaGroupBox2.Controls.Add(this.NewItemBtn);
+            this.gunaGroupBox2.Controls.Add(this.tableLayoutPanel1);
             this.gunaGroupBox2.Controls.Add(this.panel5);
             this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox2.LineColor = System.Drawing.Color.White;
             this.gunaGroupBox2.LineTop = 0;
-            this.gunaGroupBox2.Location = new System.Drawing.Point(11, 208);
+            this.gunaGroupBox2.Location = new System.Drawing.Point(11, 197);
             this.gunaGroupBox2.Name = "gunaGroupBox2";
             this.gunaGroupBox2.Radius = 10;
             this.gunaGroupBox2.Size = new System.Drawing.Size(1170, 476);
@@ -416,6 +434,34 @@
             this.gunaGroupBox2.Text = "Soothing Café Items";
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 13);
             this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 158F));
+            this.tableLayoutPanel1.Controls.Add(this.panel7, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel8, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel9, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(342, 405);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(438, 71);
+            this.tableLayoutPanel1.TabIndex = 35;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.DeleteItemBtn);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(280, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(158, 71);
+            this.panel7.TabIndex = 2;
             // 
             // DeleteItemBtn
             // 
@@ -433,7 +479,7 @@
             this.DeleteItemBtn.ForeColor = System.Drawing.Color.Black;
             this.DeleteItemBtn.Image = null;
             this.DeleteItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.DeleteItemBtn.Location = new System.Drawing.Point(648, 413);
+            this.DeleteItemBtn.Location = new System.Drawing.Point(3, 8);
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.DeleteItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -443,10 +489,20 @@
             this.DeleteItemBtn.Radius = 6;
             this.DeleteItemBtn.Size = new System.Drawing.Size(147, 50);
             this.DeleteItemBtn.TabIndex = 33;
-            this.DeleteItemBtn.Text = "Delete Item";
+            this.DeleteItemBtn.Text = "Remove Item";
             this.DeleteItemBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DeleteItemBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.DeleteItemBtn.Click += new System.EventHandler(this.DeleteItemBtn_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.UpdateItemBtn);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(140, 0);
+            this.panel8.Margin = new System.Windows.Forms.Padding(0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(140, 71);
+            this.panel8.TabIndex = 1;
             // 
             // UpdateItemBtn
             // 
@@ -464,7 +520,7 @@
             this.UpdateItemBtn.ForeColor = System.Drawing.Color.White;
             this.UpdateItemBtn.Image = global::sims.Properties.Resources.edit_white;
             this.UpdateItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.UpdateItemBtn.Location = new System.Drawing.Point(515, 413);
+            this.UpdateItemBtn.Location = new System.Drawing.Point(3, 8);
             this.UpdateItemBtn.Name = "UpdateItemBtn";
             this.UpdateItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.UpdateItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -477,6 +533,16 @@
             this.UpdateItemBtn.Text = "Edit Item";
             this.UpdateItemBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.UpdateItemBtn.Click += new System.EventHandler(this.UpdateItemBtn_Click);
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.NewItemBtn);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(140, 71);
+            this.panel9.TabIndex = 0;
             // 
             // panel5
             // 
@@ -494,21 +560,21 @@
             // 
             this.itemsDgv.AllowUserToAddRows = false;
             this.itemsDgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.itemsDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
+            this.itemsDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
             this.itemsDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.itemsDgv.BackgroundColor = System.Drawing.Color.White;
             this.itemsDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.itemsDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.itemsDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.itemsDgv.ColumnHeadersHeight = 30;
             this.itemsDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Item_ID,
@@ -516,14 +582,14 @@
             this.Column3,
             this.Column7,
             this.Item_Image});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemsDgv.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemsDgv.DefaultCellStyle = dataGridViewCellStyle33;
             this.itemsDgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.itemsDgv.EnableHeadersVisualStyles = false;
             this.itemsDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -603,14 +669,98 @@
             this.Item_Image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Item_Image.Width = 127;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel2.Controls.Add(this.panel11, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel12, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(58, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(605, 118);
+            this.tableLayoutPanel2.TabIndex = 49;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.searchItemTxt);
+            this.panel11.Controls.Add(this.label1);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(300, 0);
+            this.panel11.Margin = new System.Windows.Forms.Padding(0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(305, 118);
+            this.panel11.TabIndex = 1;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.refreshBtn);
+            this.panel12.Controls.Add(this.searchCategoryCmb);
+            this.panel12.Controls.Add(this.label3);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(0, 0);
+            this.panel12.Margin = new System.Windows.Forms.Padding(0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(300, 118);
+            this.panel12.TabIndex = 0;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.panel10, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel13, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(11, 73);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1170, 118);
+            this.tableLayoutPanel3.TabIndex = 50;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.panel2);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(400, 0);
+            this.panel10.Margin = new System.Windows.Forms.Padding(0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(770, 118);
+            this.panel10.TabIndex = 1;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.panel14);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(0, 0);
+            this.panel13.Margin = new System.Windows.Forms.Padding(0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(400, 118);
+            this.panel13.TabIndex = 0;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.panel3);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(0, 0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(400, 118);
+            this.panel14.TabIndex = 0;
+            // 
             // Manage_Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.gunaGroupBox2);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "Manage_Items";
             this.Size = new System.Drawing.Size(1194, 700);
@@ -626,10 +776,22 @@
             this.gunaGroupBox3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.gunaGroupBox2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.itemsDgv)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -663,5 +825,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewImageColumn Item_Image;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel panel14;
     }
 }

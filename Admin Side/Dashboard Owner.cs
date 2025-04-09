@@ -51,6 +51,12 @@ namespace sims
                 Size = new Size(10, 58)
             };
             PanelMenu.Controls.Add(leftBorderBtn);
+
+            Timer timer = new Timer();
+            timer.Tick += timer1_Tick;
+            timer.Start();
+
+            DateLbl.Text = DateTime.Now.ToString("ddd, d MMMM yyyy");
         }
 
         private void DashboardOwner_Load(object sender, EventArgs e)
@@ -324,6 +330,12 @@ namespace sims
                 this.Hide();
                 new Login_Form().Show();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeLbl.Text = DateTime.Now.ToString("h:mm:ss tt");
+
         }
     }
 }

@@ -57,10 +57,6 @@ namespace sims.Admin_Side.Sales
             {
                 _inventoryDashboard.ProductsCount(); // Calls method to get product count
             }
-            else
-            {
-                MessageBox.Show("Inventory Dashboard is not available."); // Error message if inventory module is missing
-            }
         }
 
         // Method to preview total item sales
@@ -69,10 +65,6 @@ namespace sims.Admin_Side.Sales
             if (_inventoryDashboard != null)
             {
                 _inventoryDashboard.TotalSalesItems(); // Calls method to get total sales items
-            }
-            else
-            {
-                MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
 
@@ -83,10 +75,6 @@ namespace sims.Admin_Side.Sales
             {
                 _inventoryDashboard.StockPreview(); // Calls method to preview stock
             }
-            else
-            {
-                MessageBox.Show("Inventory Dashboard is not available.");
-            }
         }
 
         // Method to preview daily sales chart based on category
@@ -95,10 +83,6 @@ namespace sims.Admin_Side.Sales
             if (_inventoryDashboard != null)
             {
                 _inventoryDashboard.TotalSalesPreview(_category); // Calls method to display total sales preview
-            }
-            else
-            {
-                MessageBox.Show("Inventory Dashboard is not available.");
             }
         }
 
@@ -109,10 +93,6 @@ namespace sims.Admin_Side.Sales
             {
                 _inventoryDashboard.MonthlySalesPreview(_category); // Calls method to display monthly sales preview
             }
-            else
-            {
-                MessageBox.Show("Inventory Dashboard is not available.");
-            }
         }
 
         // Method to preview coffee sales
@@ -121,10 +101,6 @@ namespace sims.Admin_Side.Sales
             if (_sales != null)
             {
                 _sales.CoffeeSales(); // Calls method to display coffee sales report
-            }
-            else
-            {
-                MessageBox.Show("Sales Report is not available.");
             }
         }
 
@@ -545,8 +521,6 @@ namespace sims.Admin_Side.Sales
             if (!string.IsNullOrEmpty(stock5Cmb.SelectedItem?.ToString())) stockItems.Add(stock5Cmb.SelectedItem.ToString());
             if (!string.IsNullOrEmpty(stock6Cmb.SelectedItem?.ToString())) stockItems.Add(stock6Cmb.SelectedItem.ToString());
 
-            // Add more stock items if necessary...
-
             string stockNeeded = string.Join(", ", stockItems);
 
             if (string.IsNullOrEmpty(productID) || string.IsNullOrEmpty(productName) || string.IsNullOrEmpty(category) ||
@@ -568,7 +542,6 @@ namespace sims.Admin_Side.Sales
                 return;
             }
 
-            // Dynamically determine the table name based on category
             string tableName = string.Empty;
 
             if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
@@ -593,20 +566,15 @@ namespace sims.Admin_Side.Sales
                 return;
             }
 
-            // Call TotalSales with the correct table name
             TotalSales(tableName, _category);
 
-            // Convert DateLbl.Text to a DateTime object
             if (!DateTime.TryParse(DateLbl.Text, out DateTime saleDate))
             {
                 MessageBox.Show("Invalid date format in DateLbl. Please check the value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Format the date for MySQL
             string formattedDate = saleDate.ToString("yyyy-MM-dd");
-
-            // Format the current time for MySQL
             string formattedTime = DateTime.Now.ToString("HH:mm:ss");
 
             try
@@ -614,11 +582,10 @@ namespace sims.Admin_Side.Sales
                 conn.Open();
                 cmd.Connection = conn;
 
-                // Use dynamic table name in the INSERT statement
                 cmd.CommandText = $"INSERT INTO {tableName} (Sales_ID, Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Total_Product_Sale, Stock_Needed, Sale_Date, Sale_Time) " +
                                   "VALUES (@Sales_ID, @Product_ID, @Product_Name, @Category, @Product_Price, @Stock_Quantity, @Quantity_Sold, @Total_Product_Sale, @Stock_Needed, @Sale_Date, @Sale_Time)";
 
-                cmd.Parameters.AddWithValue("@Sales_ID", Guid.NewGuid().ToString()); // Generate a unique Sales ID
+                cmd.Parameters.AddWithValue("@Sales_ID", Guid.NewGuid().ToString());
                 cmd.Parameters.AddWithValue("@Product_ID", productID);
                 cmd.Parameters.AddWithValue("@Product_Name", productName);
                 cmd.Parameters.AddWithValue("@Category", category);
@@ -636,13 +603,12 @@ namespace sims.Admin_Side.Sales
                 {
                     foreach (var stockItem in stockItems)
                     {
-                        // Update query to reduce both Stock_In and Item_Total
                         cmd.CommandText = @"UPDATE stocks SET Stock_In = Stock_In - @Stock_In, Item_Total = Item_Total - (@Stock_In * Item_Price) 
-                            WHERE Item_Name = @ItemName";
+                    WHERE Item_Name = @ItemName";
 
                         cmd.Parameters.Clear();
-                        cmd.Parameters.AddWithValue("@Stock_In", parsedStockQuantity);  // Quantity sold
-                        cmd.Parameters.AddWithValue("@ItemName", stockItem);            // Item name
+                        cmd.Parameters.AddWithValue("@Stock_In", parsedStockQuantity);
+                        cmd.Parameters.AddWithValue("@ItemName", stockItem);
 
                         cmd.ExecuteNonQuery();
 
@@ -651,10 +617,12 @@ namespace sims.Admin_Side.Sales
                         previewItemSales();
                         previewDailySalesChart(_category);
                         previewMonthlySalesChart(_category);
-
                     }
 
                     MessageBox.Show("Product added successfully, and stock quantities updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Hide the addProductBtn after adding a product sale
+                    addProductBtn.Visible = false;
 
                     // Reset the form
                     productNameTxt.Clear();

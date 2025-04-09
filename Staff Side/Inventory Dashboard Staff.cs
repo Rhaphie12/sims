@@ -30,6 +30,7 @@ namespace sims.Staff_Side
 
             TotalSalesPreview("Coffee");
             MonthlySalesPreview("Coffee");
+            ResetPreviousDaySales();
         }
 
         public void ItemsCount()
@@ -227,6 +228,33 @@ namespace sims.Staff_Side
             }
         }
 
+        private void ResetPreviousDaySales()
+        {
+            string todayDate = DateTime.Now.ToString("yyyy-MM-dd");
+
+            dbModule db = new dbModule();
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                List<string> tables = new List<string> { "productsales_coffee", "productsales_noncoffee", "productsales_hotcoffee", "productsales_pastries" };
+
+                foreach (string table in tables)
+                {
+                    string resetQuery = $"UPDATE {table} SET Quantity_Sold = 0, Total_Product_Sale = 0 WHERE Sale_Date < @Today";
+                    MySqlCommand cmd = new MySqlCommand(resetQuery, conn);
+                    cmd.Parameters.AddWithValue("@Today", todayDate);
+                    cmd.ExecuteNonQuery();
+
+                    string deleteQuery = $"DELETE FROM {table} WHERE Sale_Date < @Today";
+                    MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn);
+                    deleteCmd.Parameters.AddWithValue("@Today", todayDate);
+                    deleteCmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Previous day's sales have been reset to 0 and outdated records removed.", "Reset Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         public void TotalSalesPreview(string category)
         {
             dbModule db = new dbModule();
@@ -250,16 +278,16 @@ namespace sims.Staff_Side
                     // Get total sales for the category
                     string totalSalesQuery = $"SELECT SUM(Total_Product_Sale) AS TotalSales FROM {tableName}";
                     MySqlCommand totalSalesCmd = new MySqlCommand(totalSalesQuery, conn);
-                    totalSales = Convert.ToDecimal(totalSalesCmd.ExecuteScalar());
+                    object result = totalSalesCmd.ExecuteScalar();
+                    totalSales = (result == DBNull.Value || result == null) ? 0 : Convert.ToDecimal(result);
 
                     // Get sales and quantity per product
-                    string query = $@"
-                SELECT 
-                    Product_Name, 
-                    SUM(Total_Product_Sale) AS TotalSales, 
-                    SUM(Quantity_Sold) AS TotalQuantity 
+                    string query = $@"SELECT Product_Name, 
+                SUM(Total_Product_Sale) AS TotalSales, 
+                SUM(Quantity_Sold) AS TotalQuantity 
                 FROM {tableName} 
                 GROUP BY Product_Name";
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -306,6 +334,7 @@ namespace sims.Staff_Side
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void MonthlySalesPreview(string category)
         {
             dbModule db = new dbModule();
@@ -329,10 +358,17 @@ namespace sims.Staff_Side
                     // Get total sales for the category
                     string totalSalesQuery = $"SELECT SUM(Total_Product_Sale) AS TotalSales FROM {tableName}";
                     MySqlCommand totalSalesCmd = new MySqlCommand(totalSalesQuery, conn);
-                    totalSales = Convert.ToDecimal(totalSalesCmd.ExecuteScalar());
+                    object result = totalSalesCmd.ExecuteScalar();
+                    totalSales = (result == DBNull.Value || result == null) ? 0 : Convert.ToDecimal(result);
 
                     // Get sales per product
-                    string query = $"SELECT Product_Name, SUM(Total_Product_Sale) AS TotalSales FROM {tableName} GROUP BY Product_Name";
+                    string query = $@"
+                SELECT 
+                    Product_Name, 
+                    SUM(Total_Product_Sale) AS TotalSales, 
+                    SUM(Quantity_Sold) AS TotalQuantity 
+                FROM {tableName} 
+                GROUP BY Product_Name";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -340,15 +376,15 @@ namespace sims.Staff_Side
                         while (reader.Read())
                         {
                             string productName = reader["Product_Name"]?.ToString() ?? "Unknown Product";
-                            if (decimal.TryParse(reader["TotalSales"]?.ToString(), out decimal productSales))
+                            decimal productSales = reader["TotalSales"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["TotalSales"]);
+                            int productQuantity = reader["TotalQuantity"] == DBNull.Value ? 0 : Convert.ToInt32(reader["TotalQuantity"]);
+
+                            series.Add(new PieSeries
                             {
-                                series.Add(new PieSeries
-                                {
-                                    Title = productName,
-                                    Values = new ChartValues<decimal> { productSales },
-                                    DataLabels = true
-                                });
-                            }
+                                Title = $"{productName} ({productQuantity} sold)", // Include quantity in the label
+                                Values = new ChartValues<decimal> { productSales },
+                                DataLabels = true
+                            });
                         }
                     }
                 }

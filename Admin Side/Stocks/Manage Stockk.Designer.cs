@@ -28,15 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manage_Stockk));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.itemStockDgv = new Guna.UI.WinForms.GunaDataGridView();
+            this.Item_Image = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Stock_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date_Added = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeleteStockBtn = new Guna.UI.WinForms.GunaButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
@@ -48,21 +58,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Item_Image = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Stock_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date_Added = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.itemStockDgv)).BeginInit();
             this.panel5.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // itemStockDgv
@@ -71,21 +79,21 @@
             this.itemStockDgv.AllowUserToDeleteRows = false;
             this.itemStockDgv.AllowUserToResizeColumns = false;
             this.itemStockDgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.itemStockDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.itemStockDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.itemStockDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.itemStockDgv.BackgroundColor = System.Drawing.Color.White;
             this.itemStockDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.itemStockDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.itemStockDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemStockDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemStockDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.itemStockDgv.ColumnHeadersHeight = 30;
             this.itemStockDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Item_Image,
@@ -98,14 +106,14 @@
             this.Date_Added,
             this.Item_Price,
             this.Item_Total});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemStockDgv.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemStockDgv.DefaultCellStyle = dataGridViewCellStyle9;
             this.itemStockDgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.itemStockDgv.EnableHeadersVisualStyles = false;
             this.itemStockDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -144,301 +152,6 @@
             this.itemStockDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.itemStockDgv.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.itemStockDgv_CellFormatting);
             this.itemStockDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemStockDgv_DataBindingComplete);
-            // 
-            // DeleteStockBtn
-            // 
-            this.DeleteStockBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteStockBtn.AnimationHoverSpeed = 0.07F;
-            this.DeleteStockBtn.AnimationSpeed = 0.03F;
-            this.DeleteStockBtn.BackColor = System.Drawing.Color.Transparent;
-            this.DeleteStockBtn.BaseColor = System.Drawing.Color.Transparent;
-            this.DeleteStockBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.DeleteStockBtn.BorderSize = 2;
-            this.DeleteStockBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DeleteStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.DeleteStockBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.DeleteStockBtn.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteStockBtn.ForeColor = System.Drawing.Color.Black;
-            this.DeleteStockBtn.Image = null;
-            this.DeleteStockBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.DeleteStockBtn.Location = new System.Drawing.Point(1030, 552);
-            this.DeleteStockBtn.Name = "DeleteStockBtn";
-            this.DeleteStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.DeleteStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.DeleteStockBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.DeleteStockBtn.OnHoverImage = null;
-            this.DeleteStockBtn.OnPressedColor = System.Drawing.Color.White;
-            this.DeleteStockBtn.Radius = 6;
-            this.DeleteStockBtn.Size = new System.Drawing.Size(130, 35);
-            this.DeleteStockBtn.TabIndex = 36;
-            this.DeleteStockBtn.Text = "Remove Stock";
-            this.DeleteStockBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DeleteStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.DeleteStockBtn.Visible = false;
-            this.DeleteStockBtn.Click += new System.EventHandler(this.DeleteStockBtn_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.itemStockDgv);
-            this.panel5.Location = new System.Drawing.Point(11, 59);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1149, 473);
-            this.panel5.TabIndex = 31;
-            // 
-            // gunaGroupBox2
-            // 
-            this.gunaGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
-            this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox2.Controls.Add(this.selectAllBtn);
-            this.gunaGroupBox2.Controls.Add(this.NewStockBtn);
-            this.gunaGroupBox2.Controls.Add(this.StocksReportBtn);
-            this.gunaGroupBox2.Controls.Add(this.UpdateStockBtn);
-            this.gunaGroupBox2.Controls.Add(this.searchCategoryTxt);
-            this.gunaGroupBox2.Controls.Add(this.DeleteStockBtn);
-            this.gunaGroupBox2.Controls.Add(this.panel5);
-            this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox2.LineColor = System.Drawing.Color.White;
-            this.gunaGroupBox2.LineTop = 0;
-            this.gunaGroupBox2.Location = new System.Drawing.Point(11, 76);
-            this.gunaGroupBox2.Name = "gunaGroupBox2";
-            this.gunaGroupBox2.Radius = 10;
-            this.gunaGroupBox2.Size = new System.Drawing.Size(1171, 607);
-            this.gunaGroupBox2.TabIndex = 51;
-            this.gunaGroupBox2.Text = "Item Stocks";
-            this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 15);
-            this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            // 
-            // selectAllBtn
-            // 
-            this.selectAllBtn.AnimationHoverSpeed = 0.07F;
-            this.selectAllBtn.AnimationSpeed = 0.03F;
-            this.selectAllBtn.BackColor = System.Drawing.Color.Transparent;
-            this.selectAllBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.selectAllBtn.BorderColor = System.Drawing.Color.Black;
-            this.selectAllBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.selectAllBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.selectAllBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.selectAllBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.selectAllBtn.ForeColor = System.Drawing.Color.White;
-            this.selectAllBtn.Image = global::sims.Properties.Resources.all;
-            this.selectAllBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.selectAllBtn.Location = new System.Drawing.Point(143, 8);
-            this.selectAllBtn.Name = "selectAllBtn";
-            this.selectAllBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.selectAllBtn.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.selectAllBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.selectAllBtn.OnHoverImage = null;
-            this.selectAllBtn.OnPressedColor = System.Drawing.Color.Black;
-            this.selectAllBtn.Radius = 6;
-            this.selectAllBtn.Size = new System.Drawing.Size(51, 41);
-            this.selectAllBtn.TabIndex = 41;
-            this.selectAllBtn.Click += new System.EventHandler(this.selectAllBtn_Click);
-            // 
-            // NewStockBtn
-            // 
-            this.NewStockBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NewStockBtn.AnimationHoverSpeed = 0.07F;
-            this.NewStockBtn.AnimationSpeed = 0.03F;
-            this.NewStockBtn.BackColor = System.Drawing.Color.Transparent;
-            this.NewStockBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewStockBtn.BorderColor = System.Drawing.Color.Black;
-            this.NewStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.NewStockBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.NewStockBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewStockBtn.ForeColor = System.Drawing.Color.White;
-            this.NewStockBtn.Image = global::sims.Properties.Resources.add_white;
-            this.NewStockBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.NewStockBtn.Location = new System.Drawing.Point(523, 542);
-            this.NewStockBtn.Name = "NewStockBtn";
-            this.NewStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewStockBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.NewStockBtn.OnHoverImage = null;
-            this.NewStockBtn.OnPressedColor = System.Drawing.Color.Black;
-            this.NewStockBtn.Radius = 5;
-            this.NewStockBtn.Size = new System.Drawing.Size(140, 50);
-            this.NewStockBtn.TabIndex = 40;
-            this.NewStockBtn.Text = "New Stock";
-            this.NewStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.NewStockBtn.Click += new System.EventHandler(this.NewStockBtn_Click);
-            // 
-            // StocksReportBtn
-            // 
-            this.StocksReportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StocksReportBtn.AnimationHoverSpeed = 0.07F;
-            this.StocksReportBtn.AnimationSpeed = 0.03F;
-            this.StocksReportBtn.BackColor = System.Drawing.Color.Transparent;
-            this.StocksReportBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.StocksReportBtn.BorderColor = System.Drawing.Color.Black;
-            this.StocksReportBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.StocksReportBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.StocksReportBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StocksReportBtn.ForeColor = System.Drawing.Color.White;
-            this.StocksReportBtn.Image = global::sims.Properties.Resources.newspaper_white;
-            this.StocksReportBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.StocksReportBtn.Location = new System.Drawing.Point(354, 542);
-            this.StocksReportBtn.Name = "StocksReportBtn";
-            this.StocksReportBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.StocksReportBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.StocksReportBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.StocksReportBtn.OnHoverImage = null;
-            this.StocksReportBtn.OnPressedColor = System.Drawing.Color.Black;
-            this.StocksReportBtn.Radius = 5;
-            this.StocksReportBtn.Size = new System.Drawing.Size(163, 50);
-            this.StocksReportBtn.TabIndex = 40;
-            this.StocksReportBtn.Text = "Stocks Report";
-            this.StocksReportBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.StocksReportBtn.Click += new System.EventHandler(this.StocksReportBtn_Click);
-            // 
-            // UpdateStockBtn
-            // 
-            this.UpdateStockBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.UpdateStockBtn.AnimationHoverSpeed = 0.07F;
-            this.UpdateStockBtn.AnimationSpeed = 0.03F;
-            this.UpdateStockBtn.BackColor = System.Drawing.Color.Transparent;
-            this.UpdateStockBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.UpdateStockBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.UpdateStockBtn.BorderSize = 2;
-            this.UpdateStockBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UpdateStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.UpdateStockBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.UpdateStockBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateStockBtn.ForeColor = System.Drawing.Color.White;
-            this.UpdateStockBtn.Image = global::sims.Properties.Resources.redo_white;
-            this.UpdateStockBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.UpdateStockBtn.Location = new System.Drawing.Point(669, 542);
-            this.UpdateStockBtn.Name = "UpdateStockBtn";
-            this.UpdateStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.UpdateStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.UpdateStockBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.UpdateStockBtn.OnHoverImage = null;
-            this.UpdateStockBtn.OnPressedColor = System.Drawing.Color.White;
-            this.UpdateStockBtn.Radius = 4;
-            this.UpdateStockBtn.Size = new System.Drawing.Size(129, 50);
-            this.UpdateStockBtn.TabIndex = 39;
-            this.UpdateStockBtn.Text = "Re-Stock";
-            this.UpdateStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.UpdateStockBtn.Click += new System.EventHandler(this.UpdateStockBtn_Click);
-            // 
-            // searchCategoryTxt
-            // 
-            this.searchCategoryTxt.AcceptsReturn = false;
-            this.searchCategoryTxt.AcceptsTab = false;
-            this.searchCategoryTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchCategoryTxt.AnimationSpeed = 200;
-            this.searchCategoryTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.searchCategoryTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.searchCategoryTxt.BackColor = System.Drawing.Color.Transparent;
-            this.searchCategoryTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("searchCategoryTxt.BackgroundImage")));
-            this.searchCategoryTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.searchCategoryTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.searchCategoryTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.searchCategoryTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.searchCategoryTxt.BorderRadius = 30;
-            this.searchCategoryTxt.BorderThickness = 1;
-            this.searchCategoryTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.searchCategoryTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchCategoryTxt.DefaultFont = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCategoryTxt.DefaultText = "";
-            this.searchCategoryTxt.FillColor = System.Drawing.Color.White;
-            this.searchCategoryTxt.HideSelection = true;
-            this.searchCategoryTxt.IconLeft = null;
-            this.searchCategoryTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchCategoryTxt.IconPadding = 10;
-            this.searchCategoryTxt.IconRight = null;
-            this.searchCategoryTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchCategoryTxt.Lines = new string[0];
-            this.searchCategoryTxt.Location = new System.Drawing.Point(878, 11);
-            this.searchCategoryTxt.MaximumSize = new System.Drawing.Size(282, 35);
-            this.searchCategoryTxt.MaxLength = 32767;
-            this.searchCategoryTxt.MinimumSize = new System.Drawing.Size(282, 35);
-            this.searchCategoryTxt.Modified = false;
-            this.searchCategoryTxt.Multiline = false;
-            this.searchCategoryTxt.Name = "searchCategoryTxt";
-            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchCategoryTxt.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.searchCategoryTxt.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchCategoryTxt.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties4.FillColor = System.Drawing.Color.White;
-            stateProperties4.ForeColor = System.Drawing.Color.Empty;
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchCategoryTxt.OnIdleState = stateProperties4;
-            this.searchCategoryTxt.Padding = new System.Windows.Forms.Padding(3);
-            this.searchCategoryTxt.PasswordChar = '\0';
-            this.searchCategoryTxt.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.searchCategoryTxt.PlaceholderText = "Search by Item ";
-            this.searchCategoryTxt.ReadOnly = false;
-            this.searchCategoryTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.searchCategoryTxt.SelectedText = "";
-            this.searchCategoryTxt.SelectionLength = 0;
-            this.searchCategoryTxt.SelectionStart = 0;
-            this.searchCategoryTxt.ShortcutsEnabled = true;
-            this.searchCategoryTxt.Size = new System.Drawing.Size(282, 35);
-            this.searchCategoryTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.searchCategoryTxt.TabIndex = 37;
-            this.searchCategoryTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.searchCategoryTxt.TextMarginBottom = 0;
-            this.searchCategoryTxt.TextMarginLeft = 3;
-            this.searchCategoryTxt.TextMarginTop = 0;
-            this.searchCategoryTxt.TextPlaceholder = "Search by Item ";
-            this.searchCategoryTxt.UseSystemPasswordChar = false;
-            this.searchCategoryTxt.WordWrap = true;
-            this.searchCategoryTxt.TextChanged += new System.EventHandler(this.searchCategoryTxt_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(10, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(286, 34);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Dashboard / Manage Stocks";
-            // 
-            // gunaElipsePanel2
-            // 
-            this.gunaElipsePanel2.BackColor = System.Drawing.Color.Transparent;
-            this.gunaElipsePanel2.BaseColor = System.Drawing.Color.White;
-            this.gunaElipsePanel2.Controls.Add(this.label4);
-            this.gunaElipsePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gunaElipsePanel2.Location = new System.Drawing.Point(0, 0);
-            this.gunaElipsePanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.gunaElipsePanel2.Name = "gunaElipsePanel2";
-            this.gunaElipsePanel2.Radius = 7;
-            this.gunaElipsePanel2.Size = new System.Drawing.Size(1170, 53);
-            this.gunaElipsePanel2.TabIndex = 46;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.gunaElipsePanel2);
-            this.panel1.Location = new System.Drawing.Point(11, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1170, 53);
-            this.panel1.TabIndex = 50;
             // 
             // Item_Image
             // 
@@ -515,6 +228,347 @@
             this.Item_Total.Name = "Item_Total";
             this.Item_Total.ReadOnly = true;
             // 
+            // DeleteStockBtn
+            // 
+            this.DeleteStockBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteStockBtn.AnimationHoverSpeed = 0.07F;
+            this.DeleteStockBtn.AnimationSpeed = 0.03F;
+            this.DeleteStockBtn.BackColor = System.Drawing.Color.Transparent;
+            this.DeleteStockBtn.BaseColor = System.Drawing.Color.Transparent;
+            this.DeleteStockBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.DeleteStockBtn.BorderSize = 2;
+            this.DeleteStockBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.DeleteStockBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.DeleteStockBtn.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteStockBtn.ForeColor = System.Drawing.Color.Black;
+            this.DeleteStockBtn.Image = null;
+            this.DeleteStockBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.DeleteStockBtn.Location = new System.Drawing.Point(1030, 552);
+            this.DeleteStockBtn.Name = "DeleteStockBtn";
+            this.DeleteStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.DeleteStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.DeleteStockBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.DeleteStockBtn.OnHoverImage = null;
+            this.DeleteStockBtn.OnPressedColor = System.Drawing.Color.White;
+            this.DeleteStockBtn.Radius = 6;
+            this.DeleteStockBtn.Size = new System.Drawing.Size(130, 35);
+            this.DeleteStockBtn.TabIndex = 36;
+            this.DeleteStockBtn.Text = "Remove Stock";
+            this.DeleteStockBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DeleteStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.DeleteStockBtn.Visible = false;
+            this.DeleteStockBtn.Click += new System.EventHandler(this.DeleteStockBtn_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.itemStockDgv);
+            this.panel5.Location = new System.Drawing.Point(11, 59);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1149, 473);
+            this.panel5.TabIndex = 31;
+            // 
+            // gunaGroupBox2
+            // 
+            this.gunaGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox2.Controls.Add(this.tableLayoutPanel1);
+            this.gunaGroupBox2.Controls.Add(this.selectAllBtn);
+            this.gunaGroupBox2.Controls.Add(this.searchCategoryTxt);
+            this.gunaGroupBox2.Controls.Add(this.DeleteStockBtn);
+            this.gunaGroupBox2.Controls.Add(this.panel5);
+            this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox2.LineColor = System.Drawing.Color.White;
+            this.gunaGroupBox2.LineTop = 0;
+            this.gunaGroupBox2.Location = new System.Drawing.Point(11, 76);
+            this.gunaGroupBox2.Name = "gunaGroupBox2";
+            this.gunaGroupBox2.Radius = 10;
+            this.gunaGroupBox2.Size = new System.Drawing.Size(1171, 607);
+            this.gunaGroupBox2.TabIndex = 51;
+            this.gunaGroupBox2.Text = "Item Stocks";
+            this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 15);
+            this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // selectAllBtn
+            // 
+            this.selectAllBtn.AnimationHoverSpeed = 0.07F;
+            this.selectAllBtn.AnimationSpeed = 0.03F;
+            this.selectAllBtn.BackColor = System.Drawing.Color.Transparent;
+            this.selectAllBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.selectAllBtn.BorderColor = System.Drawing.Color.Black;
+            this.selectAllBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.selectAllBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.selectAllBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.selectAllBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.selectAllBtn.ForeColor = System.Drawing.Color.White;
+            this.selectAllBtn.Image = global::sims.Properties.Resources.all;
+            this.selectAllBtn.ImageSize = new System.Drawing.Size(30, 30);
+            this.selectAllBtn.Location = new System.Drawing.Point(143, 8);
+            this.selectAllBtn.Name = "selectAllBtn";
+            this.selectAllBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.selectAllBtn.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.selectAllBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.selectAllBtn.OnHoverImage = null;
+            this.selectAllBtn.OnPressedColor = System.Drawing.Color.Black;
+            this.selectAllBtn.Radius = 6;
+            this.selectAllBtn.Size = new System.Drawing.Size(51, 41);
+            this.selectAllBtn.TabIndex = 41;
+            this.selectAllBtn.Click += new System.EventHandler(this.selectAllBtn_Click);
+            // 
+            // NewStockBtn
+            // 
+            this.NewStockBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NewStockBtn.AnimationHoverSpeed = 0.07F;
+            this.NewStockBtn.AnimationSpeed = 0.03F;
+            this.NewStockBtn.BackColor = System.Drawing.Color.Transparent;
+            this.NewStockBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewStockBtn.BorderColor = System.Drawing.Color.Black;
+            this.NewStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.NewStockBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.NewStockBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewStockBtn.ForeColor = System.Drawing.Color.White;
+            this.NewStockBtn.Image = global::sims.Properties.Resources.add_white;
+            this.NewStockBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.NewStockBtn.Location = new System.Drawing.Point(3, 8);
+            this.NewStockBtn.Name = "NewStockBtn";
+            this.NewStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewStockBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.NewStockBtn.OnHoverImage = null;
+            this.NewStockBtn.OnPressedColor = System.Drawing.Color.Black;
+            this.NewStockBtn.Radius = 5;
+            this.NewStockBtn.Size = new System.Drawing.Size(140, 50);
+            this.NewStockBtn.TabIndex = 40;
+            this.NewStockBtn.Text = "New Stock";
+            this.NewStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.NewStockBtn.Click += new System.EventHandler(this.NewStockBtn_Click);
+            // 
+            // StocksReportBtn
+            // 
+            this.StocksReportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StocksReportBtn.AnimationHoverSpeed = 0.07F;
+            this.StocksReportBtn.AnimationSpeed = 0.03F;
+            this.StocksReportBtn.BackColor = System.Drawing.Color.Transparent;
+            this.StocksReportBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.StocksReportBtn.BorderColor = System.Drawing.Color.Black;
+            this.StocksReportBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.StocksReportBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.StocksReportBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StocksReportBtn.ForeColor = System.Drawing.Color.White;
+            this.StocksReportBtn.Image = global::sims.Properties.Resources.newspaper_white;
+            this.StocksReportBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.StocksReportBtn.Location = new System.Drawing.Point(4, 8);
+            this.StocksReportBtn.Name = "StocksReportBtn";
+            this.StocksReportBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.StocksReportBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.StocksReportBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.StocksReportBtn.OnHoverImage = null;
+            this.StocksReportBtn.OnPressedColor = System.Drawing.Color.Black;
+            this.StocksReportBtn.Radius = 5;
+            this.StocksReportBtn.Size = new System.Drawing.Size(163, 50);
+            this.StocksReportBtn.TabIndex = 40;
+            this.StocksReportBtn.Text = "Stocks Report";
+            this.StocksReportBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.StocksReportBtn.Click += new System.EventHandler(this.StocksReportBtn_Click);
+            // 
+            // UpdateStockBtn
+            // 
+            this.UpdateStockBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.UpdateStockBtn.AnimationHoverSpeed = 0.07F;
+            this.UpdateStockBtn.AnimationSpeed = 0.03F;
+            this.UpdateStockBtn.BackColor = System.Drawing.Color.Transparent;
+            this.UpdateStockBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.UpdateStockBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.UpdateStockBtn.BorderSize = 2;
+            this.UpdateStockBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UpdateStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.UpdateStockBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.UpdateStockBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateStockBtn.ForeColor = System.Drawing.Color.White;
+            this.UpdateStockBtn.Image = global::sims.Properties.Resources.redo_white;
+            this.UpdateStockBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.UpdateStockBtn.Location = new System.Drawing.Point(3, 8);
+            this.UpdateStockBtn.Name = "UpdateStockBtn";
+            this.UpdateStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.UpdateStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.UpdateStockBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.UpdateStockBtn.OnHoverImage = null;
+            this.UpdateStockBtn.OnPressedColor = System.Drawing.Color.White;
+            this.UpdateStockBtn.Radius = 4;
+            this.UpdateStockBtn.Size = new System.Drawing.Size(129, 50);
+            this.UpdateStockBtn.TabIndex = 39;
+            this.UpdateStockBtn.Text = "Re-Stock";
+            this.UpdateStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.UpdateStockBtn.Click += new System.EventHandler(this.UpdateStockBtn_Click);
+            // 
+            // searchCategoryTxt
+            // 
+            this.searchCategoryTxt.AcceptsReturn = false;
+            this.searchCategoryTxt.AcceptsTab = false;
+            this.searchCategoryTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchCategoryTxt.AnimationSpeed = 200;
+            this.searchCategoryTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.searchCategoryTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.searchCategoryTxt.BackColor = System.Drawing.Color.Transparent;
+            this.searchCategoryTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("searchCategoryTxt.BackgroundImage")));
+            this.searchCategoryTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.searchCategoryTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.searchCategoryTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.searchCategoryTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.searchCategoryTxt.BorderRadius = 30;
+            this.searchCategoryTxt.BorderThickness = 1;
+            this.searchCategoryTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.searchCategoryTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchCategoryTxt.DefaultFont = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchCategoryTxt.DefaultText = "";
+            this.searchCategoryTxt.FillColor = System.Drawing.Color.White;
+            this.searchCategoryTxt.HideSelection = true;
+            this.searchCategoryTxt.IconLeft = null;
+            this.searchCategoryTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchCategoryTxt.IconPadding = 10;
+            this.searchCategoryTxt.IconRight = null;
+            this.searchCategoryTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchCategoryTxt.Lines = new string[0];
+            this.searchCategoryTxt.Location = new System.Drawing.Point(878, 11);
+            this.searchCategoryTxt.MaximumSize = new System.Drawing.Size(282, 35);
+            this.searchCategoryTxt.MaxLength = 32767;
+            this.searchCategoryTxt.MinimumSize = new System.Drawing.Size(282, 35);
+            this.searchCategoryTxt.Modified = false;
+            this.searchCategoryTxt.Multiline = false;
+            this.searchCategoryTxt.Name = "searchCategoryTxt";
+            stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties9.FillColor = System.Drawing.Color.Empty;
+            stateProperties9.ForeColor = System.Drawing.Color.Empty;
+            stateProperties9.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchCategoryTxt.OnActiveState = stateProperties9;
+            stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties10.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.searchCategoryTxt.OnDisabledState = stateProperties10;
+            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties11.FillColor = System.Drawing.Color.Empty;
+            stateProperties11.ForeColor = System.Drawing.Color.Empty;
+            stateProperties11.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchCategoryTxt.OnHoverState = stateProperties11;
+            stateProperties12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties12.FillColor = System.Drawing.Color.White;
+            stateProperties12.ForeColor = System.Drawing.Color.Empty;
+            stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchCategoryTxt.OnIdleState = stateProperties12;
+            this.searchCategoryTxt.Padding = new System.Windows.Forms.Padding(3);
+            this.searchCategoryTxt.PasswordChar = '\0';
+            this.searchCategoryTxt.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.searchCategoryTxt.PlaceholderText = "Search by Item ";
+            this.searchCategoryTxt.ReadOnly = false;
+            this.searchCategoryTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.searchCategoryTxt.SelectedText = "";
+            this.searchCategoryTxt.SelectionLength = 0;
+            this.searchCategoryTxt.SelectionStart = 0;
+            this.searchCategoryTxt.ShortcutsEnabled = true;
+            this.searchCategoryTxt.Size = new System.Drawing.Size(282, 35);
+            this.searchCategoryTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.searchCategoryTxt.TabIndex = 37;
+            this.searchCategoryTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.searchCategoryTxt.TextMarginBottom = 0;
+            this.searchCategoryTxt.TextMarginLeft = 3;
+            this.searchCategoryTxt.TextMarginTop = 0;
+            this.searchCategoryTxt.TextPlaceholder = "Search by Item ";
+            this.searchCategoryTxt.UseSystemPasswordChar = false;
+            this.searchCategoryTxt.WordWrap = true;
+            this.searchCategoryTxt.TextChanged += new System.EventHandler(this.searchCategoryTxt_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(10, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(286, 34);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Dashboard / Manage Stocks";
+            // 
+            // gunaElipsePanel2
+            // 
+            this.gunaElipsePanel2.BackColor = System.Drawing.Color.Transparent;
+            this.gunaElipsePanel2.BaseColor = System.Drawing.Color.White;
+            this.gunaElipsePanel2.Controls.Add(this.label4);
+            this.gunaElipsePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaElipsePanel2.Location = new System.Drawing.Point(0, 0);
+            this.gunaElipsePanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.gunaElipsePanel2.Name = "gunaElipsePanel2";
+            this.gunaElipsePanel2.Radius = 7;
+            this.gunaElipsePanel2.Size = new System.Drawing.Size(1170, 53);
+            this.gunaElipsePanel2.TabIndex = 46;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.gunaElipsePanel2);
+            this.panel1.Location = new System.Drawing.Point(11, 10);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1170, 53);
+            this.panel1.TabIndex = 50;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel4, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(322, 535);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(475, 71);
+            this.tableLayoutPanel1.TabIndex = 42;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.UpdateStockBtn);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(320, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(170, 71);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.NewStockBtn);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(170, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(150, 71);
+            this.panel4.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.StocksReportBtn);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(170, 71);
+            this.panel3.TabIndex = 0;
+            // 
             // Manage_Stockk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,6 +588,10 @@
             this.gunaElipsePanel2.ResumeLayout(false);
             this.gunaElipsePanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -561,5 +619,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date_Added;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_Total;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
     }
 }

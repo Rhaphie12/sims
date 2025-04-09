@@ -61,7 +61,7 @@
             this.getStartedBtn.ForeColor = System.Drawing.Color.White;
             this.getStartedBtn.Image = null;
             this.getStartedBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.getStartedBtn.Location = new System.Drawing.Point(21, 251);
+            this.getStartedBtn.Location = new System.Drawing.Point(35, 248);
             this.getStartedBtn.Name = "getStartedBtn";
             this.getStartedBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.getStartedBtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -81,7 +81,7 @@
             this.GunaLabel1.AutoSize = true;
             this.GunaLabel1.Font = new System.Drawing.Font("Poppins", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GunaLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.GunaLabel1.Location = new System.Drawing.Point(12, 100);
+            this.GunaLabel1.Location = new System.Drawing.Point(26, 97);
             this.GunaLabel1.Name = "GunaLabel1";
             this.GunaLabel1.Size = new System.Drawing.Size(480, 102);
             this.GunaLabel1.TabIndex = 11;
@@ -92,9 +92,9 @@
             // 
             this.GunaPictureBox1.BaseColor = System.Drawing.Color.White;
             this.GunaPictureBox1.Image = global::sims.Properties.Resources.sales_and_inventory;
-            this.GunaPictureBox1.Location = new System.Drawing.Point(491, 63);
+            this.GunaPictureBox1.Location = new System.Drawing.Point(539, 69);
             this.GunaPictureBox1.Name = "GunaPictureBox1";
-            this.GunaPictureBox1.Size = new System.Drawing.Size(359, 311);
+            this.GunaPictureBox1.Size = new System.Drawing.Size(332, 282);
             this.GunaPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.GunaPictureBox1.TabIndex = 13;
             this.GunaPictureBox1.TabStop = false;
@@ -104,7 +104,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(869, 436);
+            this.ClientSize = new System.Drawing.Size(895, 448);
             this.Controls.Add(this.GunaPictureBox1);
             this.Controls.Add(this.getStartedBtn);
             this.Controls.Add(this.GunaLabel1);

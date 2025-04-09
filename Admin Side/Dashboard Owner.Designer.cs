@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardOwner));
             this.PanelMenu = new System.Windows.Forms.Panel();
             this.backupDbBtn = new FontAwesome.Sharp.IconButton();
@@ -48,11 +49,14 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.TimeLbl = new Guna.UI.WinForms.GunaLabel();
+            this.DateLbl = new Guna.UI.WinForms.GunaLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Label3 = new System.Windows.Forms.Label();
             this.greetingNameTxt = new System.Windows.Forms.Label();
             this.DashboardPanel = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.PanelMenu.SuspendLayout();
             this.salesPanelSubMenu.SuspendLayout();
             this.InventoryPanelSubMenu.SuspendLayout();
@@ -408,18 +412,44 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.TimeLbl);
+            this.panel3.Controls.Add(this.DateLbl);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1029, 0);
+            this.panel3.Location = new System.Drawing.Point(812, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(116, 79);
+            this.panel3.Size = new System.Drawing.Size(333, 79);
             this.panel3.TabIndex = 3;
+            // 
+            // TimeLbl
+            // 
+            this.TimeLbl.AutoSize = true;
+            this.TimeLbl.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimeLbl.ForeColor = System.Drawing.Color.White;
+            this.TimeLbl.Location = new System.Drawing.Point(43, 41);
+            this.TimeLbl.Name = "TimeLbl";
+            this.TimeLbl.Size = new System.Drawing.Size(85, 28);
+            this.TimeLbl.TabIndex = 125;
+            this.TimeLbl.Text = "h:mm:ss";
+            this.TimeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DateLbl
+            // 
+            this.DateLbl.AutoSize = true;
+            this.DateLbl.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateLbl.ForeColor = System.Drawing.Color.White;
+            this.DateLbl.Location = new System.Drawing.Point(43, 13);
+            this.DateLbl.Name = "DateLbl";
+            this.DateLbl.Size = new System.Drawing.Size(170, 28);
+            this.DateLbl.TabIndex = 124;
+            this.DateLbl.Text = "ddd, d MMMM yyyy";
+            this.DateLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::sims.Properties.Resources.bell__1____white;
-            this.pictureBox1.Location = new System.Drawing.Point(54, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(255, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -466,6 +496,10 @@
             this.DashboardPanel.Size = new System.Drawing.Size(1145, 754);
             this.DashboardPanel.TabIndex = 93;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // DashboardOwner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,7 +514,6 @@
             this.Name = "DashboardOwner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Dashboard (Owner)";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DashboardOwner_Load);
             this.PanelMenu.ResumeLayout(false);
             this.salesPanelSubMenu.ResumeLayout(false);
@@ -490,6 +523,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -523,6 +557,9 @@
         internal FontAwesome.Sharp.IconButton backupDbBtn;
         internal FontAwesome.Sharp.IconButton UserBtn;
         internal FontAwesome.Sharp.IconButton salesReportBtn;
+        private System.Windows.Forms.Timer timer1;
+        internal Guna.UI.WinForms.GunaLabel DateLbl;
+        internal Guna.UI.WinForms.GunaLabel TimeLbl;
     }
 }
 

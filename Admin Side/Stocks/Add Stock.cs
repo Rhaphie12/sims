@@ -73,6 +73,10 @@ namespace sims.Admin_Side.Stocks
             UnitType();
             previewStock();
             TotalSales();
+
+            Timer timer = new Timer();
+            timer.Tick += timer1_Tick;
+            timer.Start();
         }
 
         private void previewStock()
@@ -263,6 +267,7 @@ namespace sims.Admin_Side.Stocks
             string stockIn = itemQuantityTxt.Text.Trim();
             string unitType = unitTypeCmb.SelectedItem?.ToString() ?? string.Empty;
             string dateAdded = dateAddedDtp.Value.ToString("yyyy-MM-dd");
+            string timeAdded = TimeLbl.Text.Trim();
             string itemPrice = itemPriceTxt.Text.Trim();
             decimal itemTotal = itemTotalTxt.Tag is decimal value ? value : 0;
             System.Drawing.Image itemImage = itemImagePic.Image;
@@ -278,8 +283,8 @@ namespace sims.Admin_Side.Stocks
             {
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "INSERT INTO stocks (Item_ID, Item_Name, Category, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image) " +
-                                  "VALUES (@Item_ID, @Item_Name, @Category, @Stock_In, @Unit_Type, @Date_Added, @Item_Price, @Item_Total, @Item_Image)";
+                cmd.CommandText = "INSERT INTO stocks (Item_ID, Item_Name, Category, Stock_In, Unit_Type, Date_Added, Time_Added, Item_Price, Item_Total, Item_Image) " +
+                                  "VALUES (@Item_ID, @Item_Name, @Category, @Stock_In, @Unit_Type, @Date_Added, @Time_Added, @Item_Price, @Item_Total, @Item_Image)";
 
                 cmd.Parameters.AddWithValue("@Item_ID", itemID);
                 cmd.Parameters.AddWithValue("@Item_Name", itemName);
@@ -287,6 +292,7 @@ namespace sims.Admin_Side.Stocks
                 cmd.Parameters.AddWithValue("@Stock_In", int.TryParse(stockIn, out var stock) ? stock : 0); // Convert to integer
                 cmd.Parameters.AddWithValue("@Unit_Type", unitType);
                 cmd.Parameters.AddWithValue("@Date_Added", dateAdded);
+                cmd.Parameters.AddWithValue("@Time_Added", timeAdded);
                 cmd.Parameters.AddWithValue("@Item_Price", decimal.TryParse(itemPrice, out var price) ? price : 0); // Convert to decimal
                 cmd.Parameters.AddWithValue("@Item_Total", itemTotal);
 
@@ -430,6 +436,11 @@ namespace sims.Admin_Side.Stocks
                 }
             }
             return destImage;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeLbl.Text = DateTime.Now.ToString("h:mm:ss tt");
         }
     }
 }

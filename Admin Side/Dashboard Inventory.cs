@@ -41,6 +41,8 @@ namespace sims.Admin_Side
             TotalSalesPreview("Coffee");
             MonthlySalesPreview("Coffee");
             ActivityLogs();
+
+            ResetPreviousDaySales();
         }
 
         private void ActivityLogs()
@@ -321,14 +323,15 @@ namespace sims.Admin_Side
                     // Get total sales for the category
                     string totalSalesQuery = $"SELECT SUM(Total_Product_Sale) AS TotalSales FROM {tableName}";
                     MySqlCommand totalSalesCmd = new MySqlCommand(totalSalesQuery, conn);
-                    totalSales = Convert.ToDecimal(totalSalesCmd.ExecuteScalar());
+                    object result = totalSalesCmd.ExecuteScalar();
+                    totalSales = (result == DBNull.Value || result == null) ? 0 : Convert.ToDecimal(result);
 
                     // Get sales and quantity per product
                     string query = $@"SELECT Product_Name, 
-                        SUM(Total_Product_Sale) AS TotalSales, 
-                        SUM(Quantity_Sold) AS TotalQuantity 
-                        FROM {tableName} 
-                        GROUP BY Product_Name";
+                SUM(Total_Product_Sale) AS TotalSales, 
+                SUM(Quantity_Sold) AS TotalQuantity 
+                FROM {tableName} 
+                GROUP BY Product_Name";
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
@@ -374,6 +377,28 @@ namespace sims.Admin_Side
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ResetPreviousDaySales()
+        {
+            string todayDate = DateTime.Now.ToString("yyyy-MM-dd");
+
+            dbModule db = new dbModule();
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                List<string> tables = new List<string> { "productsales_coffee", "productsales_noncoffee", "productsales_hotcoffee", "productsales_pastries" };
+
+                foreach (string table in tables)
+                {
+                    string resetQuery = $"UPDATE {table} SET Quantity_Sold = 0, Total_Product_Sale = 0 WHERE Sale_Date < @Today";
+                    MySqlCommand cmd = new MySqlCommand(resetQuery, conn);
+                    cmd.Parameters.AddWithValue("@Today", todayDate);
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Previous day's sales have been reset to 0 and outdated records removed.", "Reset Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -441,7 +466,8 @@ namespace sims.Admin_Side
                     // Get total sales for the category
                     string totalSalesQuery = $"SELECT SUM(Total_Product_Sale) AS TotalSales FROM {tableName}";
                     MySqlCommand totalSalesCmd = new MySqlCommand(totalSalesQuery, conn);
-                    totalSales = Convert.ToDecimal(totalSalesCmd.ExecuteScalar());
+                    object result = totalSalesCmd.ExecuteScalar();
+                    totalSales = (result == DBNull.Value || result == null) ? 0 : Convert.ToDecimal(result);
 
                     // Get sales per product
                     string query = $@"
@@ -471,15 +497,20 @@ namespace sims.Admin_Side
                     }
                 }
 
-                if (MonthlySalesChart != null)
+                if (DailySalesChart != null)
                 {
                     // Clear and set the pie chart series
-                    MonthlySalesChart.Series.Clear();
-                    MonthlySalesChart.Series = series;
+                    DailySalesChart.Series.Clear();
+                    DailySalesChart.Series = series;
 
                     // Update chart properties
-                    MonthlySalesChart.LegendLocation = LegendLocation.Bottom;
-                    MonthlySalesChart.Update(true, true);
+                    DailySalesChart.LegendLocation = LegendLocation.Bottom;
+                    DailySalesChart.Update(true, true);
+
+                    // Update the title label
+                    chartMonthlyLbl.Text = $"{category} Sales";
+                    chartMonthlyLbl.Font = new Font("Poppins", 11);
+                    chartMonthlyLbl.TextAlign = ContentAlignment.MiddleCenter;
                 }
                 else
                 {
