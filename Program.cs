@@ -1,4 +1,5 @@
-﻿using sims.Splash_page_and_Loading_Screen;
+﻿using sims.Admin_Side;
+using sims.Splash_page_and_Loading_Screen;
 using sims.Staff_Side;
 using System;
 using System.IO;
@@ -29,7 +30,7 @@ namespace sims
                 }
             }
 
-            Application.Run(new Splash_page());
+            Application.Run(new DashboardOwner());
         }
 
         // Add this method inside the Program class
