@@ -103,7 +103,7 @@
             this.Category_Description});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -138,7 +138,7 @@
             this.recentlyAddedDgv.ThemeStyle.ReadOnly = true;
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.recentlyAddedDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recentlyAddedDgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.Height = 35;
             this.recentlyAddedDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -199,7 +199,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel5, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(281, 530);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(370, 530);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -250,7 +250,7 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.newCategoryBtn);
+            this.panel4.Controls.Add(this.editCategoryBtn);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(170, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
@@ -290,7 +290,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.editCategoryBtn);
+            this.panel3.Controls.Add(this.newCategoryBtn);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
@@ -314,7 +314,7 @@
             this.editCategoryBtn.ForeColor = System.Drawing.Color.White;
             this.editCategoryBtn.Image = global::sims.Properties.Resources.edit_white;
             this.editCategoryBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.editCategoryBtn.Location = new System.Drawing.Point(4, 12);
+            this.editCategoryBtn.Location = new System.Drawing.Point(3, 12);
             this.editCategoryBtn.Name = "editCategoryBtn";
             this.editCategoryBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.editCategoryBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
