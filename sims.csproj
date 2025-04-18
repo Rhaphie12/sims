@@ -283,6 +283,12 @@
     <Compile Include="Admin Side\Products\Sales Form.Designer.cs">
       <DependentUpon>Sales Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin Side\Products\Sales History Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Products\Sales History Form.Designer.cs">
+      <DependentUpon>Sales History Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin Side\Sales Report Owner\CoffeeSales.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -633,6 +639,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Products\Sales Form.resx">
       <DependentUpon>Sales Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin Side\Products\Sales History Form.resx">
+      <DependentUpon>Sales History Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin Side\Sales Report Owner\CoffeeSales.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
