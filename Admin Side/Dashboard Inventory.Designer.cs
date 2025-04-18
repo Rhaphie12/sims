@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard_Inventory));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.gunaGroupBox7 = new Guna.UI.WinForms.GunaGroupBox();
@@ -64,12 +64,14 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.gunaGroupBox6 = new Guna.UI.WinForms.GunaGroupBox();
+            this.chartMonthlyLbl = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.CoffeeMonthlyChart = new System.Windows.Forms.ToolStripMenuItem();
             this.NonCoffeeMonthlyChart = new System.Windows.Forms.ToolStripMenuItem();
             this.HotCoffeeMonthlyChart = new System.Windows.Forms.ToolStripMenuItem();
+            this.pastriesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel12 = new System.Windows.Forms.Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.MonthlySalesChart = new LiveCharts.WinForms.PieChart();
@@ -77,7 +79,6 @@
             this.gunaGroupBox4 = new Guna.UI.WinForms.GunaGroupBox();
             this.chartTitleLabel = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.DailySalesChart = new LiveCharts.WinForms.PieChart();
             this.panel9 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,7 +87,9 @@
             this.HotCoffeeMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.pastriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.chartMonthlyLbl = new System.Windows.Forms.Label();
+            this.DailySalesChart = new LiveCharts.WinForms.PieChart();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel13 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.gunaGroupBox7.SuspendLayout();
@@ -120,6 +123,8 @@
             this.guna2Panel2.SuspendLayout();
             this.panel9.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.panel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -447,6 +452,7 @@
             this.stockPreviewChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stockPreviewChart.Location = new System.Drawing.Point(0, 0);
             this.stockPreviewChart.Name = "stockPreviewChart";
+            this.stockPreviewChart.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.stockPreviewChart.Size = new System.Drawing.Size(785, 244);
             this.stockPreviewChart.TabIndex = 23;
             this.stockPreviewChart.Text = "cartesianChart1";
@@ -498,34 +504,34 @@
             // 
             this.activityLogsDgv.AllowUserToAddRows = false;
             this.activityLogsDgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.activityLogsDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle79.BackColor = System.Drawing.Color.White;
+            this.activityLogsDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle79;
             this.activityLogsDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.activityLogsDgv.BackgroundColor = System.Drawing.Color.White;
             this.activityLogsDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.activityLogsDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.activityLogsDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(157)))), ((int)(((byte)(49)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.activityLogsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle80.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle80.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle80.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle80.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(157)))), ((int)(((byte)(49)))));
+            dataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.activityLogsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle80;
             this.activityLogsDgv.ColumnHeadersHeight = 40;
             this.activityLogsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.activityLogsDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Staff_Name,
             this.Date_Logged_In});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.activityLogsDgv.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle81.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle81.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle81.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle81.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle81.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle81.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.activityLogsDgv.DefaultCellStyle = dataGridViewCellStyle81;
             this.activityLogsDgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.activityLogsDgv.EnableHeadersVisualStyles = false;
             this.activityLogsDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -608,7 +614,7 @@
             this.gunaGroupBox6.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox6.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox6.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox6.Controls.Add(this.chartMonthlyLbl);
+            this.gunaGroupBox6.Controls.Add(this.tableLayoutPanel4);
             this.gunaGroupBox6.Controls.Add(this.panel11);
             this.gunaGroupBox6.Controls.Add(this.panel12);
             this.gunaGroupBox6.Controls.Add(this.guna2Panel3);
@@ -624,6 +630,18 @@
             this.gunaGroupBox6.TabIndex = 117;
             this.gunaGroupBox6.TextLocation = new System.Drawing.Point(10, 8);
             this.gunaGroupBox6.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // chartMonthlyLbl
+            // 
+            this.chartMonthlyLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chartMonthlyLbl.AutoSize = true;
+            this.chartMonthlyLbl.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chartMonthlyLbl.Location = new System.Drawing.Point(79, 3);
+            this.chartMonthlyLbl.Name = "chartMonthlyLbl";
+            this.chartMonthlyLbl.Size = new System.Drawing.Size(209, 26);
+            this.chartMonthlyLbl.TabIndex = 5;
+            this.chartMonthlyLbl.Text = "Non-Coffee Monthly Sales";
+            this.chartMonthlyLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel11
             // 
@@ -648,7 +666,8 @@
             this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CoffeeMonthlyChart,
             this.NonCoffeeMonthlyChart,
-            this.HotCoffeeMonthlyChart});
+            this.HotCoffeeMonthlyChart,
+            this.pastriesToolStripMenuItem1});
             this.toolStripMenuItem5.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(128, 30);
@@ -657,23 +676,30 @@
             // CoffeeMonthlyChart
             // 
             this.CoffeeMonthlyChart.Name = "CoffeeMonthlyChart";
-            this.CoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
+            this.CoffeeMonthlyChart.Size = new System.Drawing.Size(169, 30);
             this.CoffeeMonthlyChart.Text = "Coffee";
             this.CoffeeMonthlyChart.Click += new System.EventHandler(this.CoffeeMonthlyChart_Click);
             // 
             // NonCoffeeMonthlyChart
             // 
             this.NonCoffeeMonthlyChart.Name = "NonCoffeeMonthlyChart";
-            this.NonCoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
+            this.NonCoffeeMonthlyChart.Size = new System.Drawing.Size(169, 30);
             this.NonCoffeeMonthlyChart.Text = "Non Coffee";
             this.NonCoffeeMonthlyChart.Click += new System.EventHandler(this.NonCoffeeMonthlyChart_Click);
             // 
             // HotCoffeeMonthlyChart
             // 
             this.HotCoffeeMonthlyChart.Name = "HotCoffeeMonthlyChart";
-            this.HotCoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
+            this.HotCoffeeMonthlyChart.Size = new System.Drawing.Size(169, 30);
             this.HotCoffeeMonthlyChart.Text = "Hot Coffee";
             this.HotCoffeeMonthlyChart.Click += new System.EventHandler(this.HotCoffeeMonthlyChart_Click);
+            // 
+            // pastriesToolStripMenuItem1
+            // 
+            this.pastriesToolStripMenuItem1.Name = "pastriesToolStripMenuItem1";
+            this.pastriesToolStripMenuItem1.Size = new System.Drawing.Size(169, 30);
+            this.pastriesToolStripMenuItem1.Text = "Pastries";
+            this.pastriesToolStripMenuItem1.Click += new System.EventHandler(this.pastriesToolStripMenuItem1_Click);
             // 
             // panel12
             // 
@@ -692,7 +718,7 @@
             this.guna2Panel3.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.ShadowDecoration.Parent = this.guna2Panel3;
-            this.guna2Panel3.Size = new System.Drawing.Size(378, 237);
+            this.guna2Panel3.Size = new System.Drawing.Size(378, 194);
             this.guna2Panel3.TabIndex = 2;
             // 
             // MonthlySalesChart
@@ -702,7 +728,7 @@
             this.MonthlySalesChart.Location = new System.Drawing.Point(0, 0);
             this.MonthlySalesChart.Margin = new System.Windows.Forms.Padding(0);
             this.MonthlySalesChart.Name = "MonthlySalesChart";
-            this.MonthlySalesChart.Size = new System.Drawing.Size(378, 237);
+            this.MonthlySalesChart.Size = new System.Drawing.Size(378, 194);
             this.MonthlySalesChart.TabIndex = 2;
             this.MonthlySalesChart.Text = "pieChart2";
             // 
@@ -743,7 +769,7 @@
             this.chartTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chartTitleLabel.AutoSize = true;
             this.chartTitleLabel.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chartTitleLabel.Location = new System.Drawing.Point(217, 3);
+            this.chartTitleLabel.Location = new System.Drawing.Point(192, 5);
             this.chartTitleLabel.Name = "chartTitleLabel";
             this.chartTitleLabel.Size = new System.Drawing.Size(135, 26);
             this.chartTitleLabel.TabIndex = 5;
@@ -762,17 +788,6 @@
             this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
             this.guna2Panel2.Size = new System.Drawing.Size(378, 229);
             this.guna2Panel2.TabIndex = 3;
-            // 
-            // DailySalesChart
-            // 
-            this.DailySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DailySalesChart.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DailySalesChart.Location = new System.Drawing.Point(0, 0);
-            this.DailySalesChart.Margin = new System.Windows.Forms.Padding(0);
-            this.DailySalesChart.Name = "DailySalesChart";
-            this.DailySalesChart.Size = new System.Drawing.Size(378, 229);
-            this.DailySalesChart.TabIndex = 1;
-            this.DailySalesChart.Text = "pieChart2";
             // 
             // panel9
             // 
@@ -807,28 +822,28 @@
             // CoffeeMenuItem2
             // 
             this.CoffeeMenuItem2.Name = "CoffeeMenuItem2";
-            this.CoffeeMenuItem2.Size = new System.Drawing.Size(180, 30);
+            this.CoffeeMenuItem2.Size = new System.Drawing.Size(169, 30);
             this.CoffeeMenuItem2.Text = "Coffee";
             this.CoffeeMenuItem2.Click += new System.EventHandler(this.CoffeeMenuItem2_Click);
             // 
             // NonCoffeeMenuItem3
             // 
             this.NonCoffeeMenuItem3.Name = "NonCoffeeMenuItem3";
-            this.NonCoffeeMenuItem3.Size = new System.Drawing.Size(180, 30);
+            this.NonCoffeeMenuItem3.Size = new System.Drawing.Size(169, 30);
             this.NonCoffeeMenuItem3.Text = "Non Coffee";
             this.NonCoffeeMenuItem3.Click += new System.EventHandler(this.NonCoffeeMenuItem3_Click);
             // 
             // HotCoffeeMenuItem4
             // 
             this.HotCoffeeMenuItem4.Name = "HotCoffeeMenuItem4";
-            this.HotCoffeeMenuItem4.Size = new System.Drawing.Size(180, 30);
+            this.HotCoffeeMenuItem4.Size = new System.Drawing.Size(169, 30);
             this.HotCoffeeMenuItem4.Text = "Hot Coffee";
             this.HotCoffeeMenuItem4.Click += new System.EventHandler(this.HotCoffeeMenuItem4_Click);
             // 
             // pastriesToolStripMenuItem
             // 
             this.pastriesToolStripMenuItem.Name = "pastriesToolStripMenuItem";
-            this.pastriesToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
+            this.pastriesToolStripMenuItem.Size = new System.Drawing.Size(169, 30);
             this.pastriesToolStripMenuItem.Text = "Pastries";
             this.pastriesToolStripMenuItem.Click += new System.EventHandler(this.pastriesToolStripMenuItem_Click);
             // 
@@ -839,17 +854,42 @@
             this.panel10.Size = new System.Drawing.Size(132, 33);
             this.panel10.TabIndex = 0;
             // 
-            // chartMonthlyLbl
+            // DailySalesChart
             // 
-            this.chartMonthlyLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chartMonthlyLbl.AutoSize = true;
-            this.chartMonthlyLbl.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chartMonthlyLbl.Location = new System.Drawing.Point(217, 8);
-            this.chartMonthlyLbl.Name = "chartMonthlyLbl";
-            this.chartMonthlyLbl.Size = new System.Drawing.Size(135, 26);
-            this.chartMonthlyLbl.TabIndex = 5;
-            this.chartMonthlyLbl.Text = "Hot Coffee Sales";
-            this.chartMonthlyLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DailySalesChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DailySalesChart.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DailySalesChart.Location = new System.Drawing.Point(0, 0);
+            this.DailySalesChart.Margin = new System.Windows.Forms.Padding(0);
+            this.DailySalesChart.Name = "DailySalesChart";
+            this.DailySalesChart.Size = new System.Drawing.Size(378, 229);
+            this.DailySalesChart.TabIndex = 3;
+            this.DailySalesChart.Text = "pieChart2";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.panel13, 0, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(15, 244);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(350, 33);
+            this.tableLayoutPanel4.TabIndex = 24;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.chartMonthlyLbl);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(0, 0);
+            this.panel13.Margin = new System.Windows.Forms.Padding(0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(350, 33);
+            this.panel13.TabIndex = 1;
             // 
             // Dashboard_Inventory
             // 
@@ -894,7 +934,6 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.gunaGroupBox6.ResumeLayout(false);
-            this.gunaGroupBox6.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
@@ -908,6 +947,9 @@
             this.panel9.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -940,7 +982,6 @@
         private System.Windows.Forms.Panel panel8;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox4;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private LiveCharts.WinForms.PieChart DailySalesChart;
         private System.Windows.Forms.Panel panel9;
         internal System.Windows.Forms.MenuStrip menuStrip1;
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
@@ -969,5 +1010,9 @@
         private System.Windows.Forms.Label chartTitleLabel;
         private System.Windows.Forms.ToolStripMenuItem pastriesToolStripMenuItem;
         private System.Windows.Forms.Label chartMonthlyLbl;
+        private System.Windows.Forms.ToolStripMenuItem pastriesToolStripMenuItem1;
+        private LiveCharts.WinForms.PieChart DailySalesChart;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Panel panel13;
     }
 }

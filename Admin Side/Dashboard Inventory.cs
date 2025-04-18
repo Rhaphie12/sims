@@ -212,7 +212,9 @@ namespace sims.Admin_Side
         {
             dbModule db = new dbModule();
             SeriesCollection series = new SeriesCollection();
-            List<string> itemNames = new List<string>();
+
+            // Dictionary to aggregate stocks by item name
+            Dictionary<string, int> stockMap = new Dictionary<string, int>();
 
             try
             {
@@ -224,68 +226,69 @@ namespace sims.Admin_Side
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        ChartValues<int> values = new ChartValues<int>();
-
                         while (reader.Read())
                         {
                             string itemName = reader["Item_Name"]?.ToString() ?? string.Empty;
-                            if (int.TryParse(reader["Stock_In"]?.ToString(), out int itemQuantity))
+
+                            if (int.TryParse(reader["Stock_In"]?.ToString(), out int stockIn))
                             {
-                                itemNames.Add(itemName);
-                                values.Add(itemQuantity);
+                                if (stockMap.ContainsKey(itemName))
+                                {
+                                    stockMap[itemName] += stockIn; // Sum duplicates
+                                }
+                                else
+                                {
+                                    stockMap[itemName] = stockIn;
+                                }
                             }
                         }
-
-                        series.Add(new ColumnSeries
-                        {
-                            Title = "Items",
-                            Values = values,
-                            DataLabels = true
-                        });
                     }
                 }
 
                 if (stockPreviewChart != null)
                 {
-                    // Clear existing chart data
-                    stockPreviewChart.Series.Clear();
-                    stockPreviewChart.Series = series;
+                    ChartValues<int> values = new ChartValues<int>();
+                    List<string> itemNames = new List<string>();
+
+                    // Order for consistent axis rendering
+                    foreach (var entry in stockMap)
+                    {
+                        itemNames.Add(entry.Key);
+                        values.Add(entry.Value);
+                    }
+
+                    stockPreviewChart.Series = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "Stock",
+                    Values = values,
+                    DataLabels = true
+                }
+            };
 
                     stockPreviewChart.AxisX.Clear();
                     stockPreviewChart.AxisX.Add(new Axis
                     {
                         Title = "Item Name",
                         Labels = itemNames,
-                        Separator = new Separator
-                        {
-                            Step = 1 // Step controls the interval of labels shown
-                        }
+                        LabelsRotation = 15,
+                        Separator = new Separator { Step = 1 },
+                        MinValue = 0,
+                        MaxValue = 10 // Adjust depending on how many to show at once
                     });
 
                     stockPreviewChart.AxisY.Clear();
                     stockPreviewChart.AxisY.Add(new Axis
                     {
-                        Title = "Item Stocks"
+                        Title = "Item Stocks",
+                        LabelFormatter = value => value.ToString()
                     });
 
-                    // Set dynamic range for X-axis
-                    stockPreviewChart.AxisX[0].MinValue = 0;
-                    stockPreviewChart.AxisX[0].MaxValue = 10; // Initially display 10 items
+                    stockPreviewChart.Zoom = ZoomingOptions.X;
+                    stockPreviewChart.Pan = PanningOptions.X;
+                    stockPreviewChart.DisableAnimations = true;
 
-                    // Attach event to dynamically update MinValue and MaxValue during scroll/zoom
-                    stockPreviewChart.DataClick += (sender, args) =>
-                    {
-                        double viewWidth = stockPreviewChart.AxisX[0].MaxValue - stockPreviewChart.AxisX[0].MinValue;
-                        double totalItems = itemNames.Count;
-
-                        if (totalItems > viewWidth)
-                        {
-                            stockPreviewChart.AxisX[0].MinValue = Math.Max(0, stockPreviewChart.AxisX[0].MinValue);
-                            stockPreviewChart.AxisX[0].MaxValue = Math.Min(totalItems, stockPreviewChart.AxisX[0].MaxValue);
-                        }
-                    };
-
-                    // Update the chart
                     stockPreviewChart.Update(true, true);
                 }
                 else
@@ -298,6 +301,7 @@ namespace sims.Admin_Side
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
+
 
         // DAILY SALES CHART
         public void TotalSalesPreview(string category)
@@ -388,19 +392,55 @@ namespace sims.Admin_Side
             using (MySqlConnection conn = db.GetConnection())
             {
                 conn.Open();
-                List<string> tables = new List<string> { "productsales_coffee", "productsales_noncoffee", "productsales_hotcoffee", "productsales_pastries" };
 
-                foreach (string table in tables)
+                // Pair current sales tables with corresponding history tables
+                Dictionary<string, string> tablePairs = new Dictionary<string, string>
+        {
+            { "productsales_coffee", "productsaleshistory_coffee" },
+            { "productsales_noncoffee", "productsaleshistory_noncoffee" },
+            { "productsales_hotcoffee", "productsaleshistory_hotcoffee" },
+            { "productsales_pastries", "productsaleshistory_pastries" }
+        };
+
+                foreach (var pair in tablePairs)
                 {
-                    string resetQuery = $"UPDATE {table} SET Quantity_Sold = 0, Total_Product_Sale = 0 WHERE Sale_Date < @Today";
-                    MySqlCommand cmd = new MySqlCommand(resetQuery, conn);
-                    cmd.Parameters.AddWithValue("@Today", todayDate);
-                    cmd.ExecuteNonQuery();
+                    string currentTable = pair.Key;
+                    string historyTable = pair.Value;
+
+                    // Step 1: Insert into history table
+                    string insertQuery = $@"
+                INSERT INTO {historyTable} 
+                (Sales_ID, Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Total_Product_Sale, Stock_Needed, Sale_Date, Sale_Time)
+                SELECT Sales_ID, Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Total_Product_Sale, Stock_Needed, Sale_Date, Sale_Time
+                FROM {currentTable}
+                WHERE Sale_Date < @Today";
+                    using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, conn))
+                    {
+                        insertCmd.Parameters.AddWithValue("@Today", todayDate);
+                        insertCmd.ExecuteNonQuery();
+                    }
+
+                    // Step 2: Optionally reset (you can remove this if you're deleting the records anyway)
+                    string resetQuery = $"UPDATE {currentTable} SET Quantity_Sold = 0, Total_Product_Sale = 0 WHERE Sale_Date < @Today";
+                    using (MySqlCommand resetCmd = new MySqlCommand(resetQuery, conn))
+                    {
+                        resetCmd.Parameters.AddWithValue("@Today", todayDate);
+                        resetCmd.ExecuteNonQuery();
+                    }
+
+                    // Step 3: Delete from current table
+                    string deleteQuery = $"DELETE FROM {currentTable} WHERE Sale_Date < @Today";
+                    using (MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn))
+                    {
+                        deleteCmd.Parameters.AddWithValue("@Today", todayDate);
+                        deleteCmd.ExecuteNonQuery();
+                    }
                 }
 
-                MessageBox.Show("Previous day's sales have been reset to 0 and outdated records removed.", "Reset Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Previous day's sales have been saved to history, reset, and removed from current tables.", "Reset Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
         private string DetermineTableName(string category)
         {
@@ -419,6 +459,27 @@ namespace sims.Admin_Side
             else if (category.Equals("Pastries", StringComparison.OrdinalIgnoreCase))
             {
                 return "productsales_pastries";
+            }
+            return string.Empty;
+        }
+
+        private string DetermineMonthlyTableName(string category)
+        {
+            if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsaleshistory_coffee";
+            }
+            else if (category.Equals("Non-Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsaleshistory_noncoffee";
+            }
+            else if (category.Equals("Hot Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsaleshistory_hotcoffee";
+            }
+            else if (category.Equals("Pastries", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsaleshistory_pastries";
             }
             return string.Empty;
         }
@@ -452,7 +513,7 @@ namespace sims.Admin_Side
             try
             {
                 // Determine the table name based on the category
-                string tableName = DetermineTableName(category);
+                string tableName = DetermineMonthlyTableName(category);
                 if (string.IsNullOrEmpty(tableName))
                 {
                     MessageBox.Show($"Invalid category: {category}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -497,18 +558,18 @@ namespace sims.Admin_Side
                     }
                 }
 
-                if (DailySalesChart != null)
+                if (MonthlySalesChart != null)
                 {
                     // Clear and set the pie chart series
-                    DailySalesChart.Series.Clear();
-                    DailySalesChart.Series = series;
+                    MonthlySalesChart.Series.Clear();
+                    MonthlySalesChart.Series = series;
 
                     // Update chart properties
-                    DailySalesChart.LegendLocation = LegendLocation.Bottom;
-                    DailySalesChart.Update(true, true);
+                    MonthlySalesChart.LegendLocation = LegendLocation.Bottom;
+                    MonthlySalesChart.Update(true, true);
 
                     // Update the title label
-                    chartMonthlyLbl.Text = $"{category} Sales";
+                    chartMonthlyLbl.Text = $"{category} Monthly Sales";
                     chartMonthlyLbl.Font = new Font("Poppins", 11);
                     chartMonthlyLbl.TextAlign = ContentAlignment.MiddleCenter;
                 }
@@ -536,6 +597,10 @@ namespace sims.Admin_Side
         private void HotCoffeeMonthlyChart_Click(object sender, EventArgs e)
         {
             MonthlySalesPreview("Hot Coffee");
+        }
+        private void pastriesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MonthlySalesPreview("Pastries");
         }
 
         private void activityLogsDgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
