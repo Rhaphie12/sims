@@ -236,22 +236,52 @@ namespace sims.Staff_Side
             using (MySqlConnection conn = db.GetConnection())
             {
                 conn.Open();
-                List<string> tables = new List<string> { "productsales_coffee", "productsales_noncoffee", "productsales_hotcoffee", "productsales_pastries" };
 
-                foreach (string table in tables)
+                // Pair current sales tables with corresponding history tables
+                Dictionary<string, string> tablePairs = new Dictionary<string, string>
+        {
+            { "productsales_coffee", "productsaleshistory_coffee" },
+            { "productsales_noncoffee", "productsaleshistory_noncoffee" },
+            { "productsales_hotcoffee", "productsaleshistory_hotcoffee" },
+            { "productsales_pastries", "productsaleshistory_pastries" }
+        };
+
+                foreach (var pair in tablePairs)
                 {
-                    string resetQuery = $"UPDATE {table} SET Quantity_Sold = 0, Total_Product_Sale = 0 WHERE Sale_Date < @Today";
-                    MySqlCommand cmd = new MySqlCommand(resetQuery, conn);
-                    cmd.Parameters.AddWithValue("@Today", todayDate);
-                    cmd.ExecuteNonQuery();
+                    string currentTable = pair.Key;
+                    string historyTable = pair.Value;
 
-                    string deleteQuery = $"DELETE FROM {table} WHERE Sale_Date < @Today";
-                    MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn);
-                    deleteCmd.Parameters.AddWithValue("@Today", todayDate);
-                    deleteCmd.ExecuteNonQuery();
+                    // Step 1: Insert into history table
+                    string insertQuery = $@"
+                INSERT INTO {historyTable} 
+                (Sales_ID, Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Total_Product_Sale, Stock_Needed, Sale_Date, Sale_Time)
+                SELECT Sales_ID, Product_ID, Product_Name, Category, Product_Price, Stock_Quantity, Quantity_Sold, Total_Product_Sale, Stock_Needed, Sale_Date, Sale_Time
+                FROM {currentTable}
+                WHERE Sale_Date < @Today";
+                    using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, conn))
+                    {
+                        insertCmd.Parameters.AddWithValue("@Today", todayDate);
+                        insertCmd.ExecuteNonQuery();
+                    }
+
+                    // Step 2: Optionally reset (you can remove this if you're deleting the records anyway)
+                    string resetQuery = $"UPDATE {currentTable} SET Quantity_Sold = 0, Total_Product_Sale = 0 WHERE Sale_Date < @Today";
+                    using (MySqlCommand resetCmd = new MySqlCommand(resetQuery, conn))
+                    {
+                        resetCmd.Parameters.AddWithValue("@Today", todayDate);
+                        resetCmd.ExecuteNonQuery();
+                    }
+
+                    // Step 3: Delete from current table
+                    string deleteQuery = $"DELETE FROM {currentTable} WHERE Sale_Date < @Today";
+                    using (MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn))
+                    {
+                        deleteCmd.Parameters.AddWithValue("@Today", todayDate);
+                        deleteCmd.ExecuteNonQuery();
+                    }
                 }
 
-                MessageBox.Show("Previous day's sales have been reset to 0 and outdated records removed.", "Reset Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Previous day's sales have been saved to history, reset, and removed from current tables.", "Reset Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -344,7 +374,7 @@ namespace sims.Staff_Side
             try
             {
                 // Determine the table name based on the category
-                string tableName = DetermineTableName(category);
+                string tableName = DetermineMonthlyTableName(category);
                 if (string.IsNullOrEmpty(tableName))
                 {
                     MessageBox.Show($"Invalid category: {category}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -398,6 +428,11 @@ namespace sims.Staff_Side
                     // Update chart properties
                     MonthlySalesChart.LegendLocation = LegendLocation.Bottom;
                     MonthlySalesChart.Update(true, true);
+
+                    // Update the title label
+                    chartMonthlyLbl.Text = $"{category} Sales";
+                    chartMonthlyLbl.Font = new Font("Poppins", 11);
+                    chartMonthlyLbl.TextAlign = ContentAlignment.MiddleCenter;
                 }
                 else
                 {
@@ -428,6 +463,26 @@ namespace sims.Staff_Side
             return string.Empty;
         }
 
+        private string DetermineMonthlyTableName(string category)
+        {
+            if (category.Equals("Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsaleshistory_coffee";
+            }
+            else if (category.Equals("Non-Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsaleshistory_noncoffee";
+            }
+            else if (category.Equals("Hot Coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsaleshistory_hotcoffee";
+            }
+            else if (category.Equals("Pastries", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsaleshistory_pastries";
+            }
+            return string.Empty;
+        }
         private void CoffeeMenuItem_Click(object sender, EventArgs e)
         {
             TotalSalesPreview("Coffee");

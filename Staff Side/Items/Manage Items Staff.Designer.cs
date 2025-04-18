@@ -46,36 +46,58 @@
             this.UpdateItemBtn = new Guna.UI.WinForms.GunaButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.NewItemBtn = new Guna.UI.WinForms.GunaButton();
             this.refreshBtn = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.searchItemTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.searchCategoryCmb = new Guna.UI.WinForms.GunaComboBox();
-            this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.GunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
             this.itemCountTxt = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.GunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.gunaGroupBox4 = new Guna.UI.WinForms.GunaGroupBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.gunaGroupBox5 = new Guna.UI.WinForms.GunaGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.itemsDgv)).BeginInit();
             this.panel5.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.gunaGroupBox3.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox3)).BeginInit();
-            this.GunaGroupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.gunaGroupBox4.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.gunaGroupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // Item_Image
@@ -158,7 +180,7 @@
             this.itemsDgv.RowTemplate.ReadOnly = true;
             this.itemsDgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.itemsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.itemsDgv.Size = new System.Drawing.Size(1147, 351);
+            this.itemsDgv.Size = new System.Drawing.Size(1147, 362);
             this.itemsDgv.TabIndex = 3;
             this.itemsDgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.itemsDgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -207,7 +229,7 @@
             this.DeleteItemBtn.ForeColor = System.Drawing.Color.Black;
             this.DeleteItemBtn.Image = null;
             this.DeleteItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.DeleteItemBtn.Location = new System.Drawing.Point(1011, 426);
+            this.DeleteItemBtn.Location = new System.Drawing.Point(3, 8);
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.DeleteItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -215,12 +237,11 @@
             this.DeleteItemBtn.OnHoverImage = null;
             this.DeleteItemBtn.OnPressedColor = System.Drawing.Color.White;
             this.DeleteItemBtn.Radius = 6;
-            this.DeleteItemBtn.Size = new System.Drawing.Size(147, 35);
+            this.DeleteItemBtn.Size = new System.Drawing.Size(147, 50);
             this.DeleteItemBtn.TabIndex = 33;
-            this.DeleteItemBtn.Text = "Delete Item";
+            this.DeleteItemBtn.Text = "Remove Item";
             this.DeleteItemBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DeleteItemBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.DeleteItemBtn.Visible = false;
             this.DeleteItemBtn.Click += new System.EventHandler(this.DeleteItemBtn_Click);
             // 
             // UpdateItemBtn
@@ -239,7 +260,7 @@
             this.UpdateItemBtn.ForeColor = System.Drawing.Color.White;
             this.UpdateItemBtn.Image = global::sims.Properties.Resources.edit_white;
             this.UpdateItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.UpdateItemBtn.Location = new System.Drawing.Point(578, 415);
+            this.UpdateItemBtn.Location = new System.Drawing.Point(3, 8);
             this.UpdateItemBtn.Name = "UpdateItemBtn";
             this.UpdateItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.UpdateItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -260,9 +281,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.itemsDgv);
-            this.panel5.Location = new System.Drawing.Point(9, 56);
+            this.panel5.Location = new System.Drawing.Point(9, 50);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1149, 353);
+            this.panel5.Size = new System.Drawing.Size(1149, 364);
             this.panel5.TabIndex = 30;
             // 
             // gunaGroupBox2
@@ -273,21 +294,67 @@
             this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox2.Controls.Add(this.DeleteItemBtn);
-            this.gunaGroupBox2.Controls.Add(this.UpdateItemBtn);
-            this.gunaGroupBox2.Controls.Add(this.NewItemBtn);
+            this.gunaGroupBox2.Controls.Add(this.tableLayoutPanel1);
             this.gunaGroupBox2.Controls.Add(this.panel5);
-            this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox2.LineColor = System.Drawing.Color.White;
             this.gunaGroupBox2.LineTop = 0;
-            this.gunaGroupBox2.Location = new System.Drawing.Point(11, 208);
+            this.gunaGroupBox2.Location = new System.Drawing.Point(11, 197);
             this.gunaGroupBox2.Name = "gunaGroupBox2";
             this.gunaGroupBox2.Radius = 10;
-            this.gunaGroupBox2.Size = new System.Drawing.Size(1170, 476);
+            this.gunaGroupBox2.Size = new System.Drawing.Size(1170, 487);
             this.gunaGroupBox2.TabIndex = 51;
             this.gunaGroupBox2.Text = "Soothing Café Items";
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 13);
             this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 158F));
+            this.tableLayoutPanel1.Controls.Add(this.panel7, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel8, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel9, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(389, 415);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(438, 71);
+            this.tableLayoutPanel1.TabIndex = 36;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.DeleteItemBtn);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(280, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(158, 71);
+            this.panel7.TabIndex = 2;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.UpdateItemBtn);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(140, 0);
+            this.panel8.Margin = new System.Windows.Forms.Padding(0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(140, 71);
+            this.panel8.TabIndex = 1;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.NewItemBtn);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(140, 71);
+            this.panel9.TabIndex = 0;
             // 
             // NewItemBtn
             // 
@@ -305,7 +372,7 @@
             this.NewItemBtn.ForeColor = System.Drawing.Color.White;
             this.NewItemBtn.Image = global::sims.Properties.Resources.add_white;
             this.NewItemBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.NewItemBtn.Location = new System.Drawing.Point(439, 414);
+            this.NewItemBtn.Location = new System.Drawing.Point(4, 8);
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.NewItemBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -329,7 +396,7 @@
             this.refreshBtn.IconColor = System.Drawing.Color.Black;
             this.refreshBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.refreshBtn.IconSize = 20;
-            this.refreshBtn.Location = new System.Drawing.Point(279, 24);
+            this.refreshBtn.Location = new System.Drawing.Point(204, 24);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(28, 26);
             this.refreshBtn.TabIndex = 74;
@@ -341,35 +408,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(371, 22);
+            this.label1.Location = new System.Drawing.Point(40, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 28);
             this.label1.TabIndex = 73;
             this.label1.Text = "Search by Item Name";
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.panel6);
-            this.panel4.Location = new System.Drawing.Point(10, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(786, 118);
-            this.panel4.TabIndex = 0;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.refreshBtn);
-            this.panel6.Controls.Add(this.label1);
-            this.panel6.Controls.Add(this.searchItemTxt);
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.searchCategoryCmb);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(786, 118);
-            this.panel6.TabIndex = 1;
             // 
             // searchItemTxt
             // 
@@ -398,7 +441,7 @@
             this.searchItemTxt.IconRight = null;
             this.searchItemTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.searchItemTxt.Lines = new string[0];
-            this.searchItemTxt.Location = new System.Drawing.Point(376, 53);
+            this.searchItemTxt.Location = new System.Drawing.Point(45, 55);
             this.searchItemTxt.MaximumSize = new System.Drawing.Size(233, 40);
             this.searchItemTxt.MaxLength = 32767;
             this.searchItemTxt.MinimumSize = new System.Drawing.Size(233, 40);
@@ -452,7 +495,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(106, 23);
+            this.label3.Location = new System.Drawing.Point(31, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(171, 28);
             this.label3.TabIndex = 73;
@@ -470,7 +513,7 @@
             this.searchCategoryCmb.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchCategoryCmb.ForeColor = System.Drawing.Color.Black;
             this.searchCategoryCmb.FormattingEnabled = true;
-            this.searchCategoryCmb.Location = new System.Drawing.Point(111, 55);
+            this.searchCategoryCmb.Location = new System.Drawing.Point(36, 55);
             this.searchCategoryCmb.MaximumSize = new System.Drawing.Size(233, 0);
             this.searchCategoryCmb.MinimumSize = new System.Drawing.Size(233, 0);
             this.searchCategoryCmb.Name = "searchCategoryCmb";
@@ -482,39 +525,11 @@
             this.searchCategoryCmb.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.searchCategoryCmb.SelectedIndexChanged += new System.EventHandler(this.searchCategoryCmb_SelectedIndexChanged);
             // 
-            // gunaGroupBox3
-            // 
-            this.gunaGroupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox3.BaseColor = System.Drawing.Color.White;
-            this.gunaGroupBox3.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox3.Controls.Add(this.panel4);
-            this.gunaGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gunaGroupBox3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox3.LineColor = System.Drawing.Color.White;
-            this.gunaGroupBox3.LineTop = 0;
-            this.gunaGroupBox3.Location = new System.Drawing.Point(0, 0);
-            this.gunaGroupBox3.Name = "gunaGroupBox3";
-            this.gunaGroupBox3.Radius = 10;
-            this.gunaGroupBox3.Size = new System.Drawing.Size(819, 118);
-            this.gunaGroupBox3.TabIndex = 50;
-            this.gunaGroupBox3.TextLocation = new System.Drawing.Point(10, 13);
-            this.gunaGroupBox3.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.gunaGroupBox3);
-            this.panel2.Location = new System.Drawing.Point(362, 77);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(819, 118);
-            this.panel2.TabIndex = 52;
-            // 
             // GunaPictureBox3
             // 
             this.GunaPictureBox3.BaseColor = System.Drawing.Color.White;
             this.GunaPictureBox3.Image = global::sims.Properties.Resources.grocery_bag;
-            this.GunaPictureBox3.Location = new System.Drawing.Point(31, 15);
+            this.GunaPictureBox3.Location = new System.Drawing.Point(63, 23);
             this.GunaPictureBox3.Name = "GunaPictureBox3";
             this.GunaPictureBox3.Size = new System.Drawing.Size(50, 50);
             this.GunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -525,7 +540,7 @@
             // 
             this.itemCountTxt.AutoSize = true;
             this.itemCountTxt.Font = new System.Drawing.Font("Poppins", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemCountTxt.Location = new System.Drawing.Point(181, 55);
+            this.itemCountTxt.Location = new System.Drawing.Point(213, 63);
             this.itemCountTxt.Name = "itemCountTxt";
             this.itemCountTxt.Size = new System.Drawing.Size(52, 51);
             this.itemCountTxt.TabIndex = 3;
@@ -535,39 +550,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(97, 15);
+            this.label5.Location = new System.Drawing.Point(129, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(215, 34);
             this.label5.TabIndex = 3;
             this.label5.Text = "Soothing Café Items";
-            // 
-            // GunaGroupBox1
-            // 
-            this.GunaGroupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.GunaGroupBox1.BaseColor = System.Drawing.Color.White;
-            this.GunaGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
-            this.GunaGroupBox1.Controls.Add(this.GunaPictureBox3);
-            this.GunaGroupBox1.Controls.Add(this.itemCountTxt);
-            this.GunaGroupBox1.Controls.Add(this.label5);
-            this.GunaGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GunaGroupBox1.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GunaGroupBox1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(93)))), ((int)(((byte)(212)))));
-            this.GunaGroupBox1.LineTop = 0;
-            this.GunaGroupBox1.Location = new System.Drawing.Point(0, 0);
-            this.GunaGroupBox1.Name = "GunaGroupBox1";
-            this.GunaGroupBox1.Radius = 10;
-            this.GunaGroupBox1.Size = new System.Drawing.Size(340, 118);
-            this.GunaGroupBox1.TabIndex = 48;
-            this.GunaGroupBox1.TextLocation = new System.Drawing.Point(10, 8);
-            this.GunaGroupBox1.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAliasGridFit;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.GunaGroupBox1);
-            this.panel3.Location = new System.Drawing.Point(11, 77);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(340, 118);
-            this.panel3.TabIndex = 50;
             // 
             // label4
             // 
@@ -604,15 +591,177 @@
             this.panel1.Size = new System.Drawing.Size(1170, 53);
             this.panel1.TabIndex = 49;
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.panel10, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel16, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(11, 73);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1170, 118);
+            this.tableLayoutPanel3.TabIndex = 53;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.panel11);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(400, 0);
+            this.panel10.Margin = new System.Windows.Forms.Padding(0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(770, 118);
+            this.panel10.TabIndex = 1;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.gunaGroupBox4);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.panel11.Size = new System.Drawing.Size(770, 118);
+            this.panel11.TabIndex = 48;
+            // 
+            // gunaGroupBox4
+            // 
+            this.gunaGroupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox4.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox4.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox4.Controls.Add(this.panel12);
+            this.gunaGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox4.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox4.LineColor = System.Drawing.Color.White;
+            this.gunaGroupBox4.LineTop = 0;
+            this.gunaGroupBox4.Location = new System.Drawing.Point(10, 0);
+            this.gunaGroupBox4.Name = "gunaGroupBox4";
+            this.gunaGroupBox4.Radius = 10;
+            this.gunaGroupBox4.Size = new System.Drawing.Size(760, 118);
+            this.gunaGroupBox4.TabIndex = 50;
+            this.gunaGroupBox4.TextLocation = new System.Drawing.Point(10, 13);
+            this.gunaGroupBox4.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // panel12
+            // 
+            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel12.Controls.Add(this.panel13);
+            this.panel12.Location = new System.Drawing.Point(10, 0);
+            this.panel12.Margin = new System.Windows.Forms.Padding(0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(727, 118);
+            this.panel12.TabIndex = 0;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.tableLayoutPanel2);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(0, 0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(727, 118);
+            this.panel13.TabIndex = 1;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 305F));
+            this.tableLayoutPanel2.Controls.Add(this.panel14, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel15, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(58, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(605, 118);
+            this.tableLayoutPanel2.TabIndex = 49;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.label1);
+            this.panel14.Controls.Add(this.searchItemTxt);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(300, 0);
+            this.panel14.Margin = new System.Windows.Forms.Padding(0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(305, 118);
+            this.panel14.TabIndex = 1;
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.refreshBtn);
+            this.panel15.Controls.Add(this.searchCategoryCmb);
+            this.panel15.Controls.Add(this.label3);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel15.Location = new System.Drawing.Point(0, 0);
+            this.panel15.Margin = new System.Windows.Forms.Padding(0);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(300, 118);
+            this.panel15.TabIndex = 0;
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.panel17);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel16.Location = new System.Drawing.Point(0, 0);
+            this.panel16.Margin = new System.Windows.Forms.Padding(0);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(400, 118);
+            this.panel16.TabIndex = 0;
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.panel18);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel17.Location = new System.Drawing.Point(0, 0);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(400, 118);
+            this.panel17.TabIndex = 0;
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.gunaGroupBox5);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel18.Location = new System.Drawing.Point(0, 0);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(400, 118);
+            this.panel18.TabIndex = 42;
+            // 
+            // gunaGroupBox5
+            // 
+            this.gunaGroupBox5.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox5.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox5.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox5.Controls.Add(this.GunaPictureBox3);
+            this.gunaGroupBox5.Controls.Add(this.label5);
+            this.gunaGroupBox5.Controls.Add(this.itemCountTxt);
+            this.gunaGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox5.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaGroupBox5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(93)))), ((int)(((byte)(212)))));
+            this.gunaGroupBox5.LineTop = 0;
+            this.gunaGroupBox5.Location = new System.Drawing.Point(0, 0);
+            this.gunaGroupBox5.Name = "gunaGroupBox5";
+            this.gunaGroupBox5.Radius = 10;
+            this.gunaGroupBox5.Size = new System.Drawing.Size(400, 118);
+            this.gunaGroupBox5.TabIndex = 48;
+            this.gunaGroupBox5.TextLocation = new System.Drawing.Point(10, 8);
+            this.gunaGroupBox5.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAliasGridFit;
+            // 
             // Manage_Items_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
             this.ClientSize = new System.Drawing.Size(1194, 700);
+            this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.gunaGroupBox2);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Manage_Items_Staff";
@@ -621,18 +770,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemsDgv)).EndInit();
             this.panel5.ResumeLayout(false);
             this.gunaGroupBox2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.gunaGroupBox3.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GunaPictureBox3)).EndInit();
-            this.GunaGroupBox1.ResumeLayout(false);
-            this.GunaGroupBox1.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.gunaElipsePanel2.ResumeLayout(false);
             this.gunaElipsePanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.gunaGroupBox4.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
+            this.gunaGroupBox5.ResumeLayout(false);
+            this.gunaGroupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -652,20 +813,31 @@
         private Guna.UI.WinForms.GunaButton NewItemBtn;
         private FontAwesome.Sharp.IconButton refreshBtn;
         internal System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel6;
         private Bunifu.UI.WinForms.BunifuTextBox searchItemTxt;
         internal System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaComboBox searchCategoryCmb;
-        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox3;
-        private System.Windows.Forms.Panel panel2;
         internal Guna.UI.WinForms.GunaPictureBox GunaPictureBox3;
         internal System.Windows.Forms.Label itemCountTxt;
         internal System.Windows.Forms.Label label5;
-        internal Guna.UI.WinForms.GunaGroupBox GunaGroupBox1;
-        private System.Windows.Forms.Panel panel3;
         internal System.Windows.Forms.Label label4;
         private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel11;
+        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox4;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Panel panel18;
+        internal Guna.UI.WinForms.GunaGroupBox gunaGroupBox5;
     }
 }

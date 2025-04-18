@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard_Staff));
             this.PanelMenu = new System.Windows.Forms.Panel();
             this.salesReportBtn = new FontAwesome.Sharp.IconButton();
@@ -41,18 +42,21 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Label3 = new System.Windows.Forms.Label();
             this.greetingNameTxt = new System.Windows.Forms.Label();
             this.DashboardPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.TimeLbl = new Guna.UI.WinForms.GunaLabel();
+            this.DateLbl = new Guna.UI.WinForms.GunaLabel();
             this.PanelMenu.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelMenu
@@ -259,12 +263,25 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.TimeLbl);
+            this.panel3.Controls.Add(this.DateLbl);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1004, 0);
+            this.panel3.Location = new System.Drawing.Point(812, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(141, 79);
+            this.panel3.Size = new System.Drawing.Size(333, 79);
             this.panel3.TabIndex = 4;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::sims.Properties.Resources.bell__1____white;
+            this.pictureBox1.Location = new System.Drawing.Point(255, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // panel5
             // 
@@ -273,7 +290,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(473, 79);
+            this.panel5.Size = new System.Drawing.Size(322, 79);
             this.panel5.TabIndex = 2;
             // 
             // Label3
@@ -283,9 +300,9 @@
             this.Label3.ForeColor = System.Drawing.Color.White;
             this.Label3.Location = new System.Drawing.Point(4, 38);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(439, 37);
+            this.Label3.Size = new System.Drawing.Size(300, 37);
             this.Label3.TabIndex = 8;
-            this.Label3.Text = "Welcome to Soothing Cafe - Dashboard";
+            this.Label3.Text = "Welcome to Soothing Cafe";
             // 
             // greetingNameTxt
             // 
@@ -307,16 +324,33 @@
             this.DashboardPanel.Size = new System.Drawing.Size(1145, 700);
             this.DashboardPanel.TabIndex = 93;
             // 
-            // pictureBox1
+            // timer1
             // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::sims.Properties.Resources.bell__1____white;
-            this.pictureBox1.Location = new System.Drawing.Point(79, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // TimeLbl
+            // 
+            this.TimeLbl.AutoSize = true;
+            this.TimeLbl.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimeLbl.ForeColor = System.Drawing.Color.White;
+            this.TimeLbl.Location = new System.Drawing.Point(43, 41);
+            this.TimeLbl.Name = "TimeLbl";
+            this.TimeLbl.Size = new System.Drawing.Size(85, 28);
+            this.TimeLbl.TabIndex = 127;
+            this.TimeLbl.Text = "h:mm:ss";
+            this.TimeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DateLbl
+            // 
+            this.DateLbl.AutoSize = true;
+            this.DateLbl.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateLbl.ForeColor = System.Drawing.Color.White;
+            this.DateLbl.Location = new System.Drawing.Point(43, 13);
+            this.DateLbl.Name = "DateLbl";
+            this.DateLbl.Size = new System.Drawing.Size(170, 28);
+            this.DateLbl.TabIndex = 126;
+            this.DateLbl.Text = "ddd, d MMMM yyyy";
+            this.DateLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Dashboard_Staff
             // 
@@ -338,9 +372,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -364,5 +399,8 @@
         internal FontAwesome.Sharp.IconButton salesReportBtn;
         internal FontAwesome.Sharp.IconButton productSalesBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
+        internal Guna.UI.WinForms.GunaLabel TimeLbl;
+        internal Guna.UI.WinForms.GunaLabel DateLbl;
     }
 }

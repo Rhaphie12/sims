@@ -41,11 +41,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.UpdateStockBtn = new Guna.UI.WinForms.GunaButton();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
-            this.selectAllBtn = new Guna.UI.WinForms.GunaButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.NewStockBtn = new Guna.UI.WinForms.GunaButton();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.StocksReportBtn = new Guna.UI.WinForms.GunaButton();
+            this.selectAllBtn = new Guna.UI.WinForms.GunaButton();
             this.searchCategoryTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             this.DeleteStockBtn = new Guna.UI.WinForms.GunaButton();
-            this.NewStockBtn = new Guna.UI.WinForms.GunaButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.itemStockDgv = new Guna.UI.WinForms.GunaDataGridView();
             this.Item_Image = new System.Windows.Forms.DataGridViewImageColumn();
@@ -61,6 +65,10 @@
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemStockDgv)).BeginInit();
             this.SuspendLayout();
@@ -116,7 +124,7 @@
             this.UpdateStockBtn.ForeColor = System.Drawing.Color.White;
             this.UpdateStockBtn.Image = global::sims.Properties.Resources.redo_white;
             this.UpdateStockBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.UpdateStockBtn.Location = new System.Drawing.Point(697, 542);
+            this.UpdateStockBtn.Location = new System.Drawing.Point(3, 8);
             this.UpdateStockBtn.Name = "UpdateStockBtn";
             this.UpdateStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.UpdateStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -138,12 +146,10 @@
             this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox2.Controls.Add(this.tableLayoutPanel1);
             this.gunaGroupBox2.Controls.Add(this.selectAllBtn);
-            this.gunaGroupBox2.Controls.Add(this.StocksReportBtn);
-            this.gunaGroupBox2.Controls.Add(this.UpdateStockBtn);
             this.gunaGroupBox2.Controls.Add(this.searchCategoryTxt);
             this.gunaGroupBox2.Controls.Add(this.DeleteStockBtn);
-            this.gunaGroupBox2.Controls.Add(this.NewStockBtn);
             this.gunaGroupBox2.Controls.Add(this.panel5);
             this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox2.LineColor = System.Drawing.Color.White;
@@ -156,6 +162,112 @@
             this.gunaGroupBox2.Text = "Item Stocks";
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 15);
             this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel4, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(371, 535);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(475, 71);
+            this.tableLayoutPanel1.TabIndex = 43;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.UpdateStockBtn);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(320, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(170, 71);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.NewStockBtn);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(170, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(150, 71);
+            this.panel4.TabIndex = 1;
+            // 
+            // NewStockBtn
+            // 
+            this.NewStockBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NewStockBtn.AnimationHoverSpeed = 0.07F;
+            this.NewStockBtn.AnimationSpeed = 0.03F;
+            this.NewStockBtn.BackColor = System.Drawing.Color.Transparent;
+            this.NewStockBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewStockBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewStockBtn.BorderSize = 2;
+            this.NewStockBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NewStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.NewStockBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.NewStockBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewStockBtn.ForeColor = System.Drawing.Color.White;
+            this.NewStockBtn.Image = global::sims.Properties.Resources.add_white;
+            this.NewStockBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.NewStockBtn.Location = new System.Drawing.Point(4, 8);
+            this.NewStockBtn.Name = "NewStockBtn";
+            this.NewStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewStockBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.NewStockBtn.OnHoverImage = null;
+            this.NewStockBtn.OnPressedColor = System.Drawing.Color.White;
+            this.NewStockBtn.Radius = 5;
+            this.NewStockBtn.Size = new System.Drawing.Size(140, 50);
+            this.NewStockBtn.TabIndex = 35;
+            this.NewStockBtn.Text = "New Stock";
+            this.NewStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.NewStockBtn.Click += new System.EventHandler(this.NewStockBtn_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.StocksReportBtn);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(170, 71);
+            this.panel3.TabIndex = 0;
+            // 
+            // StocksReportBtn
+            // 
+            this.StocksReportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StocksReportBtn.AnimationHoverSpeed = 0.07F;
+            this.StocksReportBtn.AnimationSpeed = 0.03F;
+            this.StocksReportBtn.BackColor = System.Drawing.Color.Transparent;
+            this.StocksReportBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.StocksReportBtn.BorderColor = System.Drawing.Color.Black;
+            this.StocksReportBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.StocksReportBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.StocksReportBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StocksReportBtn.ForeColor = System.Drawing.Color.White;
+            this.StocksReportBtn.Image = global::sims.Properties.Resources.newspaper_white;
+            this.StocksReportBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.StocksReportBtn.Location = new System.Drawing.Point(4, 8);
+            this.StocksReportBtn.Name = "StocksReportBtn";
+            this.StocksReportBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.StocksReportBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.StocksReportBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.StocksReportBtn.OnHoverImage = null;
+            this.StocksReportBtn.OnPressedColor = System.Drawing.Color.Black;
+            this.StocksReportBtn.Radius = 5;
+            this.StocksReportBtn.Size = new System.Drawing.Size(163, 50);
+            this.StocksReportBtn.TabIndex = 41;
+            this.StocksReportBtn.Text = "Stocks Report";
+            this.StocksReportBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.StocksReportBtn.Click += new System.EventHandler(this.StocksReportBtn_Click);
             // 
             // selectAllBtn
             // 
@@ -182,34 +294,6 @@
             this.selectAllBtn.Size = new System.Drawing.Size(51, 41);
             this.selectAllBtn.TabIndex = 42;
             this.selectAllBtn.Click += new System.EventHandler(this.selectAllBtn_Click);
-            // 
-            // StocksReportBtn
-            // 
-            this.StocksReportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StocksReportBtn.AnimationHoverSpeed = 0.07F;
-            this.StocksReportBtn.AnimationSpeed = 0.03F;
-            this.StocksReportBtn.BackColor = System.Drawing.Color.Transparent;
-            this.StocksReportBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.StocksReportBtn.BorderColor = System.Drawing.Color.Black;
-            this.StocksReportBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.StocksReportBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.StocksReportBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StocksReportBtn.ForeColor = System.Drawing.Color.White;
-            this.StocksReportBtn.Image = global::sims.Properties.Resources.newspaper_white;
-            this.StocksReportBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.StocksReportBtn.Location = new System.Drawing.Point(375, 542);
-            this.StocksReportBtn.Name = "StocksReportBtn";
-            this.StocksReportBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.StocksReportBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.StocksReportBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.StocksReportBtn.OnHoverImage = null;
-            this.StocksReportBtn.OnPressedColor = System.Drawing.Color.Black;
-            this.StocksReportBtn.Radius = 5;
-            this.StocksReportBtn.Size = new System.Drawing.Size(163, 50);
-            this.StocksReportBtn.TabIndex = 41;
-            this.StocksReportBtn.Text = "Stocks Report";
-            this.StocksReportBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.StocksReportBtn.Click += new System.EventHandler(this.StocksReportBtn_Click);
             // 
             // searchCategoryTxt
             // 
@@ -319,36 +403,6 @@
             this.DeleteStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.DeleteStockBtn.Visible = false;
             this.DeleteStockBtn.Click += new System.EventHandler(this.DeleteStockBtn_Click);
-            // 
-            // NewStockBtn
-            // 
-            this.NewStockBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NewStockBtn.AnimationHoverSpeed = 0.07F;
-            this.NewStockBtn.AnimationSpeed = 0.03F;
-            this.NewStockBtn.BackColor = System.Drawing.Color.Transparent;
-            this.NewStockBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewStockBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewStockBtn.BorderSize = 2;
-            this.NewStockBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.NewStockBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.NewStockBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.NewStockBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewStockBtn.ForeColor = System.Drawing.Color.White;
-            this.NewStockBtn.Image = global::sims.Properties.Resources.add_white;
-            this.NewStockBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.NewStockBtn.Location = new System.Drawing.Point(544, 542);
-            this.NewStockBtn.Name = "NewStockBtn";
-            this.NewStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewStockBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.NewStockBtn.OnHoverImage = null;
-            this.NewStockBtn.OnPressedColor = System.Drawing.Color.White;
-            this.NewStockBtn.Radius = 5;
-            this.NewStockBtn.Size = new System.Drawing.Size(147, 50);
-            this.NewStockBtn.TabIndex = 35;
-            this.NewStockBtn.Text = "New Stock";
-            this.NewStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.NewStockBtn.Click += new System.EventHandler(this.NewStockBtn_Click);
             // 
             // panel5
             // 
@@ -531,6 +585,10 @@
             this.gunaElipsePanel2.ResumeLayout(false);
             this.gunaElipsePanel2.PerformLayout();
             this.gunaGroupBox2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.itemStockDgv)).EndInit();
             this.ResumeLayout(false);
@@ -561,5 +619,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date_Added;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_Total;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
     }
 }

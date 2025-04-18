@@ -43,6 +43,12 @@ namespace sims.Staff_Side
             };
             PanelMenu.Controls.Add(leftBorderBtn);
             loggedInStaffName = staffName;
+
+            Timer timer = new Timer();
+            timer.Tick += timer1_Tick;
+            timer.Start();
+
+            DateLbl.Text = DateTime.Now.ToString("ddd, d MMMM yyyy");
         }
 
         public PictureBox bellIcon
@@ -61,6 +67,7 @@ namespace sims.Staff_Side
             salesReportStaffInstance = new Product_Sales();
             LoadView(dashboardInventoryInstance);
             ActivateButton(DashboardBtn, Color.White);
+
         }
 
         private void ShowUsernameWithGreeting()
@@ -245,5 +252,9 @@ namespace sims.Staff_Side
             }
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeLbl.Text = DateTime.Now.ToString("h:mm:ss tt");
+        }
     }
 }

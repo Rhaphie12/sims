@@ -64,6 +64,7 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.gunaGroupBox6 = new Guna.UI.WinForms.GunaGroupBox();
+            this.chartMonthlyLbl = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
@@ -543,6 +544,7 @@
             this.gunaGroupBox6.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox6.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox6.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox6.Controls.Add(this.chartMonthlyLbl);
             this.gunaGroupBox6.Controls.Add(this.panel11);
             this.gunaGroupBox6.Controls.Add(this.panel12);
             this.gunaGroupBox6.Controls.Add(this.guna2Panel3);
@@ -558,6 +560,18 @@
             this.gunaGroupBox6.TabIndex = 118;
             this.gunaGroupBox6.TextLocation = new System.Drawing.Point(10, 8);
             this.gunaGroupBox6.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // chartMonthlyLbl
+            // 
+            this.chartMonthlyLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartMonthlyLbl.AutoSize = true;
+            this.chartMonthlyLbl.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chartMonthlyLbl.Location = new System.Drawing.Point(322, 6);
+            this.chartMonthlyLbl.Name = "chartMonthlyLbl";
+            this.chartMonthlyLbl.Size = new System.Drawing.Size(135, 26);
+            this.chartMonthlyLbl.TabIndex = 4;
+            this.chartMonthlyLbl.Text = "Hot Coffee Sales";
+            this.chartMonthlyLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel11
             // 
@@ -591,21 +605,21 @@
             // CoffeeMonthlyChart
             // 
             this.CoffeeMonthlyChart.Name = "CoffeeMonthlyChart";
-            this.CoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
+            this.CoffeeMonthlyChart.Size = new System.Drawing.Size(169, 30);
             this.CoffeeMonthlyChart.Text = "Coffee";
             this.CoffeeMonthlyChart.Click += new System.EventHandler(this.CoffeeMonthlyChart_Click);
             // 
             // NonCoffeeMonthlyChart
             // 
             this.NonCoffeeMonthlyChart.Name = "NonCoffeeMonthlyChart";
-            this.NonCoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
+            this.NonCoffeeMonthlyChart.Size = new System.Drawing.Size(169, 30);
             this.NonCoffeeMonthlyChart.Text = "Non Coffee";
             this.NonCoffeeMonthlyChart.Click += new System.EventHandler(this.NonCoffeeMonthlyChart_Click);
             // 
             // HotCoffeeMonthlyChart
             // 
             this.HotCoffeeMonthlyChart.Name = "HotCoffeeMonthlyChart";
-            this.HotCoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
+            this.HotCoffeeMonthlyChart.Size = new System.Drawing.Size(169, 30);
             this.HotCoffeeMonthlyChart.Text = "Hot Coffee";
             this.HotCoffeeMonthlyChart.Click += new System.EventHandler(this.HotCoffeeMonthlyChart_Click);
             // 
@@ -681,6 +695,7 @@
             this.menuStrip1.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.gunaGroupBox6.ResumeLayout(false);
+            this.gunaGroupBox6.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
@@ -736,5 +751,6 @@
         private System.Windows.Forms.Panel panel12;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private LiveCharts.WinForms.PieChart MonthlySalesChart;
+        private System.Windows.Forms.Label chartMonthlyLbl;
     }
 }
