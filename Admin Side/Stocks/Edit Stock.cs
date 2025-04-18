@@ -65,6 +65,10 @@ namespace sims.Admin_Side.Stocks
             Populate();
             UnitType();
             dateAddedDtp.Value = DateTime.Now;
+
+            Timer timer = new Timer();
+            timer.Tick += timer1_Tick;
+            timer.Start();
         }
 
         private void Populate()
@@ -230,77 +234,83 @@ namespace sims.Admin_Side.Stocks
         private void UpdateItemStock()
         {
             dbModule db = new dbModule();
-            MySqlConnection conn = db.GetConnection();
-            MySqlCommand cmd = db.GetCommand();
-
-            string itemID = itemIDTxt.Text.Trim();
-            string itemName = selectItemNameCmb.SelectedItem?.ToString() ?? string.Empty;
-            string stockIn = itemQuantityTxt.Text.Trim();
-            string unitType = unitTypeCmb.SelectedItem?.ToString() ?? string.Empty;
-            string dateAdded = dateAddedDtp.Value.ToString("yyyy-MM-dd");
-            string itemPrice = itemPriceTxt.Text.Trim();
-            decimal itemTotal = itemTotalTxt.Tag is decimal value ? value : 0;
-            System.Drawing.Image itemImage = itemImagePic.Image;
-
-            if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(stockIn) || string.IsNullOrEmpty(unitType) || string.IsNullOrEmpty(itemPrice))
+            using (MySqlConnection conn = db.GetConnection())
             {
-                new Messages_Boxes.Field_Required().Show();
-                return;
-            }
+                string itemID = itemIDTxt.Text.Trim();
+                string itemName = selectItemNameCmb.SelectedItem?.ToString() ?? string.Empty;
+                string stockIn = itemQuantityTxt.Text.Trim();
+                string unitType = unitTypeCmb.SelectedItem?.ToString() ?? string.Empty;
+                string dateAdded = dateAddedDtp.Value.ToString("yyyy-MM-dd");
+                string timeAdded = TimeLbl.Text.Trim();
+                string itemPrice = itemPriceTxt.Text.Trim();
+                decimal itemTotal = itemTotalTxt.Tag is decimal value ? value : 0;
+                System.Drawing.Image itemImage = itemImagePic.Image;
 
-            try
-            {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = "UPDATE stocks SET Item_Name = @Item_Name, Stock_In = @Stock_In, Unit_Type = @Unit_Type, Date_Added = @Date_Added, " +
-                                  "Item_Price = @Item_Price, Item_Total = @Item_Total, Item_Image = @Item_Image WHERE Item_ID = @Item_ID";
-
-                cmd.Parameters.AddWithValue("@Item_ID", itemID);
-                cmd.Parameters.AddWithValue("@Item_Name", itemName);
-                cmd.Parameters.AddWithValue("@Stock_In", int.TryParse(stockIn, out var stock) ? stock : 0); // Convert to integer
-                cmd.Parameters.AddWithValue("@Unit_Type", unitType);
-                cmd.Parameters.AddWithValue("@Date_Added", dateAdded);
-                cmd.Parameters.AddWithValue("@Item_Price", decimal.TryParse(itemPrice, out var price) ? price : 0); // Convert to decimal
-                cmd.Parameters.AddWithValue("@Item_Total", itemTotal);
-
-                byte[] imageBytes = itemImage != null ? ImageToByteArray(ResizeImage(itemImage, 300, 300)) : null;
-                cmd.Parameters.AddWithValue("@Item_Image", imageBytes ?? (object)DBNull.Value);
-
-                int rowsAffected = cmd.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
+                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(stockIn) || string.IsNullOrEmpty(unitType) || string.IsNullOrEmpty(itemPrice))
                 {
-                    selectItemNameCmb.SelectedIndex = -1;
-                    itemQuantityTxt.Clear();
-                    unitTypeCmb.SelectedIndex = -1;
-                    dateAddedDtp.Value = DateTime.Now;
-                    itemPriceTxt.Clear();
-                    itemTotalTxt.Clear();
-                    itemImagePic.Image = null;
-                    this.Close();
-                    Populate();
-                    this.Alert("Stock Updated Successfully");
-                    previewStock();
+                    new Messages_Boxes.Field_Required().Show();
+                    return;
                 }
-                else
+
+                try
                 {
-                    MessageBox.Show("Failed to update item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Open();
+                    using (MySqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = @"
+                    UPDATE stocks 
+                    SET Item_Name = @Item_Name, 
+                        Stock_In = @Stock_In, 
+                        Unit_Type = @Unit_Type, 
+                        Date_Added = @Date_Added, 
+                        Time_Added = @Time_Added,
+                        Item_Price = @Item_Price, 
+                        Item_Total = @Item_Total, 
+                        Item_Image = @Item_Image 
+                    WHERE Item_ID = @Item_ID";
+
+                        cmd.Parameters.AddWithValue("@Item_ID", itemID);
+                        cmd.Parameters.AddWithValue("@Item_Name", itemName);
+                        cmd.Parameters.AddWithValue("@Stock_In", int.TryParse(stockIn, out var stock) ? stock : 0);
+                        cmd.Parameters.AddWithValue("@Unit_Type", unitType);
+                        cmd.Parameters.AddWithValue("@Date_Added", dateAdded);
+                        cmd.Parameters.AddWithValue("@Time_Added", timeAdded);
+                        cmd.Parameters.AddWithValue("@Item_Price", decimal.TryParse(itemPrice, out var price) ? price : 0);
+                        cmd.Parameters.AddWithValue("@Item_Total", itemTotal);
+
+                        byte[] imageBytes = itemImage != null ? ImageToByteArray(ResizeImage(itemImage, 300, 300)) : null;
+                        cmd.Parameters.AddWithValue("@Item_Image", imageBytes ?? (object)DBNull.Value);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            selectItemNameCmb.SelectedIndex = -1;
+                            itemQuantityTxt.Clear();
+                            unitTypeCmb.SelectedIndex = -1;
+                            dateAddedDtp.Value = DateTime.Now;
+                            itemPriceTxt.Clear();
+                            itemTotalTxt.Clear();
+                            itemImagePic.Image = null;
+
+                            this.Close();
+                            Populate();
+                            this.Alert("Re-Stock Successfully");
+                            previewStock();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to re-stock the item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
+                catch (Exception ex)
                 {
-                    conn.Close();
+                    MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                cmd.Dispose();
-                conn.Dispose();
             }
         }
+
 
         private System.Drawing.Image ResizeImage(System.Drawing.Image image, int width, int height)
         {
@@ -360,6 +370,11 @@ namespace sims.Admin_Side.Stocks
                     itemQuantityTxt.Clear();
                 }
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeLbl.Text = DateTime.Now.ToString("h:mm:ss tt");
         }
     }
 }
