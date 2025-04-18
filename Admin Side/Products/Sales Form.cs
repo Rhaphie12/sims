@@ -134,6 +134,7 @@ namespace sims.Admin_Side.Sales
             DateLbl.Text = DateTime.Now.ToString("ddd, d MMMM yyyy");
             CalculateTotalProductSale();
             LoadProductDetails();
+            previewSalesCoffee();
         }
 
         // Method to load product details based on category
@@ -629,6 +630,8 @@ namespace sims.Admin_Side.Sales
                     categoryCmb.SelectedIndex = -1;
                     productPriceTxt.Clear();
                     quantitySoldTxt.Clear();
+                    quantityStockTxt.Clear();
+                    totalSaleTxt.Clear();
                     stockCmb.SelectedIndex = -1;
                     stock2Cmb.SelectedIndex = -1;
                     this.Hide();

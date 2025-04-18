@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using sims.Admin_Side.Inventory_Report;
+using sims.Admin_Side.Products;
 using sims.Admin_Side.Sales_Report_Owner;
 using sims.Admin_Side.Stocks;
 using System;
@@ -154,18 +155,15 @@ namespace sims.Admin_Side.Sales
 
         private void NewProductBtn_Click(object sender, EventArgs e)
         {
-            // Check if the form is already open
-            if (_addProductForm == null || _addProductForm.IsDisposed)
-            {
-                _stock = new Manage_Stockk(_inventoryDashboard, _addStock, _dashboardOwner, _reportt);
-                _addProductForm = new Add_Product(this, _stock, _inventoryDashboard);
-                _addProductForm.Show();
-            }
-            else
-            {
-                // If the form is already open, bring it to the front
-                _addProductForm.BringToFront();
-            }
+            _stock = new Manage_Stockk(_inventoryDashboard, _addStock, _dashboardOwner, _reportt);
+            _addProductForm = new Add_Product(this, _stock, _inventoryDashboard);
+            _addProductForm.Show();
+        }
+
+        private void SalesHistoryBtn_Click(object sender, EventArgs e)
+        {
+            Sales_History_Form salesHistory = new Sales_History_Form();
+            salesHistory.Show();
         }
     }
 }

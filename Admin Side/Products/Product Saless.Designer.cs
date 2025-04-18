@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
-            this.NewProductBtn = new Guna.UI.WinForms.GunaButton();
-            this.label4 = new System.Windows.Forms.Label();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.gunaGroupBox5 = new Guna.UI.WinForms.GunaGroupBox();
@@ -46,8 +42,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
             this.coffeeLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1.SuspendLayout();
-            this.gunaElipsePanel2.SuspendLayout();
+            this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.NewProductBtn = new Guna.UI.WinForms.GunaButton();
+            this.SalesHistoryBtn = new Guna.UI.WinForms.GunaButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.gunaGroupBox2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.gunaGroupBox5.SuspendLayout();
@@ -58,73 +57,9 @@
             this.gunaGroupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gunaGroupBox1.SuspendLayout();
+            this.gunaElipsePanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.gunaElipsePanel2);
-            this.panel1.Location = new System.Drawing.Point(11, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1170, 53);
-            this.panel1.TabIndex = 51;
-            // 
-            // gunaElipsePanel2
-            // 
-            this.gunaElipsePanel2.BackColor = System.Drawing.Color.Transparent;
-            this.gunaElipsePanel2.BaseColor = System.Drawing.Color.White;
-            this.gunaElipsePanel2.Controls.Add(this.NewProductBtn);
-            this.gunaElipsePanel2.Controls.Add(this.label4);
-            this.gunaElipsePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gunaElipsePanel2.Location = new System.Drawing.Point(0, 0);
-            this.gunaElipsePanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.gunaElipsePanel2.Name = "gunaElipsePanel2";
-            this.gunaElipsePanel2.Radius = 7;
-            this.gunaElipsePanel2.Size = new System.Drawing.Size(1170, 53);
-            this.gunaElipsePanel2.TabIndex = 46;
-            // 
-            // NewProductBtn
-            // 
-            this.NewProductBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewProductBtn.AnimationHoverSpeed = 0.07F;
-            this.NewProductBtn.AnimationSpeed = 0.03F;
-            this.NewProductBtn.BackColor = System.Drawing.Color.Transparent;
-            this.NewProductBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewProductBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewProductBtn.BorderSize = 2;
-            this.NewProductBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.NewProductBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.NewProductBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.NewProductBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewProductBtn.ForeColor = System.Drawing.Color.White;
-            this.NewProductBtn.Image = global::sims.Properties.Resources.add_white;
-            this.NewProductBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.NewProductBtn.Location = new System.Drawing.Point(995, 8);
-            this.NewProductBtn.Name = "NewProductBtn";
-            this.NewProductBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewProductBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.NewProductBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.NewProductBtn.OnHoverImage = null;
-            this.NewProductBtn.OnPressedColor = System.Drawing.Color.White;
-            this.NewProductBtn.Radius = 5;
-            this.NewProductBtn.Size = new System.Drawing.Size(160, 35);
-            this.NewProductBtn.TabIndex = 33;
-            this.NewProductBtn.Text = "Add Product";
-            this.NewProductBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.NewProductBtn.Click += new System.EventHandler(this.NewProductBtn_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(10, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(364, 34);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Dashboard / Manage Sales Products\r\n";
             // 
             // gunaGroupBox2
             // 
@@ -348,6 +283,103 @@
             this.coffeeLayoutPanel.Size = new System.Drawing.Size(380, 312);
             this.coffeeLayoutPanel.TabIndex = 32;
             // 
+            // gunaElipsePanel2
+            // 
+            this.gunaElipsePanel2.BackColor = System.Drawing.Color.Transparent;
+            this.gunaElipsePanel2.BaseColor = System.Drawing.Color.White;
+            this.gunaElipsePanel2.Controls.Add(this.SalesHistoryBtn);
+            this.gunaElipsePanel2.Controls.Add(this.NewProductBtn);
+            this.gunaElipsePanel2.Controls.Add(this.label4);
+            this.gunaElipsePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaElipsePanel2.Location = new System.Drawing.Point(0, 0);
+            this.gunaElipsePanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.gunaElipsePanel2.Name = "gunaElipsePanel2";
+            this.gunaElipsePanel2.Radius = 7;
+            this.gunaElipsePanel2.Size = new System.Drawing.Size(1170, 53);
+            this.gunaElipsePanel2.TabIndex = 46;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(10, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(364, 34);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Dashboard / Manage Sales Products\r\n";
+            // 
+            // NewProductBtn
+            // 
+            this.NewProductBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewProductBtn.AnimationHoverSpeed = 0.07F;
+            this.NewProductBtn.AnimationSpeed = 0.03F;
+            this.NewProductBtn.BackColor = System.Drawing.Color.Transparent;
+            this.NewProductBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewProductBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewProductBtn.BorderSize = 2;
+            this.NewProductBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NewProductBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.NewProductBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.NewProductBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewProductBtn.ForeColor = System.Drawing.Color.White;
+            this.NewProductBtn.Image = global::sims.Properties.Resources.add_white;
+            this.NewProductBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.NewProductBtn.Location = new System.Drawing.Point(839, 8);
+            this.NewProductBtn.Name = "NewProductBtn";
+            this.NewProductBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewProductBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.NewProductBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.NewProductBtn.OnHoverImage = null;
+            this.NewProductBtn.OnPressedColor = System.Drawing.Color.White;
+            this.NewProductBtn.Radius = 5;
+            this.NewProductBtn.Size = new System.Drawing.Size(160, 35);
+            this.NewProductBtn.TabIndex = 33;
+            this.NewProductBtn.Text = "Add Product";
+            this.NewProductBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.NewProductBtn.Click += new System.EventHandler(this.NewProductBtn_Click);
+            // 
+            // SalesHistoryBtn
+            // 
+            this.SalesHistoryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SalesHistoryBtn.AnimationHoverSpeed = 0.07F;
+            this.SalesHistoryBtn.AnimationSpeed = 0.03F;
+            this.SalesHistoryBtn.BackColor = System.Drawing.Color.Transparent;
+            this.SalesHistoryBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.SalesHistoryBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.SalesHistoryBtn.BorderSize = 2;
+            this.SalesHistoryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SalesHistoryBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.SalesHistoryBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.SalesHistoryBtn.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SalesHistoryBtn.ForeColor = System.Drawing.Color.White;
+            this.SalesHistoryBtn.Image = global::sims.Properties.Resources.newspaper_white;
+            this.SalesHistoryBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.SalesHistoryBtn.Location = new System.Drawing.Point(1005, 8);
+            this.SalesHistoryBtn.Name = "SalesHistoryBtn";
+            this.SalesHistoryBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.SalesHistoryBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.SalesHistoryBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.SalesHistoryBtn.OnHoverImage = null;
+            this.SalesHistoryBtn.OnPressedColor = System.Drawing.Color.White;
+            this.SalesHistoryBtn.Radius = 5;
+            this.SalesHistoryBtn.Size = new System.Drawing.Size(160, 35);
+            this.SalesHistoryBtn.TabIndex = 34;
+            this.SalesHistoryBtn.Text = "Sales History";
+            this.SalesHistoryBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.SalesHistoryBtn.Click += new System.EventHandler(this.SalesHistoryBtn_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.gunaElipsePanel2);
+            this.panel1.Location = new System.Drawing.Point(11, 10);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1170, 53);
+            this.panel1.TabIndex = 51;
+            // 
             // Product_Saless
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,9 +392,6 @@
             this.Name = "Product_Saless";
             this.Text = "Product_Saless";
             this.Load += new System.EventHandler(this.Product_Saless_Load);
-            this.panel1.ResumeLayout(false);
-            this.gunaElipsePanel2.ResumeLayout(false);
-            this.gunaElipsePanel2.PerformLayout();
             this.gunaGroupBox2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.gunaGroupBox5.ResumeLayout(false);
@@ -373,15 +402,14 @@
             this.gunaGroupBox3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.gunaGroupBox1.ResumeLayout(false);
+            this.gunaElipsePanel2.ResumeLayout(false);
+            this.gunaElipsePanel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel2;
-        internal System.Windows.Forms.Label label4;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel4;
@@ -393,9 +421,13 @@
         private System.Windows.Forms.FlowLayoutPanel coffeeLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel hotCoffeeLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel nonCoffeeLayoutPanel;
-        private Guna.UI.WinForms.GunaButton NewProductBtn;
         private System.Windows.Forms.Panel panel5;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox5;
         private System.Windows.Forms.FlowLayoutPanel pastriesLayoutPanel;
+        private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel2;
+        private Guna.UI.WinForms.GunaButton SalesHistoryBtn;
+        private Guna.UI.WinForms.GunaButton NewProductBtn;
+        internal System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
     }
 }
