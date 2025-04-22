@@ -156,7 +156,7 @@ namespace sims.Admin_Side.Stocks
         private void LoadProductDetails(string itemID)
         {
             dbModule db = new dbModule();
-            string query = "SELECT Item_ID, Item_Name, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image " +
+            string query = "SELECT Item_ID, Item_Name, Category, Stock_In, Unit_Type, Date_Added, Item_Price, Item_Total, Item_Image " +
                            "FROM stocks WHERE Stock_ID = @Stock_ID ORDER BY Item_Name";
 
             using (MySqlConnection conn = db.GetConnection())
@@ -174,6 +174,7 @@ namespace sims.Admin_Side.Stocks
                             {
                                 string itemName = reader["Item_Name"].ToString();
                                 itemIDTxt.Text = reader["Item_ID"].ToString();
+                                string category = reader["Category"].ToString();
                                 itemQuantityTxt.Text = reader["Stock_In"].ToString();
                                 string unitType = reader["Unit_Type"].ToString();
                                 itemPriceTxt.Text = reader["Item_Price"].ToString();
@@ -196,6 +197,16 @@ namespace sims.Admin_Side.Stocks
                                     {
                                         unitTypeCmb.Items.Add(unitType);
                                         unitTypeCmb.SelectedItem = unitType;
+                                    }
+                                }
+
+                                if (!string.IsNullOrEmpty(category))
+                                {
+                                    categoryCmb.SelectedItem = category;
+                                    if (!categoryCmb.Items.Contains(category))
+                                    {
+                                        categoryCmb.Items.Add(category);
+                                        categoryCmb.SelectedItem = category;
                                     }
                                 }
 
@@ -238,6 +249,7 @@ namespace sims.Admin_Side.Stocks
             {
                 string itemID = itemIDTxt.Text.Trim();
                 string itemName = selectItemNameCmb.SelectedItem?.ToString() ?? string.Empty;
+                string category = categoryCmb.SelectedItem?.ToString() ?? string.Empty;
                 string stockIn = itemQuantityTxt.Text.Trim();
                 string unitType = unitTypeCmb.SelectedItem?.ToString() ?? string.Empty;
                 string dateAdded = dateAddedDtp.Value.ToString("yyyy-MM-dd");
@@ -260,6 +272,7 @@ namespace sims.Admin_Side.Stocks
                         cmd.CommandText = @"
                     UPDATE stocks 
                     SET Item_Name = @Item_Name, 
+                        Category = @Category, 
                         Stock_In = @Stock_In, 
                         Unit_Type = @Unit_Type, 
                         Date_Added = @Date_Added, 
@@ -271,6 +284,7 @@ namespace sims.Admin_Side.Stocks
 
                         cmd.Parameters.AddWithValue("@Item_ID", itemID);
                         cmd.Parameters.AddWithValue("@Item_Name", itemName);
+                        cmd.Parameters.AddWithValue("@Category", category);
                         cmd.Parameters.AddWithValue("@Stock_In", int.TryParse(stockIn, out var stock) ? stock : 0);
                         cmd.Parameters.AddWithValue("@Unit_Type", unitType);
                         cmd.Parameters.AddWithValue("@Date_Added", dateAdded);
@@ -286,6 +300,7 @@ namespace sims.Admin_Side.Stocks
                         if (rowsAffected > 0)
                         {
                             selectItemNameCmb.SelectedIndex = -1;
+                            categoryCmb.SelectedIndex = -1;
                             itemQuantityTxt.Clear();
                             unitTypeCmb.SelectedIndex = -1;
                             dateAddedDtp.Value = DateTime.Now;
