@@ -141,7 +141,9 @@ namespace sims.Staff_Side
         {
             dbModule db = new dbModule();
             SeriesCollection series = new SeriesCollection();
-            List<string> itemNames = new List<string>();
+
+            // Dictionary to aggregate stocks by item name
+            Dictionary<string, int> stockMap = new Dictionary<string, int>();
 
             try
             {
@@ -153,68 +155,69 @@ namespace sims.Staff_Side
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        ChartValues<int> values = new ChartValues<int>();
-
                         while (reader.Read())
                         {
                             string itemName = reader["Item_Name"]?.ToString() ?? string.Empty;
-                            if (int.TryParse(reader["Stock_In"]?.ToString(), out int itemQuantity))
+
+                            if (int.TryParse(reader["Stock_In"]?.ToString(), out int stockIn))
                             {
-                                itemNames.Add(itemName);
-                                values.Add(itemQuantity);
+                                if (stockMap.ContainsKey(itemName))
+                                {
+                                    stockMap[itemName] += stockIn; // Sum duplicates
+                                }
+                                else
+                                {
+                                    stockMap[itemName] = stockIn;
+                                }
                             }
                         }
-
-                        series.Add(new ColumnSeries
-                        {
-                            Title = "Items",
-                            Values = values,
-                            DataLabels = true
-                        });
                     }
                 }
 
                 if (stockPreviewChart != null)
                 {
-                    // Clear existing chart data
-                    stockPreviewChart.Series.Clear();
-                    stockPreviewChart.Series = series;
+                    ChartValues<int> values = new ChartValues<int>();
+                    List<string> itemNames = new List<string>();
+
+                    // Order for consistent axis rendering
+                    foreach (var entry in stockMap)
+                    {
+                        itemNames.Add(entry.Key);
+                        values.Add(entry.Value);
+                    }
+
+                    stockPreviewChart.Series = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "Stock",
+                    Values = values,
+                    DataLabels = true
+                }
+            };
 
                     stockPreviewChart.AxisX.Clear();
                     stockPreviewChart.AxisX.Add(new Axis
                     {
                         Title = "Item Name",
                         Labels = itemNames,
-                        Separator = new Separator
-                        {
-                            Step = 1 // Step controls the interval of labels shown
-                        }
+                        LabelsRotation = 15,
+                        Separator = new Separator { Step = 1 },
+                        MinValue = 0,
+                        MaxValue = 10 // Adjust depending on how many to show at once
                     });
 
                     stockPreviewChart.AxisY.Clear();
                     stockPreviewChart.AxisY.Add(new Axis
                     {
-                        Title = "Item Stocks"
+                        Title = "Item Stocks",
+                        LabelFormatter = value => value.ToString()
                     });
 
-                    // Set dynamic range for X-axis
-                    stockPreviewChart.AxisX[0].MinValue = 0;
-                    stockPreviewChart.AxisX[0].MaxValue = 10; // Initially display 10 items
+                    stockPreviewChart.Zoom = ZoomingOptions.X;
+                    stockPreviewChart.Pan = PanningOptions.X;
+                    stockPreviewChart.DisableAnimations = true;
 
-                    // Attach event to dynamically update MinValue and MaxValue during scroll/zoom
-                    stockPreviewChart.DataClick += (sender, args) =>
-                    {
-                        double viewWidth = stockPreviewChart.AxisX[0].MaxValue - stockPreviewChart.AxisX[0].MinValue;
-                        double totalItems = itemNames.Count;
-
-                        if (totalItems > viewWidth)
-                        {
-                            stockPreviewChart.AxisX[0].MinValue = Math.Max(0, stockPreviewChart.AxisX[0].MinValue);
-                            stockPreviewChart.AxisX[0].MaxValue = Math.Min(totalItems, stockPreviewChart.AxisX[0].MaxValue);
-                        }
-                    };
-
-                    // Update the chart
                     stockPreviewChart.Update(true, true);
                 }
                 else

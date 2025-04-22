@@ -302,7 +302,6 @@ namespace sims.Admin_Side
             }
         }
 
-
         // DAILY SALES CHART
         public void TotalSalesPreview(string category)
         {

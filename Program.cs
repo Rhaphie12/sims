@@ -30,7 +30,7 @@ namespace sims
                 }
             }
 
-            Application.Run(new DashboardOwner());
+            Application.Run(new Splash_page());
         }
 
         // Add this method inside the Program class
