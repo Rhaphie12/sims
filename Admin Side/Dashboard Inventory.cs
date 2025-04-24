@@ -564,8 +564,8 @@ namespace sims.Admin_Side
                     MonthlySalesChart.Series = series;
 
                     // Update chart properties
-                    MonthlySalesChart.LegendLocation = LegendLocation.Bottom;
-                    MonthlySalesChart.Update(true, true);
+                    //MonthlySalesChart.LegendLocation = LegendLocation.Bottom;
+                    //MonthlySalesChart.Update(true, true);
 
                     // Update the title label
                     chartMonthlyLbl.Text = $"{category} Monthly Sales";

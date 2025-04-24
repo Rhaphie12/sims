@@ -39,6 +39,20 @@ namespace sims
             get { return pictureBox1; }
         }
 
+        // Add these enum and variables at the class level
+        public enum TransitionEffect
+        {
+            Slide,
+            Fade,
+            Zoom,
+            None
+        }
+
+        private Timer transitionTimer;
+        private Control transitionControl;
+        private int transitionProgress = 0;
+        private TransitionEffect currentEffect = TransitionEffect.Slide;
+
         public DashboardOwner()
         {
             InitializeComponent();
@@ -194,12 +208,22 @@ namespace sims
             leftBorderBtn.BringToFront();
         }
 
-        private void OpeninPanel(object formOpen)
+        private void OpeninPanel(object formOpen, TransitionEffect effect = TransitionEffect.Slide)
         {
+            // Stop any ongoing transition
+            if (transitionTimer != null && transitionTimer.Enabled)
+            {
+                transitionTimer.Stop();
+                transitionTimer.Dispose();
+            }
+
+            // Hide all controls
             foreach (Control control in DashboardPanel.Controls)
             {
                 control.Visible = false;
             }
+
+            Control toShow = null;
 
             if (formOpen is UserControl uc)
             {
@@ -209,9 +233,7 @@ namespace sims
                     DashboardPanel.Controls.Add(uc);
                     DashboardPanel.Tag = uc;
                 }
-
-                uc.Visible = true;
-                uc.BringToFront();
+                toShow = uc;
             }
             else if (formOpen is Form dh)
             {
@@ -223,9 +245,85 @@ namespace sims
                     DashboardPanel.Controls.Add(dh);
                     DashboardPanel.Tag = dh;
                 }
+                toShow = dh;
+            }
 
-                dh.Visible = true;
-                dh.BringToFront();
+            if (toShow != null)
+            {
+                // Store the control for use in the timer
+                transitionControl = toShow;
+
+                // Set current effect
+                currentEffect = effect;
+
+                // Important: Temporarily remove Dock to allow positioning
+                toShow.Dock = DockStyle.None;
+
+                // Make sure the control is the right size
+                toShow.Size = DashboardPanel.Size;
+
+                // Initialize control based on effect
+                switch (effect)
+                {
+                    case TransitionEffect.Slide:
+                        // Place completely off-screen to the left
+                        toShow.Location = new Point(-toShow.Width, 0);
+                        toShow.Visible = true;
+                        break;
+
+                    case TransitionEffect.Fade:
+                        toShow.Location = new Point(0, 0);
+                        toShow.Visible = true;
+
+                        // Set initial opacity
+                        if (toShow is Form form)
+                        {
+                            form.Opacity = 0;
+                        }
+                        else
+                        {
+                            Color originalColor = toShow.BackColor;
+                            // Store the original color for later
+                            toShow.Tag = originalColor;
+                            toShow.BackColor = Color.FromArgb(0, originalColor.R, originalColor.G, originalColor.B);
+                        }
+                        break;
+
+                    case TransitionEffect.Zoom:
+                        // Store original size
+                        toShow.Tag = new Size(toShow.Width, toShow.Height);
+
+                        // Start with smaller size centered
+                        int startWidth = toShow.Width / 4;
+                        int startHeight = toShow.Height / 4;
+                        toShow.Size = new Size(startWidth, startHeight);
+                        toShow.Location = new Point(
+                            (DashboardPanel.Width - startWidth) / 2,
+                            (DashboardPanel.Height - startHeight) / 2
+                        );
+                        toShow.Visible = true;
+                        break;
+
+                    case TransitionEffect.None:
+                    default:
+                        toShow.Location = new Point(0, 0);
+                        toShow.Visible = true;
+                        toShow.BringToFront();
+                        toShow.Dock = DockStyle.Fill;  // Restore dock
+                        return; // No animation needed
+                }
+
+                // Reset progress
+                transitionProgress = 0;
+
+                // Setup and start timer
+                transitionTimer = new Timer();
+                transitionTimer.Interval = 10;
+                transitionTimer.Tick += TimerTransition_Tick;
+                transitionTimer.Start();
+
+                // Bring control to front
+                toShow.BringToFront();
             }
         }
 
@@ -258,7 +356,7 @@ namespace sims
         private void CategoriesBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(manageCategoryInstance);
+            OpeninPanel(manageCategoryInstance, TransitionEffect.Slide);
             customizeDesign();
         }
 
@@ -270,14 +368,14 @@ namespace sims
         private void ItemsBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(manageItemsInstance);
+            OpeninPanel(manageItemsInstance, TransitionEffect.Slide);
 
         }
 
         private void StocksBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(manageStockInstance);
+            OpeninPanel(manageStockInstance, TransitionEffect.Slide);
 
         }
 
@@ -295,26 +393,26 @@ namespace sims
         private void productSalesBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(productSalesInstance);
+            OpeninPanel(productSalesInstance, TransitionEffect.Slide);
         }
 
         private void salesReportBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(manageSalesReportInstance);
+            OpeninPanel(manageSalesReportInstance, TransitionEffect.Slide);
         }
 
         private void UserBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(manageUserStaffInstance);
+            OpeninPanel(manageUserStaffInstance, TransitionEffect.Slide);
             customizeDesign();
         }
 
         private void backupDbBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 255, 255));
-            OpeninPanel(databaseBackupInstance);
+            OpeninPanel(databaseBackupInstance, TransitionEffect.Slide);
         }
 
         private void SignoutBtn_Click(object sender, EventArgs e)
@@ -336,6 +434,109 @@ namespace sims
         {
             TimeLbl.Text = DateTime.Now.ToString("h:mm:ss tt");
 
+        }
+
+        private void TimerTransition_Tick(object sender, EventArgs e)
+        {
+            const int TRANSITION_STEPS = 20; // Total steps for the transition
+
+            // Increase progress
+            transitionProgress++;
+
+            // Calculate percent complete (0.0 to 1.0)
+            float percent = (float)transitionProgress / TRANSITION_STEPS;
+
+            // Apply appropriate effect
+            switch (currentEffect)
+            {
+                case TransitionEffect.Slide:
+                    // Move from -width (off left) to 0 (normal position)
+                    int targetX = 0;
+                    int startX = -transitionControl.Width;
+                    int distance = Math.Abs(startX);
+                    int currentX = startX + (int)(distance * percent);
+
+                    transitionControl.Left = currentX;
+
+                    // Check if done
+                    if (percent >= 1.0)
+                    {
+                        transitionControl.Left = targetX;
+                        transitionControl.Dock = DockStyle.Fill;  // Restore dock
+                        transitionTimer.Stop();
+                        transitionTimer.Dispose();
+                        transitionTimer = null;
+                    }
+                    break;
+
+                case TransitionEffect.Fade:
+                    // Apply opacity
+                    if (transitionControl is Form form)
+                    {
+                        form.Opacity = percent;
+
+                        // Check if done
+                        if (percent >= 1.0)
+                        {
+                            form.Opacity = 1.0;
+                            transitionControl.Dock = DockStyle.Fill;  // Restore dock
+                            transitionTimer.Stop();
+                            transitionTimer.Dispose();
+                            transitionTimer = null;
+                        }
+                    }
+                    else
+                    {
+                        // For UserControl, update BackColor alpha
+                        Color originalColor = (Color)transitionControl.Tag;
+                        int alpha = (int)(255 * percent);
+                        transitionControl.BackColor = Color.FromArgb(alpha, originalColor.R, originalColor.G, originalColor.B);
+
+                        // Check if done
+                        if (percent >= 1.0)
+                        {
+                            transitionControl.BackColor = originalColor;
+                            transitionControl.Dock = DockStyle.Fill;  // Restore dock
+                            transitionTimer.Stop();
+                            transitionTimer.Dispose();
+                            transitionTimer = null;
+                        }
+                    }
+                    break;
+
+                case TransitionEffect.Zoom:
+                    // Get original size
+                    Size originalSize = (Size)transitionControl.Tag;
+
+                    // Calculate new size
+                    int newWidth = (int)(originalSize.Width * percent);
+                    int newHeight = (int)(originalSize.Height * percent);
+
+                    // Make sure we don't go to zero
+                    newWidth = Math.Max(newWidth, 1);
+                    newHeight = Math.Max(newHeight, 1);
+
+                    // Set new size
+                    transitionControl.Size = new Size(newWidth, newHeight);
+
+                    // Center the control
+                    transitionControl.Location = new Point(
+                        (DashboardPanel.Width - newWidth) / 2,
+                        (DashboardPanel.Height - newHeight) / 2
+                    );
+
+                    // Check if done
+                    if (percent >= 1.0)
+                    {
+                        transitionControl.Size = originalSize;
+                        transitionControl.Location = new Point(0, 0);
+                        transitionControl.Dock = DockStyle.Fill;  // Restore dock
+                        transitionTimer.Stop();
+                        transitionTimer.Dispose();
+                        transitionTimer = null;
+                    }
+                    break;
+            }
         }
     }
 }

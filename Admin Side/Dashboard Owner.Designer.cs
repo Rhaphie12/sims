@@ -57,6 +57,7 @@
             this.greetingNameTxt = new System.Windows.Forms.Label();
             this.DashboardPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.TimerTransition = new System.Windows.Forms.Timer(this.components);
             this.PanelMenu.SuspendLayout();
             this.salesPanelSubMenu.SuspendLayout();
             this.InventoryPanelSubMenu.SuspendLayout();
@@ -500,6 +501,10 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // TimerTransition
+            // 
+            this.TimerTransition.Tick += new System.EventHandler(this.TimerTransition_Tick);
+            // 
             // DashboardOwner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,7 +519,7 @@
             this.Name = "DashboardOwner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Dashboard (Owner)";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DashboardOwner_Load);
             this.PanelMenu.ResumeLayout(false);
             this.salesPanelSubMenu.ResumeLayout(false);
@@ -561,6 +566,7 @@
         private System.Windows.Forms.Timer timer1;
         internal Guna.UI.WinForms.GunaLabel DateLbl;
         internal Guna.UI.WinForms.GunaLabel TimeLbl;
+        private System.Windows.Forms.Timer TimerTransition;
     }
 }
 
