@@ -429,11 +429,11 @@ namespace sims.Staff_Side
                     MonthlySalesChart.Series = series;
 
                     // Update chart properties
-                    MonthlySalesChart.LegendLocation = LegendLocation.Bottom;
-                    MonthlySalesChart.Update(true, true);
+                    //MonthlySalesChart.LegendLocation = LegendLocation.Bottom;
+                    //MonthlySalesChart.Update(true, true);
 
                     // Update the title label
-                    chartMonthlyLbl.Text = $"{category} Sales";
+                    chartMonthlyLbl.Text = $"{category} Monthly Sales";
                     chartMonthlyLbl.Font = new Font("Poppins", 11);
                     chartMonthlyLbl.TextAlign = ContentAlignment.MiddleCenter;
                 }
@@ -462,7 +462,10 @@ namespace sims.Staff_Side
             {
                 return "productsales_hotcoffee";
             }
-
+            else if (category.Equals("Pastries", StringComparison.OrdinalIgnoreCase))
+            {
+                return "productsales_pastries";
+            }
             return string.Empty;
         }
 
@@ -486,6 +489,7 @@ namespace sims.Staff_Side
             }
             return string.Empty;
         }
+
         private void CoffeeMenuItem_Click(object sender, EventArgs e)
         {
             TotalSalesPreview("Coffee");
@@ -501,6 +505,11 @@ namespace sims.Staff_Side
             TotalSalesPreview("Hot Coffee");
         }
 
+        private void PastriesMenuITem_Click(object sender, EventArgs e)
+        {
+            TotalSalesPreview("Pastries");
+        }
+
         private void CoffeeMonthlyChart_Click(object sender, EventArgs e)
         {
             MonthlySalesPreview("Coffee");
@@ -514,6 +523,11 @@ namespace sims.Staff_Side
         private void HotCoffeeMonthlyChart_Click(object sender, EventArgs e)
         {
             MonthlySalesPreview("Hot Coffee");
+        }
+
+        private void PastriesMonthlyMenuItem_Click(object sender, EventArgs e)
+        {
+            MonthlySalesPreview("Pastries");
         }
     }
 }

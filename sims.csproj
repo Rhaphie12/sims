@@ -254,7 +254,7 @@
       <DependentUpon>Edit Items.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Items\Manage Items.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Admin Side\Items\Manage Items.Designer.cs">
       <DependentUpon>Manage Items.cs</DependentUpon>

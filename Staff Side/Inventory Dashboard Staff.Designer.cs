@@ -74,6 +74,8 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.MonthlySalesChart = new LiveCharts.WinForms.PieChart();
+            this.PastriesMonthlyMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PastriesMenuITem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.gunaGroupBox5.SuspendLayout();
@@ -495,7 +497,8 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CoffeeMenuItem,
             this.NonCoffeeMenuItem,
-            this.HotCoffeeMenuItem});
+            this.HotCoffeeMenuItem,
+            this.PastriesMenuITem});
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(105, 30);
@@ -504,21 +507,21 @@
             // CoffeeMenuItem
             // 
             this.CoffeeMenuItem.Name = "CoffeeMenuItem";
-            this.CoffeeMenuItem.Size = new System.Drawing.Size(169, 30);
+            this.CoffeeMenuItem.Size = new System.Drawing.Size(180, 30);
             this.CoffeeMenuItem.Text = "Coffee";
             this.CoffeeMenuItem.Click += new System.EventHandler(this.CoffeeMenuItem_Click);
             // 
             // NonCoffeeMenuItem
             // 
             this.NonCoffeeMenuItem.Name = "NonCoffeeMenuItem";
-            this.NonCoffeeMenuItem.Size = new System.Drawing.Size(169, 30);
+            this.NonCoffeeMenuItem.Size = new System.Drawing.Size(180, 30);
             this.NonCoffeeMenuItem.Text = "Non Coffee";
             this.NonCoffeeMenuItem.Click += new System.EventHandler(this.NonCoffeeMenuItem_Click);
             // 
             // HotCoffeeMenuItem
             // 
             this.HotCoffeeMenuItem.Name = "HotCoffeeMenuItem";
-            this.HotCoffeeMenuItem.Size = new System.Drawing.Size(169, 30);
+            this.HotCoffeeMenuItem.Size = new System.Drawing.Size(180, 30);
             this.HotCoffeeMenuItem.Text = "Hot Coffee";
             this.HotCoffeeMenuItem.Click += new System.EventHandler(this.HotCoffeeMenuItem_Click);
             // 
@@ -596,7 +599,8 @@
             this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CoffeeMonthlyChart,
             this.NonCoffeeMonthlyChart,
-            this.HotCoffeeMonthlyChart});
+            this.HotCoffeeMonthlyChart,
+            this.PastriesMonthlyMenuItem});
             this.toolStripMenuItem5.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(128, 30);
@@ -605,21 +609,21 @@
             // CoffeeMonthlyChart
             // 
             this.CoffeeMonthlyChart.Name = "CoffeeMonthlyChart";
-            this.CoffeeMonthlyChart.Size = new System.Drawing.Size(169, 30);
+            this.CoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
             this.CoffeeMonthlyChart.Text = "Coffee";
             this.CoffeeMonthlyChart.Click += new System.EventHandler(this.CoffeeMonthlyChart_Click);
             // 
             // NonCoffeeMonthlyChart
             // 
             this.NonCoffeeMonthlyChart.Name = "NonCoffeeMonthlyChart";
-            this.NonCoffeeMonthlyChart.Size = new System.Drawing.Size(169, 30);
+            this.NonCoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
             this.NonCoffeeMonthlyChart.Text = "Non Coffee";
             this.NonCoffeeMonthlyChart.Click += new System.EventHandler(this.NonCoffeeMonthlyChart_Click);
             // 
             // HotCoffeeMonthlyChart
             // 
             this.HotCoffeeMonthlyChart.Name = "HotCoffeeMonthlyChart";
-            this.HotCoffeeMonthlyChart.Size = new System.Drawing.Size(169, 30);
+            this.HotCoffeeMonthlyChart.Size = new System.Drawing.Size(180, 30);
             this.HotCoffeeMonthlyChart.Text = "Hot Coffee";
             this.HotCoffeeMonthlyChart.Click += new System.EventHandler(this.HotCoffeeMonthlyChart_Click);
             // 
@@ -652,6 +656,20 @@
             this.MonthlySalesChart.Size = new System.Drawing.Size(560, 261);
             this.MonthlySalesChart.TabIndex = 2;
             this.MonthlySalesChart.Text = "pieChart2";
+            // 
+            // PastriesMonthlyMenuItem
+            // 
+            this.PastriesMonthlyMenuItem.Name = "PastriesMonthlyMenuItem";
+            this.PastriesMonthlyMenuItem.Size = new System.Drawing.Size(180, 30);
+            this.PastriesMonthlyMenuItem.Text = "Pastries";
+            this.PastriesMonthlyMenuItem.Click += new System.EventHandler(this.PastriesMonthlyMenuItem_Click);
+            // 
+            // PastriesMenuITem
+            // 
+            this.PastriesMenuITem.Name = "PastriesMenuITem";
+            this.PastriesMenuITem.Size = new System.Drawing.Size(180, 30);
+            this.PastriesMenuITem.Text = "Pastries";
+            this.PastriesMenuITem.Click += new System.EventHandler(this.PastriesMenuITem_Click);
             // 
             // Inventory_Dashboard_Staff
             // 
@@ -752,5 +770,7 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private LiveCharts.WinForms.PieChart MonthlySalesChart;
         private System.Windows.Forms.Label chartMonthlyLbl;
+        private System.Windows.Forms.ToolStripMenuItem PastriesMenuITem;
+        private System.Windows.Forms.ToolStripMenuItem PastriesMonthlyMenuItem;
     }
 }

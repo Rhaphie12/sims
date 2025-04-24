@@ -240,7 +240,7 @@ namespace sims
 
         private void gunaControlBox1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void LockoutTimer_Tick(object sender, EventArgs e)

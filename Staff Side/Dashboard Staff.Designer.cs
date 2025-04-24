@@ -42,14 +42,15 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.TimeLbl = new Guna.UI.WinForms.GunaLabel();
+            this.DateLbl = new Guna.UI.WinForms.GunaLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Label3 = new System.Windows.Forms.Label();
             this.greetingNameTxt = new System.Windows.Forms.Label();
             this.DashboardPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.TimeLbl = new Guna.UI.WinForms.GunaLabel();
-            this.DateLbl = new Guna.UI.WinForms.GunaLabel();
+            this.TimerTransition = new System.Windows.Forms.Timer(this.components);
             this.PanelMenu.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox2)).BeginInit();
@@ -272,6 +273,30 @@
             this.panel3.Size = new System.Drawing.Size(333, 79);
             this.panel3.TabIndex = 4;
             // 
+            // TimeLbl
+            // 
+            this.TimeLbl.AutoSize = true;
+            this.TimeLbl.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimeLbl.ForeColor = System.Drawing.Color.White;
+            this.TimeLbl.Location = new System.Drawing.Point(43, 41);
+            this.TimeLbl.Name = "TimeLbl";
+            this.TimeLbl.Size = new System.Drawing.Size(85, 28);
+            this.TimeLbl.TabIndex = 127;
+            this.TimeLbl.Text = "h:mm:ss";
+            this.TimeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DateLbl
+            // 
+            this.DateLbl.AutoSize = true;
+            this.DateLbl.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateLbl.ForeColor = System.Drawing.Color.White;
+            this.DateLbl.Location = new System.Drawing.Point(43, 13);
+            this.DateLbl.Name = "DateLbl";
+            this.DateLbl.Size = new System.Drawing.Size(170, 28);
+            this.DateLbl.TabIndex = 126;
+            this.DateLbl.Text = "ddd, d MMMM yyyy";
+            this.DateLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -328,29 +353,9 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // TimeLbl
+            // TimerTransition
             // 
-            this.TimeLbl.AutoSize = true;
-            this.TimeLbl.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeLbl.ForeColor = System.Drawing.Color.White;
-            this.TimeLbl.Location = new System.Drawing.Point(43, 41);
-            this.TimeLbl.Name = "TimeLbl";
-            this.TimeLbl.Size = new System.Drawing.Size(85, 28);
-            this.TimeLbl.TabIndex = 127;
-            this.TimeLbl.Text = "h:mm:ss";
-            this.TimeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DateLbl
-            // 
-            this.DateLbl.AutoSize = true;
-            this.DateLbl.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateLbl.ForeColor = System.Drawing.Color.White;
-            this.DateLbl.Location = new System.Drawing.Point(43, 13);
-            this.DateLbl.Name = "DateLbl";
-            this.DateLbl.Size = new System.Drawing.Size(170, 28);
-            this.DateLbl.TabIndex = 126;
-            this.DateLbl.Text = "ddd, d MMMM yyyy";
-            this.DateLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TimerTransition.Tick += new System.EventHandler(this.TimerTransition_Tick);
             // 
             // Dashboard_Staff
             // 
@@ -402,5 +407,6 @@
         private System.Windows.Forms.Timer timer1;
         internal Guna.UI.WinForms.GunaLabel TimeLbl;
         internal Guna.UI.WinForms.GunaLabel DateLbl;
+        private System.Windows.Forms.Timer TimerTransition;
     }
 }
