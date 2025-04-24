@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using sims.Notification;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,16 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Bunifu.UI.WinForms;
-using sims.Notification;
-using Guna.UI.WinForms;
-using sims.Admin_Side.Sales;
-using sims.Admin_Side.Stocks;
-using System.Collections;
 
 namespace sims.Admin_Side.Items
 {
-    public partial class Manage_Items : UserControl
+    public partial class Manage_Items : Form
     {
         private Dashboard_Inventory _inventoryDashboard;
         private New_Items _newItems;
