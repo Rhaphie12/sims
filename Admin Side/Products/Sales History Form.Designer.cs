@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
+            this.BackBtn = new Guna.UI.WinForms.GunaButton();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gunaElipsePanel1 = new Guna.UI.WinForms.GunaElipsePanel();
+            this.chartTitleLabel = new System.Windows.Forms.Label();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.CoffeeMonthlyChart = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,10 +47,12 @@
             this.HotCoffeeMonthlyChart = new System.Windows.Forms.ToolStripMenuItem();
             this.pastriesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
+            this.toDatePicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.fromDatePicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.salesHistoryDgv = new Guna.UI.WinForms.GunaDataGridView();
-            this.BackBtn = new Guna.UI.WinForms.GunaButton();
-            this.chartTitleLabel = new System.Windows.Forms.Label();
             this.Sales_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,6 +104,37 @@
             this.gunaElipsePanel2.Size = new System.Drawing.Size(1170, 53);
             this.gunaElipsePanel2.TabIndex = 46;
             // 
+            // BackBtn
+            // 
+            this.BackBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackBtn.AnimationHoverSpeed = 0.07F;
+            this.BackBtn.AnimationSpeed = 0.03F;
+            this.BackBtn.BackColor = System.Drawing.Color.Transparent;
+            this.BackBtn.BaseColor = System.Drawing.Color.Transparent;
+            this.BackBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.BackBtn.BorderSize = 2;
+            this.BackBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.BackBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.BackBtn.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackBtn.ForeColor = System.Drawing.Color.Black;
+            this.BackBtn.Image = null;
+            this.BackBtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.BackBtn.Location = new System.Drawing.Point(1032, 8);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.BackBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            this.BackBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.BackBtn.OnHoverImage = null;
+            this.BackBtn.OnPressedColor = System.Drawing.Color.White;
+            this.BackBtn.Radius = 6;
+            this.BackBtn.Size = new System.Drawing.Size(130, 35);
+            this.BackBtn.TabIndex = 38;
+            this.BackBtn.Text = "Back";
+            this.BackBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BackBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -135,6 +170,18 @@
             this.gunaElipsePanel1.Radius = 7;
             this.gunaElipsePanel1.Size = new System.Drawing.Size(1170, 53);
             this.gunaElipsePanel1.TabIndex = 46;
+            // 
+            // chartTitleLabel
+            // 
+            this.chartTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartTitleLabel.AutoSize = true;
+            this.chartTitleLabel.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chartTitleLabel.Location = new System.Drawing.Point(900, 12);
+            this.chartTitleLabel.Name = "chartTitleLabel";
+            this.chartTitleLabel.Size = new System.Drawing.Size(258, 28);
+            this.chartTitleLabel.TabIndex = 6;
+            this.chartTitleLabel.Text = "productsaleshistory_hotcoffee";
+            this.chartTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // menuStrip2
             // 
@@ -195,6 +242,10 @@
             this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox2.Controls.Add(this.toDatePicker);
+            this.gunaGroupBox2.Controls.Add(this.label2);
+            this.gunaGroupBox2.Controls.Add(this.fromDatePicker);
+            this.gunaGroupBox2.Controls.Add(this.label1);
             this.gunaGroupBox2.Controls.Add(this.panel5);
             this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox2.LineColor = System.Drawing.Color.White;
@@ -207,6 +258,66 @@
             this.gunaGroupBox2.Text = "Soothing Café Sales History";
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 13);
             this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // toDatePicker
+            // 
+            this.toDatePicker.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.toDatePicker.BorderRadius = 4;
+            this.toDatePicker.BorderThickness = 2;
+            this.toDatePicker.CheckedState.Parent = this.toDatePicker;
+            this.toDatePicker.FillColor = System.Drawing.Color.White;
+            this.toDatePicker.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.toDatePicker.HoverState.Parent = this.toDatePicker;
+            this.toDatePicker.Location = new System.Drawing.Point(957, 9);
+            this.toDatePicker.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.toDatePicker.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.toDatePicker.Name = "toDatePicker";
+            this.toDatePicker.ShadowDecoration.Parent = this.toDatePicker;
+            this.toDatePicker.Size = new System.Drawing.Size(200, 37);
+            this.toDatePicker.TabIndex = 110;
+            this.toDatePicker.Value = new System.DateTime(2025, 1, 14, 0, 31, 40, 562);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(917, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 28);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "To:";
+            // 
+            // fromDatePicker
+            // 
+            this.fromDatePicker.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.fromDatePicker.BorderRadius = 4;
+            this.fromDatePicker.BorderThickness = 2;
+            this.fromDatePicker.CheckedState.Parent = this.fromDatePicker;
+            this.fromDatePicker.FillColor = System.Drawing.Color.White;
+            this.fromDatePicker.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fromDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.fromDatePicker.HoverState.Parent = this.fromDatePicker;
+            this.fromDatePicker.Location = new System.Drawing.Point(702, 9);
+            this.fromDatePicker.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.fromDatePicker.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.fromDatePicker.Name = "fromDatePicker";
+            this.fromDatePicker.ShadowDecoration.Parent = this.fromDatePicker;
+            this.fromDatePicker.Size = new System.Drawing.Size(200, 37);
+            this.fromDatePicker.TabIndex = 110;
+            this.fromDatePicker.Value = new System.DateTime(2025, 1, 14, 0, 31, 40, 562);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(641, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 28);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "From:";
             // 
             // panel5
             // 
@@ -224,21 +335,21 @@
             // 
             this.salesHistoryDgv.AllowUserToAddRows = false;
             this.salesHistoryDgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            this.salesHistoryDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.salesHistoryDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.salesHistoryDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.salesHistoryDgv.BackgroundColor = System.Drawing.Color.White;
             this.salesHistoryDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.salesHistoryDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.salesHistoryDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesHistoryDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.salesHistoryDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.salesHistoryDgv.ColumnHeadersHeight = 30;
             this.salesHistoryDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Sales_ID,
@@ -252,14 +363,14 @@
             this.Stock_Needed,
             this.Sale_Date,
             this.Sale_Time});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.salesHistoryDgv.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.salesHistoryDgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.salesHistoryDgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.salesHistoryDgv.EnableHeadersVisualStyles = false;
             this.salesHistoryDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -296,49 +407,6 @@
             this.salesHistoryDgv.ThemeStyle.RowsStyle.Height = 100;
             this.salesHistoryDgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.salesHistoryDgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // BackBtn
-            // 
-            this.BackBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BackBtn.AnimationHoverSpeed = 0.07F;
-            this.BackBtn.AnimationSpeed = 0.03F;
-            this.BackBtn.BackColor = System.Drawing.Color.Transparent;
-            this.BackBtn.BaseColor = System.Drawing.Color.Transparent;
-            this.BackBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.BackBtn.BorderSize = 2;
-            this.BackBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BackBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.BackBtn.FocusedColor = System.Drawing.Color.Empty;
-            this.BackBtn.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackBtn.ForeColor = System.Drawing.Color.Black;
-            this.BackBtn.Image = null;
-            this.BackBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.BackBtn.Location = new System.Drawing.Point(1032, 8);
-            this.BackBtn.Name = "BackBtn";
-            this.BackBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.BackBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            this.BackBtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.BackBtn.OnHoverImage = null;
-            this.BackBtn.OnPressedColor = System.Drawing.Color.White;
-            this.BackBtn.Radius = 6;
-            this.BackBtn.Size = new System.Drawing.Size(130, 35);
-            this.BackBtn.TabIndex = 38;
-            this.BackBtn.Text = "Back";
-            this.BackBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.BackBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
-            // 
-            // chartTitleLabel
-            // 
-            this.chartTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chartTitleLabel.AutoSize = true;
-            this.chartTitleLabel.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chartTitleLabel.Location = new System.Drawing.Point(896, 13);
-            this.chartTitleLabel.Name = "chartTitleLabel";
-            this.chartTitleLabel.Size = new System.Drawing.Size(258, 28);
-            this.chartTitleLabel.TabIndex = 6;
-            this.chartTitleLabel.Text = "productsaleshistory_hotcoffee";
-            this.chartTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Sales_ID
             // 
@@ -454,6 +522,7 @@
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.gunaGroupBox2.ResumeLayout(false);
+            this.gunaGroupBox2.PerformLayout();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.salesHistoryDgv)).EndInit();
             this.ResumeLayout(false);
@@ -490,5 +559,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock_Needed;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sale_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sale_Time;
+        private Guna.UI2.WinForms.Guna2DateTimePicker fromDatePicker;
+        internal System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2DateTimePicker toDatePicker;
+        internal System.Windows.Forms.Label label2;
     }
 }
