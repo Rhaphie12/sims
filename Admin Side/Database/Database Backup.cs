@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FontAwesome.Sharp;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,117 +22,112 @@ namespace sims.Admin_Side.Database
 
         private void backUpBtn_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = "SQL Files (*.sql)|*.sql",
-                Title = "Save Backup File",
-                FileName = "sales and inventory system database.sql"
-            };
+            dbModule db = new dbModule();
+            MySqlConnection conn = db.GetConnection();
+            MySqlCommand cmd = db.GetCommand();
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                string backupFilePath = saveFileDialog.FileName;
-                string server = "localhost";
-                string database = "sims";
-                string user = "root";
-                string password = "";
-
-                try
+                // Create SaveFileDialog instance
+                SaveFileDialog backup = new SaveFileDialog
                 {
-                    string command = $@"-u{user} {(string.IsNullOrEmpty(password) ? "" : $"-p{password}")} -h{server} {database} > ""{backupFilePath}""";
+                    InitialDirectory = @"C:\",
+                    Title = "Database Backup",
+                    CheckFileExists = false,
+                    CheckPathExists = false,
+                    DefaultExt = "sql",
+                    Filter = "SQL files (*.sql)|*.sql|All files (*.*)|*.*",
+                    RestoreDirectory = true
+                };
 
-                    ProcessStartInfo processInfo = new ProcessStartInfo
+                // Show the Save File Dialog
+                if (backup.ShowDialog() == DialogResult.OK)
+                {
+                    // Open database connection from your module
+                    conn.Open();
+
+                    if (conn.State != ConnectionState.Open)
                     {
-                        FileName = "cmd.exe",
-                        RedirectStandardInput = true,
-                        RedirectStandardOutput = true,
-                        UseShellExecute = false,
-                        CreateNoWindow = true
-                    };
-
-                    Process process = new Process
-                    {
-                        StartInfo = processInfo
-                    };
-
-                    process.Start();
-
-                    using (var writer = process.StandardInput)
-                    {
-                        if (writer.BaseStream.CanWrite)
-                        {
-                            writer.WriteLine($@"cd ""{@"C:\xampp\mysql\bin"}""");
-                            writer.WriteLine($"mysqldump {command}");
-                        }
+                        MessageBox.Show("Database connection is not open.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
 
-                    process.WaitForExit();
-                    process.Close();
+                    // Assign connection to the command from dbModule
+                    cmd.Connection = conn;
 
-                    MessageBox.Show("Backup completed successfully!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
+                    // Perform database backup
+                    MySqlBackup mb = new MySqlBackup(cmd);
+                    mb.ExportToFile(backup.FileName);
+
+                    MessageBox.Show("Database backup successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error during backup: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Always clean up
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+
+                cmd.Dispose();
+                conn.Dispose();
+            }
+
+
         }
 
         private void restoreBtn_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
+            try
             {
-                Filter = "SQL Files (*.sql)|*.sql",
-                Title = "Select Backup File"
-            };
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string backupFilePath = openFileDialog.FileName;
-                string server = "localhost";
-                string database = "your_database_name";
-                string user = "root";
-                string password = "";
-
-                try
+                // Open File Dialog to Select Backup File
+                OpenFileDialog restore = new OpenFileDialog
                 {
-                    string command = $@"-u{user} {(string.IsNullOrEmpty(password) ? "" : $"-p{password}")} -h{server} {database} < ""{backupFilePath}""";
+                    InitialDirectory = @"C:\",
+                    Title = "Restore Database",
+                    CheckFileExists = true,
+                    CheckPathExists = true,
+                    DefaultExt = "sql",
+                    Filter = "SQL files (*.sql)|*.sql|All files (*.*)|*.*",
+                    RestoreDirectory = true
+                };
 
-                    ProcessStartInfo processInfo = new ProcessStartInfo
-                    {
-                        FileName = "cmd.exe",
-                        RedirectStandardInput = true,
-                        RedirectStandardOutput = true,
-                        UseShellExecute = false,
-                        CreateNoWindow = true
-                    };
-
-                    Process process = new Process
-                    {
-                        StartInfo = processInfo
-                    };
-
-                    process.Start();
-
-                    using (var writer = process.StandardInput)
-                    {
-                        if (writer.BaseStream.CanWrite)
-                        {
-                            writer.WriteLine($@"cd ""{@"C:\xampp\mysql\bin"}""");
-                            writer.WriteLine($"mysql {command}");
-                        }
-                    }
-
-                    process.WaitForExit();
-                    process.Close();
-
-                    MessageBox.Show("Restore completed successfully!");
-                }
-                catch (Exception ex)
+                if (restore.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show($"Error: {ex.Message}");
+                    // Confirm before restoring
+                    DialogResult result = MessageBox.Show(
+                        "Are you sure you want to restore the database? This will overwrite existing data.",
+                        "Confirm Restore",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.No) return;
+
+                    MySqlConnection con = new MySqlConnection("server=localhost;username=root;password=;database=gymxfit_database;charset=utf8");
+
+                    // Use MySqlCommand with the open connection
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = con;
+                    con.Open();
+
+                    // Create MySqlBackup object and restore from file
+                    MySqlBackup mb = new MySqlBackup(cmd);
+                    mb.ImportFromFile(restore.FileName);
+
+                    // Close the connection after restore
+                    con.Close();
+
+                    MessageBox.Show("Database restored successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error during restore: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

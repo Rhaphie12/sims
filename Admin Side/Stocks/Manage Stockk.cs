@@ -100,8 +100,6 @@ namespace sims.Admin_Side.Stocks
             }
         }
 
-
-
         private void previewStock()
         {
             if (_inventoryDashboard != null)
@@ -436,5 +434,94 @@ namespace sims.Admin_Side.Stocks
         {
             itemStockDgv.ClearSelection();
         }
+
+        public void StockDate(DateTime fromDate, DateTime toDate)
+        {
+            dbModule db = new dbModule();
+
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    string query = $@"
+                SELECT * FROM stocks
+                WHERE Date_Added BETWEEN @FromDate AND @ToDate
+            ";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@FromDate", fromDate.Date);
+                        cmd.Parameters.AddWithValue("@ToDate", toDate.Date.AddDays(1).AddTicks(-1));
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+
+                            // Example: bind to your DataGridView
+                            itemStockDgv.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void fromDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime selectedDate = fromDatePicker.Value.Date;
+            ViewStockByDate(selectedDate);
+        }
+        public void ViewStockByDate(DateTime date)
+        {
+            dbModule db = new dbModule();
+            MySqlConnection conn = db.GetConnection();
+            MySqlCommand cmd = db.GetCommand();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+
+                // Make sure the column name matches the one in your database
+                cmd.CommandText = "SELECT * FROM stocks WHERE DATE(Date_Added) = @date";
+                cmd.Parameters.AddWithValue("@date", date.ToString("yyyy-MM-dd"));
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+
+                // Sanitize negative stocks
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    if (row["Stock_In"] != DBNull.Value && Convert.ToInt32(row["Stock_In"]) < 0)
+                    {
+                        row["Stock_In"] = 0;
+                    }
+                }
+
+                itemStockDgv.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to populate stock data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                cmd.Dispose();
+                conn.Dispose();
+            }
+        }
+
     }
 }

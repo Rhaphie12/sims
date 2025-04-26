@@ -28,30 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manage_Stockk));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.itemStockDgv = new Guna.UI.WinForms.GunaDataGridView();
-            this.DeleteStockBtn = new Guna.UI.WinForms.GunaButton();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.UpdateStockBtn = new Guna.UI.WinForms.GunaButton();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.NewStockBtn = new Guna.UI.WinForms.GunaButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.StocksReportBtn = new Guna.UI.WinForms.GunaButton();
-            this.selectAllBtn = new Guna.UI.WinForms.GunaButton();
-            this.searchCategoryTxt = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.Item_Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.Stock_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,10 +48,35 @@
             this.TIme_Added = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteStockBtn = new Guna.UI.WinForms.GunaButton();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.searchCategoryTxt = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.fromDatePicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.UpdateStockBtn = new Guna.UI.WinForms.GunaButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.NewStockBtn = new Guna.UI.WinForms.GunaButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.StocksReportBtn = new Guna.UI.WinForms.GunaButton();
+            this.selectAllBtn = new Guna.UI.WinForms.GunaButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.itemStockDgv)).BeginInit();
             this.panel5.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -80,21 +90,21 @@
             this.itemStockDgv.AllowUserToDeleteRows = false;
             this.itemStockDgv.AllowUserToResizeColumns = false;
             this.itemStockDgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.itemStockDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.itemStockDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.itemStockDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.itemStockDgv.BackgroundColor = System.Drawing.Color.White;
             this.itemStockDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.itemStockDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.itemStockDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemStockDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemStockDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.itemStockDgv.ColumnHeadersHeight = 30;
             this.itemStockDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Item_Image,
@@ -108,14 +118,14 @@
             this.TIme_Added,
             this.Item_Price,
             this.Item_Total});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemStockDgv.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemStockDgv.DefaultCellStyle = dataGridViewCellStyle6;
             this.itemStockDgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.itemStockDgv.EnableHeadersVisualStyles = false;
             this.itemStockDgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -155,6 +165,88 @@
             this.itemStockDgv.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.itemStockDgv_CellFormatting);
             this.itemStockDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemStockDgv_DataBindingComplete);
             // 
+            // Item_Image
+            // 
+            this.Item_Image.DataPropertyName = "Item_Image";
+            this.Item_Image.HeaderText = "Item Image";
+            this.Item_Image.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Item_Image.Name = "Item_Image";
+            this.Item_Image.ReadOnly = true;
+            this.Item_Image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Item_Image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Stock_ID
+            // 
+            this.Stock_ID.DataPropertyName = "Stock_ID";
+            this.Stock_ID.HeaderText = "Stock ID";
+            this.Stock_ID.Name = "Stock_ID";
+            this.Stock_ID.ReadOnly = true;
+            this.Stock_ID.Visible = false;
+            // 
+            // Item_ID
+            // 
+            this.Item_ID.DataPropertyName = "Item_ID";
+            this.Item_ID.HeaderText = "Item ID";
+            this.Item_ID.Name = "Item_ID";
+            this.Item_ID.ReadOnly = true;
+            this.Item_ID.Visible = false;
+            // 
+            // Item_Name
+            // 
+            this.Item_Name.DataPropertyName = "Item_Name";
+            this.Item_Name.HeaderText = "Item Name";
+            this.Item_Name.Name = "Item_Name";
+            this.Item_Name.ReadOnly = true;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // Stock_In
+            // 
+            this.Stock_In.DataPropertyName = "Stock_In";
+            this.Stock_In.HeaderText = "Stock IN";
+            this.Stock_In.Name = "Stock_In";
+            this.Stock_In.ReadOnly = true;
+            // 
+            // Unit_Type
+            // 
+            this.Unit_Type.DataPropertyName = "Unit_Type";
+            this.Unit_Type.HeaderText = "Unit Type";
+            this.Unit_Type.Name = "Unit_Type";
+            this.Unit_Type.ReadOnly = true;
+            // 
+            // Date_Added
+            // 
+            this.Date_Added.DataPropertyName = "Date_Added";
+            this.Date_Added.HeaderText = "Date Added";
+            this.Date_Added.Name = "Date_Added";
+            this.Date_Added.ReadOnly = true;
+            // 
+            // TIme_Added
+            // 
+            this.TIme_Added.DataPropertyName = "TIme_Added";
+            this.TIme_Added.HeaderText = "Time Added";
+            this.TIme_Added.Name = "TIme_Added";
+            this.TIme_Added.ReadOnly = true;
+            // 
+            // Item_Price
+            // 
+            this.Item_Price.DataPropertyName = "Item_Price";
+            this.Item_Price.HeaderText = "Item Price";
+            this.Item_Price.Name = "Item_Price";
+            this.Item_Price.ReadOnly = true;
+            // 
+            // Item_Total
+            // 
+            this.Item_Total.DataPropertyName = "Item_Total";
+            this.Item_Total.HeaderText = "Item Total";
+            this.Item_Total.Name = "Item_Total";
+            this.Item_Total.ReadOnly = true;
+            // 
             // DeleteStockBtn
             // 
             this.DeleteStockBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -171,7 +263,7 @@
             this.DeleteStockBtn.ForeColor = System.Drawing.Color.Black;
             this.DeleteStockBtn.Image = null;
             this.DeleteStockBtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.DeleteStockBtn.Location = new System.Drawing.Point(1030, 552);
+            this.DeleteStockBtn.Location = new System.Drawing.Point(3, 8);
             this.DeleteStockBtn.Name = "DeleteStockBtn";
             this.DeleteStockBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
             this.DeleteStockBtn.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(178)))), ((int)(((byte)(84)))));
@@ -179,12 +271,11 @@
             this.DeleteStockBtn.OnHoverImage = null;
             this.DeleteStockBtn.OnPressedColor = System.Drawing.Color.White;
             this.DeleteStockBtn.Radius = 6;
-            this.DeleteStockBtn.Size = new System.Drawing.Size(130, 35);
+            this.DeleteStockBtn.Size = new System.Drawing.Size(130, 50);
             this.DeleteStockBtn.TabIndex = 36;
             this.DeleteStockBtn.Text = "Remove Stock";
             this.DeleteStockBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DeleteStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.DeleteStockBtn.Visible = false;
             this.DeleteStockBtn.Click += new System.EventHandler(this.DeleteStockBtn_Click);
             // 
             // panel5
@@ -207,10 +298,9 @@
             this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox2.Controls.Add(this.tableLayoutPanel2);
             this.gunaGroupBox2.Controls.Add(this.tableLayoutPanel1);
             this.gunaGroupBox2.Controls.Add(this.selectAllBtn);
-            this.gunaGroupBox2.Controls.Add(this.searchCategoryTxt);
-            this.gunaGroupBox2.Controls.Add(this.DeleteStockBtn);
             this.gunaGroupBox2.Controls.Add(this.panel5);
             this.gunaGroupBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox2.LineColor = System.Drawing.Color.White;
@@ -224,32 +314,191 @@
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 15);
             this.gunaGroupBox2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 570F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 315F));
+            this.tableLayoutPanel2.Controls.Add(this.panel9, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel7, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(275, 3);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(885, 53);
+            this.tableLayoutPanel2.TabIndex = 43;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.searchCategoryTxt);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(570, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(315, 53);
+            this.panel9.TabIndex = 3;
+            // 
+            // searchCategoryTxt
+            // 
+            this.searchCategoryTxt.AcceptsReturn = false;
+            this.searchCategoryTxt.AcceptsTab = false;
+            this.searchCategoryTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchCategoryTxt.AnimationSpeed = 200;
+            this.searchCategoryTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.searchCategoryTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.searchCategoryTxt.BackColor = System.Drawing.Color.Transparent;
+            this.searchCategoryTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("searchCategoryTxt.BackgroundImage")));
+            this.searchCategoryTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.searchCategoryTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.searchCategoryTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.searchCategoryTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.searchCategoryTxt.BorderRadius = 30;
+            this.searchCategoryTxt.BorderThickness = 1;
+            this.searchCategoryTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.searchCategoryTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchCategoryTxt.DefaultFont = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchCategoryTxt.DefaultText = "";
+            this.searchCategoryTxt.FillColor = System.Drawing.Color.White;
+            this.searchCategoryTxt.HideSelection = true;
+            this.searchCategoryTxt.IconLeft = null;
+            this.searchCategoryTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchCategoryTxt.IconPadding = 10;
+            this.searchCategoryTxt.IconRight = null;
+            this.searchCategoryTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchCategoryTxt.Lines = new string[0];
+            this.searchCategoryTxt.Location = new System.Drawing.Point(9, 9);
+            this.searchCategoryTxt.MaximumSize = new System.Drawing.Size(303, 35);
+            this.searchCategoryTxt.MaxLength = 32767;
+            this.searchCategoryTxt.MinimumSize = new System.Drawing.Size(303, 35);
+            this.searchCategoryTxt.Modified = false;
+            this.searchCategoryTxt.Multiline = false;
+            this.searchCategoryTxt.Name = "searchCategoryTxt";
+            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties5.FillColor = System.Drawing.Color.Empty;
+            stateProperties5.ForeColor = System.Drawing.Color.Empty;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchCategoryTxt.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.searchCategoryTxt.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchCategoryTxt.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            stateProperties8.FillColor = System.Drawing.Color.White;
+            stateProperties8.ForeColor = System.Drawing.Color.Empty;
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.searchCategoryTxt.OnIdleState = stateProperties8;
+            this.searchCategoryTxt.Padding = new System.Windows.Forms.Padding(3);
+            this.searchCategoryTxt.PasswordChar = '\0';
+            this.searchCategoryTxt.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.searchCategoryTxt.PlaceholderText = "Search by Item ";
+            this.searchCategoryTxt.ReadOnly = false;
+            this.searchCategoryTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.searchCategoryTxt.SelectedText = "";
+            this.searchCategoryTxt.SelectionLength = 0;
+            this.searchCategoryTxt.SelectionStart = 0;
+            this.searchCategoryTxt.ShortcutsEnabled = true;
+            this.searchCategoryTxt.Size = new System.Drawing.Size(303, 35);
+            this.searchCategoryTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.searchCategoryTxt.TabIndex = 37;
+            this.searchCategoryTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.searchCategoryTxt.TextMarginBottom = 0;
+            this.searchCategoryTxt.TextMarginLeft = 3;
+            this.searchCategoryTxt.TextMarginTop = 0;
+            this.searchCategoryTxt.TextPlaceholder = "Search by Item ";
+            this.searchCategoryTxt.UseSystemPasswordChar = false;
+            this.searchCategoryTxt.WordWrap = true;
+            this.searchCategoryTxt.TextChanged += new System.EventHandler(this.searchCategoryTxt_TextChanged);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.fromDatePicker);
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(570, 53);
+            this.panel7.TabIndex = 1;
+            // 
+            // fromDatePicker
+            // 
+            this.fromDatePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.fromDatePicker.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
+            this.fromDatePicker.BorderRadius = 4;
+            this.fromDatePicker.BorderThickness = 2;
+            this.fromDatePicker.CheckedState.Parent = this.fromDatePicker;
+            this.fromDatePicker.FillColor = System.Drawing.Color.White;
+            this.fromDatePicker.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fromDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.fromDatePicker.HoverState.Parent = this.fromDatePicker;
+            this.fromDatePicker.Location = new System.Drawing.Point(359, 9);
+            this.fromDatePicker.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.fromDatePicker.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.fromDatePicker.Name = "fromDatePicker";
+            this.fromDatePicker.ShadowDecoration.Parent = this.fromDatePicker;
+            this.fromDatePicker.Size = new System.Drawing.Size(208, 35);
+            this.fromDatePicker.TabIndex = 114;
+            this.fromDatePicker.Value = new System.DateTime(2025, 1, 14, 0, 31, 40, 562);
+            this.fromDatePicker.ValueChanged += new System.EventHandler(this.fromDatePicker_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(247, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 28);
+            this.label1.TabIndex = 112;
+            this.label1.Text = "Select Date:";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 138F));
+            this.tableLayoutPanel1.Controls.Add(this.panel6, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(371, 535);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(333, 535);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(475, 71);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 71);
             this.tableLayoutPanel1.TabIndex = 42;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.DeleteStockBtn);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(452, 0);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(138, 71);
+            this.panel6.TabIndex = 3;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.UpdateStockBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(320, 0);
+            this.panel2.Location = new System.Drawing.Point(317, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(170, 71);
+            this.panel2.Size = new System.Drawing.Size(135, 71);
             this.panel2.TabIndex = 2;
             // 
             // UpdateStockBtn
@@ -276,7 +525,7 @@
             this.UpdateStockBtn.OnHoverImage = null;
             this.UpdateStockBtn.OnPressedColor = System.Drawing.Color.White;
             this.UpdateStockBtn.Radius = 4;
-            this.UpdateStockBtn.Size = new System.Drawing.Size(129, 50);
+            this.UpdateStockBtn.Size = new System.Drawing.Size(128, 50);
             this.UpdateStockBtn.TabIndex = 39;
             this.UpdateStockBtn.Text = "Re-Stock";
             this.UpdateStockBtn.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
@@ -289,7 +538,7 @@
             this.panel4.Location = new System.Drawing.Point(170, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(150, 71);
+            this.panel4.Size = new System.Drawing.Size(147, 71);
             this.panel4.TabIndex = 1;
             // 
             // NewStockBtn
@@ -384,83 +633,6 @@
             this.selectAllBtn.TabIndex = 41;
             this.selectAllBtn.Click += new System.EventHandler(this.selectAllBtn_Click);
             // 
-            // searchCategoryTxt
-            // 
-            this.searchCategoryTxt.AcceptsReturn = false;
-            this.searchCategoryTxt.AcceptsTab = false;
-            this.searchCategoryTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchCategoryTxt.AnimationSpeed = 200;
-            this.searchCategoryTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.searchCategoryTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.searchCategoryTxt.BackColor = System.Drawing.Color.Transparent;
-            this.searchCategoryTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("searchCategoryTxt.BackgroundImage")));
-            this.searchCategoryTxt.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.searchCategoryTxt.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.searchCategoryTxt.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.searchCategoryTxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.searchCategoryTxt.BorderRadius = 30;
-            this.searchCategoryTxt.BorderThickness = 1;
-            this.searchCategoryTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.searchCategoryTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchCategoryTxt.DefaultFont = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCategoryTxt.DefaultText = "";
-            this.searchCategoryTxt.FillColor = System.Drawing.Color.White;
-            this.searchCategoryTxt.HideSelection = true;
-            this.searchCategoryTxt.IconLeft = null;
-            this.searchCategoryTxt.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchCategoryTxt.IconPadding = 10;
-            this.searchCategoryTxt.IconRight = null;
-            this.searchCategoryTxt.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchCategoryTxt.Lines = new string[0];
-            this.searchCategoryTxt.Location = new System.Drawing.Point(878, 11);
-            this.searchCategoryTxt.MaximumSize = new System.Drawing.Size(282, 35);
-            this.searchCategoryTxt.MaxLength = 32767;
-            this.searchCategoryTxt.MinimumSize = new System.Drawing.Size(282, 35);
-            this.searchCategoryTxt.Modified = false;
-            this.searchCategoryTxt.Multiline = false;
-            this.searchCategoryTxt.Name = "searchCategoryTxt";
-            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchCategoryTxt.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.searchCategoryTxt.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchCategoryTxt.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            stateProperties4.FillColor = System.Drawing.Color.White;
-            stateProperties4.ForeColor = System.Drawing.Color.Empty;
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.searchCategoryTxt.OnIdleState = stateProperties4;
-            this.searchCategoryTxt.Padding = new System.Windows.Forms.Padding(3);
-            this.searchCategoryTxt.PasswordChar = '\0';
-            this.searchCategoryTxt.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(196)))), ((int)(((byte)(125)))));
-            this.searchCategoryTxt.PlaceholderText = "Search by Item ";
-            this.searchCategoryTxt.ReadOnly = false;
-            this.searchCategoryTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.searchCategoryTxt.SelectedText = "";
-            this.searchCategoryTxt.SelectionLength = 0;
-            this.searchCategoryTxt.SelectionStart = 0;
-            this.searchCategoryTxt.ShortcutsEnabled = true;
-            this.searchCategoryTxt.Size = new System.Drawing.Size(282, 35);
-            this.searchCategoryTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.searchCategoryTxt.TabIndex = 37;
-            this.searchCategoryTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.searchCategoryTxt.TextMarginBottom = 0;
-            this.searchCategoryTxt.TextMarginLeft = 3;
-            this.searchCategoryTxt.TextMarginTop = 0;
-            this.searchCategoryTxt.TextPlaceholder = "Search by Item ";
-            this.searchCategoryTxt.UseSystemPasswordChar = false;
-            this.searchCategoryTxt.WordWrap = true;
-            this.searchCategoryTxt.TextChanged += new System.EventHandler(this.searchCategoryTxt_TextChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -496,88 +668,6 @@
             this.panel1.Size = new System.Drawing.Size(1170, 53);
             this.panel1.TabIndex = 50;
             // 
-            // Item_Image
-            // 
-            this.Item_Image.DataPropertyName = "Item_Image";
-            this.Item_Image.HeaderText = "Item Image";
-            this.Item_Image.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Item_Image.Name = "Item_Image";
-            this.Item_Image.ReadOnly = true;
-            this.Item_Image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Item_Image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Stock_ID
-            // 
-            this.Stock_ID.DataPropertyName = "Stock_ID";
-            this.Stock_ID.HeaderText = "Stock ID";
-            this.Stock_ID.Name = "Stock_ID";
-            this.Stock_ID.ReadOnly = true;
-            this.Stock_ID.Visible = false;
-            // 
-            // Item_ID
-            // 
-            this.Item_ID.DataPropertyName = "Item_ID";
-            this.Item_ID.HeaderText = "Item ID";
-            this.Item_ID.Name = "Item_ID";
-            this.Item_ID.ReadOnly = true;
-            this.Item_ID.Visible = false;
-            // 
-            // Item_Name
-            // 
-            this.Item_Name.DataPropertyName = "Item_Name";
-            this.Item_Name.HeaderText = "Item Name";
-            this.Item_Name.Name = "Item_Name";
-            this.Item_Name.ReadOnly = true;
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "Category";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
-            // Stock_In
-            // 
-            this.Stock_In.DataPropertyName = "Stock_In";
-            this.Stock_In.HeaderText = "Stock IN";
-            this.Stock_In.Name = "Stock_In";
-            this.Stock_In.ReadOnly = true;
-            // 
-            // Unit_Type
-            // 
-            this.Unit_Type.DataPropertyName = "Unit_Type";
-            this.Unit_Type.HeaderText = "Unit Type";
-            this.Unit_Type.Name = "Unit_Type";
-            this.Unit_Type.ReadOnly = true;
-            // 
-            // Date_Added
-            // 
-            this.Date_Added.DataPropertyName = "Date_Added";
-            this.Date_Added.HeaderText = "Date Added";
-            this.Date_Added.Name = "Date_Added";
-            this.Date_Added.ReadOnly = true;
-            // 
-            // TIme_Added
-            // 
-            this.TIme_Added.DataPropertyName = "TIme_Added";
-            this.TIme_Added.HeaderText = "Time Added";
-            this.TIme_Added.Name = "TIme_Added";
-            this.TIme_Added.ReadOnly = true;
-            // 
-            // Item_Price
-            // 
-            this.Item_Price.DataPropertyName = "Item_Price";
-            this.Item_Price.HeaderText = "Item Price";
-            this.Item_Price.Name = "Item_Price";
-            this.Item_Price.ReadOnly = true;
-            // 
-            // Item_Total
-            // 
-            this.Item_Total.DataPropertyName = "Item_Total";
-            this.Item_Total.HeaderText = "Item Total";
-            this.Item_Total.Name = "Item_Total";
-            this.Item_Total.ReadOnly = true;
-            // 
             // Manage_Stockk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -594,7 +684,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemStockDgv)).EndInit();
             this.panel5.ResumeLayout(false);
             this.gunaGroupBox2.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -607,7 +702,6 @@
 
         #endregion
         private Guna.UI.WinForms.GunaDataGridView itemStockDgv;
-        private Bunifu.UI.WinForms.BunifuTextBox searchCategoryTxt;
         private Guna.UI.WinForms.GunaButton DeleteStockBtn;
         private System.Windows.Forms.Panel panel5;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox2;
@@ -633,5 +727,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TIme_Added;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_Total;
+        private Guna.UI2.WinForms.Guna2DateTimePicker fromDatePicker;
+        internal System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel9;
+        private Bunifu.UI.WinForms.BunifuTextBox searchCategoryTxt;
     }
 }

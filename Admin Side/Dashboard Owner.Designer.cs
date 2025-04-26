@@ -519,7 +519,7 @@
             this.Name = "DashboardOwner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Dashboard (Owner)";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.DashboardOwner_Load);
             this.PanelMenu.ResumeLayout(false);
             this.salesPanelSubMenu.ResumeLayout(false);

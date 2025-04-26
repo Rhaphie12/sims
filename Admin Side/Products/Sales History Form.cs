@@ -65,8 +65,6 @@ namespace sims.Admin_Side.Products
             }
         }
 
-
-
         private void CoffeeMonthlyChart_Click(object sender, EventArgs e)
         {
             selectedTableName = "productsaleshistory_coffee";

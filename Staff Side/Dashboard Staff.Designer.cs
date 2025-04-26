@@ -369,7 +369,7 @@
             this.Name = "Dashboard_Staff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Dashboard (Staff)";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.Dashboard_Staff_Load);
             this.PanelMenu.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
